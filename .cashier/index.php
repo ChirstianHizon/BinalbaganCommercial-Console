@@ -1,3 +1,6 @@
+<!--
+  TODO: FIX THE LOGIN 
+ -->
 <?php
 include '../library/config.php';
 include '../classes/class.employee.php';

@@ -1,0 +1,96 @@
+.nodisplay{
+  display: none;
+  height: 0px;
+}
+textarea {
+    resize: none;
+}
+/*---------------------------- BELOW IS FOR THE RESPONSIVE LAYOUT THINGY ------------------------*/
+/*  SECTIONS  */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+
+	width: 100%;
+}
+.span_1_of_2 {
+	width: 48.2%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col {
+		margin: 1% 0 1% 0%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.span_2_of_2, .span_1_of_2 { width: 100%; }
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+/*---------------------------- ABOVE IS FOR THE RESPONSIVE LAYOUT THINGY ------------------------*/
+
+/*------------------------------------- DATA TABLE ---------------------------------------------*/
+table tr{
+  cursor: pointer;
+}
+tbody tr:hover{
+  background-color: #EEEEEE;
+}
+.delete{
+  width: 40px;
+  text-align: center;
+}
+.delete:hover{
+  color: red;
+}
+/*------------------------------------- DATA TABLE ---------------------------------------------*/
+#div1{
+  padding:20px;
+  padding-top: 0px;
+}
+#newCategory{
+  margin-top: -15px;
+}
+#updateCategory{
+  margin-top: -15px;
+  display: none;
+}
+.formcat{
+  /**/
+}
+.formcat input,
+.formcat textarea{
+  width: 100%;
+  font-size: 18px;
+}

@@ -2,8 +2,10 @@
 include '..\library\config.php';
 include '..\classes\class.cart.php';
 include '..\classes\class.sales.php';
+include '..\classes\class.product.php';
 $sales = new Sales();
 $cart = new Cart();
+$product = new Product();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
 $prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
@@ -12,14 +14,14 @@ $qty = (isset($_POST['qty']) && $_POST['qty'] != '') ? $_POST['qty'] : '';
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 
 //TODO: CHANGE USER ID BASED ON SESSION USERID
-$userid = 1001;
+$empid = $_SESSION['userid'];
 
 switch ($type) {
   case 0:
   echo "TEST ECHO 123";
   break;
   case 1:
-    $list =  $cart->getCart($userid);
+    $list =  $cart->getCart($empid);
     if(!$list){break;}
     foreach($list as $value){
     echo  '<tr id="'.$value['cart_id'].'">'.
@@ -30,15 +32,17 @@ switch ($type) {
     }
     break;
     case 2:
-      $list =  $cart->addCart($prdid,$userid,$qty);
-      if($list == 1){echo $list;}
-      foreach($list as $value){
-        $list = $cart->specsupdateCart($value['cart_id'],$value['cart_prd_qty'] + $qty,$value['prd_id'],$userid);
+      $list =  $cart->addCart($prdid,$empid,$qty);
+      if($list==1){break;}
+      else{
+        foreach($list as $value){
+          $list = $cart->specsupdateCart($value['cart_id'],$value['cart_prd_qty'] + $qty,$value['prd_id'],$empid);
+        }
       }
       echo $list;
       break;
     case 3:
-      $list = $cart->getSpecificCart($id,$userid);
+      $list = $cart->getSpecificCart($id,$empid);
       if(!$list){break;}
       foreach($list as $value){
         $cart_id = $value['cart_id'];
@@ -56,7 +60,7 @@ switch ($type) {
       }
     break;
     case 4:
-      $list =  $cart->updateCart($id,$prdid,$userid,$qty);
+      $list =  $cart->updateCart($id,$prdid,$empid,$qty);
       if(!$list){break;}
       foreach($list as $value){
         $cart_id = $value['cart_id'];
@@ -74,10 +78,10 @@ switch ($type) {
       }
     break;
     case 5:
-      echo $cart->deleteCart($id,$userid);
+      echo $cart->deleteCart($id,$empid);
     break;
     case 6:
-      $list =  $cart->getSpecificUserCart($prdid,$userid);
+      $list =  $cart->getSpecificUserCart($prdid,$empid);
       if(!$list){break;}
       foreach($list as $value){
         $cart_id = $value['cart_id'];
@@ -92,7 +96,7 @@ switch ($type) {
       }
     break;
     case 7:
-    $list =  $cart->getCart($userid);
+    $list =  $cart->getCart($empid);
     $tbcontent = "";
     $total = 0;
     $subtotal = 0;
@@ -111,7 +115,7 @@ switch ($type) {
     echo json_encode(array("html" => $tbcontent,"total" => $total));
     break;
     case 8:
-    $list =  $cart->getCart($userid);
+    $list =  $cart->getCart($empid);
     $tbcontent = "";
     $total = 0;
     $subtotal = 0;
@@ -123,7 +127,7 @@ switch ($type) {
     echo json_encode(array("total" => $total));
     break;
     case 9:
-    $list =  $cart->getCart($userid);
+    $list =  $cart->getCart($empid);
     if(!$list){break;}
     foreach($list as $value){
       $subtotal = $value['prd_price'] * $value['cart_prd_qty'];
@@ -132,16 +136,18 @@ switch ($type) {
     echo json_encode(array("total" => $total));
     break;
     case 10:
-    $list =  $cart->getCart($userid);
+    $list =  $cart->getCart($empid);
     if(!$list){break;}
-    $salesid =  $sales->addSales($userid);
+    $salesid =  $sales->addSales(null,$empid);
     $count = 0;
     foreach($list as $value){
       $sales->addSalesList($salesid,$value['prd_id'],$value['cart_prd_qty']);
       $count++;
+      $level = $product->getProductLevel($value['prd_id']);
+      $rest = $product->updateProductStock($value['prd_id'],$level,$value['QTY'],$empid,1,$salesid);
     }
-    $cart->deleteALLCart($userid);
-    return $count;
+    $cart->deleteALLCart($empid);
+    echo $rest;
     break;
     default:
       echo "TYPE ERRROR";

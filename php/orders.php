@@ -171,7 +171,7 @@ include '..\classes\class.product.php';
         $prdid = $value['ID'];
         $level = $value['LEVEL'] - $value['QTY'];
         $sales->addSalesList($salesstat,$prdid,$value['QTY']);
-        $status = $product->updateProductStock($prdid,$level,$value['QTY'],$empid,$cust,1,$salesstat);
+        $status = $product->updateProductStock($prdid,$level,$value['QTY'],$empid,1,$salesstat);
       }
     }
     $datestat =  $order->updateOrderDate($id,$recdate);

@@ -34,6 +34,14 @@
       }
     }
 
+    public function getProductLevel($id){
+      $sql = "SELECT prd_level FROM tbl_product WHERE prd_id = '$id'";
+      $result = mysqli_query($this->db,$sql);
+      $row = mysqli_fetch_assoc($result);
+      $level = $row['prd_level'];
+      return $level;
+    }
+
     public function getSpecificProduct($id){
       $sql = "SELECT * FROM tbl_product WHERE prd_id = '$id'";
       $result = mysqli_query($this->db,$sql);
@@ -62,7 +70,7 @@
       return $result;
     }
 
-    public function updateProductStock($id,$level,$curr,$empid,$custid,$type,$salesid){
+    public function updateProductStock($id,$level,$curr,$empid,$type,$salesid){
       $sql = "UPDATE tbl_product SET
       prd_level = '$level'
       WHERE prd_id = '$id'";

@@ -244,7 +244,7 @@ function finalsubmit(){
     data: {
       "type":10
     },success: function(result){
-      //console.log(result);
+      console.log(result);
       alert("Transaction Complete");
       closeModal();
       createCartTable();
@@ -272,7 +272,7 @@ $("#form-addtocart").submit(function(){
       "type":2
     },success: function(result){
       if(result){
-        //console.log(result);
+        console.log(result);
         createCartTable();
         document.getElementById("form-addtocart").reset();
         closeModal();

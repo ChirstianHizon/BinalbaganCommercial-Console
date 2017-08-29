@@ -9,9 +9,9 @@ class Sales{
     }
   }
 
-  public function addSales($userid){
-    $sql = "INSERT INTO tbl_sales(sales_datestamp,sales_timestamp,user_id,sales_type,receive_datetimestamp)
-       VALUES(NOW(),NOW(),'$userid','0',NOW())";
+  public function addSales($custid,$empid){
+    $sql = "INSERT INTO tbl_sales(sales_datestamp,sales_timestamp,emp_id,sales_type,receive_datetimestamp)
+       VALUES(NOW(),NOW(),'$empid','0',NOW())";
 
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     if($result == 1){

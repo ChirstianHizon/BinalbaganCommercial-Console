@@ -68,8 +68,8 @@
       WHERE prd_id = '$id'";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
 
-      $sql = "INSERT INTO tbl_product_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,log_type,sales_id)
-        VALUES('$id','$curr',NOW(),NOW(),'$empid','$type','$salesid')";
+      $sql = "INSERT INTO tbl_update_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,cust_id,log_type,sales_id)
+        VALUES('$id','$curr',NOW(),NOW(),'$empid','$custid','$type','$salesid')";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
       return $result;
 

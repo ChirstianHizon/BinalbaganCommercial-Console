@@ -1,5 +1,5 @@
 var table,list_table;
-
+var modal="";
 $(function() {
   $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
   var start = document.getElementById("fromdatepicker").value= currDate;

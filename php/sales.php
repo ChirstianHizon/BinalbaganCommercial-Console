@@ -25,7 +25,11 @@ include '..\classes\class.product.php';
         break;}
       foreach($list as $value){
         $sales_id = $value['ID'];
-        $customer_id = $value['CUSTOMER'];
+        if($value['CUSTOMER'] == ''){
+          $customer_id =  $value['EMPLOYEE'];
+        }else{
+          $customer_id = $value['CUSTOMER'];
+        }
         $sales_type = $value['TYPE'];
         $sales_qty =$value['QUANTITY'];
         $sales_date = $value['DATE'];

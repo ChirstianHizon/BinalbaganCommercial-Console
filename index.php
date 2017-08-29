@@ -184,6 +184,12 @@ $type = $_SESSION['usertype'];
                 case 'userprofile':
                   require_once 'userprofile.php';
                 break;
+                case 'reportinven':
+                  require_once '.admin/reports/inventory.php';
+                break;
+                case 'reportinven':
+                  require_once '.admin/reports/sales.php';
+                break;
                 default:
                   require_once '.main/page-not-found.php';
                 break;

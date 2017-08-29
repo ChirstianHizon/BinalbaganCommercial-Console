@@ -32,7 +32,7 @@ function searchagain(){
 function createSalesTable(start,end){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/sales.php",
+    url: "php/sales.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -60,7 +60,7 @@ function viewsalesList(clickedElement){
     var salesid = clickedElement.id;
 
     $.ajax({
-      url: "../php/sales.php",
+      url: "php/sales.php",
       type: "POST",
       async: true,
       dataType: "json",

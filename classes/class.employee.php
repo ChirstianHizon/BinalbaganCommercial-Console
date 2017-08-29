@@ -14,15 +14,7 @@ class Employee{
   public function test(){
     return "CLASS OK";
   }
-  // public function setSession($uname,$fname,$lname,$type,$image){
-  //   $_SESSION['login']= true;
-  //   $_SESSION['username']= $uname;
-  //   $_SESSION['userfname']=$fname;
-  //   $_SESSION['userlanme']= $lname;
-  //   $_SESSION['usertype']= $type;
-  //   $_SESSION['userimage']= $image;
-  //   return true;
-  // }
+
   public function checkType($type,$login,$currpage){
     if(!$login){
       header("location: ../login.php");

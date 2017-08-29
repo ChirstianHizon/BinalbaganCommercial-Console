@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/inventory/inventoryaddprod.css" media="screen" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/inventory/inventoryaddprod.css" media="all" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Add New Product</h1>
@@ -83,4 +83,4 @@
   </div>
 </div>
 <!-- SCRIPTS HERE!!! -->
-<script src=".js\inventory\add-prod.js"></script>
+<script src=".admin/.js\inventory\add-prod.js"></script>

@@ -28,7 +28,7 @@ $(function() {
 
 function initPendingTable(){
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",

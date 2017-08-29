@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/sales/saleslist.css" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/sales/saleslist.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Sales List</h2>
@@ -69,4 +69,4 @@
 
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".js\sales\saleslist.js"></script>
+<script src=".admin/.js\sales\saleslist.js"></script>

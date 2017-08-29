@@ -34,7 +34,7 @@ $("#newCategory").submit(function(){
   // 5 - RETRIEVE SPECIFIC
   // 6 - UPDATE
   $.ajax({
-    url: "../php/category.php",
+    url: "php/category.php",
     type: "POST",
     async: true,
     data: {
@@ -64,7 +64,7 @@ $("#updateCategory").submit(function(){
   // 5 - RETRIEVE SPECIFIC
   // 6 - UPDATE
   $.ajax({
-    url: "../php/category.php",
+    url: "php/category.php",
     type: "POST",
     async: true,
     data: {
@@ -85,7 +85,7 @@ $("#updateCategory").submit(function(){
 function getAllCategory(){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/category.php",
+    url: "php/category.php",
     type: "POST",
     async: true,
     data: {
@@ -111,7 +111,7 @@ function catselect(clickedElement){
   hide ('#newCategory');
   var id = clickedElement.id;
   $.ajax({
-    url: "../php/category.php",
+    url: "php/category.php",
     type: "POST",
     dataType: 'json',
     async: true,

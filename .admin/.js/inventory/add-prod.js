@@ -41,7 +41,7 @@ function generateProductCategory(){
   var upcategory = document.getElementById("updatecategory");
   category.innerHTML = "";
   $.ajax({
-    url: "../php/category.php",
+    url: "php/category.php",
     type: "POST",
     async: true,
     data: {
@@ -84,7 +84,7 @@ $("#newProduct").submit(function(){
 
   if(file == null){
     $.ajax({
-      url: "../php/product.php",
+      url: "php/product.php",
       type: "POST",
       async: true,
       data: {
@@ -120,7 +120,7 @@ $("#newProduct").submit(function(){
   }, function() {
     product.image = uploadTask.snapshot.downloadURL;
     $.ajax({
-      url: "../php/product.php",
+      url: "php/product.php",
       type: "POST",
       async: true,
       data: {
@@ -162,7 +162,7 @@ $("#updateProduct").submit(function(){
 
   if(file == null){
     $.ajax({
-      url: "../php/product.php",
+      url: "php/product.php",
       type: "POST",
       async: true,
       data: {
@@ -199,7 +199,7 @@ $("#updateProduct").submit(function(){
   }, function() {
     product.image = uploadTask.snapshot.downloadURL;
     $.ajax({
-      url: "../php/product.php",
+      url: "php/product.php",
       type: "POST",
       async: true,
       data: {
@@ -230,7 +230,7 @@ $("#updateProduct").submit(function(){
 function createProductTable(){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {
@@ -256,7 +256,7 @@ function prodselect(clickedElement){
   hide ('#newProduct');
   var id = clickedElement.id;
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     dataType: "json",
     data: {

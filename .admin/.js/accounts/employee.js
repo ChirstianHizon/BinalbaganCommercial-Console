@@ -38,7 +38,7 @@ createTable();
 function createTable(){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/employee.php",
+    url: "php/employee.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -67,7 +67,7 @@ function viewaccount(clickedElement){
   userid = clickedElement.id;
 
   $.ajax({
-    url: "../php/employee.php",
+    url: "php/employee.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -96,7 +96,7 @@ function editaccount(clickedElement){
   userid = clickedElement.id;
 
   $.ajax({
-    url: "../php/employee.php",
+    url: "php/employee.php",
     type: "POST",
     async: true,
     dataType: "json",

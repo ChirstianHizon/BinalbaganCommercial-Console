@@ -18,7 +18,7 @@ $(function() {
 function createProductTable(){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {
@@ -44,7 +44,7 @@ function createProductTable(){
 function prodselect(clickedElement){
   var id = clickedElement.id;
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     dataType: "json",
     data: {

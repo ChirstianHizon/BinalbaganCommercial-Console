@@ -23,7 +23,7 @@ function createProductTable(){
   updateTotal();
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {
@@ -51,7 +51,7 @@ function createCartTable(){
   updateTotal();
   document.getElementById("cart-table-body").innerHTML = "";
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {
@@ -94,7 +94,7 @@ function prodselect(clickedElement){
   //   }
   // });
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -118,7 +118,7 @@ function prodselect(clickedElement){
 
 function updateTotal(){
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -143,7 +143,7 @@ function cartselect(clickedElement){
   span = document.getElementsByClassName("close")[0];
   //console.log("CART: "+cartid);
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -198,7 +198,7 @@ $("#btncheckout").click(function(){
   document.getElementById('checkout-cash-input').focus();
 
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -238,7 +238,7 @@ function finalCheckout(){
 
 function finalsubmit(){
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {
@@ -263,7 +263,7 @@ $("#form-addtocart").submit(function(){
   qty = Number(document.getElementById("add-cart-input").value);
 
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {
@@ -289,7 +289,7 @@ $("#form-changecart").submit(function(){
   span = document.getElementsByClassName("close")[1];
   qty = Number(document.getElementById("change-cart-input").value);
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {

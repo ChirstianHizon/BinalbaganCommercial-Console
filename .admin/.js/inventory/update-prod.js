@@ -26,7 +26,7 @@ $('#search').on( 'keyup', function () {
 function createProductTable(){
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {
@@ -54,7 +54,7 @@ function prodselect(clickedElement){
     var id = clickedElement.id;
   }
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     dataType: "json",
     data: {
@@ -95,7 +95,7 @@ function updatestocks(){
   // 7 - RETRIEVE NAME & STATUS
   // 8 - UPDATE STOCK
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {

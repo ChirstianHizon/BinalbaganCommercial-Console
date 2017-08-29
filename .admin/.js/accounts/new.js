@@ -40,7 +40,7 @@ function createNewEmployee(){
   }
 
   $.ajax({
-    url: "../php/employee.php",
+    url: "php/employee.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -56,7 +56,7 @@ function createNewEmployee(){
         }else{
           if(file == null){
             $.ajax({
-              url: "../php/employee.php",
+              url: "php/employee.php",
               type: "POST",
               async: true,
               dataType: "json",
@@ -87,7 +87,7 @@ function createNewEmployee(){
             }, function() {
               image = uploadTask.snapshot.downloadURL;
               $.ajax({
-                url: "../php/employee.php",
+                url: "php/employee.php",
                 type: "POST",
                 async: true,
                 dataType: "json",

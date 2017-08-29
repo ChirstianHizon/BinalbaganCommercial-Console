@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/sales/pos.css" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/sales/pos.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Point of Sales</h2>
@@ -182,4 +182,4 @@
 
 
 <!-- SCRIPTS HERE!! -->
-<script src=".js\sales\pos.js"></script>
+<script src=".admin/.js\sales\pos.js"></script>

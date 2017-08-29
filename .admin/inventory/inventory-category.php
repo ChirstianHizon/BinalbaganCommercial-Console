@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/inventory/inventoryaddcat.css" media="screen" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/inventory/inventoryaddcat.css" media="screen" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Categories</h1>
@@ -48,5 +48,5 @@
   </div>
 </div>
 <!-- SCRIPTS HERE!! -->
-<script src=".js\inventory\category.js"></script>
+<script src=".admin/.js\inventory\category.js"></script>
 <!-- END!! -->

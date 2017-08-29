@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/accounts/new.css" media="all" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/accounts/new.css" media="all" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Add New Account</h1>
@@ -35,4 +35,4 @@
 
 </form>
 
-<script src=".js\accounts\new.js"></script>
+<script src=".admin\.js\accounts\new.js"></script>

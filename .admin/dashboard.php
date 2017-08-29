@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/dashboard.css" media="all" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/dashboard.css" media="all" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header"></h2>
@@ -103,5 +103,5 @@
 </div>
 
 <!-- SCRIPTS HERE!! -->
-<script src=".js\dashboard.js"></script>
+<script src=".admin/.js/dashboard.js"></script>
 <!-- END!! -->

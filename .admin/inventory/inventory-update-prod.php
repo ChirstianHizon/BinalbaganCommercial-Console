@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/inventory/inventoryupdateprod.css" media="screen" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/inventory/inventoryupdateprod.css" media="screen" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Update Product Levels</h1>
@@ -42,4 +42,4 @@
   </div>
 </div>
 <!-- SCRIPTS HERE!!! -->
-<script src=".js\inventory\update-prod.js"></script>
+<script src=".admin/.js\inventory\update-prod.js"></script>

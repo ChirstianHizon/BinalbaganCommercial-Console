@@ -12,7 +12,9 @@ include '..\classes\class.product.php';
   $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
   $date = (isset($_POST['date']) && $_POST['date'] != '') ? $_POST['date'] : '';
   $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
+  $cust = (isset($_POST['cust']) && $_POST['cust'] != '') ? $_POST['cust'] : '';
 
+  $empid = $_SESSION['userid'];
   switch ($type) {
     case 0:
     echo json_encode(array("main" => "OK"));
@@ -169,7 +171,7 @@ include '..\classes\class.product.php';
         $prdid = $value['ID'];
         $level = $value['LEVEL'] - $value['QTY'];
         $sales->addSalesList($salesstat,$prdid,$value['QTY']);
-        $status = $product->updateProductStock($prdid,$level);
+        $status = $product->updateProductStock($prdid,$level,$value['QTY'],$empid,$cust,1,$salesstat);
       }
     }
     $datestat =  $order->updateOrderDate($id,$recdate);

@@ -106,7 +106,7 @@ switch ($type) {
   case 8:
   $curr = $level;
   $level = $add + $level;
-  echo $product->updateProductStock($id,$level,$curr,$empid);
+  echo $product->updateProductStock($id,$level,$curr,$empid,null,0,null);
   break;
 
   case 9:

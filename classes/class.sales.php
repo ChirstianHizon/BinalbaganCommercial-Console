@@ -22,7 +22,7 @@ class Sales{
   }
 
   public function addSaleswType($orderid,$userid,$type){
-    $sql = "INSERT INTO tbl_sales(sales_datestamp,sales_timestamp,user_id,sales_type,order_id)
+    $sql = "INSERT INTO tbl_sales(sales_datestamp,sales_timestamp,cust_id,sales_type,order_id)
        VALUES(NOW(),NOW(),'$userid','$type','$orderid')";
 
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
@@ -52,7 +52,7 @@ class Sales{
             tbl_sales_list.sales_id AS ID,
             SUM(prd_qty * prd_price) AS TOTAL,
             sales_datestamp AS DATE,
-            user_id AS CUSTOMER,
+            cust_id AS CUSTOMER,
             emp_id AS EMPLOYEE ,
             sales_type AS TYPE,
             COUNT(prd_qty) AS QUANTITY

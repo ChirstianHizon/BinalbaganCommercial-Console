@@ -4,6 +4,13 @@ $(function() {
     dateFormat: 'yy-mm-dd'
   });
  createTable();
+ table = $('#table_id').DataTable({
+   "responsive": true,
+   "bLengthChange": false,
+   "bFilter": false ,
+   "bInfo" : false,
+   "pageLength": 10
+ });
 });
 
 function fromdatechange(){
@@ -25,18 +32,16 @@ function createTable(){
     data: {
       "type":1
     },success: function(result){
-      // console.log(result);
-      var type = "";
-      switch (result.type) {
-        case 0:
-          type = "IN";
-          break;
-        case 1:
-          type = "OUT"
-          break;
-        default:
-
-      }
+     console.log(result);
+     table.destroy();
+     document.getElementById("table-body").innerHTML = result.main;
+     table = $('#table_id').DataTable({
+       "responsive": true,
+       "bLengthChange": false,
+       "bFilter": false ,
+       "bInfo" : false,
+       "pageLength": 10
+     });
     },error: function(response) {
       console.log(response);
     }

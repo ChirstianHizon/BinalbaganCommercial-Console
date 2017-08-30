@@ -14,13 +14,15 @@ class Product_Log{
   }
 
 
-  public function getAllProductLog(){
+  public function getAllProductLog($start,$end){
     $sql = "SELECT prd_name AS PRD_NAME, log_id AS LOG_ID, tbl_product_log.prd_id AS PRD_ID,log_qty AS LOG_QTY, log_datestamp AS DATESTAMP,
 		emp_first_name AS EMP_FNAME, emp_last_name AS EMP_LNAME, log_type AS TYPE
     FROM tbl_product_log
     INNER JOIN tbl_product ON tbl_product_log.prd_id = tbl_product.prd_id
     INNER JOIN tbl_employee ON tbl_product_log.emp_id = tbl_employee.emp_id
+    WHERE log_datestamp >= '$start' AND log_datestamp <= '$end'
     ";
+    // return $sql;
     $result = mysqli_query($this->db,$sql);
     if($result){
       while($row = mysqli_fetch_assoc($result)){

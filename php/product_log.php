@@ -18,7 +18,10 @@
       break;
     case 1:
     $html="";
-    $list = $product_log->getAllProductLog();
+    $list = $product_log->getAllProductLog($fromdate,$todate);
+    // echo json_encode(array("main" => $list));
+    // break;
+    if(!$list){echo json_encode(array("main" => ""));break;}
     foreach($list as $value){
       $type = "";
       switch ($value['TYPE']) {

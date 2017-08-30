@@ -8,10 +8,12 @@
 <div id="datepicker">
   <h5><b>Choose Date:</b></h5><br/>
   <b>From</b>
+  <form onsubmit="searchagain()">
   <input readonly='true' class="datepicker" onchange="fromdatechange()" type="text" id="fromdatepicker" placeholder="From">
   <b>to</b>
   <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
-  <input id="btncreatereport"type="button" value="Search " onclick="searchagain()" >
+  <button>Search</button>
+</form>
 </div>
 
 
@@ -22,8 +24,7 @@
       <th>Date</th>
       <th>Type</th>
       <th>Employee</th>
-      <th>Qunatiy</th>
-      <th></th>
+      <th>Qunantity</th>
     </tr>
   </thead>
   <tbody id="table-body">

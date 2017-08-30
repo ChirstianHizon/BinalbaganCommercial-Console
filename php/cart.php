@@ -144,10 +144,11 @@ switch ($type) {
       $sales->addSalesList($salesid,$value['prd_id'],$value['cart_prd_qty']);
       $count++;
       $level = $product->getProductLevel($value['prd_id']);
-      $rest = $product->updateProductStock($value['prd_id'],$level,$value['QTY'],$empid,1,$salesid);
+      $level = $level - $value['cart_prd_qty'];
+      $rest = $product->updateProductStock($value['prd_id'],$level,$value['cart_prd_qty'],$empid,1,$salesid);
     }
     $cart->deleteALLCart($empid);
-    echo $rest;
+    echo $level;
     break;
     default:
       echo "TYPE ERRROR";

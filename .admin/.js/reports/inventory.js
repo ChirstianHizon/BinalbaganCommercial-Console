@@ -1,9 +1,12 @@
+var start,end;
 $(function() {
   console.log("--- JS CONNECTED ---");
   $(".datepicker").datepicker({
     dateFormat: 'yy-mm-dd'
   });
- createTable();
+  var start = document.getElementById("fromdatepicker").value= currDate;
+  var end = document.getElementById("todatepicker").value= currDate;
+ createTable(start,end);
  table = $('#table_id').DataTable({
    "responsive": true,
    "bLengthChange": false,
@@ -21,15 +24,22 @@ function fromdatechange(){
     dateFormat: 'yy-mm-dd'
   });
 }
+function searchagain(){
+  start = document.getElementById("fromdatepicker").value;
+  end = document.getElementById("todatepicker").value;
+  createTable(start,end);
+}
 
-function createTable(){
-
+function createTable(start,end){
+  console.log("start");
   $.ajax({
     url: "php/product_log.php",
     type: "POST",
     async: true,
     dataType: "json",
     data: {
+      "todate":end,
+      "fromdate":start,
       "type":1
     },success: function(result){
      console.log(result);

@@ -55,7 +55,7 @@ include '..\classes\class.product.php';
                   '<td id="'.$value['ID'].'" >'.$sales_date.'</td>'.
                   '<td id="'.$value['ID'].'" >'.$customer_id.'</td>'.
                   '<td id="'.$value['ID'].'" >'.$sales_type.'</td>'.
-                  '<td id="'.$value['ID'].'" >'.number_format($sales_qty,2).' item/s</td>'.
+                  '<td id="'.$value['ID'].'" >'.$sales_qty.' item/s</td>'.
                   '<td id="'.$value['ID'].'" >P'.number_format($sales_total,2).'</td>'.
                   '<td id="'.$value['ID'].'" onclick="viewsalesList(this)" ><b class="btnview"> View  </b></td>'.
               "</tr>";

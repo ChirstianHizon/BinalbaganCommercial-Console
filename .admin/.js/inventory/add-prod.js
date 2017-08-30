@@ -56,6 +56,13 @@ function generateProductCategory(){
   });
 }
 
+function setminWarning() {
+  var optimal = document.getElementById("optimal").value;
+  document.getElementById("warning").max = Number(optimal)-1;
+  var optimal = document.getElementById("updateoptimal").value;
+  document.getElementById("updatewarning").max = Number(optimal)-1;
+}
+
 //GET IMAGE FILE
 var file;
 function getimage(event){
@@ -71,6 +78,7 @@ function getimage(event){
 // 6 - RETRIEVE NAME ONLY
 
 $("#newProduct").submit(function(){
+  document.getElementById('btnadd').disable();
   product.name = document.getElementById("name").value;
   product.desc = document.getElementById("desc").value;
   product.category = document.getElementById("category").value;
@@ -81,7 +89,10 @@ $("#newProduct").submit(function(){
   product.level = Number(document.getElementById("level").value);
   product.optimal = Number(document.getElementById("optimal").value);
   product.warning = Number(document.getElementById("warning").value);
-
+  if(product.optimal <= product.warning){
+    alert("Warning Level Must NOT be Lower than Optimal Level");
+    return false;
+  }
   if(file == null){
     $.ajax({
       url: "php/product.php",
@@ -160,6 +171,11 @@ $("#updateProduct").submit(function(){
   product.optimal = Number(document.getElementById("updateoptimal").value);
   product.warning = Number(document.getElementById("updatewarning").value);
 
+  if(product.optimal <= product.warning){
+    alert("Warning Level Must NOT be Lower than Optimal Level");
+    return false;
+  }
+
   if(file == null){
     $.ajax({
       url: "php/product.php",
@@ -178,6 +194,7 @@ $("#updateProduct").submit(function(){
       },success: function(result){
         if(result){
           console.log(result);
+          alert("Update Complete");
           document.getElementById("updateProduct").reset();
           createProductTable();
           clear();

@@ -25,15 +25,15 @@
     <br/><h4>Product Levels</h4>
     <div id="line"></div><br/>
     Current Level:<br>
-    <input id="level" type="number" step="1"  min="0"required><br>
+    <input id="level" type="number" step="1"  min="0" required><br>
     Optimal Level:<br>
-    <input id="optimal" type="number" step="1" min="0" required><br>
+    <input id="optimal" type="number" step="1" min="0" onchange="setminWarning()" required><br>
     Warning Level:<br>
     <input id="warning" type="number" step="1" min="0" required><br>
     <h4>Image Settings</h4>
     Image:<br>
     <input type="file" id="fileUpload" alt="Choose Product Image" onchange="getimage(event)" ><br>
-    <button>Add New Product</button>
+    <button id="btnadd">Add New Product</button>
   </form>
   <!--  -->
 
@@ -54,14 +54,13 @@
     <textarea id="updatedesc" rows="4" required></textarea><br>
     <h4>Product Levels</h4>
     Optimal Level:<br>
-    <input id="updateoptimal" type="number" step="1" min="0" required><br>
+    <input id="updateoptimal" type="number" onchange="setminWarning()" step="1" min="0" required><br>
     Warning Level:<br>
     <input id="updatewarning" type="number" step="1" min="0" required><br>
     <h4>Image Settings</h4>
     Image:<br>
     <input type="file" id="updatefileUpload" alt="Choose Product Image" onchange="getimage(event)" ><br>
-    <button>Update Product</button>
-    <button id="clear">Clear</button>
+    <button id="btnupdate">Update Product</button>
   </form>
 </br/>
   <button id="clear">Clear</button><br/><br/>

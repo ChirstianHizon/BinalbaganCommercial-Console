@@ -19,7 +19,7 @@
     <tr>
       <th>Sales No.</th>
       <th>Date</th>
-      <th>Customer Name</th>
+      <th>Name</th>
       <th>Transaction Type</th>
       <th>Items Purchased</th>
       <th>Total Amount</th>

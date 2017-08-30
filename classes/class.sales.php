@@ -41,6 +41,13 @@ class Sales{
   }
 
   public function getAllSales($start,$end){
+    //TODO: CHANGE "0000-00-00 TO THE CURRENT SYSTEM DATE"
+    if($start == null || $start == ""){
+      $start = "0000-00-00";
+    }
+    if($end == null || $end == ""){
+      $end = "0000-00-00";
+    }
     $sql = "SELECT
             tbl_sales_list.sales_id AS ID,
             SUM(prd_qty * prd_price) AS TOTAL,
@@ -53,7 +60,7 @@ class Sales{
             INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
             LEFT OUTER JOIN tbl_order ON tbl_order.order_id = tbl_sales.order_id
-            WHERE sales_datestamp >= '2017-08-29' AND sales_datestamp <= '2017-08-29'
+            WHERE sales_datestamp >= '$start' AND sales_datestamp <= '$end'
             GROUP BY tbl_sales_list.sales_id
             ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);

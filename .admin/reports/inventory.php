@@ -24,7 +24,7 @@
       <th>Date</th>
       <th>Type</th>
       <th>Employee</th>
-      <th>Qunantity</th>
+      <th>Quantity</th>
     </tr>
   </thead>
   <tbody id="table-body">

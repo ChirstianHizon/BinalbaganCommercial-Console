@@ -15,7 +15,7 @@ class Order{
             SUM(prd_qty * prd_price) AS TOTAL,
             order_datestamp AS DATE,
             order_type AS TYPE ,
-            user_id AS CUSTOMER,
+            cust_id AS CUSTOMER,
             COUNT(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
@@ -41,7 +41,7 @@ class Order{
             SUM(prd_qty * prd_price) AS TOTAL,
             order_datestamp AS DATE,
             order_type AS TYPE ,
-            user_id AS CUSTOMER,
+            cust_id AS CUSTOMER,
             receive_datestamp AS RECEIEVE,
             COUNT(prd_qty) AS QUANTITY
             FROM tbl_order_list
@@ -92,7 +92,7 @@ class Order{
 
   public function getSpecOrder($id){
   $sql = "SELECT
-  user_id AS CUSTOMER,
+  cust_id AS CUSTOMER,
   order_type AS TYPE,
   tbl_order_list.order_id AS ID,
   SUM(prd_qty * prd_price) AS TOTAL,
@@ -136,10 +136,10 @@ class Order{
   }
 
   public function getUserId($id){
-    $sql = "SELECT user_id FROM tbl_order WHERE order_id = '$id'";
+    $sql = "SELECT cust_id FROM tbl_order WHERE order_id = '$id'";
     $result = mysqli_query($this->db,$sql);
     $row = mysqli_fetch_assoc($result);
-    $uid = $row['user_id'];
+    $uid = $row['cust_id'];
     return $uid;
   }
 

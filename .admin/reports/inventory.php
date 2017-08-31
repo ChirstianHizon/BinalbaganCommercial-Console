@@ -16,7 +16,9 @@
 </form>
 </div>
 
-
+<br/>
+<b>Stock Level</b>
+<div id="line"></div>
 <table id="table_id" class="display" width="100%" cellspacing="0">
   <thead>
     <tr>
@@ -32,5 +34,7 @@
 </table>
 
 
+<div id="stock_chart" class="chart"></div>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src=".admin/.js/reports/inventory.js"></script>

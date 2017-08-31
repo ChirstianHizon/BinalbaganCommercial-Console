@@ -44,7 +44,23 @@
 
     echo json_encode(array("main" => $html));
     break;
+    case 2:
+    $chart = array();
+    array_push($chart,array('Date', 'IN', 'OUT'));
+    $list = $product_log->getTypeCountByDate($fromdate,$todate);
+    if(!$list){
+      array_push($chart,array('No Data Available', 0, 0));
+      echo json_encode($chart);
+      break;
+    }else{
+        foreach($list as $value){
+          array_push($chart,array($value['DATE'],(int) $value['LOG_IN'], (int)$value['LOG_OUT']));
+        }
+        echo json_encode($chart);
+    }
+
+    break;
     default:
-      # code...
+        echo json_encode(array("main" => "TYPE ERROR"));
       break;
   }

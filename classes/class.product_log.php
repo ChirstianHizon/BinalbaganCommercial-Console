@@ -35,5 +35,28 @@ class Product_Log{
     }
   }
 
+  public function getTypeCountByDate($start,$end){
+    $sql ="SELECT log.log_datestamp AS DATE,
+			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '0' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_OUT ,
+			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '1' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_IN
+	    FROM tbl_product_log log
+		 WHERE log_datestamp >= '$start' AND log_datestamp <= '$end'
+		 GROUP BY log.log_datestamp
+          ";
+    $result = mysqli_query($this->db,$sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+
+  }
+
+
+
 
 }

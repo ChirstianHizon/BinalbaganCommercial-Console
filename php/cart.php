@@ -21,15 +21,19 @@ switch ($type) {
   echo "TEST ECHO 123";
   break;
   case 1:
+    $html="";
+    $count=0;
     $list =  $cart->getCart($empid);
-    if(!$list){break;}
+    if(!$list){echo json_encode(array("main" => "","total"=> 0));break;}
     foreach($list as $value){
-    echo  '<tr id="'.$value['cart_id'].'">'.
+    $count++;
+    $html = $html.'<tr id="'.$value['cart_id'].'">'.
               '<td id="'.$value['cart_id'].'" onclick="cartselect(this)">'.$value['prd_name'].'</td>'.
               '<td id="'.$value['cart_id'].'" onclick="cartselect(this)">'.$value['cart_prd_qty'].'</td>'.
               '<td id="'.$value['cart_id'].'" ondblclick="cartdelete(this)"><b class="btndelete"> X  </b></td>'.
           "</tr>";
     }
+    echo json_encode(array("main" => $html,"total"=> $count));
     break;
     case 2:
       $list =  $cart->addCart($prdid,$empid,$qty);

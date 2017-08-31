@@ -1,4 +1,4 @@
-var table,cart,checkout;
+var table,cart,checkout,carttotal;
 
 $(function() {
 
@@ -54,12 +54,14 @@ function createCartTable(){
     url: "php/cart.php",
     type: "POST",
     async: true,
+    dataType: "json",
     data: {
       "type":1
     },success: function(result){
-      //console.log(result);
+      console.log(result);
       cart.destroy();
-      document.getElementById("cart-table-body").innerHTML = result;
+      carttotal = result.total;
+      document.getElementById("cart-table-body").innerHTML = result.main;
       cart =  $('#cart_id').DataTable({
         "responsive": true,
         "bLengthChange": false,
@@ -78,21 +80,6 @@ function prodselect(clickedElement){
   var x = clickedElement.id;;
   prdid = x;
   level = 0;
-  //console.log(x);
-  // $.ajax({
-  //   url: "php/cart.php",
-  //   type: "POST",
-  //   dataType: "json",
-  //   async: true,
-  //   data: {
-  //     "prdid":prdid,
-  //     "type":6
-  //   },success: function(result){
-  //     console.log(result);
-  //   },error: function(response) {
-  //     console.log(response);
-  //   }
-  // });
   $.ajax({
     url: "php/product.php",
     type: "POST",
@@ -193,6 +180,10 @@ function searchtb(){
 }
 var total,chktemptable;
 $("#btncheckout").click(function(){
+  if(carttotal <= 0){
+    alert("Cart is still Empty");
+    return false;
+  }
   modal = document.getElementById('checkout-modal');
   modal.style.display = "block";
   document.getElementById('checkout-cash-input').focus();

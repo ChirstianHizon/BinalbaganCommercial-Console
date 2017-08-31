@@ -241,6 +241,9 @@ table.dataTable thead .sorting{
 
   display: inline;
 }
+#cbReciept{
+  width: auto;
+}
 #add{
   background-color: green;
 }

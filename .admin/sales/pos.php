@@ -162,10 +162,14 @@
         <tbody id="checkout-table-body">
         </tbody>
       </table>
-      <h4><b>Total:</b></h4><i id="total" >0.00</i>
-      <h4><b>Cash:</b></h4><i id="cash" >0.00</i>
-      <h4><b>Change:</b></h4><i id="change">0.00</i>
-      <form id="form-final-checkout" class="modalform" onsubmit="finalsubmit();">
+      <h4 class="inline"><b>Total:</b></h4><i id="total" >0.00</i>
+      <h4 class="inline"><b>Cash:</b></h4><i id="cash" >0.00</i>
+      <h4 class="inline"><b>Change:</b></h4><i id="change">0.00</i>
+      <!-- TODO: CREATE A CLICKBOX IF THE USER WOULD WANT TO GENERATE A RECIEPT -->
+      <form id="form-final-checkout" class="modalform" onsubmit="finalsubmit()">
+        <br/>
+      <input id="cbReciept" type="checkbox" name="genReciept" value="true">
+      <label for="genReciept">Generate Receipt</label>
     </div>
     <div class="modal-footer">
       <button id="add">Submit</button>

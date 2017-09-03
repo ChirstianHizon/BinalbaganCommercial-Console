@@ -14,7 +14,8 @@ $("#loginform").submit(function(event){
     data: {
       "uname":uname,
       "pass":pass,
-      "type":1
+      "type":1,
+      "access":"Binalbagan_Commercial_WEB_Access"
     },success: function(result){
       console.log(result);
       if(result.status){

@@ -15,36 +15,36 @@ class Employee{
     return "CLASS OK";
   }
 
-  public function checkType($type,$login,$currpage){
-    if(!$login){
-      header("location: ../login.php");
-    }
-    switch ($_SESSION['usertype']) {
-      case 0:
-        if($currpage == "admin"){
-          //header("location: ../index.php");
-          break;
-        }
-        header("location: .admin/index.php");
-        break;
-      case 1:
-        if($currpage == "cashier"){
-        //header("location: ../.cashier/index.php");
-          break;
-        }
-        header("location: .cashier/index.php");
-        break;
-      case 2:
-        if($currpage == "index"){
-          break;
-        }
-        break;
-
-      default:
-        header("location: ../login.php");
-        break;
-    }
-  }
+  // public function checkType($type,$login,$currpage){
+  //   if(!$login){
+  //     header("location: ../login.php");
+  //   }
+  //   switch ($_SESSION['usertype']) {
+  //     case 0:
+  //       if($currpage == "admin"){
+  //         //header("location: ../index.php");
+  //         break;
+  //       }
+  //       header("location: .admin/index.php");
+  //       break;
+  //     case 1:
+  //       if($currpage == "cashier"){
+  //       //header("location: ../.cashier/index.php");
+  //         break;
+  //       }
+  //       header("location: .cashier/index.php");
+  //       break;
+  //     case 2:
+  //       if($currpage == "index"){
+  //         break;
+  //       }
+  //       break;
+  //
+  //     default:
+  //       header("location: ../login.php");
+  //       break;
+  //   }
+  // }
 
   public function get_session(){
     if(isset($_SESSION['login']) && $_SESSION['login'] == true){
@@ -56,7 +56,8 @@ class Employee{
 
   public function checkLogin($uname,$pass){
     $pass = md5($pass);
-    $sql = "SELECT emp_id AS ID,emp_image AS IMAGE,emp_last_name AS LNAME,emp_first_name AS FNAME,emp_username AS USERNAME,emp_type AS TYPE,count(emp_username) AS COUNT FROM tbl_employee WHERE emp_username = '$uname' AND emp_password = '$pass' ";
+    $sql = "SELECT emp_id AS ID,emp_image AS IMAGE,emp_last_name AS LNAME,emp_first_name AS FNAME,emp_username AS USERNAME,emp_type AS TYPE,count(emp_username) AS COUNT FROM tbl_employee
+    WHERE emp_username = '$uname' AND emp_password = '$pass' ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     if($result){
       while($row = mysqli_fetch_assoc($result)){

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/inventory/inventoryview.css" media="screen" />
+<link rel="stylesheet" type="text/css" href=".cashier/.css/inventory/inventoryview.css" media="screen" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Product List</h1>
@@ -93,5 +93,5 @@
 <br/>
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".js\inventory\view-prod.js"></script>
+<script src=".cashier/.js\inventory\view-prod.js"></script>
 <!-- END!!! -->

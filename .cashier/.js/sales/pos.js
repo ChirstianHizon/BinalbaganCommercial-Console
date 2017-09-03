@@ -1,4 +1,4 @@
-var table,cart,checkout;
+var table,cart,checkout,carttotal;
 
 $(function() {
 
@@ -23,7 +23,7 @@ function createProductTable(){
   updateTotal();
   document.getElementById("table-body").innerHTML = "";
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     async: true,
     data: {
@@ -51,15 +51,17 @@ function createCartTable(){
   updateTotal();
   document.getElementById("cart-table-body").innerHTML = "";
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
+    dataType: "json",
     data: {
       "type":1
     },success: function(result){
-      //console.log(result);
+      console.log(result);
       cart.destroy();
-      document.getElementById("cart-table-body").innerHTML = result;
+      carttotal = result.total;
+      document.getElementById("cart-table-body").innerHTML = result.main;
       cart =  $('#cart_id').DataTable({
         "responsive": true,
         "bLengthChange": false,
@@ -78,23 +80,8 @@ function prodselect(clickedElement){
   var x = clickedElement.id;;
   prdid = x;
   level = 0;
-  //console.log(x);
-  // $.ajax({
-  //   url: "php/cart.php",
-  //   type: "POST",
-  //   dataType: "json",
-  //   async: true,
-  //   data: {
-  //     "prdid":prdid,
-  //     "type":6
-  //   },success: function(result){
-  //     console.log(result);
-  //   },error: function(response) {
-  //     console.log(response);
-  //   }
-  // });
   $.ajax({
-    url: "../php/product.php",
+    url: "php/product.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -118,7 +105,7 @@ function prodselect(clickedElement){
 
 function updateTotal(){
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -143,7 +130,7 @@ function cartselect(clickedElement){
   span = document.getElementsByClassName("close")[0];
   //console.log("CART: "+cartid);
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -193,12 +180,16 @@ function searchtb(){
 }
 var total,chktemptable;
 $("#btncheckout").click(function(){
+  if(carttotal <= 0){
+    alert("Cart is still Empty");
+    return false;
+  }
   modal = document.getElementById('checkout-modal');
   modal.style.display = "block";
   document.getElementById('checkout-cash-input').focus();
 
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     dataType: "json",
     async: true,
@@ -238,13 +229,13 @@ function finalCheckout(){
 
 function finalsubmit(){
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {
       "type":10
     },success: function(result){
-      //console.log(result);
+      console.log(result);
       alert("Transaction Complete");
       closeModal();
       createCartTable();
@@ -263,7 +254,7 @@ $("#form-addtocart").submit(function(){
   qty = Number(document.getElementById("add-cart-input").value);
 
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {
@@ -272,7 +263,7 @@ $("#form-addtocart").submit(function(){
       "type":2
     },success: function(result){
       if(result){
-        //console.log(result);
+        console.log(result);
         createCartTable();
         document.getElementById("form-addtocart").reset();
         closeModal();
@@ -289,7 +280,7 @@ $("#form-changecart").submit(function(){
   span = document.getElementsByClassName("close")[1];
   qty = Number(document.getElementById("change-cart-input").value);
   $.ajax({
-    url: "../php/cart.php",
+    url: "php/cart.php",
     type: "POST",
     async: true,
     data: {

@@ -27,7 +27,7 @@ $(function() {
 function createPickUpTable(){
   document.getElementById("walkin-body").innerHTML = "";
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -53,7 +53,7 @@ function createPickUpTable(){
 function createPedingTable(){
   document.getElementById("pending-body").innerHTML = "";
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -86,7 +86,7 @@ function vieworderList(clickedElement){
 
     document.getElementById("orderlist-body").innerHTML = "";
     $.ajax({
-      url: "../php/orders.php",
+      url: "php/orders.php",
       type: "POST",
       async: true,
       dataType: "json",
@@ -122,7 +122,7 @@ function approvedOrder(clickedElement){
   openModal();
 
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -145,7 +145,7 @@ function updateOrder(){
   var date = document.getElementById("pickupdate").value;
   console.log(date);
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -177,7 +177,7 @@ function receiveOrder(clickedElement){
   openModal();
 
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",
@@ -198,7 +198,7 @@ function receiveOrder(clickedElement){
 function updatereceiveOrder(){
 
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/orders.php",
     type: "POST",
     async: true,
     dataType: "json",

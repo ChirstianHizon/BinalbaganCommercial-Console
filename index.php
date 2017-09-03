@@ -79,7 +79,7 @@ $type = $_SESSION['usertype'];
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.php">BC Web Console</a>
+        <a id="name" class="navbar-brand" href="index.php">BC Console </a>
       </div>
 
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -91,14 +91,14 @@ $type = $_SESSION['usertype'];
 
       <!-- Top Navigation: Left Menu -->
       <ul class="nav navbar-nav navbar-left navbar-top-links">
-        <li><a href="#"><i class="fa fa-home fa-fw"></i></a></li>
+        <li><a id="home" href="#"><i class="fa fa-home fa-fw"></i></a></li>
       </ul>
 
       <!-- Top Navigation: Right Menu -->
       <ul class="nav navbar-right navbar-top-links">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <?php echo $_SESSION['userlname'].", ".$_SESSION['userfname']?> <b class="caret"></b>
+            <i id="user" class="fa fa-user fa-fw"></i> <?php echo $_SESSION['userlname'].", ".$_SESSION['userfname']?> <b class="caret"></b>
           </a>
           <ul class="dropdown-menu dropdown-user">
             <li><a href="index.php?mod=userprofile"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -138,64 +138,87 @@ $type = $_SESSION['usertype'];
         <?php
           switch ($type) {
             case 0:
+              switch($module){
+                  case '':
+                    require_once '.admin/dashboard.php';
+                  break;
+                  case 'salespos':
+                    require_once '.admin/sales/pos.php';
+                  break;
+                  case 'invenviewprod':
+                    require_once '.admin/inventory/inventory-view.php';
+                  break;
+                  case 'invenaddprod':
+                    require_once '.admin/inventory/inventory-add-prod.php';
+                  break;
+                  case 'invenaddcat':
+                    require_once '.admin/inventory/inventory-category.php';
+                  break;
+                  case 'invenupdtprod':
+                    require_once '.admin/inventory/inventory-update-prod.php';
+                  break;
+                  case 'search':
+                    require_once '.admin/products.php';
+                  break;
+                  case 'salesreport':
+                    require_once '.admin/salesreport.php';
+                  break;
+                  case 'saleslist':
+                    require_once '.admin/sales/saleslist.php';
+                  break;
+                  case 'orders':
+                    require_once '.admin/sales/orders.php';
+                  break;
+                  case 'accnew':
+                    require_once '.admin/accounts/new.php';
+                  break;
+                  case 'acccust':
+                    require_once '.admin/accounts/customer.php';
+                  break;
+                  case 'accemp':
+                    require_once '.admin/accounts/employee.php';
+                  break;
+                  case 'accuser':
+                    require_once '.admin/accounts/user.php';
+                  break;
+                  case 'userprofile':
+                    require_once 'userprofile.php';
+                  break;
+                  case 'reportinven':
+                    require_once '.admin/reports/inventory.php';
+                  break;
+                  case 'reportinven':
+                    require_once '.admin/reports/sales.php';
+                  break;
+                  default:
+                    require_once '.main/page-not-found.php';
+                  break;
+              }
+            break;
+            case 1:
             switch($module){
                 case '':
-                  require_once '.admin/dashboard.php';
+                  require_once '.cashier/dashboard.php';
                 break;
                 case 'salespos':
-                  require_once '.admin/sales/pos.php';
+                  require_once '.cashier/sales/pos.php';
                 break;
                 case 'invenviewprod':
-                  require_once '.admin/inventory/inventory-view.php';
-                break;
-                case 'invenaddprod':
-                  require_once '.admin/inventory/inventory-add-prod.php';
-                break;
-                case 'invenaddcat':
-                  require_once '.admin/inventory/inventory-category.php';
-                break;
-                case 'invenupdtprod':
-                  require_once '.admin/inventory/inventory-update-prod.php';
+                  require_once '.cashier/inventory/inventory-view.php';
                 break;
                 case 'search':
-                  require_once '.admin/products.php';
-                break;
-                case 'salesreport':
-                  require_once '.admin/salesreport.php';
-                break;
-                case 'saleslist':
-                  require_once '.admin/sales/saleslist.php';
+                  require_once '.cashier/products.php';
                 break;
                 case 'orders':
-                  require_once '.admin/sales/orders.php';
-                break;
-                case 'accnew':
-                  require_once '.admin/accounts/new.php';
-                break;
-                case 'acccust':
-                  require_once '.admin/accounts/customer.php';
-                break;
-                case 'accemp':
-                  require_once '.admin/accounts/employee.php';
-                break;
-                case 'accuser':
-                  require_once '.admin/accounts/user.php';
+                  require_once '.cashier/sales/orders.php';
                 break;
                 case 'userprofile':
                   require_once 'userprofile.php';
-                break;
-                case 'reportinven':
-                  require_once '.admin/reports/inventory.php';
-                break;
-                case 'reportinven':
-                  require_once '.admin/reports/sales.php';
                 break;
                 default:
                   require_once '.main/page-not-found.php';
                 break;
             }
-            break;
-            case 1:
             break;
 
             case 2:

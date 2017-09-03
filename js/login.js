@@ -1,5 +1,5 @@
 window.onload = function() {
-console.log("--- test ---");
+// console.log("--- test ---");
 $("#loginform").submit(function(event){
     event.preventDefault();
 });

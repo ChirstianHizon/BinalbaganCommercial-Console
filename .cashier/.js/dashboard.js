@@ -1,50 +1,43 @@
-var pending_table,warning_table;
+var trans_table;
 $(function() {
-  pending_table = $('#pending_id').DataTable({
+  trans_table = $('#trans_id').DataTable({
     "responsive": true,
     "bLengthChange": false,
     "bInfo" : false,
     "bFilter": false,
-    "pageLength": 10
-  });
-  warning_table = $('#warning_id').DataTable({
-    "responsive": true,
-    "bLengthChange": false,
-    "bInfo" : false,
-    "bFilter": false,
-    "pageLength": 10
-  });
-  delivery_table = $('#delivery_id').DataTable({
-    "responsive": true,
-    "bLengthChange": false,
-    "bInfo" : false,
-    "bFilter": false,
-    "pageLength": 10
+    "pageLength": 10,
+    "bPaginate": false
   });
 
   //TABLES INITIALIZE
-  initPendingTable();
+  initTransactionTable();
 });
 
-function initPendingTable(){
+function initTransactionTable(){
   $.ajax({
-    url: "../php/orders.php",
+    url: "php/sales.php",
     type: "POST",
     async: true,
     dataType: "json",
     data: {
-      "type":11
+      "type":3
     },success: function(result){
       console.log(result);
-      pending_table.destroy();
-      document.getElementById("pending-body").innerHTML = result.main;
-      pending_table = $('#pending_id').DataTable({
+      trans_table.destroy();
+      document.getElementById("head-1").innerHTML = result.totalqty;
+      document.getElementById("head-2").innerHTML = result.count;
+      document.getElementById("head-3").innerHTML = "P "+addCommas(get2decimal(result.totalsales));
+
+      document.getElementById("trans-body").innerHTML = result.main;
+      trans_table = $('#trans_id').DataTable({
         "responsive": true,
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 10,
+        "bPaginate": false
       });
+        trans_table.buttons().remove();
     },error: function(response) {
       console.log(response);
     }
@@ -78,51 +71,33 @@ var div1,div2,div3,div4;
 div1=div2=div3=div4=true;
 function hide(clickedElement){
   x = Number(clickedElement.id);
-  var div;
-  switch (x) {
-  case 1:
   div = document.getElementById('table-1');
   if(div1 == true){
     div1 = false;
   div.style.display = "none";
+  document.getElementById('1').innerHTML="+";
   }else{
     div1 = true;
     div.style.display = "block";
-  }
-    break;
-  case 2:
-  div = document.getElementById('table-2');
-  if(div2 == true){
-    div2 = false;
-  div.style.display = "none";
-  }else{
-    div2 = true;
-    div.style.display = "block";
-  }
-    break;
-  case 3:
-  div = document.getElementById('table-3');
-  if(div3 == true){
-    div3 = false;
-  div.style.display = "none";
-  }else{
-    div3 = true;
-    div.style.display = "block";
-  }
-    break;
-  case 4:
-  div = document.getElementById('table-4');
-  if(div4 == true){
-    div4 = false;
-  div.style.display = "none";
-  }else{
-    div4 = true;
-    div.style.display = "block";
-  }
-    break;
-  default:
-    alert("CANNOT FIND THIS");
-    break;
+    document.getElementById('1').innerHTML="-";
   }
 }
 //--------------------------------------- END -----------------------------------------//
+
+
+
+//---------------------------------------- UTILITIES --------------------------------//
+function addCommas(nStr) {
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+function get2decimal(int){
+  return parseFloat(Math.round(int * 100) / 100).toFixed(2);
+}

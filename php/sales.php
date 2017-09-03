@@ -11,7 +11,7 @@ include '..\classes\class.product.php';
   $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
   $start = (isset($_POST['start']) && $_POST['start'] != '') ? $_POST['start'] : '';
   $end = (isset($_POST['end']) && $_POST['end'] != '') ? $_POST['end'] : '';
-
+  $empid = $_SESSION['userid'];
 
   switch ($type) {
     case 0:
@@ -80,6 +80,26 @@ include '..\classes\class.product.php';
 
       }
       echo json_encode(array("main" => $html,"total" => $total,"count" => $count));
+      break;
+      case 3:
+      $html ="";
+      $total = $count= $totalqty = $totalsales = 0;
+      $list = $sales->getCurrSalesListByEmp($empid);
+      if(!$list){break;}
+      foreach($list as $value){
+        $count++;
+        $totalqty += $value['QTY'];
+        $totalsales += $value['TOTAL'];
+        $html = $html.'<tr id="'.$value['ID'].'">'.
+                  '<td>'.$value['ID'].'</td>'.
+                  '<td>'.$value['QTY'].' items/s</td>'.
+                  '<td> P '.$value['TOTAL'].'</td>'.
+                  '<td> '.$value['TIME'].'</td>'.
+                  '<td id ="'.$value['ID'].'" > VIEW</td>'.
+              "</tr>";
+
+      }
+      echo json_encode(array("main" => $html,"count" => $count,"totalqty" => $totalqty,"totalsales" => $totalsales));
       break;
       default:
       echo json_encode(array("main" => "TYPE ERROR"));

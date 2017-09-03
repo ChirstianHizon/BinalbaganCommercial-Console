@@ -56,6 +56,20 @@ body {
     min-height: 50px;
 }
 
+@media only screen and (max-width: 420px) {
+
+  #user{
+    margin-left: -100px;
+  }
+
+}
+
+@media only screen and (max-width: 305px) {
+  #name{
+    display: none;
+  }
+}
+
 .navbar-top-links>li>a {
     color: #999;
 }

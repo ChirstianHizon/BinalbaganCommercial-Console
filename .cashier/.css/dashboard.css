@@ -1,38 +1,47 @@
-/*  SECTIONS  ============================================================================= */
-
+/*  SECTIONS  */
 .section {
 	clear: both;
 	padding: 0px;
 	margin: 0px;
 }
 
-/*  GROUPING  ============================================================================= */
-
-
-.group:before,
-.group:after {
-    content:"";
-    display:table;
-}
-.group:after {
-    clear:both;
-}
-.group {
-    zoom:1; /* For IE 6/7 (trigger hasLayout) */
-}
-
-/*  GRID COLUMN SETUP   ==================================================================== */
-.col { border-radius: 5px;background: #ccc; padding:1em 0; text-align:center;}
+/*  COLUMN SETUP  */
 .col {
 	display: block;
 	float:left;
 	margin: 1% 0 1% 1.6%;
+	background-color: gray;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF THREE  */
+.span_3_of_3 { width: 100%; }
+.span_2_of_3 { width: 65.83%; }
+/*.span_1_of_3 { width: 31.66%; }*/
+.span_1_of_3 { width: 32%; }
+
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+	.col {  margin: 1% 0 1% 0%;}
+	.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
 }
 
-.col:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
+/*  GRID OF TWO  */
+.span_2_of_2 {
+	width: 100%;
+}
+.span_1_of_2 {
+	width: 49.2%;
+}
 
-
-/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
 	.col {
@@ -40,58 +49,10 @@
 	}
 }
 
-/*  GRID OF FOUR   ============================================================================= */
-
-
-.span_4_of_4 {
-	width: 100%;
-}
-
-.span_3_of_4 {
-	width: 74.6%;
-}
-
-.span_2_of_4 {
-	width: 49.2%;
-}
-
-.span_1_of_4 {
-	width: 23.8%;
-}
-
-
-/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
-
 @media only screen and (max-width: 480px) {
-	.span_4_of_4 {
-		width: 100%;
-	}
-	.span_3_of_4 {
-		width: 100%;
-	}
-	.span_2_of_4 {
-		width: 100%;
-	}
-	.span_1_of_4 {
-		width: 100%;
-	}
+	.span_2_of_2, .span_1_of_2 { width: 100%; }
 }
 
-/*------ DASHBOARD HEAD ------*/
-#col1{
-  background-color: #EDA221;
-}
-#col2{
-  /*background-color: #19246D;
-  color:white;*/
-  background-color: #EDA221;
-}
-#col3{
-  background-color: #EDA221;
-}
-#col4{
-  background-color: #EDA221;
-}
 
 
 /* INSERT STYLES HERE*/
@@ -103,10 +64,11 @@
 .dash-header{
   font-size: 18px;
   text-align:left;
+	border-radius: 5px;
+	background-color: orange;
 
-  margin-bottom: -10px;
-  padding-left: 10px;
-  padding-right: 10px;
+
+padding:10px;
 }
 .table-container{
   margin-top:-5px;
@@ -147,4 +109,8 @@
 }
 #view:hover{
 	color: blue;
+}
+
+.paginate_button {
+	display: none;
 }

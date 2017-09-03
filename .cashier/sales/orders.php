@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".css/sales/orders.css" />
+<link rel="stylesheet" type="text/css" href=".cashier/.css/sales/orders.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Orders</h2>
@@ -139,4 +139,4 @@
 </div>
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".js\sales\orders.js"></script>
+<script src=".cashier/.js\sales\orders.js"></script>

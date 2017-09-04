@@ -1,5 +1,6 @@
 var trans_table;
 $(function() {
+
   trans_table = $('#trans_id').DataTable({
     "responsive": true,
     "bLengthChange": false,
@@ -11,6 +12,10 @@ $(function() {
 
   //TABLES INITIALIZE
   initTransactionTable();
+
+  google.charts.load('current', {'packages':['corechart']});
+  getsalesChartData();
+  gettrafficChartData();
 });
 
 function initTransactionTable(){
@@ -37,7 +42,6 @@ function initTransactionTable(){
         "pageLength": 10,
         "bPaginate": false
       });
-        trans_table.buttons().remove();
     },error: function(response) {
       console.log(response);
     }
@@ -46,9 +50,66 @@ function initTransactionTable(){
 
 
 
+var sales_arrayData,traffic_arrayData;
+function getsalesChartData(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "type":4
+    },success: function(result){
+     console.log(result);
+     sales_arrayData = result;
+     google.charts.setOnLoadCallback(salesChart);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
 
+function gettrafficChartData(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "type":5
+    },success: function(result){
+     console.log(result);
+     traffic_arrayData = result;
+     google.charts.setOnLoadCallback(trafficChart);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
 
+//GOOLGE CHARTS
+function salesChart() {
+  var data = google.visualization.arrayToDataTable(sales_arrayData);
+  var options = {
+    hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
+ };
+ var chart = new google.visualization.PieChart(document.getElementById('sales_chart'));
+  chart.draw(data, options);
+}
 
+function trafficChart() {
+  var data = google.visualization.arrayToDataTable(traffic_arrayData);
+  var options = {
+    hAxis: {title: 'Traffic', titleTextStyle: {color: 'blue'}}
+ };
+ var chart = new google.visualization.LineChart(document.getElementById('traffic_chart'));
+  chart.draw(data, options);
+}
+
+$(window).resize(function(){
+  salesChart();
+  trafficChart();
+});
 
 
 

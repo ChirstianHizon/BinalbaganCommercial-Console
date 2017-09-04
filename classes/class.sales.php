@@ -116,8 +116,7 @@ class Sales{
     return $id;
   }
 
-  public function getCurrSalesListByEmp($empid)
-  {
+  public function getCurrSalesListByEmp($empid){
     $sql = "SELECT
             tbl_sales.sales_id AS ID,sum(prd_qty) AS QTY,sum(prd_price*prd_qty) AS TOTAL,sales_timestamp AS TIME
             FROM tbl_sales
@@ -125,6 +124,49 @@ class Sales{
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
             WHERE emp_id = '$empid' AND DATE(sales_datestamp)=CURDATE()
             GROUP BY tbl_sales.sales_id";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
+  public function getproductsSoldByEmp($empid){
+    $sql="SELECT
+          tbl_product.prd_id AS ID,tbl_product.prd_name AS NAME,sum(prd_qty) AS QTY
+          FROM tbl_sales
+          INNER JOIN tbl_sales_list ON tbl_sales_list.sales_id = tbl_sales.sales_id
+          INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
+          WHERE emp_id = '$empid' AND DATE(sales_datestamp)=CURDATE()
+          GROUP BY tbl_product.prd_id
+          ORDER BY prd_qty DESC
+          limit 10";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+      if($result){
+        while($row = mysqli_fetch_assoc($result)){
+          $list[] = $row;
+        }
+        if(empty($list)){return false;}
+        return $list;
+      }else {
+        return $result;
+    }
+  }
+
+  public function getcustomerTraffic(){
+    $sql ="SELECT
+          COUNT(tbl_sales.sales_id) AS AMOUNT,
+          EXTRACT(HOUR FROM sales_timestamp) AS TIME
+          FROM tbl_sales
+          WHERE DATE(sales_datestamp)=CURDATE()
+          GROUP BY EXTRACT(HOUR FROM sales_timestamp)
+          ORDER BY sales_timestamp ASC
+          ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     if($result){
       while($row = mysqli_fetch_assoc($result)){

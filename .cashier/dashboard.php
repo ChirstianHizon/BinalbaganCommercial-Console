@@ -23,7 +23,7 @@
 	</div>
 	<div class="col span_1_of_3">
     <div class="dash-header">
-      <div id="head-3"class="dash-header-cont">0</div>
+      <div id="head-3"class="dash-header-cont">P 0</div>
       <br/>
       <b>Total Sales</b>
     </div>
@@ -33,12 +33,12 @@
 <br/>
 <div class="section group">
 	<div class="col span_1_of_2">
-    col 1
+    Top Products
 	<div id="sales_chart" class="chart"></div>
 	</div>
 	<div class="col span_1_of_2">
-	This is column 2
-  <div id="sales_chart" class="chart"></div>
+    Customer Traffic
+  <div id="traffic_chart" class="chart"></div>
 	</div>
 </div>
 <br/>
@@ -62,5 +62,6 @@
 </div>
 
 <!-- SCRIPTS HERE!! -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src=".cashier/.js\dashboard.js"></script>
 <!-- END!! -->

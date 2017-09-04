@@ -101,6 +101,47 @@ include '..\classes\class.product.php';
       }
       echo json_encode(array("main" => $html,"count" => $count,"totalqty" => $totalqty,"totalsales" => $totalsales));
       break;
+      case 4:
+      $chart = array();
+      array_push($chart,array('Name', 'QTY'));
+      $list = $sales->getproductsSoldByEmp($empid);
+      if(!$list){
+        array_push($chart,array('No Data Available', 1));
+        echo json_encode($chart);
+        break;
+      }else{
+          foreach($list as $value){
+            array_push($chart,array($value['NAME'],(int) $value['QTY']));
+          }
+          echo json_encode($chart);
+      }
+      break;
+      case 5:
+      $chart = array();
+      array_push($chart,array('Time', 'Customer'));
+      $list = $sales->getcustomerTraffic();
+      if(!$list){
+        array_push($chart,array('No Data Available', 0));
+        echo json_encode($chart);
+        break;
+      }else{
+          foreach($list as $value){
+            $time = $value['TIME'];
+            if($time == 0){
+              $time="12 mid";
+            }else if($time == 12){
+              $time=$time." noon";
+            }else if($time >12){
+              $time = $time-12;
+              $time=$time." pm";
+            }else if($time <12){
+              $time=$time." am";
+            }
+            array_push($chart,array($time,(int) $value['AMOUNT']));
+          }
+          echo json_encode($chart);
+      }
+      break;
       default:
       echo json_encode(array("main" => "TYPE ERROR"));
       break;

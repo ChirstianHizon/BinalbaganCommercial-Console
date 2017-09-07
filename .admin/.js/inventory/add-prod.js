@@ -99,6 +99,7 @@ $("#newProduct").submit(function(){
       type: "POST",
       async: true,
       data: {
+        "access":access,
         "name":product.name,
         "desc":product.desc,
         "price":product.price,
@@ -135,6 +136,7 @@ $("#newProduct").submit(function(){
       type: "POST",
       async: true,
       data: {
+        "access":access,
         "name":product.name,
         "desc":product.desc,
         "price":product.price,
@@ -182,6 +184,7 @@ $("#updateProduct").submit(function(){
       type: "POST",
       async: true,
       data: {
+        "access":access,
         "id":product.id,
         "name":product.name,
         "desc":product.desc,
@@ -220,6 +223,7 @@ $("#updateProduct").submit(function(){
       type: "POST",
       async: true,
       data: {
+        "access":access,
         "id":product.id,
         "name":product.name,
         "desc":product.desc,
@@ -251,6 +255,7 @@ function createProductTable(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":4
     },success: function(result){
       table.destroy();
@@ -277,6 +282,7 @@ function prodselect(clickedElement){
     type: "POST",
     dataType: "json",
     data: {
+      "access":access,
       "id":id,
       "type":5
     },success: function(result){

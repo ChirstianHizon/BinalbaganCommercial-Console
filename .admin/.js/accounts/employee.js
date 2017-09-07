@@ -43,6 +43,7 @@ function createTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":3
     },success: function(result){
       console.log(result);
@@ -72,6 +73,7 @@ function viewaccount(clickedElement){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "id":userid,
       "type":4
     },success: function(result){
@@ -101,6 +103,7 @@ function editaccount(clickedElement){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "id":userid,
       "type":4
     },success: function(result){

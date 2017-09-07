@@ -22,6 +22,7 @@ function createProductTable(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":9
     },success: function(result){
       //console.log(result);
@@ -48,6 +49,7 @@ function prodselect(clickedElement){
     type: "POST",
     dataType: "json",
     data: {
+      "access":access,
       "id":id,
       "type":10
     },success: function(result){

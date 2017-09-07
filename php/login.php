@@ -62,6 +62,7 @@ if($access == $access_web){
               "main" => "OK",
               "status" => true,
               "uid"=>$value['ID'],
+              "uname"=>$value['USERNAME'],
               "fname"=>$value['FNAME'],
               "lname"=>$value['LNAME'],
               "type"=>$value['TYPE'],

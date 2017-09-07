@@ -46,6 +46,7 @@ function createTable(start,end){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "todate":end,
       "fromdate":start,
       "type":1
@@ -74,6 +75,7 @@ function getChartData(start,end){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "todate":end,
       "fromdate":start,
       "type":2

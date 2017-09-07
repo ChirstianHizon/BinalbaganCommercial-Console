@@ -25,6 +25,7 @@ $type = $_SESSION['usertype'];
   <title>BC Web Console</title>
   <meta charset="utf-8">
   <script>
+  var access = "Binalbagan_Commercial_WEB_Access";
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!

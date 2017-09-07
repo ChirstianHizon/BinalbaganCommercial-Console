@@ -35,47 +35,9 @@ $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";
 $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);
 if($access == $access_mobile){
-  $type = (int)$type;
-  switch ($type) {
-    case 0:
-      echo json_encode(array("main" => "TEST: ".$access));
-      break;
-    case 1:
-    $paginate = (int)(isset($_POST['paginate']) && $_POST['paginate'] != '') ? $_POST['paginate'] : '';
-    $prod_list = array();
-    $id = (int)$id;
-    $list =  $product->getProductByID($id,$paginate);
-    if(!$list){
-      $prod_list['COUNTER'] = array("COUNTER" => 0);
-      echo json_encode($prod_list);
-      break;
-    }else{
-        $cnt = 0;
-        foreach($list as $value){
-          $cnt++;
-        }
-        $prod_list['COUNTER'] = array("COUNTER" => $cnt);
-        $count = 1;
-        foreach($list as $value){
-          $prod_list[$count] =
-                                array(
-                                  "ID" =>$value['prd_id'],
-                                  "NAME" =>$value['prd_name'],
-                                  "CATEGORY" =>$value['cat_name'],
-                                  "STATUS" =>$value['prd_status']
-                                );
-          $count++;
-        }
-        echo json_encode($prod_list);
-    }
 
-      break;
-    default:
-      # code...
-      break;
-  }
 
-}else{
+}else if($access == $access_web){
   $empid = $_SESSION['userid'];
   switch ($type) {
     case 1:
@@ -244,6 +206,8 @@ if($access == $access_mobile){
     default:
       echo "TYPE ERROR";
     break;
-  }
 
+  }
+}else{
+  header("location: ../index.php");
 }

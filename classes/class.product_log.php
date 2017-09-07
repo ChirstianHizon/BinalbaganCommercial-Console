@@ -37,8 +37,8 @@ class Product_Log{
 
   public function getTypeCountByDate($start,$end){
     $sql ="SELECT log.log_datestamp AS DATE,
-			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '0' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_OUT ,
-			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '1' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_IN
+			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '0' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_IN ,
+			 COALESCE(( SELECT SUM(log_qty) FROM tbl_product_log old WHERE log_type = '1' AND old.log_datestamp=log.log_datestamp  GROUP BY log_datestamp ),0)  LOG_OUT
 	    FROM tbl_product_log log
 		 WHERE log_datestamp >= '$start' AND log_datestamp <= '$end'
 		 GROUP BY log.log_datestamp

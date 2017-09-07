@@ -34,6 +34,14 @@
       }
     }
 
+    public function getProductCount(){
+      $sql = "SELECT COALESCE(COUNT(prd_id),0) AS COUNT FROM tbl_product ORDER BY prd_id DESC";
+      $result = mysqli_query($this->db,$sql);
+      $row = mysqli_fetch_assoc($result);
+      $result = $row['COUNT'];
+      return $result;
+    }
+
     public function getProductLevel($id){
       $sql = "SELECT prd_level FROM tbl_product WHERE prd_id = '$id'";
       $result = mysqli_query($this->db,$sql);

@@ -1,5 +1,4 @@
 var table,cart,checkout,carttotal;
-
 $(function() {
 
   table =  $('#table_id').DataTable();
@@ -27,6 +26,7 @@ function createProductTable(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":11
     },success: function(result){
       //console.log(result);
@@ -56,6 +56,7 @@ function createCartTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":1
     },success: function(result){
       console.log(result);
@@ -86,6 +87,7 @@ function prodselect(clickedElement){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "id":prdid,
       "type":10
     },success: function(result){
@@ -110,6 +112,7 @@ function updateTotal(){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "type":7
     },success: function(result){
       //console.log(result);
@@ -135,6 +138,7 @@ function cartselect(clickedElement){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "type":3
     },success: function(result){
@@ -159,6 +163,7 @@ function cartdelete(clickedElement){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "type":5
     },success: function(result){
@@ -194,6 +199,7 @@ $("#btncheckout").click(function(){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "type":7
     },success: function(result){
       total = result.total;
@@ -233,6 +239,7 @@ function finalsubmit(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":10
     },success: function(result){
       console.log(result);
@@ -258,6 +265,7 @@ $("#form-addtocart").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "prdid":prdid,
       "qty":qty,
       "type":2
@@ -284,6 +292,7 @@ $("#form-changecart").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "prdid":prdid,
       "qty":qty,

@@ -33,6 +33,7 @@ function initPendingTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":11
     },success: function(result){
       console.log(result);

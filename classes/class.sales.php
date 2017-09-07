@@ -118,7 +118,9 @@ class Sales{
 
   public function getCurrSalesListByEmp($empid){
     $sql = "SELECT
-            tbl_sales.sales_id AS ID,sum(prd_qty) AS QTY,sum(prd_price*prd_qty) AS TOTAL,sales_timestamp AS TIME
+            tbl_sales.sales_id AS ID,sum(prd_qty) AS QTY,sum(prd_price*prd_qty) AS TOTAL,
+            EXTRACT(HOUR FROM sales_timestamp) AS HOUR,
+            EXTRACT(MINUTE FROM sales_timestamp) AS MINUTE
             FROM tbl_sales
             INNER JOIN tbl_sales_list ON tbl_sales_list.sales_id = tbl_sales.sales_id
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
@@ -177,6 +179,20 @@ class Sales{
     }else {
       return $result;
     }
+  }
+
+  public function getTotalSales(){
+    $sql = "SELECT
+            COALESCE(SUM(prd_qty * prd_price),0.00) AS TOTAL
+            FROM tbl_sales_list
+            INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
+            INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
+            WHERE DATE(sales_datestamp)=CURDATE()
+            ";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $result = $row['TOTAL'];
+    return $result;
   }
 
 

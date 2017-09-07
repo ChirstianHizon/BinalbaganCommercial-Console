@@ -152,6 +152,35 @@ class Order{
   }
 
 
+  public function getDeliveryCount(){
+    $sql="SELECT
+    COUNT(order_id) AS COUNT
+    FROM tbl_order
+    WHERE order_type = '1' AND order_status = '1'
+    ";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $result = $row['COUNT'];
+    return $result;
+  }
+
+  public function getPendingCount(){
+    $sql="SELECT
+    COUNT(order_id) AS COUNT
+    FROM tbl_order
+    WHERE order_status = '0'
+    ";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $result = $row['COUNT'];
+    return $result;
+  }
+
+
+
+
+
+
 
 
 

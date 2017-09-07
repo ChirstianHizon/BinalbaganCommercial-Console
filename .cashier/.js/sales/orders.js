@@ -32,6 +32,7 @@ function createPickUpTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":2
     },success: function(result){
       //console.log(result);

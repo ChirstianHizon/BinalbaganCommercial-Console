@@ -38,6 +38,7 @@ $("#newCategory").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "name":category.name,
       "desc":category.desc,
       "type":1
@@ -68,6 +69,7 @@ $("#updateCategory").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":category.id,
       "name":category.name,
       "desc":category.desc,
@@ -116,6 +118,7 @@ function catselect(clickedElement){
     dataType: 'json',
     async: true,
     data: {
+      "access":access,
       "id":id,
       "type":5
     },success: function(result){

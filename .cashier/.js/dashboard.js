@@ -25,6 +25,7 @@ function initTransactionTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":3
     },success: function(result){
       console.log(result);
@@ -58,6 +59,7 @@ function getsalesChartData(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":4
     },success: function(result){
      console.log(result);
@@ -76,6 +78,7 @@ function gettrafficChartData(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":5
     },success: function(result){
      console.log(result);

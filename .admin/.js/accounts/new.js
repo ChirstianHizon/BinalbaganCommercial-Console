@@ -45,6 +45,7 @@ function createNewEmployee(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "uname":uname,
       "type":1
     },success: function(result){
@@ -92,6 +93,7 @@ function createNewEmployee(){
                 async: true,
                 dataType: "json",
                 data: {
+                  "access":access,
                   "uname":uname,
                   "pass":pass,
                   "fname":fname,

@@ -30,6 +30,7 @@ function createProductTable(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":6
     },success: function(result){
       //console.log(result);
@@ -58,6 +59,7 @@ function prodselect(clickedElement){
     type: "POST",
     dataType: "json",
     data: {
+      "access":access,
       "id":id,
       "type":7
     },success: function(result){
@@ -99,6 +101,7 @@ function updatestocks(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":id,
       "level":Number(currlevel),
       "add":Number(levelin),

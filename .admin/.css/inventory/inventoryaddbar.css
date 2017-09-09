@@ -80,11 +80,11 @@ tbody tr:hover{
   padding-top: 0px;
 }
 #name{
-width:380px;
+width:72%;
 float:left;
 }
 button#action{
-  width:20px;
+  max-width:20px;
   height:30px;
   margin-left: 2px;
 }

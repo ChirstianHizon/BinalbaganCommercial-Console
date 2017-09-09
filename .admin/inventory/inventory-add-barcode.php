@@ -12,11 +12,12 @@
     <div id="line"></div>
     <br/>
     <b>Barcode Name:</b></br>
+    <div class="bartable">
     <input id="name" type="text" required >
     <button id="action"></button>
     <button id="action"></button>
     <button id="action"></button>
-    <button >Add New Barcode</button>
+  </div>
   </form>
 
   <br/>

@@ -11,6 +11,13 @@ if($module == 'logout'){
   header("location: login.php");
 }
 
+$fname = (!empty($_SESSION['userfname'])) ? $_SESSION['userfname'] : true;
+$lname = (!empty($_SESSION['userlname'])) ? $_SESSION['userlname'] : true;
+if(empty($_SESSION['userfname']) ||  empty($_SESSION['userlname'])){
+  session_destroy();
+  header("location: login.php");
+}
+
 if(!$employee->get_session()){
   header("location: login.php");
 }
@@ -99,7 +106,7 @@ $type = $_SESSION['usertype'];
       <ul class="nav navbar-right navbar-top-links">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i id="user" class="fa fa-user fa-fw"></i> <?php echo $_SESSION['userlname'].", ".$_SESSION['userfname']?> <b class="caret"></b>
+            <i id="user" class="fa fa-user fa-fw"></i> <?php echo $lname.", ".$fname?> <b class="caret"></b>
           </a>
           <ul class="dropdown-menu dropdown-user">
             <li><a href="index.php?mod=userprofile"><i class="fa fa-user fa-fw"></i> User Profile</a>

@@ -21,6 +21,9 @@
       <li>
         <a href="index.php?mod=invenupdtprod">Update Product List</a>
       </li>
+      <li>
+        <a href="index.php?mod=invenaddbar">Add Barcode</a>
+      </li>
     </ul>
 
   </li>

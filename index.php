@@ -155,6 +155,9 @@ $type = $_SESSION['usertype'];
                   case 'invenaddcat':
                     require_once '.admin/inventory/inventory-category.php';
                   break;
+                  case 'invenaddbar':
+                    require_once '.admin/inventory/inventory-add-barcode.php';
+                  break;
                   case 'invenupdtprod':
                     require_once '.admin/inventory/inventory-update-prod.php';
                   break;

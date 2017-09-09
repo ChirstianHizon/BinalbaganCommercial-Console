@@ -47,7 +47,6 @@ if($employee->get_session()){
           <input name="userid" id="uname"   type="text" placeholder="username"/>
           <input name="password" id="pass" type="password" placeholder="password"/>
           <button type="submit" name="submit">login</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
       </div>
     </div>

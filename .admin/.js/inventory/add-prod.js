@@ -78,7 +78,7 @@ function getimage(event){
 // 6 - RETRIEVE NAME ONLY
 
 $("#newProduct").submit(function(){
-  document.getElementById('btnadd').disable();
+  document.getElementById('btnadd').disabled() = true;
   product.name = document.getElementById("name").value;
   product.desc = document.getElementById("desc").value;
   product.category = document.getElementById("category").value;

@@ -201,8 +201,17 @@ if($access == $access_mobile){
           "</tr>";
     }
     break;
-
-
+    case 12:
+    $html="";
+    $list = $product->getProduct();
+    if(!$list){break;}
+    foreach($list as $value){
+    $html= $html.'<tr id="'.$value['prd_id'].'" ondblclick="prodselect(this)">'.
+                  '<td>'.$value['prd_name'].'</td>'.
+                  "</tr>";
+    }
+    echo json_encode(array("main" => $html));
+    break;
     default:
       echo "TYPE ERROR";
     break;

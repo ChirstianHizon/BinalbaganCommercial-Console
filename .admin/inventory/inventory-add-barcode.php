@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".admin/.css/inventory/inventoryaddcat.css" media="screen" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/inventory/inventoryaddbar.css" media="screen" />
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Categories</h1>
@@ -12,12 +12,14 @@
     <div id="line"></div>
     <br/>
     <b>Barcode Name:</b></br>
-    <input id="name" type="text" required>
+    <input id="name" type="text" required >
+    <button id="action"></button>
+    <button id="action"></button>
+    <button id="action"></button>
     <button >Add New Barcode</button>
   </form>
 
   <br/>
-  <button  id="clear" >Clear</button>
 </div>
 <div id="div2" class="col span_1_of_2">
     <table id="table_id" class="display" width="100%" cellspacing="0">

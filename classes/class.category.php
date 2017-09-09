@@ -43,6 +43,14 @@ class Category{
     }
   }
 
+  public function getName($id){
+    $sql = "SELECT cat_name FROM tbl_category WHERE cat_id= '$id'";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $level = $row['cat_name'];
+    return $level;
+  }
+
   public function getSpecificCategory($id){
     $sql = "SELECT * FROM tbl_category WHERE cat_id = '$id'";
     $result = mysqli_query($this->db,$sql);

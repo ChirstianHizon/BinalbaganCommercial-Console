@@ -18,19 +18,6 @@ include '..\classes\class.product.php';
   $access = md5($access);
   if($access == $access_mobile){
     $type = (int)$type;
-
-
-
-
-
-
-
-
-
-
-    default:
-      echo json_encode(array("main" => "TYPE ERROR"));
-      break;
   }else if($access == $access_web){
     $empid = $_SESSION['userid'];
     switch ($type) {

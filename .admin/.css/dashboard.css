@@ -22,7 +22,7 @@
 }
 
 /*  GRID COLUMN SETUP   ==================================================================== */
-.col { border-radius: 5px;background: #ccc; padding:1em 0; text-align:center;}
+.col { border-radius: 5px;background: #EEEEEE; padding:1em 0; text-align:center;}
 .col {
 	display: block;
 	float:left;
@@ -58,6 +58,27 @@
 
 .span_1_of_4 {
 	width: 23.8%;
+}
+
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+	width: 100%;
+}
+.span_1_of_2 {
+	width: 49.1%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col {
+		margin: 1% 0 1% 0%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.span_2_of_2, .span_1_of_2 { width: 100%; }
 }
 
 
@@ -148,4 +169,7 @@
 }
 #view:hover{
 	color: blue;
+}
+.chart{
+
 }

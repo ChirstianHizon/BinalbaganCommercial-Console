@@ -179,5 +179,48 @@ include '..\classes\class.orders.php';
         "SALES_TOTAL"=> $sales_total,"DELIVERY_TOTAL"=>$delivery_total,
         "PENDING_COUNT"=>$pending_total));
         break;
-    }
+        case 7:
+          $chart = array();
+          array_push($chart,array('Name', 'COUNT'));
+          $list = $sales->gettopProducts();
+          if(!$list){
+            array_push($chart,array('No Data Available', 0));
+            echo json_encode($chart);
+            break;
+          }else{
+              foreach($list as $value){
+                array_push($chart,array($value['NAME'],(int) $value['COUNT']));
+              }
+              echo json_encode($chart);
+            }
+        break;
+        case 8:
+        $chart = array();
+        array_push($chart,array('Time', 'No. of Customer'));
+        $list = $sales->getTotalcustomerTraffic();
+        if(!$list){
+          array_push($chart,array('No Data Available', 0));
+          echo json_encode($chart);
+          break;
+        }else{
+            foreach($list as $value){
+              $time = $value['TIME'];
+              if($time == 0){
+                $time="12 mid";
+              }else if($time == 12){
+                $time=$time." noon";
+              }else if($time >12){
+                $time = $time-12;
+                $time=$time." pm";
+              }else if($time <12){
+                $time=$time." am";
+              }
+              array_push($chart,array($time,(int) $value['AMOUNT']));
+            }
+            echo json_encode($chart);
+        }
+        break;
+
+
   }
+}

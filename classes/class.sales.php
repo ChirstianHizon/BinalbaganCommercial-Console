@@ -195,5 +195,47 @@ class Sales{
     return $result;
   }
 
+  public function gettopProducts(){
+    $sql="SELECT prod.prd_name AS NAME,COUNT(list.prd_id) AS COUNT
+    FROM tbl_sales_list list
+    INNER JOIN tbl_product prod ON list.prd_id = prod.prd_id
+    GROUP BY list.prd_id
+    ORDER BY COUNT DESC
+    limit 10";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+
+  }
+
+  public function getTotalCustomerTraffic(){
+    $sql="SELECT
+          COUNT(tbl_sales.sales_id) AS AMOUNT,
+          EXTRACT(HOUR FROM sales_timestamp) AS TIME
+          FROM tbl_sales
+          WHERE EXTRACT(HOUR FROM sales_timestamp) BETWEEN '8' AND '20'
+          GROUP BY EXTRACT(HOUR FROM sales_timestamp)
+          ORDER BY sales_timestamp ASC
+    ";
+
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
 
 }

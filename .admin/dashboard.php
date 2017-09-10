@@ -37,6 +37,17 @@
 	</div>
 </div>
 
+<div class="section group">
+	<div class="col span_1_of_2">
+    <div id="top_prod_chart" class="chart"></div>
+	Top 10 Products
+	</div>
+	<div class="col span_1_of_2">
+    <div id="cust_traffic_chart" class="chart"></div>
+	Customer Traffic
+	</div>
+</div>
+
 <div class="table-header"><b>Pending Orders</b><i id="1" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-1" class="table-container" >
   <div id="line"></div>
@@ -102,5 +113,6 @@
 </div>
 
 <!-- SCRIPTS HERE!! -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src=".admin/.js/dashboard.js"></script>
 <!-- END!! -->

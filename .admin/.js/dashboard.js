@@ -25,6 +25,9 @@ $(function() {
   //TABLES INITIALIZE
   initPendingTable();
   getheaderContent();
+  google.charts.load('current', {'packages':['corechart']});
+  getTopProdChartData();
+  getTotalCustTrafficChartData();
 });
 
 function initPendingTable(){
@@ -74,6 +77,70 @@ function getheaderContent(){
     }
   });
 }
+var topprod_arrayData,custtrafficData;
+function getTopProdChartData(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "type":7
+    },success: function(result){
+      // console.log(result);
+      topprod_arrayData = result;
+      google.charts.setOnLoadCallback(TopProdChart);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
+function getTotalCustTrafficChartData(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "type":8
+    },success: function(result){
+      console.log(result);
+      custtrafficData=result;
+      google.charts.setOnLoadCallback(CustomerTrafficChart);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
+// GOOGLE CHARTS
+function TopProdChart() {
+  var data = google.visualization.arrayToDataTable(topprod_arrayData);
+  var options = {
+    hAxis: {title: 'Products', titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,pieHole: 0.4
+ };
+ var chart = new google.visualization.PieChart(document.getElementById('top_prod_chart'));
+  chart.draw(data, options);
+}
+
+function CustomerTrafficChart() {
+  var data = google.visualization.arrayToDataTable(custtrafficData);
+  var options = {
+    hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,
+ };
+ var chart = new google.visualization.ColumnChart(document.getElementById('cust_traffic_chart'));
+  chart.draw(data, options);
+}
+
+
+$(window).resize(function(){
+  TopProdChart();
+  CustomerTrafficChart();
+});
+
 
 
 

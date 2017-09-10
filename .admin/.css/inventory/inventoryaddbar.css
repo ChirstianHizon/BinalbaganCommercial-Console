@@ -79,10 +79,6 @@ tbody tr:hover{
   padding:20px;
   padding-top: 0px;
 }
-#name{
-width:72%;
-float:left;
-}
 button#action{
   max-width:20px;
   height:30px;

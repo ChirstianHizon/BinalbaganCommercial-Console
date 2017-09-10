@@ -5,6 +5,8 @@ include '../classes/class.barcode.php';
 $barcode = new Barcode();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
+$prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
+$code = (isset($_POST['code']) && $_POST['code'] != '') ? $_POST['code'] : '';
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 
@@ -21,26 +23,25 @@ if($access == $access_web){
     $count=0;
     $list =  $barcode->getBarcodeList($id);
     if(!$list){
-      $html = '<tr id="'.$id.'">'.
-                '<td> <input id="name" type="text" required value = "test"></td>'.
-                '<td>
-                <button id="'.$id.'" onclick="savebarcode()"   id="save" name="s">S</button>
-                <button id="'.$id.'" onclick="addbarcode(this)"    id="add" name="+">+</button>
-                </td>'.
-            "</tr>";
       echo json_encode(array("main" => $html));break;}
     foreach($list as $value){
     $count++;
     $html = $html.'<tr id="'.$id.'">'.
-              '<td> <input id="name" type="text" required ></td>'.
+              '<td>'.$value['bar_code'].'</td>'.
               '<td>
-              <button id="'.$id.'" onclick="savebarcode(this)"   id="save" name="s">S</button>
-              <button id="'.$id.'" onclick="addbarcode(this)"    id="add" name="+">+</button>
-              <button id="'.$id.'" onclick="addbarcode(this)"    id="add" name="+">+</button>
+              <button id="'.$value['bar_id'].'" onclick="deletebarcode(this)">X</button>
               </td>'.
           "</tr>";
     }
     echo json_encode(array("main" => $html,"total"=> $count));
+    break;
+    case 2:
+    $result =  $barcode->addNewBarcode($prdid,$code);
+    echo json_encode(array("main" => $result));
+    break;
+    case 3:
+    $result =  $barcode->deleteBarcode($id);
+    echo json_encode(array("main" => $result));
     break;
     default:
       # code...

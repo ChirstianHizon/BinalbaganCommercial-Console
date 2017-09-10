@@ -16,7 +16,7 @@ class Barcode{
   public function getBarcodeList($id){
     $sql = "SELECT *
     FROM tbl_barcode
-    WHERE prd_id = '$id'
+    WHERE prd_id = '$id' AND bar_status = '1'
     ";
     $result = mysqli_query($this->db,$sql);
     if($result){
@@ -28,6 +28,21 @@ class Barcode{
     }else {
       return $result;
     }
+  }
+
+  public function addNewBarcode($prdid,$code){
+    $sql = "INSERT INTO tbl_barcode(bar_code,prd_id)
+       VALUES('$code','$prdid')";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+    return $result;
+  }
+
+  public function deleteBarcode($id){
+    $sql = "UPDATE tbl_barcode SET
+    bar_status = '0'
+    WHERE bar_id = '$id'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+    return $result;
   }
 
 

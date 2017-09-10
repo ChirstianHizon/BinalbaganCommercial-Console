@@ -7,11 +7,18 @@
 <div class="section group">
   <!-- FORMS -->
   <div id="div1" class="col span_1_of_2">
-    <form id="newbarcode" class="formcat">
-      <h3>Add a New Barcode</h3>
-      <div id="line"></div>
+      <h3>Register a New Barcode</h3>
+      <div id="line"></div><br/>
+      <form id="newbarform" class="formcat">
+        <h4 id="prodname">No Product Selected</h4>
+        <input id="barid" type="hidden" required>
+        Barcode:
+        <input id="newbarcode" type="text" required><br/><br/>
+        <button id="btnnewbarcode">Register</button>
+      </form>
       <br/>
-      <b>Barcode:</b></br>
+      <h3>Registered Barcode/s</h3>
+      <div id="line"></div>
       <div class="bartable">
         <table id="barcode_id" class="display" width="100%" cellspacing="0">
           <thead>
@@ -24,7 +31,6 @@
           </tbody>
         </table>
       </div>
-    </form>
   <br/>
   </div>
 

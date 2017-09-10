@@ -226,6 +226,11 @@ if($access == $access_mobile){
     }
     echo json_encode(array("main" => $html));
     break;
+    case 14:
+
+
+
+    break;
     default:
       echo "TYPE ERROR";
     break;

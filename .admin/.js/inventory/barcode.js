@@ -18,7 +18,7 @@ $(function() {
   });
   getProductList();
 });
-
+var current_prod;
 function getProductList() {
   $.ajax({
     url: "php/product.php",
@@ -29,7 +29,7 @@ function getProductList() {
       "access":access,
       "type":12
     },success: function(result){
-      console.log(result);
+      // console.log(result);
       document.getElementById("table_id").innerHTML= result.main;
       table.destroy();
       table =  $('#table_id').DataTable({
@@ -53,7 +53,7 @@ function getBarcodeList(id) {
     dataType: "json",
     data: {
       "access":access,
-      "id":"20000072",
+      "id":id,
       "type":1
     },success: function(result){
       console.log(result);
@@ -76,37 +76,78 @@ function getBarcodeList(id) {
 
 function addbarcode(clickedElement) {
   var id = clickedElement.id;
-  bartable.destroy();
-  var newbar =
-        '<tr id="'+id+'">'+
-            '<td> <input id="name" type="text" required ></td>'+
-          '<td>'+
-            '<button id="'+id+'" onclick="savebarcode(this)"   id="save" name="s">S</button>'+
-            '<button id="'+id+'" onclick="addbarcode(this)"    id="add" name="+">+</button>'+
-          '</td>'+
-        "</tr>";
-  var bar = $('#barcode-body').html();
-  console.log(bar);
-  document.getElementById("barcode-body").innerHTML="";
-  document.getElementById("barcode-body").innerHTML=bar+newbar;
-  bartable =  $('#barcode_id').DataTable({
-    "responsive": true,
-    "bFilter": false,
-    "bLengthChange": false,
-    "ordering": false,
-    "bInfo" : false,
-    "paginate":false
-  });
-  bartable.destroy();
 }
 
-function deletebarcode() {
-  alert("delete");
+function deletebarcode(clickedElement) {
+  var id = clickedElement.id;
+  $.ajax({
+    url: "php/barcode.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "id":id,
+      "type":3
+    },success: function(result){
+       console.log(result);
+       if(result.main){
+         getBarcodeList(current_prod);
+       }
+    },error: function(response) {
+      console.log(response);
+    }
+  });
 }
 function savebarcode() {
   alert("save");
 }
 function prodselect(clickedElement) {
     var id = clickedElement.id;
+    current_prod = id;
+    $.ajax({
+      url: "php/product.php",
+      type: "POST",
+      async: true,
+      dataType: "json",
+      data: {
+        "access":access,
+        "id":id,
+        "type":7
+      },success: function(result){
+        // console.log(result);
+        document.getElementById("prodname").innerHTML = result.name;
+      },error: function(response) {
+        console.log(response);
+      }
+    });
+    document.getElementById("barid").value=id;
     getBarcodeList(id);
 }
+
+$("#newbarform").submit(function(){
+  var prodid = document.getElementById("barid").value;
+  var newbar = document.getElementById("newbarcode").value;
+  $.ajax({
+    url: "php/barcode.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "prdid":prodid,
+      "code":newbar,
+      "type":2
+    },success: function(result){
+      //  console.log(result);
+       if(result.main){
+         document.getElementById("newbarform").reset();
+         getBarcodeList(prodid);
+       }else{
+         alert("DB ERROR");
+       }
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+});

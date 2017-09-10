@@ -187,7 +187,7 @@ class Sales{
             FROM tbl_sales_list
             INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
-            WHERE DATE(sales_datestamp)=CURDATE()
+            -- WHERE DATE(sales_datestamp)=CURDATE()
             ";
     $result = mysqli_query($this->db,$sql);
     $row = mysqli_fetch_assoc($result);

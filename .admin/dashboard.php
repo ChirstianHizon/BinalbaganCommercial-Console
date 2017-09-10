@@ -9,30 +9,30 @@
 <div class="section group">
 	<div id="col1"class="col span_1_of_4">
     <div class="dash-header">
-      <div id="head-1" class="dash-header-cont">100,000,000,000</div>
+      <div id="head-1" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Items</b>
+      <b>Total Products</b>
     </div>
 	</div>
 	<div id="col2" class="col span_1_of_4">
     <div class="dash-header">
-      <div id="head-2" class="dash-header-cont">100,000,000,000</div>
+      <div id="head-2" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Transactions</b>
+      <b>Total Sales</b>
     </div>
 	</div>
 	<div id="col3" class="col span_1_of_4">
     <div class="dash-header">
-      <div id="head-3"class="dash-header-cont">100,000,000,000</div>
+      <div id="head-3"class="dash-header-cont">0</div>
       <br/>
-      <b>Total Sales</b>
+      <b>Total Delivery</b>
     </div>
 	</div>
 	<div id="col4" class="col span_1_of_4">
     <div class="dash-header">
-      <div id="head-4" class="dash-header-cont">100,000,000,000</div>
+      <div id="head-4" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Sales</b>
+      <b>Pending Orders</b>
     </div>
 	</div>
 </div>
@@ -48,7 +48,6 @@
             <th>Date Ordered</th>
             <th>Total Items</th>
             <th>Total Amount</th>
-            <th style="width:50px;text-align:center;border-right:1px solid black;"></th>
             <th></th>
             <th></th>
         </tr>

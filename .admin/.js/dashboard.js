@@ -24,6 +24,7 @@ $(function() {
 
   //TABLES INITIALIZE
   initPendingTable();
+  getheaderContent();
 });
 
 function initPendingTable(){
@@ -36,7 +37,7 @@ function initPendingTable(){
       "access":access,
       "type":11
     },success: function(result){
-      console.log(result);
+      // console.log(result);
       pending_table.destroy();
       document.getElementById("pending-body").innerHTML = result.main;
       pending_table = $('#pending_id').DataTable({
@@ -52,6 +53,27 @@ function initPendingTable(){
   });
 }
 
+function getheaderContent(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "type":6
+    },success: function(result){
+      // console.log(result);
+      document.getElementById("head-1").innerHTML=addCommas(result.PRODUCT_COUNT);
+      document.getElementById("head-2").innerHTML="P "+addCommas(result.SALES_TOTAL);
+      document.getElementById("head-3").innerHTML=addCommas(result.DELIVERY_TOTAL);
+      document.getElementById("head-4").innerHTML=addCommas(result.PENDING_COUNT);
+
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
 
 
 
@@ -127,3 +149,19 @@ function hide(clickedElement){
   }
 }
 //--------------------------------------- END -----------------------------------------//
+
+//---------------------------------------- UTILITIES --------------------------------//
+function addCommas(nStr) {
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+function get2decimal(int){
+  return parseFloat(Math.round(int * 100) / 100).toFixed(2);
+}

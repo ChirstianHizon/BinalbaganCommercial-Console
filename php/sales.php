@@ -2,9 +2,11 @@
 include '..\library\config.php';
 include '..\classes\class.sales.php';
 include '..\classes\class.product.php';
+include '..\classes\class.orders.php';
 
   $sales = new Sales();
   $product = new Product();
+  $order = new Order();
 
   $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
   $prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
@@ -164,6 +166,18 @@ include '..\classes\class.product.php';
         break;
         default:
         echo json_encode(array("main" => "TYPE ERROR"));
+        break;
+        case 6:
+        $dash_data = array();
+        $prod_count =  $product->getProductCount();
+        $sales_total =  $sales->getTotalSales();
+        $delivery_total = $order->getDeliveryCount();
+        $pending_total = $order->getPendingCount();
+
+        echo json_encode(array(
+        "PRODUCT_COUNT" => $prod_count,
+        "SALES_TOTAL"=> $sales_total,"DELIVERY_TOTAL"=>$delivery_total,
+        "PENDING_COUNT"=>$pending_total));
         break;
     }
   }

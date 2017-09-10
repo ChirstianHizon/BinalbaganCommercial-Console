@@ -170,6 +170,6 @@
 #view:hover{
 	color: blue;
 }
-.chart{
-
+.dataTables_paginate{
+	font-size: 12px;
 }

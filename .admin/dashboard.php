@@ -107,8 +107,9 @@
 
 <div class="table-header"><b>Current Sales Statistics</b><i id="4" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-4" class="table-container" >
-
+  <div id="sales_chart" class="chart"></div>
   <br/>
+  Sales Statistics For the Year <?php echo DATE("Y")?>
   <div id="line"></div>
 </div>
 

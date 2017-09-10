@@ -156,6 +156,23 @@
       }
     }
 
+    public function getWarningProducts(){
+      $sql = "SELECT prd_name,cat_name,prd_level,prd_id
+      FROM tbl_product
+      INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
+      WHERE prd_level <= prd_warning";
+      $result = mysqli_query($this->db,$sql);
+      if($result){
+        while($row = mysqli_fetch_assoc($result)){
+          $list[] = $row;
+        }
+        if(empty($list)){return false;}
+        return $list;
+      }else {
+        return $result;
+      }
+    }
+
 
 
 

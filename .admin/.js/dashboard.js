@@ -24,10 +24,12 @@ $(function() {
 
   //TABLES INITIALIZE
   initPendingTable();
+  initWarningTable();
   getheaderContent();
   google.charts.load('current', {'packages':['corechart']});
   getTopProdChartData();
   getTotalCustTrafficChartData();
+  getSalesStatChartData();
 });
 
 function initPendingTable(){
@@ -56,6 +58,33 @@ function initPendingTable(){
   });
 }
 
+function initWarningTable(){
+  $.ajax({
+    url: "php/product.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "type":13
+    },success: function(result){
+      // console.log(result);
+      warning_table.destroy();
+      document.getElementById("warning-body").innerHTML = result.main;
+      warning_table = $('#warning_id').DataTable({
+        "responsive": true,
+        "bLengthChange": false,
+        "bFilter": false ,
+        "bInfo" : false,
+        "pageLength": 10
+      });
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
+
 function getheaderContent(){
   $.ajax({
     url: "php/sales.php",
@@ -77,7 +106,7 @@ function getheaderContent(){
     }
   });
 }
-var topprod_arrayData,custtrafficData;
+var topprod_arrayData,custtrafficData,salesData;
 function getTopProdChartData(){
   $.ajax({
     url: "php/sales.php",
@@ -107,9 +136,28 @@ function getTotalCustTrafficChartData(){
       "access":access,
       "type":8
     },success: function(result){
-      console.log(result);
+      // console.log(result);
       custtrafficData=result;
       google.charts.setOnLoadCallback(CustomerTrafficChart);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
+function getSalesStatChartData(){
+  $.ajax({
+    url: "php/sales.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "type":9
+    },success: function(result){
+      // console.log(result);
+      salesData=result;
+      google.charts.setOnLoadCallback(SalesChart);
     },error: function(response) {
       console.log(response);
     }
@@ -120,115 +168,132 @@ function getTotalCustTrafficChartData(){
 function TopProdChart() {
   var data = google.visualization.arrayToDataTable(topprod_arrayData);
   var options = {
-    hAxis: {title: 'Products', titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,pieHole: 0.4
- };
- var chart = new google.visualization.PieChart(document.getElementById('top_prod_chart'));
-  chart.draw(data, options);
-}
+    hAxis: {title: 'Products', titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 350,pieHole: 0.3,animation:{duration: 1000,easing: 'out',startup: true}
+  };
+    var chart = new google.visualization.PieChart(document.getElementById('top_prod_chart'));
+    var formatter = new google.visualization.NumberFormat(
+    {suffix: ' pc/s', negativeColor: 'red', negativeParens: true});
+    formatter.format(data, 1);
 
-function CustomerTrafficChart() {
-  var data = google.visualization.arrayToDataTable(custtrafficData);
-  var options = {
-    hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,
- };
- var chart = new google.visualization.ColumnChart(document.getElementById('cust_traffic_chart'));
-  chart.draw(data, options);
-}
-
-
-$(window).resize(function(){
-  TopProdChart();
-  CustomerTrafficChart();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//--------------------------- HIDING AND SHOWING OF TABS ---------------------------//
-var div1,div2,div3,div4;
-div1=div2=div3=div4=true;
-function hide(clickedElement){
-  x = Number(clickedElement.id);
-  var div;
-  switch (x) {
-  case 1:
-  div = document.getElementById('table-1');
-  if(div1 == true){
-    div1 = false;
-  div.style.display = "none";
-  }else{
-    div1 = true;
-    div.style.display = "block";
+    chart.draw(data, options);
   }
-    break;
-  case 2:
-  div = document.getElementById('table-2');
-  if(div2 == true){
-    div2 = false;
-  div.style.display = "none";
-  }else{
-    div2 = true;
-    div.style.display = "block";
-  }
-    break;
-  case 3:
-  div = document.getElementById('table-3');
-  if(div3 == true){
-    div3 = false;
-  div.style.display = "none";
-  }else{
-    div3 = true;
-    div.style.display = "block";
-  }
-    break;
-  case 4:
-  div = document.getElementById('table-4');
-  if(div4 == true){
-    div4 = false;
-  div.style.display = "none";
-  }else{
-    div4 = true;
-    div.style.display = "block";
-  }
-    break;
-  default:
-    alert("CANNOT FIND THIS");
-    break;
-  }
-}
-//--------------------------------------- END -----------------------------------------//
 
-//---------------------------------------- UTILITIES --------------------------------//
-function addCommas(nStr) {
-    nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  function CustomerTrafficChart() {
+    var data = google.visualization.arrayToDataTable(custtrafficData);
+    var options = {
+      hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 350,animation:{duration: 1000,easing: 'out',startup: true}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('cust_traffic_chart'));
+    chart.draw(data, options);
+  }
+
+  function SalesChart() {
+    var data = google.visualization.arrayToDataTable(salesData);
+    var options = {
+      hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,animation:{duration: 1000,easing: 'out',startup: true}
+    };
+    var chart = new google.visualization.LineChart(document.getElementById('sales_chart'));
+    var formatter = new google.visualization.NumberFormat(
+      {prefix: 'P', negativeColor: 'red', negativeParens: true});
+      formatter.format(data, 1);
+      chart.draw(data, options);
     }
-    return x1 + x2;
-}
-function get2decimal(int){
-  return parseFloat(Math.round(int * 100) / 100).toFixed(2);
-}
+
+    // -------------- FOR CHART RESIZING----------------//
+    $(window).resize(function(){
+      TopProdChart();
+      CustomerTrafficChart();
+      SalesChart();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //--------------------------- HIDING AND SHOWING OF TABS ---------------------------//
+    var div1,div2,div3,div4;
+    div1=div2=div3=div4=true;
+    function hide(clickedElement){
+      x = Number(clickedElement.id);
+      var div;
+      switch (x) {
+        case 1:
+        div = document.getElementById('table-1');
+        if(div1 == true){
+          div1 = false;
+          div.style.display = "none";
+        }else{
+          div1 = true;
+          div.style.display = "block";
+        }
+        break;
+        case 2:
+        div = document.getElementById('table-2');
+        if(div2 == true){
+          div2 = false;
+          div.style.display = "none";
+        }else{
+          div2 = true;
+          div.style.display = "block";
+        }
+        break;
+        case 3:
+        div = document.getElementById('table-3');
+        if(div3 == true){
+          div3 = false;
+          div.style.display = "none";
+        }else{
+          div3 = true;
+          div.style.display = "block";
+        }
+        break;
+        case 4:
+        div = document.getElementById('table-4');
+        if(div4 == true){
+          div4 = false;
+          div.style.display = "none";
+        }else{
+          div4 = true;
+          div.style.display = "block";
+        }
+        break;
+        default:
+        alert("CANNOT FIND THIS");
+        break;
+      }
+    }
+    //--------------------------------------- END -----------------------------------------//
+
+    //---------------------------------------- UTILITIES --------------------------------//
+    function addCommas(nStr) {
+      nStr += '';
+      x = nStr.split('.');
+      x1 = x[0];
+      x2 = x.length > 1 ? '.' + x[1] : '';
+      var rgx = /(\d+)(\d{3})/;
+      while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      }
+      return x1 + x2;
+    }
+    function get2decimal(int){
+      return parseFloat(Math.round(int * 100) / 100).toFixed(2);
+    }

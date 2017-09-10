@@ -212,10 +212,23 @@ if($access == $access_mobile){
     }
     echo json_encode(array("main" => $html));
     break;
+    case 13:
+    $html="";
+    $list = $product->getWarningProducts();
+    if(!$list){break;}
+    foreach($list as $value){
+    $html= $html.'<tr id="'.$value['prd_id'].'">'.
+                  '<td>'.$value['prd_name'].'</td>'.
+                  '<td>'.$value['cat_name'].'</td>'.
+                  '<td>'.$value['prd_level'].'</td>'.
+                  '<td>'."UPDATE".'</td>'.
+                  "</tr>";
+    }
+    echo json_encode(array("main" => $html));
+    break;
     default:
       echo "TYPE ERROR";
     break;
-
   }
 }else{
   header("location: ../index.php");

@@ -17,7 +17,8 @@ if(empty($_SESSION['userfname']) ||  empty($_SESSION['userlname'])){
   session_destroy();
   header("location: login.php");
 }
-
+$lname = substr($lname,0,10);
+$fname = substr($fname,0,10);
 if(!$employee->get_session()){
   header("location: login.php");
 }

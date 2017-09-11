@@ -37,6 +37,7 @@ function createSalesTable(start,end){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "start":start,
       "end":end,
       "type":1
@@ -65,6 +66,7 @@ function viewsalesList(clickedElement){
       async: true,
       dataType: "json",
       data: {
+        "access":access,
         "id":salesid,
         "type":2
       },success: function(result){

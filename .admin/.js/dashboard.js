@@ -205,9 +205,7 @@ function TopProdChart() {
     var yyyy = today.getFullYear();
     var data = google.visualization.arrayToDataTable(salesData);
     var options = {
-      hAxis: {
-        title: 'Sales of the Year '+yyyy
-      },
+
       'legend': {'position': 'bottom'},
       'chartArea': {'width': '80%', 'height': '75 %'},
       backgroundColor: '#EEEEEE',

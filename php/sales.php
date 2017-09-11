@@ -222,7 +222,7 @@ if($access == $access_mobile){
         break;
         case 9:
         $chart = array();
-        array_push($chart,array('Month', 'Sales'));
+        array_push($chart,array('Month', 'Sales for the Year '.DATE("Y")));
         $list = $sales->getlatestSalesStat();
         if(!$list){
           array_push($chart,array('No Data Available', 0));

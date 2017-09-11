@@ -43,6 +43,15 @@ if($access == $access_web){
     $result =  $barcode->deleteBarcode($id);
     echo json_encode(array("main" => $result));
     break;
+    case 4:
+    $result =  $barcode->getProductViaBarcode($code);
+    if(empty($result)){
+      echo json_encode(array("main" => false));
+    }else{
+      echo json_encode(array("main" => true,"value" => $result));
+    }
+
+    break;
     default:
       # code...
       break;

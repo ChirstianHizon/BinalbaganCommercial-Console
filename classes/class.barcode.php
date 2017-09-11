@@ -30,6 +30,19 @@ class Barcode{
     }
   }
 
+  public function getProductViaBarcode($query){
+    $sql = "SELECT prd_name AS NAME
+    FROM tbl_barcode
+    INNER JOIN tbl_product ON tbl_product.prd_id = tbl_barcode.prd_id
+    WHERE bar_code = '$query' AND bar_status = '1'
+    limit 1
+    ";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $uid = $row['NAME'];
+    return $uid;
+  }
+
   public function addNewBarcode($prdid,$code){
     $sql = "INSERT INTO tbl_barcode(bar_code,prd_id)
        VALUES('$code','$prdid')";

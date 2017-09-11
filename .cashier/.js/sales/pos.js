@@ -1,5 +1,4 @@
 var table,cart,checkout,carttotal;
-
 $(function() {
 
   table =  $('#table_id').DataTable();
@@ -15,9 +14,8 @@ $(function() {
 });
 
 $('#search').on( 'keyup', function () {
-    table.columns( 0 ).search( this.value ).draw();
-    //console.log(this.value);
-} );
+  console.log(this.value);
+});
 
 function createProductTable(){
   updateTotal();
@@ -60,7 +58,7 @@ function createCartTable(){
       "access":access,
       "type":1
     },success: function(result){
-      console.log(result);
+      // console.log(result);
       cart.destroy();
       carttotal = result.total;
       document.getElementById("cart-table-body").innerHTML = result.main;
@@ -182,7 +180,29 @@ function searchtb(){
   var searchval = document.getElementById('insearch').value;
   //console.log(searchval);
   //searchval = searchbarcode(searchval);
-  table.columns( 0 ).search( searchval ).draw();
+  $.ajax({
+    url: "php/barcode.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "code": searchval,
+      "type":4
+    },success: function(result){
+      // console.log(result);
+      switch (result.main) {
+        case false:
+          table.columns( 0 ).search( searchval ).draw();
+          break;
+          case true:
+          table.columns( 0 ).search( result.value ).draw();
+            break;
+      }
+    },error: function(response) {
+      console.log(response);
+    }
+  });
 }
 var total,chktemptable;
 $("#btncheckout").click(function(){

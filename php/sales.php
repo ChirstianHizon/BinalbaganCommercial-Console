@@ -125,7 +125,7 @@ if($access == $access_mobile){
       break;
       case 4:
       $chart = array();
-      array_push($chart,array('Name', 'QTY'));
+      array_push($chart,array('Name', 'Quantity'));
       $list = $sales->getproductsSoldByEmp($empid);
       if(!$list){
         array_push($chart,array('No Data Available', 1));
@@ -181,7 +181,7 @@ if($access == $access_mobile){
         break;
         case 7:
         $chart = array();
-        array_push($chart,array('Name', 'COUNT'));
+        array_push($chart,array('Name', 'Products Available'));
         $list = $sales->gettopProducts();
         if(!$list){
           array_push($chart,array('No Data Available', 0));
@@ -189,14 +189,14 @@ if($access == $access_mobile){
           break;
         }else{
           foreach($list as $value){
-            array_push($chart,array($value['NAME'],(int) $value['COUNT']));
+            array_push($chart,array($value['NAME'], (int)$value['COUNT']));
           }
           echo json_encode($chart);
         }
         break;
         case 8:
         $chart = array();
-        array_push($chart,array('Time', 'No. of Customer'));
+        array_push($chart,array('Time', 'No. of Customer per Hour'));
         $list = $sales->getTotalcustomerTraffic();
         if(!$list){
           array_push($chart,array('No Data Available', 0));

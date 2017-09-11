@@ -168,9 +168,18 @@ function getSalesStatChartData(){
 function TopProdChart() {
   var data = google.visualization.arrayToDataTable(topprod_arrayData);
   var options = {
-    hAxis: {title: 'Products', titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 350,pieHole: 0.3,animation:{duration: 1000,easing: 'out',startup: true}
+    'legend': {'position': 'bottom'},
+    backgroundColor: '#EEEEEE',
+    height: 350,
+    'chartArea': {top: 35,'width': '80%', 'height': '70%'},
+    animation:{duration: 1000,easing: 'out',startup: true},
+    vAxis: {
+      viewWindow:{
+        min:0
+      }
+    }
   };
-    var chart = new google.visualization.PieChart(document.getElementById('top_prod_chart'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('top_prod_chart'));
     var formatter = new google.visualization.NumberFormat(
     {suffix: ' pc/s', negativeColor: 'red', negativeParens: true});
     formatter.format(data, 1);
@@ -181,16 +190,29 @@ function TopProdChart() {
   function CustomerTrafficChart() {
     var data = google.visualization.arrayToDataTable(custtrafficData);
     var options = {
-      hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 350,animation:{duration: 1000,easing: 'out',startup: true}
+      'legend': {'position': 'bottom'},
+      'chartArea': {'width': '80%', 'height': '75%'},
+      backgroundColor: '#EEEEEE',
+      height: 350,
+      animation:{duration: 1000,easing: 'out',startup: true}
     };
-    var chart = new google.visualization.ColumnChart(document.getElementById('cust_traffic_chart'));
+    var chart = new google.visualization.LineChart(document.getElementById('cust_traffic_chart'));
     chart.draw(data, options);
   }
 
   function SalesChart() {
+    var today = new Date();
+    var yyyy = today.getFullYear();
     var data = google.visualization.arrayToDataTable(salesData);
     var options = {
-      hAxis: {titleTextStyle: {color: 'red'}},backgroundColor: '#EEEEEE',height: 300,animation:{duration: 1000,easing: 'out',startup: true}
+      hAxis: {
+        title: 'Sales of the Year '+yyyy
+      },
+      'legend': {'position': 'bottom'},
+      'chartArea': {'width': '80%', 'height': '75 %'},
+      backgroundColor: '#EEEEEE',
+      height: 300,
+      animation:{duration: 1000,easing: 'out',startup: true}
     };
     var chart = new google.visualization.LineChart(document.getElementById('sales_chart'));
     var formatter = new google.visualization.NumberFormat(

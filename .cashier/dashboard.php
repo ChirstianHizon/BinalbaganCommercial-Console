@@ -32,13 +32,15 @@
 <br/>
 <br/>
 <div class="section group">
-	<div class="col span_1_of_2">
-    Top Products
+	<div id="charttitle" class="col span_1_of_2">
+
 	<div id="sales_chart" class="chart"></div>
+  Top Products
 	</div>
-	<div class="col span_1_of_2">
-    Customer Traffic
+	<div id="charttitle" class="col span_1_of_2">
+
   <div id="traffic_chart" class="chart"></div>
+    Customer Traffic
 	</div>
 </div>
 <br/>

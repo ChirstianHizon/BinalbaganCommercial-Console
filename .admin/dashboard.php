@@ -38,11 +38,11 @@
 </div>
 
 <div class="section group">
-	<div class="col span_1_of_2">
+	<div id="charttitle" class="col span_1_of_2">
     <div id="top_prod_chart" class="chart"></div>
 	Top 10 Products
 	</div>
-	<div class="col span_1_of_2">
+	<div id="charttitle" class="col span_1_of_2">
     <div id="cust_traffic_chart" class="chart"></div>
 	Customer Traffic
 	</div>
@@ -107,10 +107,7 @@
 
 <div class="table-header"><b>Current Sales Statistics</b><i id="4" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-4" class="table-container" >
-  <div id="sales_chart" class="chart"></div>
-  <br/>
-  Sales Statistics For the Year <?php echo DATE("Y")?>
-  <div id="line"></div>
+  <div id="sales_chart" class="chart2"></div>
 </div>
 
 <!-- SCRIPTS HERE!! -->

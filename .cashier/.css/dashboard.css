@@ -37,7 +37,7 @@
 	width: 100%;
 }
 .span_1_of_2 {
-	width: 49.2%;
+	width: 48.65%;
 }
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
@@ -112,4 +112,16 @@ padding:10px;
 
 .paginate_button {
 	display: none;
+}
+
+.chart{
+	height: 100%;
+	margin-top: -14px;
+	margin-bottom: 20px;
+}
+#charttitle{
+	background-color: #222222;
+	color: white;
+	text-align: center;
+	padding-bottom: 10px;
 }

@@ -66,7 +66,7 @@
 	width: 100%;
 }
 .span_1_of_2 {
-	width: 49.1%;
+	width: 48.65%;
 }
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
@@ -172,4 +172,13 @@
 }
 .dataTables_paginate{
 	font-size: 12px;
+}
+.chart{
+	height: 100%;
+	margin-top: -14px;
+	margin-bottom: 20px;
+}
+#charttitle{
+	background-color: #222222;
+	color: white;
 }

@@ -165,7 +165,7 @@ class Sales{
     COUNT(tbl_sales.sales_id) AS AMOUNT,
     EXTRACT(HOUR FROM sales_timestamp) AS TIME
     FROM tbl_sales
-    WHERE DATE(sales_datestamp)=CURDATE()
+    WHERE DATE(sales_datestamp)=CURDATE() AND sales_type = '0'
     GROUP BY EXTRACT(HOUR FROM sales_timestamp)
     ORDER BY sales_timestamp ASC
     ";

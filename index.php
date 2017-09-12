@@ -168,6 +168,9 @@ $type = $_SESSION['usertype'];
                   break;
                   case 'invenupdtprod':
                     require_once '.admin/inventory/inventory-update-prod.php';
+                  case 'delivery':
+                    require_once '.admin/delivery/delivery_view.php';
+                  break;
                   break;
                   case 'search':
                     require_once '.admin/products.php';

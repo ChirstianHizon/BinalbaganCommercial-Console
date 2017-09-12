@@ -168,7 +168,7 @@ function getSalesStatChartData(){
 function TopProdChart() {
   var data = google.visualization.arrayToDataTable(topprod_arrayData);
   var options = {
-    'legend': {'position': 'bottom'},
+    legend: {'position':'top','alignment':'center'},
     backgroundColor: '#EEEEEE',
     height: 350,
     'chartArea': {top: 35,'width': '80%', 'height': '70%'},
@@ -190,7 +190,7 @@ function TopProdChart() {
   function CustomerTrafficChart() {
     var data = google.visualization.arrayToDataTable(custtrafficData);
     var options = {
-      'legend': {'position': 'bottom'},
+      legend: {'position':'top','alignment':'center'},
       'chartArea': {'width': '80%', 'height': '75%'},
       backgroundColor: '#EEEEEE',
       height: 350,
@@ -205,8 +205,7 @@ function TopProdChart() {
     var yyyy = today.getFullYear();
     var data = google.visualization.arrayToDataTable(salesData);
     var options = {
-
-      'legend': {'position': 'bottom'},
+      legend: {'position':'top','alignment':'center'},
       'chartArea': {'width': '80%', 'height': '75 %'},
       backgroundColor: '#EEEEEE',
       height: 300,

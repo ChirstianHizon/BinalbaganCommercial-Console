@@ -7,12 +7,14 @@ include '..\classes\class.category.php';
 include '..\classes\class.cart.php';
 include '..\classes\class.product_log.php';
 include '..\classes\class.employee.php';
+include '..\classes\class.barcode.php';
 
 $employee = new Employee();
 $sales = new Sales();
 $product = new Product();
 $order = new Order();
 $category = new Category();
+$barcode = new Barcode();
 
 $uname = (isset($_POST['uname']) && $_POST['uname'] != '') ? $_POST['uname'] : '';
 $pass = (isset($_POST['pass']) && $_POST['pass'] != '') ? $_POST['pass'] : '';
@@ -144,6 +146,28 @@ if($access != $access_mobile){
         "IMAGE"=> $value['prd_image']
       ));
     }
+    break;
+    case 5:
+    $total = 0;
+    $list = $barcode->getBarcodeList($id);
+    if(!$list){
+      $prod_list['COUNTER'] = 0;
+      echo json_encode($prod_list);
+      break;
+    }else{
+      $cnt = 0;
+      foreach($list as $value){
+        $cnt++;
+      }
+      $prod_list['COUNTER'] = $cnt;
+      $count = 1;
+      foreach($list as $value){
+        $prod_list[$count] =array("CODE" =>$value['bar_code']);
+        $count++;
+      }
+      echo json_encode($prod_list);
+    }
+
     break;
     default:
       # code...

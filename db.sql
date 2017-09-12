@@ -114,17 +114,19 @@ INSERT INTO `tbl_customer` (`cust_id`, `cust_datestamp`, `cust_username`, `cust_
 -- Dumping structure for table db_binalbagancommercial.tbl_delivery
 CREATE TABLE IF NOT EXISTS `tbl_delivery` (
   `del_id` int(255) NOT NULL AUTO_INCREMENT,
-  `del_latitude` double DEFAULT '0',
-  `del_longitude` double DEFAULT '0',
-  `del_datestamp` datetime DEFAULT CURRENT_TIMESTAMP,
+  `del_end_datestamp` datetime DEFAULT NULL,
+  `del_start_datestamp` datetime DEFAULT CURRENT_TIMESTAMP,
+  `del_status` int(1) DEFAULT '1',
   `order_id` int(255) DEFAULT '0',
-  PRIMARY KEY (`del_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110000001 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`del_id`),
+  KEY `order_id` (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=110000002 DEFAULT CHARSET=latin1 COMMENT='1    -> READY FOR DELIVERY\r\n200 - > COMPLETED\r\n';
 
--- Dumping data for table db_binalbagancommercial.tbl_delivery: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_delivery: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbl_delivery` DISABLE KEYS */;
-INSERT INTO `tbl_delivery` (`del_id`, `del_latitude`, `del_longitude`, `del_datestamp`, `order_id`) VALUES
-	(110000000, 10.194262, 122.862165, '2017-09-13 01:30:26', 60000000);
+INSERT INTO `tbl_delivery` (`del_id`, `del_end_datestamp`, `del_start_datestamp`, `del_status`, `order_id`) VALUES
+	(110000000, '0000-00-00 00:00:00', '2017-09-13 02:30:28', 1, 60000000),
+	(110000001, '2017-09-13 01:30:26', '2017-09-13 02:30:28', 200, 60000000);
 /*!40000 ALTER TABLE `tbl_delivery` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_employee
@@ -266,6 +268,23 @@ INSERT INTO `tbl_product_log` (`log_id`, `prd_id`, `log_qty`, `log_datestamp`, `
 	(90000040, 20000076, 5, '2017-09-12', '00:40:34', 80000003, 1, 40000055),
 	(90000041, 20000077, 2, '2017-09-12', '01:30:24', 80000003, 1, 40000056);
 /*!40000 ALTER TABLE `tbl_product_log` ENABLE KEYS */;
+
+-- Dumping structure for table db_binalbagancommercial.tbl_route
+CREATE TABLE IF NOT EXISTS `tbl_route` (
+  `route_id` int(255) NOT NULL AUTO_INCREMENT,
+  `route_lat` varchar(50) NOT NULL DEFAULT '0',
+  `route_lng` varchar(50) NOT NULL DEFAULT '0',
+  `route_datestamp` datetime DEFAULT CURRENT_TIMESTAMP,
+  `del_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`route_id`),
+  KEY `del_id` (`del_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=130000004 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_binalbagancommercial.tbl_route: ~1 rows (approximately)
+/*!40000 ALTER TABLE `tbl_route` DISABLE KEYS */;
+INSERT INTO `tbl_route` (`route_id`, `route_lat`, `route_lng`, `route_datestamp`, `del_id`) VALUES
+	(130000003, '10.194262', '122.862165', '2017-09-13 02:37:09', 0);
+/*!40000 ALTER TABLE `tbl_route` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_sales
 CREATE TABLE IF NOT EXISTS `tbl_sales` (

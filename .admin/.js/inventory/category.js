@@ -25,7 +25,7 @@ $(function() {
 
 //ADDS A NEW CATEGORY TO DB
 $("#newCategory").submit(function(){
-  category.name = document.getElementById("name").value;
+  category.name = document.getElementById("catname").value;
   category.desc = document.getElementById("desc").value;
   // 1 - ADD
   // 2 - UPDATE
@@ -33,6 +33,7 @@ $("#newCategory").submit(function(){
   // 4 - RETRIEVE ALL
   // 5 - RETRIEVE SPECIFIC
   // 6 - UPDATE
+  console.log(category.name);
   $.ajax({
     url: "php/category.php",
     type: "POST",

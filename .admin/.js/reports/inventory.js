@@ -92,9 +92,17 @@ function stockChart() {
   var data = google.visualization.arrayToDataTable(arrayData);
 
   var options = {
-    title: 'Stock Movement',
-    hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
- };
+    legend: {'position':'top','alignment':'center'},
+    backgroundColor: '#EEEEEE',
+    height: 350,
+    'chartArea': {top: 35,'width': '80%', 'height': '70%'},
+    animation:{duration: 1000,easing: 'out',startup: true},
+    vAxis: {
+      viewWindow:{
+        min:0
+      }
+    }
+  };
 
 var chart = new google.visualization.ColumnChart(document.getElementById('stock_chart'));
   chart.draw(data, options);

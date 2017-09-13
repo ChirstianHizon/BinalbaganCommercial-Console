@@ -62,6 +62,7 @@ class Sales{
     LEFT OUTER JOIN tbl_order ON tbl_order.order_id = tbl_sales.order_id
     WHERE sales_datestamp >= '$start' AND sales_datestamp <= '$end'
     GROUP BY tbl_sales_list.sales_id
+    ORDER BY tbl_sales_list.sales_id DESC
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

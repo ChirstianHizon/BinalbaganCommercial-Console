@@ -12,7 +12,7 @@
     <div id="line"></div>
     <br/>
     <b>Category Name:</b></br>
-    <input id="name" type="text" required><br/><br/>
+    <input id="catname" type="text" required><br/><br/>
     <b>Category Description:</b><br/>
     <textarea id="desc" rows="8" required></textarea><br/><br/>
     <button >Add New Category</button>

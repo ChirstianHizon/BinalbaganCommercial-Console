@@ -31,9 +31,8 @@
       <table id="complete_id" class="display" width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th>Customer</th>
+                <th>Order ID</th>
                 <th>Date Completed</th>
-                <th>Time Completed</th>
                 <th>Hours Elapsed</th>
                 <th></th>
             </tr>

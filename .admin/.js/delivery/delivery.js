@@ -6,6 +6,7 @@ $(function() {
 
   inititalizeTables();
   getPendingDelivery();
+  getCompletedDelivery();
 
   google.maps.event.addDomListener(window, 'load', initialize);
 });
@@ -82,21 +83,38 @@ function getCompletedDelivery(){
   });
 }
 
+function getDeliveryRoute(del_id){
+  $.ajax({
+    url: "php/delivery.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "id":del_id,
+      "type":3
+    },success: function(result){
+      console.log(result);
+      // console.log(result.COORDINATES);
+      var route = result.COORDINATES;
+      calculateRoute(directionsService, directionsDisplay,route);
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
 
 
 function vieworder(clickedElement){
   var id = clickedElement.id;
-  // alert(id);
-  var route = [];
-  route.push(['Main', 10.194262, 122.862165, 1]);
-  route.push(['STOP', 10.195583, 122.860611, 2]);
-  route.push(['STOP 2', 10.194955, 122.858232, 3]);
-  route.push(['END',  10.194506, 122.856299, 4]);
-  calculateRoute(directionsService, directionsDisplay,route);
+
+
 }
 
-function createRoute() {
-
+function createRoute(clickedElement) {
+  var id = clickedElement.id;
+  getDeliveryRoute(id);
 }
 
 
@@ -134,7 +152,7 @@ function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   directionsService = new google.maps.DirectionsService();
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
+    zoom: 15,
     center: new google.maps.LatLng(10.194262, 122.862165),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
@@ -172,7 +190,7 @@ function calculateRoute(directionsService, directionsDisplay,locations) {
       });
     }
   }
-
+  // -------------------------- CODE FROM STACK OVERFLOW HAHA :) ---------------//
   // DISPLAY ROUTE
   directionsService.route(
     request,

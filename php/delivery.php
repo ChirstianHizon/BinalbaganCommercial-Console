@@ -36,9 +36,49 @@ if($access == $access_web){
               </td>'.
           "</tr>";
     }
-    echo json_encode(array("main" => $html));
+    echo json_encode(array("main" => $html,"total" => $count));
     break;
+    case 2:
+    $html="";
+    $count=0;
+    $list = $delivery->getCompletedDelivery();
+    if(!$list){
+      echo json_encode(array("main" => $html));break;}
+    foreach($list as $value){
+    $count++;
+    $html = $html.'<tr id="'.$value['del_id'].'">'.
+              '<td>'.$value['order_id'].'</td>'.
+              '<td>'.$value['FULLDATE'].'</td>'.
+              '<td>'.$value['TIME_ELAPSED'].'</td>'.
+              '<td>
+              <button id="'.$value['del_id'].'" onclick="createRoute(this)">View  </button>
+              </td>'.
+          "</tr>";
+    }
+    echo json_encode(array("main" => $html,"total" => $count));
+    break;
+    case 3:
+    $route_list = array();
+    $list = $delivery->getDeliveryRoute($id);
+    if(!$list){
+      echo json_encode(array("COUNTER" => "0"));break;
+    }
+    $cnt=0;
+    foreach($list as $value){
+      $cnt++;
+    }
+    $route_list['COUNTER'] = $cnt;
 
+    $coord = array();
+    $counter=1;
+    foreach($list as $value){
+      // ['END',  10.194506, 122.856299, 4]
+      array_push($coord,array("",$value['route_lat'],$value['route_lng'],$counter));
+      $counter++;
+    }
+    $route_list['COORDINATES']  = $coord;
+    echo json_encode($route_list);
+    break;
   }
 
 }else{

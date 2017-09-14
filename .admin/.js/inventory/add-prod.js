@@ -57,10 +57,11 @@ function generateProductCategory(){
 }
 
 function setminWarning() {
-  var optimal = document.getElementById("optimal").value;
-  document.getElementById("warning").max = Number(optimal)-1;
+  var optimal = document.getElementById("newoptimal").value;
+  console.log(optimal);
+  document.getElementById("warning").max = (Number(optimal)-1);
   var optimal = document.getElementById("updateoptimal").value;
-  document.getElementById("updatewarning").max = Number(optimal)-1;
+  document.getElementById("updatewarning").max = (Number(optimal)-1);
 }
 
 //GET IMAGE FILE
@@ -78,8 +79,8 @@ function getimage(event){
 // 6 - RETRIEVE NAME ONLY
 
 $("#newProduct").submit(function(){
-  document.getElementById('btnadd').disabled() = true;
-  product.name = document.getElementById("name").value;
+  document.getElementById('btnadd').disabled = true;
+  product.name = document.getElementById("newname").value;
   product.desc = document.getElementById("desc").value;
   product.category = document.getElementById("category").value;
 
@@ -87,10 +88,11 @@ $("#newProduct").submit(function(){
   product.price = parseFloat(Math.round(product.price * 100) / 100).toFixed(2);
 
   product.level = Number(document.getElementById("level").value);
-  product.optimal = Number(document.getElementById("optimal").value);
+  product.optimal = Number(document.getElementById("newoptimal").value);
   product.warning = Number(document.getElementById("warning").value);
   if(product.optimal <= product.warning){
     alert("Warning Level Must NOT be Lower than Optimal Level");
+      document.getElementById('btnadd').disabled = false;
     return false;
   }
   if(file == null){
@@ -112,11 +114,13 @@ $("#newProduct").submit(function(){
       },success: function(result){
         if(result){
           console.log(result);
+          document.getElementById('btnadd').disabled = false;
           document.getElementById("newProduct").reset();
           createProductTable();
         }
       },error: function(response) {
         console.log(response);
+          document.getElementById('btnadd').disabled = false;
       }
     });
     console.log("no image");

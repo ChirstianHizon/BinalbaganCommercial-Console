@@ -46,7 +46,8 @@
 
 #newProduct input,
 #newProduct textarea,
-#newProduct option{
+#newProduct option,
+#newProduct select{
   width: 100%;
   resize: none;
 }

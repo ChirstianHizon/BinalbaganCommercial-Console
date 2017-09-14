@@ -123,17 +123,17 @@ class Order{
 
   public function getSpecOrder($id){
   $sql = "SELECT
-  cust_id AS CUSTOMER,
-  order_type AS TYPE,
-  tbl_order_list.order_id AS ID,
-  SUM(prd_qty * prd_price) AS TOTAL,
-  order_datestamp AS DATE,
-  COUNT(prd_qty) AS QUANTITY
-  FROM tbl_order_list
-  INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
-  INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
-  WHERE tbl_order.order_id = '$id'
-  GROUP BY tbl_order_list.order_id
+    cust_id AS CUSTOMER,
+    order_type AS TYPE,
+    tbl_order_list.order_id AS ID,
+    SUM(prd_qty * prd_price) AS TOTAL,
+    order_datestamp AS DATE,
+    COUNT(prd_qty) AS QUANTITY
+    FROM tbl_order_list
+    INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
+    INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
+    WHERE tbl_order.order_id = '$id'
+    GROUP BY tbl_order_list.order_id
   ";
 
   $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);

@@ -54,7 +54,7 @@ function prodselect(clickedElement){
       "type":10
     },success: function(result){
       //console.log(result);
-      document.getElementById("name").innerHTML = result.name;
+      document.getElementById("pname").innerHTML = result.name;
       document.getElementById("datetime").innerHTML = result.date +" "+ result.time;
       document.getElementById("category").innerHTML = result.category;
       document.getElementById("price").innerHTML = "₱ "+result.price;

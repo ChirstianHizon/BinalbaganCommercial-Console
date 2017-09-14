@@ -52,7 +52,7 @@ class Sales{
     tbl_sales_list.sales_id AS ID,
     SUM(prd_qty * prd_price) AS TOTAL,
     sales_datestamp AS DATE,
-    cust_id AS CUSTOMER,
+    tbl_sales.cust_id AS CUSTOMER,
     emp_id AS EMPLOYEE ,
     sales_type AS TYPE,
     COUNT(prd_qty) AS QUANTITY

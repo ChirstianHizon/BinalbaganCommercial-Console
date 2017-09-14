@@ -13,7 +13,7 @@
     <h4>Product Details</h4>
     <div id="line"></div><br/>
     Product Name:<br>
-    <input id="name" type="text" name="firstname" required><br>
+    <input id="newname" type="text" name="firstname" required><br>
     Product Category:<br>
     <select id="category" placeholder="optional"required>
     <option value="" disabled selected>No Catgory Available</option>
@@ -27,7 +27,8 @@
     Current Level:<br>
     <input id="level" type="number" step="1"  min="0" required><br>
     Optimal Level:<br>
-    <input id="optimal" type="number" step="1" min="0" onchange="setminWarning()" required><br>
+    <!-- <input id="newoptimal" type="number" step="1" min="0" onchange="setminWarning()" required><br> -->
+    <input id="newoptimal" type="number" step="1" min="0" required><br>
     Warning Level:<br>
     <input id="warning" type="number" step="1" min="0" required><br>
     <h4>Image Settings</h4>

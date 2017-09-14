@@ -140,12 +140,12 @@ if($access == $access_mobile){
         $status = "Data Not Available";
       }
 
-    echo  '<tr id="'.$value['prd_id'].'" ondblclick="prodselect(this)">'.
+    echo  '<tr>'.
               "<td>".$value['prd_name']."</td>".
-              "<td>".$value['cat_name']."</td>".
-              "<td>".$value['prd_price']."</td>".
-              "<td>".$value['prd_level']."</td>".
-              "<td>".$status."</td>".
+              // "<td>".$value['cat_name']."</td>".
+              // "<td>".$value['prd_price']."</td>".
+              // "<td>".$value['prd_level']."</td>".
+              '<td><button  id="'.$value['prd_id'].'" onclick="prodselect(this)" >View</button></td>'.
           "</tr>";
     }
     break;

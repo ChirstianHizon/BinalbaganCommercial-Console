@@ -13,7 +13,6 @@ $qty = (isset($_POST['qty']) && $_POST['qty'] != '') ? $_POST['qty'] : '';
 
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 
-//TODO: CHANGE USER ID BASED ON SESSION USERID
 $empid = $_SESSION['userid'];
 
 switch ($type) {

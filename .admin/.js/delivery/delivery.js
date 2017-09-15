@@ -4,11 +4,13 @@ var directionsService;
 $(function() {
   console.log("SCRIPT RUNNING");
 
+  google.maps.event.addDomListener(window, 'load', initialize);
+
   inititalizeTables();
   getPendingDelivery();
   getCompletedDelivery();
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+
 });
 
 

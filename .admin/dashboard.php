@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href=".admin/.css/dashboard.css" media="all" />
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header"></h2>
+        <h2 class="page-header">Dashboard</h2>
     </div>
 </div>
 
@@ -59,8 +59,8 @@
             <th>Date Ordered</th>
             <th>Total Items</th>
             <th>Total Amount</th>
-            <th></th>
-            <th></th>
+            <!-- <th></th>
+            <th></th> -->
         </tr>
     </thead>
     <tbody id="pending-body">

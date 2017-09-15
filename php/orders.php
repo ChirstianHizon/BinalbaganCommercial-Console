@@ -216,11 +216,11 @@ include '..\classes\class.product.php';
                 '<td id="'.$value['ID'].'" >'.$order_date.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_qty.' item/s</td>'.
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
-                '<td id="'.$value['ID'].'" onclick="vieworderList(this)" ><b id="view"> VIEW </b></td>'.
-                '<td id="'.$value['ID'].'" >
-                <b id="'.$value['ID'].'" onclick="approvedOrder(this)"> APPROVE </b>
-                <b id="'.$value['ID'].'" onclick="alert(this)"> DECLINE </b>
-                </td>'.
+                // '<td id="'.$value['ID'].'" onclick="vieworderList(this)" ><b id="view"> VIEW </b></td>'.
+                // '<td id="'.$value['ID'].'" >
+                // <b id="'.$value['ID'].'" onclick="approvedOrder(this)"> APPROVE </b>
+                // <b id="'.$value['ID'].'" onclick="alert(this)"> DECLINE </b>
+                // '</td>'.
             "</tr>";
       $html = $html.$body;
     }

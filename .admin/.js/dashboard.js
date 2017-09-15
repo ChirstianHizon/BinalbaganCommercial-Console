@@ -85,6 +85,11 @@ function initWarningTable(){
 }
 
 
+function btnupdate(){
+  alert();
+  window.location = 'index.php?mod=invenupdtprod';
+}
+
 function getheaderContent(){
   $.ajax({
     url: "php/sales.php",
@@ -155,7 +160,7 @@ function getSalesStatChartData(){
       "access":access,
       "type":9
     },success: function(result){
-      // console.log(result);
+      console.log(result);
       salesData=result;
       google.charts.setOnLoadCallback(SalesChart);
     },error: function(response) {
@@ -300,6 +305,7 @@ function TopProdChart() {
       }
     }
     //--------------------------------------- END -----------------------------------------//
+
 
     //---------------------------------------- UTILITIES --------------------------------//
     function addCommas(nStr) {

@@ -41,7 +41,6 @@ class Sales{
   }
 
   public function getAllSales($start,$end){
-    //TODO: CHANGE "0000-00-00 TO THE CURRENT SYSTEM DATE"
     if($start == null || $start == ""){
       $start = "0000-00-00";
     }

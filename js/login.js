@@ -29,3 +29,24 @@ $("#loginform").submit(function(event){
   });
 });
 };
+
+
+
+
+
+// ---------------------------------- UTILITIES --------------------------//
+function hide (elements) {
+  elements = document.querySelectorAll(elements);
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'none';
+  }
+}
+
+function show (elements) {
+  elements = document.querySelectorAll(elements);
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'block';
+  }
+}

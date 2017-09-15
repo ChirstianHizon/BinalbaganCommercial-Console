@@ -113,7 +113,8 @@ $("#newProduct").submit(function(){
         "type":1
       },success: function(result){
         if(result){
-          console.log(result);
+          // console.log(result);
+          alert("Product has been Addded");
           document.getElementById('btnadd').disabled = false;
           document.getElementById("newProduct").reset();
           createProductTable();
@@ -126,7 +127,7 @@ $("#newProduct").submit(function(){
     console.log("no image");
     return false;
   }
-
+  alert("Image is Currently Being Uploaded");
   var uploadTask = storageRef.child('products/'+file.name+product.name).put(file);
   uploadTask.on('state_changed', function(snapshot){
   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -151,7 +152,8 @@ $("#newProduct").submit(function(){
         "type":1
       },success: function(result){
         if(result){
-          console.log(result);
+          // console.log(result);
+          alert("Product has been Addded");
           document.getElementById("newProduct").reset();
           createProductTable();
         }
@@ -213,7 +215,7 @@ $("#updateProduct").submit(function(){
     console.log("no image");
     return false;
   }
-
+  alert("Image is being Uploaded Please Wait");
   var uploadTask = storageRef.child('products/'+file.name+product.name).put(file);
   uploadTask.on('state_changed', function(snapshot){
   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -239,6 +241,7 @@ $("#updateProduct").submit(function(){
         "type":2
       },success: function(result){
         if(result){
+          alert("Update Complete");
           console.log(result);
           document.getElementById("updateProduct").reset();
           createProductTable();
@@ -307,6 +310,7 @@ function prodselect(clickedElement){
 
 $('#clear').click(function(){
   clear();
+  document.getElementById('btnadd').disabled = false;
 });
 
 function clear(){

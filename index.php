@@ -168,10 +168,11 @@ $type = $_SESSION['usertype'];
                   break;
                   case 'invenupdtprod':
                     require_once '.admin/inventory/inventory-update-prod.php';
+                  break;
                   case 'delivery':
                     require_once '.admin/delivery/delivery_view.php';
                   break;
-                  break;
+
                   case 'search':
                     require_once '.admin/products.php';
                   break;
@@ -202,8 +203,9 @@ $type = $_SESSION['usertype'];
                   case 'reportinven':
                     require_once '.admin/reports/inventory.php';
                   break;
-                  case 'reportinven':
-                    require_once '.admin/reports/sales.php';
+                  // TODO: EDIT BELOW
+                  case 'reportsales':
+                    require_once '.admin/sales/saleslist.php';
                   break;
                   default:
                     require_once '.main/page-not-found.php';

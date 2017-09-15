@@ -34,9 +34,9 @@
       <li>
         <a href="index.php?mod=salespos">Point of Sales</a>
       </li>
-      <li>
+      <!-- <li>
         <a href="index.php?mod=saleslist">Sales List</a>
-      </li>
+      </li> -->
       <li>
         <a href="index.php?mod=orders">Orders</a>
       </li>

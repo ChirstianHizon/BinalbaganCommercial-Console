@@ -50,5 +50,4 @@
 
 
 <script src=".admin\.js\delivery\delivery.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5_KfF9P5eQzcC_fO4VWdgoumYFv7vAQg"
-async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5_KfF9P5eQzcC_fO4VWdgoumYFv7vAQg"async defer></script>

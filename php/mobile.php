@@ -27,19 +27,19 @@ $query = (isset($_POST['query']) && $_POST['query'] != '') ? $_POST['query'] : '
 $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);
 
-if($access != $access_mobile){
-  header("location: ../index.php");
-}else{
-  $type = (int)$type;
-  switch ($type) {
+if ($access != $access_mobile) {
+    header("location: ../index.php");
+} else {
+    $type = (int)$type;
+    switch ($type) {
     case 0:
       echo json_encode(array("main" => "TEST: ".$access));
       break;
       case 1:
-        $login_status = $employee->checkLogin($uname,$pass);
-        foreach($login_status as $value){
-          if($value['COUNT']){
-            echo json_encode(
+        $login_status = $employee->checkLogin($uname, $pass);
+        foreach ($login_status as $value) {
+            if ($value['COUNT']) {
+                echo json_encode(
               array(
                 "main" => "OK",
                 "status" => true,
@@ -51,8 +51,8 @@ if($access != $access_mobile){
                 "image"=>$value['IMAGE']
               )
             );
-          }else{
-            echo json_encode(
+            } else {
+                echo json_encode(
                 array(
                 "main" => "OK",
                 "status" => false,
@@ -61,50 +61,49 @@ if($access != $access_mobile){
                 "count"=> $value['COUNT']
               )
             );
-          }
+            }
         }
         break;
     case 2:
     $paginate = (int)(isset($_POST['paginate']) && $_POST['paginate'] != '') ? $_POST['paginate'] : '';
     $prod_list = array();
     $id = (int)$id;
-    if($query != ""){
-      $list =  $product->getProductByIDwQuery($id,$paginate,$query);
-    }else{
-      $list =  $product->getProductByID($id,$paginate);
+    if ($query != "") {
+        $list =  $product->getProductByIDwQuery($id, $paginate, $query);
+    } else {
+        $list =  $product->getProductByID($id, $paginate);
     }
-    if(!$list){
-      $prod_list['COUNTER'] = array("COUNTER" => 0);
-      echo json_encode($prod_list);
-      break;
-    }else{
+    if (!$list) {
+        $prod_list['COUNTER'] = array("COUNTER" => 0);
+        echo json_encode($prod_list);
+        break;
+    } else {
         $cnt = 0;
-        foreach($list as $value){
-          $cnt++;
+        foreach ($list as $value) {
+            $cnt++;
         }
         $prod_list['COUNTER'] = array("COUNTER" => $cnt);
         $count = 1;
-        foreach($list as $value){
+        foreach ($list as $value) {
+            $level = $value['prd_level'];
+            $warning = $value['prd_warning'];
+            $optimal = $value['prd_optimal'];
 
-          $level = $value['prd_level'];
-          $warning = $value['prd_warning'];
-          $optimal = $value['prd_optimal'];
+            if ($level>=$optimal) {
+                $status = "Optimal Level";
+            } elseif ($level>=$warning) {
+                $status = "Normal Level";
+            } elseif ($level<=$warning && $level >0) {
+                $status = "Warning Level";
+            } elseif ($level<= 0) {
+                $status = "Not Available";
+            } elseif ($level< $warning || $level <$warning) {
+                $status = "Data Inconsistent";
+            } else {
+                $status = "Data Not Available";
+            }
 
-          if($level>=$optimal){
-            $status = "Optimal Level";
-          }else if($level>=$warning){
-            $status = "Normal Level";
-          }else if($level<=$warning && $level >0){
-            $status = "Warning Level";
-          }else if($level<= 0){
-            $status = "Not Available";
-          }else if($level< $warning || $level <$warning){
-            $status = "Data Inconsistent";
-          }else {
-            $status = "Data Not Available";
-          }
-
-          $prod_list[$count] =
+            $prod_list[$count] =
                                 array(
                                   "ID" =>$value['prd_id'],
                                   "NAME" =>$value['prd_name'],
@@ -112,7 +111,7 @@ if($access != $access_mobile){
                                   "AVAIL" =>$value['prd_status'],
                                   "STATUS" =>$status
                                 );
-          $count++;
+            $count++;
         }
         echo json_encode($prod_list);
     }
@@ -131,8 +130,8 @@ if($access != $access_mobile){
     break;
     case 4:
     $list = $product->getSpecificProduct($id);
-    foreach($list as $value){
-      echo json_encode(array(
+    foreach ($list as $value) {
+        echo json_encode(array(
         "NAME"=> $value['prd_name'],
         "DESC"=> $value['prd_desc'],
         "CATEGORY"=>$category->getName($value['cat_id']),
@@ -150,27 +149,84 @@ if($access != $access_mobile){
     case 5:
     $total = 0;
     $list = $barcode->getBarcodeList($id);
-    if(!$list){
-      $prod_list['COUNTER'] = 0;
-      echo json_encode($prod_list);
-      break;
-    }else{
-      $cnt = 0;
-      foreach($list as $value){
-        $cnt++;
-      }
-      $prod_list['COUNTER'] = $cnt;
-      $count = 1;
-      foreach($list as $value){
-        $prod_list[$count] =array("CODE" =>$value['bar_code']);
-        $count++;
-      }
-      echo json_encode($prod_list);
+    if (!$list) {
+        $prod_list['COUNTER'] = 0;
+        echo json_encode($prod_list);
+        break;
+    } else {
+        $cnt = 0;
+        foreach ($list as $value) {
+            $cnt++;
+        }
+        $prod_list['COUNTER'] = $cnt;
+        $count = 1;
+        foreach ($list as $value) {
+            $prod_list[$count] =array("CODE" =>$value['bar_code']);
+            $count++;
+        }
+        echo json_encode($prod_list);
     }
 
+    break;
+    case 6:
+    $list = $order->getDeliveryOrders();
+    if (!$list) {
+        $prod_list['COUNTER'] = 0;
+        echo json_encode($prod_list);
+        break;
+    } else {
+        $cnt = 0;
+        foreach ($list as $value) {
+            $cnt++;
+        }
+        $prod_list['COUNTER'] = $cnt;
+        $count = 1;
+        foreach ($list as $value) {
+            $prod_list[$count] =
+                              array(
+                                "ID" =>$value['order_id'],
+                                "FNAME" =>$value['cust_firstname'],
+                                "LNAME" =>$value['cust_lastname'],
+                                "DATE" =>$value['order_datestamp'],
+                                "TIME" =>$value['order_timestamp'],
+                                "STATUS" =>$value['order_status'],
+                                "TYPE" =>$value['order_type']
+                              );
+            $count++;
+        }
+        echo json_encode($prod_list);
+    }
+    break;
+    case 7:
+    $list = $order->getSpecDeliveryOrders($id);
+    if (!$list) {
+        echo json_encode(array("main" => flase));
+        break;
+    } else {
+        foreach ($list as $value) {
+            echo json_encode(array(
+          "main" => true,
+          "ID" => $value['order_id'],
+          "FNAME" => $value['cust_firstname'],
+          "LNAME" => $value['cust_lastname'],
+          "DATE" => $value['order_datestamp'],
+          "TITEMS" => $value['TOTAL'],
+          "TAMOUNT" => $value['TAMOUNT'],
+          "STATUS" => $value['order_status']
+        ));
+        }
+    }
     break;
     default:
       # code...
       break;
   }
 }
+/*
+SELECT *
+FROM tbl_order ordr
+INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
+INNER JOIN tbl_order_list ordl ON ordl.order_id = ordr.order_id
+INNER JOIN tbl_product pd ON pd.prd_id = ordl.prd_id
+WHERE ordr.order_type = '1' AND ordr.order_status = '1'
+*/

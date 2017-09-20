@@ -1,7 +1,9 @@
 <?php
 include '../library/config.php';
 include '../classes/class.barcode.php';
+include '../classes/class.utility.php';
 
+$utility = new Utility();
 $barcode = new Barcode();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
@@ -9,6 +11,8 @@ $prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '
 $code = (isset($_POST['code']) && $_POST['code'] != '') ? $_POST['code'] : '';
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
+
+$code =$utility->str_insert($code, "'", "'");
 
 $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";
 

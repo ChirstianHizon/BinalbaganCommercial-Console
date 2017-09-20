@@ -116,6 +116,7 @@ function prodselect(clickedElement) {
         "type":7
       },success: function(result){
         // console.log(result);
+        document.getElementById("btnnewbarcode").disabled = false;
         document.getElementById("prodname").innerHTML = result.name;
       },error: function(response) {
         console.log(response);

@@ -1,6 +1,9 @@
 <?php
 include '..\library/config.php';
 include '..\classes/class.category.php';
+include '../classes/class.utility.php';
+
+$utility = new Utility();
 $category = new Category();
 
 
@@ -8,6 +11,9 @@ $name = (isset($_POST['name']) && $_POST['name'] != '') ? $_POST['name'] : '';
 $desc = (isset($_POST['desc']) && $_POST['desc'] != '') ? $_POST['desc'] : '';
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
+
+$name =$utility->str_insert($name, "'", "'");
+$desc =$utility->str_insert($desc, "'", "'");
 
 // 1 - ADD
 // 2 - UPDATE

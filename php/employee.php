@@ -1,7 +1,9 @@
 <?php
 include '..\library\config.php';
 include '..\classes\class.employee.php';
+include '../classes/class.utility.php';
 
+$utility = new Utility();
 $employee = new Employee();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
@@ -13,6 +15,13 @@ $fname = (isset($_POST['fname']) && $_POST['fname'] != '') ? $_POST['fname'] : '
 $lname = (isset($_POST['lname']) && $_POST['lname'] != '') ? $_POST['lname'] : '';
 $emptype = (isset($_POST['emptype']) && $_POST['emptype'] != '') ? $_POST['emptype'] : '';
 $image = (isset($_POST['image']) && $_POST['image'] != '') ? $_POST['image'] : '';
+
+$uname =$utility->str_insert($uname, "'", "'");
+$pass =$utility->str_insert($pass, "'", "'");
+$fname =$utility->str_insert($fname, "'", "'");
+$lname =$utility->str_insert($lname, "'", "'");
+$image =$utility->str_insert($image, "'", "'");
+
 
 switch ($type) {
   case 0:

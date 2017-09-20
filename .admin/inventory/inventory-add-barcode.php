@@ -14,7 +14,7 @@
         <input id="barid" type="hidden" required>
         Barcode:
         <input id="newbarcode" type="text" required><br/><br/>
-        <button id="btnnewbarcode">Register</button>
+        <button id="btnnewbarcode" disabled>Register</button>
       </form>
       <br/>
       <h3>Registered Barcode/s</h3>

@@ -1,7 +1,9 @@
 <?php
 include '../library/config.php';
 include '../classes/class.product.php';
+include '../classes/class.utility.php';
 $product = new Product();
+$utility = new Utility();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
 
@@ -20,6 +22,14 @@ $image = (isset($_POST['image']) && $_POST['image'] != '') ? $_POST['image'] : '
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $add = (isset($_POST['add']) && $_POST['add'] != '') ? $_POST['add'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
+
+
+
+$name =$utility->str_insert($name, "'", "'");
+$desc =$utility->str_insert($desc, "'", "'");
+$category =$utility->str_insert($category, "'", "'");
+$barcode =$utility->str_insert($barcode, "'", "'");
+$image =$utility->str_insert($image, "'", "'");
 
 
 // 1 - ADD

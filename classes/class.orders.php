@@ -1,16 +1,19 @@
 <?php
-class Order{
-  public $db;
-  public function __construct(){
-    $this->db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-    if(mysqli_connect_errno()){
-      echo "Database connection error.";
-      exit;
+class Order
+{
+    public $db;
+    public function __construct()
+    {
+        $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+        if (mysqli_connect_errno()) {
+            echo "Database connection error.";
+            exit;
+        }
     }
-  }
 
-  public function getAllPendingOrders(){
-    $sql = "SELECT
+    public function getAllPendingOrders()
+    {
+        $sql = "SELECT
             tbl_order_list.order_id AS ID,
             SUM(prd_qty * prd_price) AS TOTAL,
             order_datestamp AS DATE,
@@ -23,21 +26,24 @@ class Order{
             WHERE order_status = '0'
             GROUP BY tbl_order_list.order_id
             ";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    $result = mysqli_query($this->db,$sql);
-    if($result){
-      while($row = mysqli_fetch_assoc($result)){
-        $list[] = $row;
-      }
-      if(empty($list)){return false;}
-      return $list;
-    }else {
-      return $result;
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
     }
-  }
 
-  public function getAllApprovedDeliveryOrders(){
-    $sql = "SELECT
+    public function getAllApprovedDeliveryOrders()
+    {
+        $sql = "SELECT
             tbl_order_list.order_id AS ID,
             SUM(prd_qty * prd_price) AS TOTAL,
             order_datestamp AS DATE,
@@ -53,21 +59,24 @@ class Order{
             WHERE order_status = '1' AND order_type = '1'
             GROUP BY tbl_order_list.order_id
             ";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    $result = mysqli_query($this->db,$sql);
-    if($result){
-      while($row = mysqli_fetch_assoc($result)){
-        $list[] = $row;
-      }
-      if(empty($list)){return false;}
-      return $list;
-    }else {
-      return $result;
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
     }
-  }
 
-  public function getAllWalkinOrders(){
-    $sql = "SELECT
+    public function getAllWalkinOrders()
+    {
+        $sql = "SELECT
             tbl_order_list.order_id AS ID,
             SUM(prd_qty * prd_price) AS TOTAL,
             order_datestamp AS DATE,
@@ -81,21 +90,24 @@ class Order{
             WHERE order_status = '1' AND order_type = '0' AND receive_datestamp != '0000-00-00'
             GROUP BY tbl_order_list.order_id
             ";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    $result = mysqli_query($this->db,$sql);
-    if($result){
-      while($row = mysqli_fetch_assoc($result)){
-        $list[] = $row;
-      }
-      if(empty($list)){return false;}
-      return $list;
-    }else {
-      return $result;
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
     }
-  }
 
-  public function getSpecOrderList($id){
-    $sql = "SELECT
+    public function getSpecOrderList($id)
+    {
+        $sql = "SELECT
     tbl_order_list.prd_id AS ID,
     order_id AS ORDERID,
     prd_name AS NAME,
@@ -108,21 +120,24 @@ class Order{
     WHERE tbl_order_list.order_id = '$id'
     GROUP BY tbl_product.prd_name";
 
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    $result = mysqli_query($this->db,$sql);
-    if($result){
-      while($row = mysqli_fetch_assoc($result)){
-        $list[] = $row;
-      }
-      if(empty($list)){return false;}
-      return $list;
-    }else {
-      return $result;
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
     }
-  }
 
-  public function getSpecOrder($id){
-  $sql = "SELECT
+    public function getSpecOrder($id)
+    {
+        $sql = "SELECT
     cust_id AS CUSTOMER,
     order_type AS TYPE,
     tbl_order_list.order_id AS ID,
@@ -136,85 +151,130 @@ class Order{
     GROUP BY tbl_order_list.order_id
   ";
 
-  $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-  $result = mysqli_query($this->db,$sql);
-  if($result){
-    while($row = mysqli_fetch_assoc($result)){
-      $list[] = $row;
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
     }
-    if(empty($list)){return false;}
-    return $list;
-  }else {
-    return $result;
-  }
 
-  }
-
-  public function updateOrderStatus($id,$stat){
-    $sql = "UPDATE tbl_order SET
+    public function updateOrderStatus($id, $stat)
+    {
+        $sql = "UPDATE tbl_order SET
     order_status = '$stat'
     WHERE order_id = '$id'";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    return $result;
-  }
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        return $result;
+    }
 
-  public function updateOrderDate($id,$date){
-    $sql = "UPDATE tbl_order SET
+    public function updateOrderDate($id, $date)
+    {
+        $sql = "UPDATE tbl_order SET
     receive_datestamp = '$date'
     WHERE order_id = '$id'";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    return $result;
-  }
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        return $result;
+    }
 
-  public function getUserId($id){
-    $sql = "SELECT cust_id FROM tbl_order WHERE order_id = '$id'";
-    $result = mysqli_query($this->db,$sql);
-    $row = mysqli_fetch_assoc($result);
-    $uid = $row['cust_id'];
-    return $uid;
-  }
+    public function getUserId($id)
+    {
+        $sql = "SELECT cust_id FROM tbl_order WHERE order_id = '$id'";
+        $result = mysqli_query($this->db, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $uid = $row['cust_id'];
+        return $uid;
+    }
 
-  public function completeOrder($id){
-    $sql = "UPDATE tbl_order SET
+    public function completeOrder($id)
+    {
+        $sql = "UPDATE tbl_order SET
     order_status = '100'
     WHERE order_id = '$id'";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-    return $result;
-  }
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        return $result;
+    }
 
 
-  public function getDeliveryCount(){
-    $sql="SELECT
+    public function getDeliveryCount()
+    {
+        $sql="SELECT
     COUNT(order_id) AS COUNT
     FROM tbl_order
     WHERE order_type = '1' AND order_status = '1'
     ";
-    $result = mysqli_query($this->db,$sql);
-    $row = mysqli_fetch_assoc($result);
-    $result = $row['COUNT'];
-    return $result;
-  }
+        $result = mysqli_query($this->db, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $result = $row['COUNT'];
+        return $result;
+    }
 
-  public function getPendingCount(){
-    $sql="SELECT
+    public function getPendingCount()
+    {
+        $sql="SELECT
     COUNT(order_id) AS COUNT
     FROM tbl_order
     WHERE order_status = '0'
     ";
-    $result = mysqli_query($this->db,$sql);
-    $row = mysqli_fetch_assoc($result);
-    $result = $row['COUNT'];
-    return $result;
-  }
+        $result = mysqli_query($this->db, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $result = $row['COUNT'];
+        return $result;
+    }
 
+    public function getDeliveryOrders()
+    {
+        $sql = "SELECT *
+      FROM tbl_order ordr
+      INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
+      WHERE ordr.order_type = '1' AND ordr.order_status = '1'
+      ORDER BY ordr.order_id DESC
+   ";
 
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
+    }
 
+    public function getSpecDeliveryOrders($id)
+    {
+        $sql = "SELECT *,COUNT(olst.prd_qty) AS TOTAL,SUM(olst.prd_qty * pd.prd_price) AS TAMOUNT
+      FROM tbl_order ordr
+      INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
+      INNER JOIN tbl_order_list olst ON ordr.order_id = olst.order_id
+      INNER JOIN tbl_product pd ON pd.prd_id = olst.prd_id
+      WHERE ordr.order_id = '60000017'
+      ORDER BY ordr.order_id DESC
+      LIMIT 1
+   ";
 
-
-
-
-
-
-
-
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
+    }
 }

@@ -15,14 +15,13 @@ class Order
     {
         $sql = "SELECT
             tbl_order_list.order_id AS ID,
-            SUM(prd_qty * prd_price) AS TOTAL,
+            SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
             order_datestamp AS DATE,
             order_type AS TYPE ,
             cust_id AS CUSTOMER,
             COUNT(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
-            INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
             WHERE order_status = '0'
             GROUP BY tbl_order_list.order_id
             ";
@@ -45,7 +44,7 @@ class Order
     {
         $sql = "SELECT
             tbl_order_list.order_id AS ID,
-            SUM(prd_qty * prd_price) AS TOTAL,
+            SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
             order_datestamp AS DATE,
             order_type AS TYPE ,
             tbl_customer.cust_id AS CUSTOMER_ID,
@@ -78,7 +77,7 @@ class Order
     {
         $sql = "SELECT
             tbl_order_list.order_id AS ID,
-            SUM(prd_qty * prd_price) AS TOTAL,
+            SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
             order_datestamp AS DATE,
             order_type AS TYPE ,
             cust_id AS CUSTOMER,
@@ -86,7 +85,6 @@ class Order
             COUNT(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
-            INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
             WHERE order_status = '1' AND order_type = '0' AND receive_datestamp != '0000-00-00'
             GROUP BY tbl_order_list.order_id
             ";
@@ -202,6 +200,15 @@ class Order
         return $result;
     }
 
+    public function startdelivery($id)
+    {
+        $sql = "UPDATE tbl_order SET
+        order_status = '200'
+        WHERE order_id = '$id'";
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        return $result;
+    }
+
 
     public function getDeliveryCount()
     {
@@ -234,8 +241,8 @@ class Order
         $sql = "SELECT *
       FROM tbl_order ordr
       INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
-      WHERE ordr.order_type = '1' AND ordr.order_status = '1'
-      ORDER BY ordr.order_id DESC
+      WHERE ordr.order_type = '1' AND ordr.order_status BETWEEN 1 AND 200
+      ORDER BY ordr.order_status ASC
    ";
 
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
@@ -259,7 +266,7 @@ class Order
       INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
       INNER JOIN tbl_order_list olst ON ordr.order_id = olst.order_id
       INNER JOIN tbl_product pd ON pd.prd_id = olst.prd_id
-      WHERE ordr.order_id = '60000017'
+      WHERE ordr.order_id = '$id'
       ORDER BY ordr.order_id DESC
       LIMIT 1
    ";

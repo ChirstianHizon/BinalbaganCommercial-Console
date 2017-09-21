@@ -4,7 +4,7 @@ var directionsService;
 $(function() {
   console.log("SCRIPT RUNNING");
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  // google.maps.event.addDomListener(window, 'load', initialize);
 
   inititalizeTables();
   getPendingDelivery();
@@ -97,9 +97,13 @@ function getDeliveryRoute(del_id){
       "type":3
     },success: function(result){
       console.log(result);
-      // console.log(result.COORDINATES);
-      var route = result.COORDINATES;
-      calculateRoute(directionsService, directionsDisplay,route);
+      if(result){
+        var route = result.COORDINATES;
+        calculateRoute(directionsService, directionsDisplay,route);
+      }else{
+        alert("NO ROUTE FOUND");
+      }
+
     },error: function(response) {
       console.log(response);
     }

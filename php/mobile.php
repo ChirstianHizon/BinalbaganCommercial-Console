@@ -8,7 +8,9 @@ include '..\classes\class.cart.php';
 include '..\classes\class.product_log.php';
 include '..\classes\class.employee.php';
 include '..\classes\class.barcode.php';
+include '..\classes\class.delivery.php';
 
+$delivery = new Delivery();
 $employee = new Employee();
 $sales = new Sales();
 $product = new Product();
@@ -24,6 +26,13 @@ $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 $query = (isset($_POST['query']) && $_POST['query'] != '') ? $_POST['query'] : '';
 
+$orderid = (isset($_POST['orderid']) && $_POST['orderid'] != '') ? $_POST['orderid'] : '';
+
+$lat = (isset($_POST['lat']) && $_POST[''] != 'lat') ? $_POST['lat'] : '';
+$lng = (isset($_POST['lng']) && $_POST['lng'] != '') ? $_POST['lng'] : '';
+
+$coord = (isset($_POST['coord']) && $_POST['coord'] != '') ? $_POST['coord'] : '';
+
 $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);
 
@@ -33,7 +42,18 @@ if ($access != $access_mobile) {
     $type = (int)$type;
     switch ($type) {
     case 0:
-      echo json_encode(array("main" => "TEST: ".$access));
+      // echo json_encode(array("main" => "TEST: ".$access));
+      // echo json_encode(array("main" => $coord));
+      // echo json_encode(array("main" => $list));
+      // echo json_encode($list);
+
+      $list = json_decode($coord,true);
+      foreach ($list as $value) {
+        echo $value['id'].", ".$value['lat']."<br />";
+      }
+
+      // $list = $order->getDeliveryOrders();
+      // echo json_encode($list);
       break;
       case 1:
         $login_status = $employee->checkLogin($uname, $pass);
@@ -217,9 +237,32 @@ if ($access != $access_mobile) {
         }
     }
     break;
-    default:
-      # code...
-      break;
+    case 8:
+    $result = $delivery->addDelivery($orderid);
+    $order->startdelivery($orderid);
+    echo json_encode(array("ID" => $result));
+    break;
+    case 9:
+    $list = json_decode($coord,true);
+    $result = 0;
+    foreach ($list as $value) {
+      $id = $value['delivid'];
+      $temp = $delivery->addRoute($value['delivid'],$value['lat'],$value['lng'],$value['datetime']);
+      $result = $result.$temp;
+      // echo json_encode(array(
+      //   "id" => $value['id'],
+      //   "lat" => $value['lat'],
+      //   "lng" => $value['lng'],
+      //   "datetime" => $value['datetime'],
+      //   "delivid" => $value['delivid']
+      // ));
+    }if($result >0){$result =true;}else{$result = false;}
+    $result = $delivery->finishDelivery($id);
+    $orderid = $delivery->getOrderId($id);
+    $sales->updateSalesReceiveDatetime($orderid);
+    $order->completeOrder($orderid);
+    echo json_encode(array("RESULT" => $result));
+    break;
   }
 }
 /*

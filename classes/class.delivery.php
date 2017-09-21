@@ -56,6 +56,42 @@ class Delivery{
   }
 
 
+  public function addDelivery($orderid){
+    $sql = "INSERT INTO tbl_delivery(order_id)
+       VALUES('$orderid')";
+     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+     if($result == 1){
+       //GETS THE LAST ID USED IN QUERY
+       $result = mysqli_insert_id($this->db);
+     }
+     return $result;
+  }
+
+  public function addRoute($id,$lat,$lng,$date){
+    $sql = "INSERT INTO tbl_route(route_lat,route_lng,route_datestamp,del_id)
+       VALUES('$lat','$lng','$date','$id')";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    return $result;
+  }
+
+  public function finishDelivery($id){
+      $sql = "UPDATE tbl_delivery SET
+      del_status = '200',
+      del_end_datestamp = NOW()
+      WHERE del_id = '$id'";
+      $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+      return $result;
+  }
+
+  public function getOrderId($id){
+    $sql = "SELECT order_id FROM tbl_delivery WHERE del_id = '$id'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $row = mysqli_fetch_assoc($result);
+    $result = $row['order_id'];
+    return $result;
+  }
+
+
 
 
 

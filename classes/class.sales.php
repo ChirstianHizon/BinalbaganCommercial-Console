@@ -49,7 +49,7 @@ class Sales{
     }
     $sql = "SELECT
     tbl_sales_list.sales_id AS ID,
-    SUM(prd_qty * prd_price) AS TOTAL,
+    SUM(prd_qty * tbl_sales_list.prd_price) AS TOTAL,
     sales_datestamp AS DATE,
     tbl_sales.cust_id AS CUSTOMER,
     emp_id AS EMPLOYEE ,
@@ -183,10 +183,9 @@ class Sales{
 
   public function getTotalSales(){
     $sql = "SELECT
-    COALESCE(SUM(prd_qty * prd_price),0.00) AS TOTAL
-    FROM tbl_sales_list
-    INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
-    INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
+    COALESCE(SUM(prd_qty * lst.prd_price),0.00) AS TOTAL
+    FROM tbl_sales_list lst
+    INNER JOIN tbl_sales ON tbl_sales.sales_id = lst.sales_id
     -- WHERE DATE(sales_datestamp)=CURDATE()
     ";
     $result = mysqli_query($this->db,$sql);
@@ -257,6 +256,5 @@ class Sales{
       return $result;
     }
   }
-
 
 }

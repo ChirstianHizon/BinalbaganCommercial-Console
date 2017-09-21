@@ -22,27 +22,26 @@ $pass =$utility->str_insert($pass, "'", "'");
 $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";
 $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);
-if($access == $access_web){
-  switch ($type) {
+if ($access == $access_web) {
+    switch ($type) {
     case 0:
       echo json_encode(array("main" => $access));
       break;
     case 1:
-        $login_status = $employee->checkLogin($uname,$pass);
-        foreach($login_status as $value){
-          if($value['COUNT']){
-            echo json_encode(array("main" => "OK","status" => true));
-            $_SESSION['login']= true;
-            $_SESSION['userid']= $value['ID'];
-            $_SESSION['username']= $value['USERNAME'];
-            $_SESSION['userfname']=$value['FNAME'];
-            $_SESSION['userlname']= $value['LNAME'];
-            $_SESSION['usertype']= $value['TYPE'];
-            $_SESSION['userimage']= $value['IMAGE'];
-          }else{
-            echo json_encode(array("main" => "OK","status" => false));
-          }
-
+        $login_status = $employee->checkLogin($uname, $pass);
+        foreach ($login_status as $value) {
+            if ($value['COUNT']) {
+                echo json_encode(array("main" => "OK","status" => true));
+                $_SESSION['login']= true;
+                $_SESSION['userid']= $value['ID'];
+                $_SESSION['username']= $value['USERNAME'];
+                $_SESSION['userfname']=$value['FNAME'];
+                $_SESSION['userlname']= $value['LNAME'];
+                $_SESSION['usertype']= $value['TYPE'];
+                $_SESSION['userimage']= $value['IMAGE'];
+            } else {
+                echo json_encode(array("main" => "OK","status" => false));
+            }
         }
       break;
     case 2:
@@ -51,18 +50,18 @@ if($access == $access_web){
     default:
       break;
   }
-  //FOR MOBILE USE
-}else if($access == $access_mobile){
-  $type = (int)$type;
-  switch ($type) {
+    //FOR MOBILE USE
+} elseif ($access == $access_mobile) {
+    $type = (int)$type;
+    switch ($type) {
     case 0:
     echo json_encode(array("main" => $access));
     break;
     case 1:
-      $login_status = $employee->checkLogin($uname,$pass);
-      foreach($login_status as $value){
-        if($value['COUNT']){
-          echo json_encode(
+      $login_status = $employee->checkLogin($uname, $pass);
+      foreach ($login_status as $value) {
+          if ($value['COUNT']) {
+              echo json_encode(
             array(
               "main" => "OK",
               "status" => true,
@@ -74,8 +73,8 @@ if($access == $access_web){
               "image"=>$value['IMAGE']
             )
           );
-        }else{
-          echo json_encode(
+          } else {
+              echo json_encode(
               array(
               "main" => "OK",
               "status" => false,
@@ -84,7 +83,7 @@ if($access == $access_web){
               "count"=> $value['COUNT']
             )
           );
-        }
+          }
       }
       break;
 
@@ -92,6 +91,6 @@ if($access == $access_web){
       # code...
       break;
   }
-}else{
-  header("location: ../index.php");
+} else {
+    header("location: ../index.php");
 }

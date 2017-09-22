@@ -109,9 +109,9 @@ class Order
     tbl_order_list.prd_id AS ID,
     order_id AS ORDERID,
     prd_name AS NAME,
-    prd_price AS PRICE,
+    tbl_order_list.prd_price AS PRICE,
     SUM(prd_qty) AS QTY,
-    SUM(prd_qty * prd_price) AS SUBTOTAL,
+    SUM(prd_qty * tbl_order_list.prd_price) AS SUBTOTAL,
     prd_level AS LEVEL
     FROM tbl_order_list
     INNER JOIN tbl_product ON tbl_order_list.prd_id = tbl_product.prd_id
@@ -236,14 +236,15 @@ class Order
         return $result;
     }
 
-    public function getDeliveryOrders()
-    {
-        $sql = "SELECT *
+    public function getDeliveryOrders(){
+      $sql = "SELECT *
       FROM tbl_order ordr
       INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
-      WHERE ordr.order_type = '1' AND ordr.order_status BETWEEN 1 AND 200
+      WHERE receive_datestamp <= NOW() AND
+  		ordr.order_type = '1' AND
+  		ordr.order_status BETWEEN 1 AND 200
       ORDER BY ordr.order_status ASC
-   ";
+        ";
 
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         if ($result) {

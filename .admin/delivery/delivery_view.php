@@ -28,7 +28,7 @@
     <div class="dttable">
       Completed Deliveries
 
-      <table id="complete_id" class="display" width="100%" cellspacing="0">
+        <table id="complete_id" class="display" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Order ID</th>
@@ -48,5 +48,5 @@
 	</div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5_KfF9P5eQzcC_fO4VWdgoumYFv7vAQg&callback=initialize"async defer></script>
 <script src=".admin\.js\delivery\delivery.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5_KfF9P5eQzcC_fO4VWdgoumYFv7vAQg&callback=initialize"async defer></script>

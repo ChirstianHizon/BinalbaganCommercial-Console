@@ -21,7 +21,7 @@ class Delivery{
 
             FROM tbl_delivery
             WHERE del_status = '200'
-            ORDER BY del_end_datestamp DESC
+            ORDER BY del_id ASC
             ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

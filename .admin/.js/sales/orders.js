@@ -144,6 +144,10 @@ function approvedOrder(clickedElement){
 function updateOrder(){
   var date = document.getElementById("pickupdate").value;
   console.log(date);
+  if(date == ""){
+    alert("Choose Pickup Date");
+    return false;
+  }
   $.ajax({
     url: "php/orders.php",
     type: "POST",

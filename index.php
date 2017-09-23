@@ -1,4 +1,6 @@
 <?php
+	// HELLO WORLD
+
 include 'library/config.php';
 include 'classes/class.employee.php';
 //session_destroy();

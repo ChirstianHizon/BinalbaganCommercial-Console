@@ -1,6 +1,4 @@
 <?php
-//HELLO AGAIN
-
 include 'library/config.php';
 include 'classes/class.employee.php';
 

@@ -15,36 +15,14 @@ class Employee{
     return "CLASS OK";
   }
 
-  // public function checkType($type,$login,$currpage){
-  //   if(!$login){
-  //     header("location: ../login.php");
-  //   }
-  //   switch ($_SESSION['usertype']) {
-  //     case 0:
-  //       if($currpage == "admin"){
-  //         //header("location: ../index.php");
-  //         break;
-  //       }
-  //       header("location: .admin/index.php");
-  //       break;
-  //     case 1:
-  //       if($currpage == "cashier"){
-  //       //header("location: ../.cashier/index.php");
-  //         break;
-  //       }
-  //       header("location: .cashier/index.php");
-  //       break;
-  //     case 2:
-  //       if($currpage == "index"){
-  //         break;
-  //       }
-  //       break;
-  //
-  //     default:
-  //       header("location: ../login.php");
-  //       break;
-  //   }
-  // }
+  public function getEmplyeeName($id){
+    $sql= "SELECT * FROM tbl_employee WHERE emp_id = '$id' limit 1";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $row = mysqli_fetch_assoc($result);
+    $result = $row['emp_last_name'].", ".$row['emp_first_name'];
+    return $result;
+  }
+
 
   public function get_session(){
     if(isset($_SESSION['login']) && $_SESSION['login'] == true){

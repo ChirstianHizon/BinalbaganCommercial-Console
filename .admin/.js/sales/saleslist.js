@@ -51,6 +51,9 @@ function createSalesTable(start,end){
         "bInfo" : false,
         "pageLength": 10
       });
+      document.getElementById("t-trans").innerHTML=result.trans;
+      document.getElementById("t-items").innerHTML=result.items;
+      document.getElementById("t-price").innerHTML=result.amount;
     },error: function(response) {
       console.log(response);
     }
@@ -104,7 +107,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
     }
-}
+};
 
 //---------------------------------------- UTILITIES --------------------------------//
 function addCommas(nStr) {

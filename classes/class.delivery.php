@@ -36,11 +36,37 @@ class Delivery{
     }
   }
 
+  public function getDeliveryDetails($id){
+    $sql = "SELECT
+				*,
+				COUNT(tbl_order_list.order_list_id) AS AMOUNT,
+				SUM(tbl_order_list.prd_price * tbl_order_list.prd_qty)AS TOTAL
+            FROM tbl_delivery
+            INNER JOIN tbl_order ON tbl_delivery.order_id = tbl_order.order_id
+            INNER JOIN tbl_customer ON tbl_order.cust_id = tbl_customer.cust_id
+            INNER JOIN tbl_address ON tbl_address.cust_id = tbl_customer.cust_id
+            INNER JOIN tbl_order_list ON tbl_order.order_id = tbl_order_list.order_id
+            WHERE tbl_order.order_id = '60000058'
+				ORDER BY del_id DESC
+            ";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $result = mysqli_query($this->db,$sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
   public function getDeliveryRoute($id) {
     $sql="SELECT *
     FROM tbl_route
     WHERE del_id = '$id'
-    ORDER BY route_datestamp ASC
+    ORDER BY route_datestamp DESC
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

@@ -34,8 +34,14 @@ class Sales{
   }
 
   public function addSalesList($salesid,$prdid,$prdqty){
-    $sql = "INSERT INTO tbl_sales_list(prd_id,prd_qty,sales_id)
-    VALUES('$prdid','$prdqty','$salesid')";
+    $price= 0;
+    $sql= "SELECT COALESCE(prd_price,0) AS PRICE FROM tbl_product WHERE prd_id = '$prdid'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $row = mysqli_fetch_assoc($result);
+    $price = $row['PRICE'];
+
+    $sql = "INSERT INTO tbl_sales_list(prd_id,prd_qty,sales_id,prd_price)
+    VALUES('$prdid','$prdqty','$salesid','$price')";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . 0);
     return $result;
   }

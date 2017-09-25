@@ -30,6 +30,15 @@
   </tbody>
 </table>
 
+<b><h3>Total Transaction: </h3><span id="t-trans"></span></b>
+<b><h3>Total Items: </h3><span id="t-items"></span></b>
+<b><h3>Total Amount: </h3><span id="t-price"></span></b>
+<br />
+<br />
+<br />
+
+
+
 
 <!-- END CHECKOUT -->
 <div id="saleslist-modal" class="modal">

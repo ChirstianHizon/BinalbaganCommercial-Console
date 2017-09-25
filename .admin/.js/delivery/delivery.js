@@ -15,7 +15,7 @@ $(function() {
 
 
 // ------------------------------------- DATA TABLES -------------------------//
-var comptb,apptb
+var comptb,apptb;
 function inititalizeTables() {
   apptb = $('#app_id').DataTable({
     "responsive": true,
@@ -51,7 +51,7 @@ function getPendingDelivery(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 5
       });
     },error: function(response) {
       console.log(response);
@@ -77,7 +77,7 @@ function getCompletedDelivery(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 5
       });
     },error: function(response) {
       console.log(response);
@@ -98,8 +98,12 @@ function getDeliveryRoute(del_id){
     },success: function(result){
       console.log(result);
       if(result){
-        var route = result.COORDINATES;
-        calculateRoute(directionsService, directionsDisplay,route);
+        if(result.COUNTER == 1){
+          alert("NO ROUTE FOUND");
+        }else{
+          var route = result.COORDINATES;
+          calculateRoute(directionsService, directionsDisplay,route);
+        }
       }else{
         alert("NO ROUTE FOUND");
       }
@@ -183,7 +187,7 @@ function calculateRoute(directionsService, directionsDisplay,locations) {
       return function() {
         infowindow.setContent(locations[i][0]);
         infowindow.open(map, marker);
-      }
+      };
     })(marker, i));
 
     if (i == 0) request.origin = marker.getPosition();

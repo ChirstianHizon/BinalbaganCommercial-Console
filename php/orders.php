@@ -3,10 +3,13 @@ include '..\library\config.php';
 include '..\classes\class.sales.php';
 include '..\classes\class.orders.php';
 include '..\classes\class.product.php';
+include '..\classes\class.customer.php';
+
 
   $sales = new Sales();
   $order = new Order();
   $product = new Product();
+  $customer = new Customer();
 
 
   $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
@@ -29,7 +32,7 @@ include '..\classes\class.product.php';
       break;}
     foreach($list as $value){
       $order_id = $value['ID'];
-      $customer_id = $value['CUSTOMER'];
+      $customer_id = $customer->getCustomeName($value['CUSTOMER']);
       $order_type = $value['TYPE'];
       switch ($order_type) {
         case 0:
@@ -72,7 +75,7 @@ include '..\classes\class.product.php';
       break;}
     foreach($list as $value){
       $order_id = $value['ID'];
-      $customer_id = $value['CUSTOMER'];
+      $customer_id = $customer->getCustomeName($value['CUSTOMER']);
       $order_type = $value['TYPE'];
       $order_receive = $value['RECEIEVE'];
       switch ($order_type) {
@@ -193,7 +196,7 @@ include '..\classes\class.product.php';
       break;}
     foreach($list as $value){
       $order_id = $value['ID'];
-      $customer_id = $value['CUSTOMER'];
+      $customer_id = $customer->getCustomeName($value['CUSTOMER']);
       $order_type = $value['TYPE'];
       switch ($order_type) {
         case 0:

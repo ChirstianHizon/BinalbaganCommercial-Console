@@ -3,10 +3,15 @@ include '..\library\config.php';
 include '..\classes\class.sales.php';
 include '..\classes\class.product.php';
 include '..\classes\class.orders.php';
+include '..\classes\class.customer.php';
+include '..\classes\class.employee.php';
+
 
 $sales = new Sales();
 $product = new Product();
 $order = new Order();
+$customer = new Customer();
+$employee = new Employee();
 
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
 $prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
@@ -27,23 +32,30 @@ if($access == $access_mobile){
     echo json_encode(array("main" => "OK"));
     break;
     case 1:
+    $total_items = 0;
+    $total_amount = 0;
+    $total_trans = 0;
     $html ="";
     $list = $sales->getAllSales($start,$end);
     if(!$list){
-      echo json_encode(array("main" => $html));
+      echo json_encode(array("main" => $html,"trans"=>$total_trans,"amount"=>$total_amount,"items"=>$total_items));
       break;}
+
       foreach($list as $value){
+        $total_trans++;
         $sales_id = $value['ID'];
-        if($value['CUSTOMER'] == ''){
-          $customer_id =  $value['EMPLOYEE'];
+        if($value['CUSTOMER'] == 0  ){
+          $customer_id = $employee->getEmplyeeName($value['EMPLOYEE']);
         }else{
-          $customer_id = $value['CUSTOMER'];
+          $customer_id = $customer->getCustomeName($value['CUSTOMER']);
         }
         $sales_type = $value['TYPE'];
         $sales_qty =$value['QUANTITY'];
         $sales_date = $value['DATE'];
         $sales_total = $value['TOTAL'];
 
+        $total_items += $sales_qty;
+        $total_amount += $sales_total;
         switch ($sales_type) {
           case 0:
           $sales_type = "WALK - IN";
@@ -70,7 +82,7 @@ if($access == $access_mobile){
         "</tr>";
         $html = $html.$body;
       }
-      echo json_encode(array("main" => $html));
+      echo json_encode(array("main" => $html,"trans"=>$total_trans,"amount"=>$total_amount,"items"=>$total_items));
       break;
 
       case 2:

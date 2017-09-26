@@ -50,11 +50,15 @@ if($access == $access_mobile){
 }else if($access == $access_web){
   $empid = $_SESSION['userid'];
   switch ($type) {
+    case 0:
+
+    break;
     case 1:
       if ($image === '') {
         $image = "https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fno-image.png3232?alt=media&token=8b00ba10-cf65-4126-bc74-9662cd5db9ca";
       }
-      echo $product->addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image,$category);
+      $result = $product->addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image,$category);
+      echo json_encode(array("main" => $result));
     break;
     case 2:
       echo $product->updateProduct($id,$name,$desc,$price,$category,$optimal,$warning,$image);

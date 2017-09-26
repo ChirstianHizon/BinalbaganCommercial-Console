@@ -42,18 +42,7 @@ if ($access != $access_mobile) {
     $type = (int)$type;
     switch ($type) {
     case 0:
-      // echo json_encode(array("main" => "TEST: ".$access));
-      // echo json_encode(array("main" => $coord));
-      // echo json_encode(array("main" => $list));
-      // echo json_encode($list);
-
-      $list = json_decode($coord,true);
-      foreach ($list as $value) {
-        echo $value['id'].", ".$value['lat']."<br />";
-      }
-
-      // $list = $order->getDeliveryOrders();
-      // echo json_encode($list);
+      echo json_encode(array("main" => true));
       break;
       case 1:
         $login_status = $employee->checkLogin($uname, $pass);
@@ -263,6 +252,87 @@ if ($access != $access_mobile) {
     $order->completeOrder($orderid);
     echo json_encode(array("RESULT" => $result));
     break;
+    case 10:
+    $list = $order->getDeliveryOrders();
+    if (!$list) {
+        $prod_list['COUNTER'] = 0;
+        echo json_encode($prod_list);
+        break;
+    } else {
+        $cnt = 0;
+        foreach ($list as $value) {
+            $cnt++;
+        }
+        $prod_list['COUNTER'] = $cnt;
+        $count = 1;
+        foreach ($list as $value) {
+            $prod_list[$count] =
+                              array(
+                                "ID" =>$value['order_id'],
+                                "FNAME" =>$value['cust_firstname'],
+                                "LNAME" =>$value['cust_lastname'],
+                                "DATE" =>$value['order_datestamp'],
+                                "TIME" =>$value['order_timestamp'],
+                                "STATUS" =>$value['order_status'],
+                                "TYPE" =>$value['order_type']
+                              );
+            $count++;
+        }
+        echo json_encode($prod_list);
+    }
+    case 11:
+    $list = $delivery->getDeliveryDetails($id);
+    if (!$list) {
+        $prod_list = '';
+        echo json_encode($prod_list);
+        break;
+    } else {
+        foreach ($list as $value) {
+            $prod_list =
+                              array(
+                                "DELID" =>$value['del_id'],
+                                "OID" =>$value['order_id'],
+                                "CUST_NAME" =>$value['cust_lastname'].", ".$value['cust_firstname'],
+                                "CUST_CONTACT"=>$value['cust_contact'],
+                                "CUST_ADDRESS"=>$value['add_name'],
+                                "CUST_NOTES"=>$value['add_notes'],
+                                "ORDER_DATE" =>$value['order_datestamp'],
+                                "AMOUNT" =>$value['AMOUNT'],
+                                "TOTAL" =>$value['TOTAL'],
+                                "DATE_RECIEVE" =>$value['del_end_datestamp'],
+                                "STATUS" =>$value['order_status'],
+                                "TYPE" =>$value['order_type']
+                              );
+        }
+        echo json_encode($prod_list);
+    }
+    break;
+    case 12:
+    $list = $order->getSpecOrderList($id);
+    if (!$list) {
+        $prod_list['COUNTER'] = 0;
+        echo json_encode($prod_list);
+        break;
+    } else {
+        $cnt = 0;
+        foreach ($list as $value) {
+            $cnt++;
+        }
+        $prod_list['COUNTER'] = $cnt;
+        $count = 1;
+        foreach ($list as $value) {
+            $prod_list[$count] =
+              array(
+                "PRDID" =>$value['ID'],
+                "NAME" =>$value['NAME'],
+                "PRICE" =>$value['PRICE'],
+                "QTY" =>$value['QTY'],
+                "SUBTOTAL" =>$value['SUBTOTAL']
+              );
+            $count++;
+        }
+        echo json_encode($prod_list);
+    }
   }
 }
 /*

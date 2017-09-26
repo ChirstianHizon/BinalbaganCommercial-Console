@@ -2,7 +2,7 @@ var storageRef = firebase.storage().ref();
 var connectedRef = firebase.database().ref(".info/connected");
 connectedRef.on("value", function(snap) {
   if (snap.val() === true) {
-    console.log("----Connected to Firebase----");;
+    console.log("----Connected to Firebase----");
   }
 });
 var product = {
@@ -60,7 +60,7 @@ function setminWarning() {
   var optimal = document.getElementById("newoptimal").value;
   console.log(optimal);
   document.getElementById("warning").max = (Number(optimal)-1);
-  var optimal = document.getElementById("updateoptimal").value;
+  optimal = document.getElementById("updateoptimal").value;
   document.getElementById("updatewarning").max = (Number(optimal)-1);
 }
 
@@ -100,6 +100,7 @@ $("#newProduct").submit(function(){
       url: "php/product.php",
       type: "POST",
       async: true,
+      dataType:"json",
       data: {
         "access":access,
         "name":product.name,
@@ -112,12 +113,16 @@ $("#newProduct").submit(function(){
         "image":product.image,
         "type":1
       },success: function(result){
-        if(result){
-          // console.log(result);
+        console.log(result);
+        if(result.main){
+
           alert("Product has been Addded");
           document.getElementById('btnadd').disabled = false;
           document.getElementById("newProduct").reset();
           createProductTable();
+        }else{
+          alert("Product Name is Already Used");
+          document.getElementById('btnadd').disabled = false;
         }
       },error: function(response) {
         console.log(response);
@@ -140,6 +145,7 @@ $("#newProduct").submit(function(){
       url: "php/product.php",
       type: "POST",
       async: true,
+      dataType:"json",
       data: {
         "access":access,
         "name":product.name,
@@ -151,11 +157,14 @@ $("#newProduct").submit(function(){
         "image":product.image,
         "type":1
       },success: function(result){
-        if(result){
+        if(result.main){
           // console.log(result);
           alert("Product has been Addded");
           document.getElementById("newProduct").reset();
           createProductTable();
+        }else{
+          alert("Product Name is Already Used");
+          document.getElementById('btnadd').disabled = false; 
         }
       },error: function(response) {
         console.log(response);

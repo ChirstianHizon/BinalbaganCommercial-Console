@@ -103,8 +103,7 @@ class Order
         }
     }
 
-    public function getSpecOrderList($id)
-    {
+    public function getSpecOrderList($id){
         $sql = "SELECT
     tbl_order_list.prd_id AS ID,
     order_id AS ORDERID,
@@ -260,6 +259,30 @@ class Order
         }
     }
 
+    public function getDeliveryOrdersAdmin(){
+      $sql = "SELECT *
+      FROM tbl_order ordr
+      INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
+      WHERE
+      ordr.order_type = '1' AND
+      ordr.order_status BETWEEN 1 AND 200
+      ORDER BY ordr.order_status ASC
+        ";
+
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
+    }
+
     public function getSpecDeliveryOrders($id)
     {
         $sql = "SELECT *,COUNT(olst.prd_qty) AS TOTAL,SUM(olst.prd_qty * pd.prd_price) AS TAMOUNT
@@ -268,7 +291,7 @@ class Order
       INNER JOIN tbl_order_list olst ON ordr.order_id = olst.order_id
       INNER JOIN tbl_product pd ON pd.prd_id = olst.prd_id
       WHERE ordr.order_id = '$id'
-      ORDER BY ordr.order_id DESC
+      ORDER BY ordr.order_datestamp DESC
       LIMIT 1
    ";
 

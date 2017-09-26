@@ -1,5 +1,4 @@
 var table,cart,checkout,carttotal;
-
 $(function() {
 
   table =  $('#table_id').DataTable();
@@ -15,9 +14,8 @@ $(function() {
 });
 
 $('#search').on( 'keyup', function () {
-    table.columns( 0 ).search( this.value ).draw();
-    //console.log(this.value);
-} );
+  console.log(this.value);
+});
 
 function createProductTable(){
   updateTotal();
@@ -27,6 +25,7 @@ function createProductTable(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":11
     },success: function(result){
       //console.log(result);
@@ -56,9 +55,10 @@ function createCartTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":1
     },success: function(result){
-      console.log(result);
+      // console.log(result);
       cart.destroy();
       carttotal = result.total;
       document.getElementById("cart-table-body").innerHTML = result.main;
@@ -86,6 +86,7 @@ function prodselect(clickedElement){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "id":prdid,
       "type":10
     },success: function(result){
@@ -110,6 +111,7 @@ function updateTotal(){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "type":7
     },success: function(result){
       //console.log(result);
@@ -135,6 +137,7 @@ function cartselect(clickedElement){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "type":3
     },success: function(result){
@@ -159,6 +162,7 @@ function cartdelete(clickedElement){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "type":5
     },success: function(result){
@@ -176,7 +180,29 @@ function searchtb(){
   var searchval = document.getElementById('insearch').value;
   //console.log(searchval);
   //searchval = searchbarcode(searchval);
-  table.columns( 0 ).search( searchval ).draw();
+  $.ajax({
+    url: "php/barcode.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "code": searchval,
+      "type":4
+    },success: function(result){
+      // console.log(result);
+      switch (result.main) {
+        case false:
+          table.columns( 0 ).search( searchval ).draw();
+          break;
+          case true:
+          table.columns( 0 ).search( result.value ).draw();
+            break;
+      }
+    },error: function(response) {
+      console.log(response);
+    }
+  });
 }
 var total,chktemptable;
 $("#btncheckout").click(function(){
@@ -194,6 +220,7 @@ $("#btncheckout").click(function(){
     dataType: "json",
     async: true,
     data: {
+      "access":access,
       "type":7
     },success: function(result){
       total = result.total;
@@ -233,6 +260,7 @@ function finalsubmit(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "type":10
     },success: function(result){
       console.log(result);
@@ -258,6 +286,7 @@ $("#form-addtocart").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "prdid":prdid,
       "qty":qty,
       "type":2
@@ -284,6 +313,7 @@ $("#form-changecart").submit(function(){
     type: "POST",
     async: true,
     data: {
+      "access":access,
       "id":cartid,
       "prdid":prdid,
       "qty":qty,

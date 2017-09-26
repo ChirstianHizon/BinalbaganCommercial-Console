@@ -91,7 +91,6 @@ function initWarningTable(){
 
 
 function btnupdate(){
-  alert();
   window.location = 'index.php?mod=invenupdtprod';
 }
 

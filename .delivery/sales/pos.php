@@ -77,7 +77,7 @@
       <div id="line"></div>
       <br/>
       <form id="form-addtocart" class="modalform">
-        <input id="add-cart-input" type="number" min="1" step="1" placeholder="INSERT ORDER" autofocus></input><h2><b> pc/s</b></h2>
+        <input id="add-cart-input" type="number" min="1" required placeholder="INSERT ORDER" autofocus></input><h2><b> pc/s</b></h2>
     </div>
     <div class="modal-footer">
       <button id="add">Add to Cart</button>

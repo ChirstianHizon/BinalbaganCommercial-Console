@@ -207,12 +207,15 @@ if($access == $access_mobile){
       }else{
         $status = "ok";
       }
-    echo  '<tr id="'.$status.'" >'.
-              "<td>".$value['prd_name']."</td>".
-              "<td>".$value['cat_name']."</td>".
-              "<td>₱ ".$value['prd_price']."</td>".
-              '<td id="'.$value['prd_id'].'" onclick="prodselect(this)"><b class="btnplus"> +  </b></td>'.
-          "</tr>";
+      if($value['prd_level'] != 0){
+        echo  '<tr id="'.$status.'" >'.
+                  "<td>".$value['prd_name']."</td>".
+                  "<td>".$value['cat_name']."</td>".
+                  "<td>₱ ".$value['prd_price']."</td>".
+                  '<td id="'.$value['prd_id'].'" onclick="prodselect(this)"><b class="btnplus"> +  </b></td>'.
+              "</tr>";
+      }
+
     }
     break;
     case 12:

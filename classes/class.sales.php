@@ -124,7 +124,7 @@ class Sales{
 
   public function getCurrSalesListByEmp($empid){
     $sql = "SELECT
-    tbl_sales.sales_id AS ID,sum(prd_qty) AS QTY,sum(prd_price*prd_qty) AS TOTAL,
+    tbl_sales.sales_id AS ID,sum(prd_qty) AS QTY,sum(tbl_sales_list.prd_price*prd_qty) AS TOTAL,
     EXTRACT(HOUR FROM sales_timestamp) AS HOUR,
     EXTRACT(MINUTE FROM sales_timestamp) AS MINUTE
     FROM tbl_sales

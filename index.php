@@ -7,7 +7,8 @@ $employee = new Employee();
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 
 if($module == 'logout'){
-  session_destroy();
+  // session_destroy();
+  $_SESSION['login'] ="";
   header("location: login.php");
 }
 
@@ -163,6 +164,9 @@ $type = $_SESSION['usertype'];
                   case 'invenaddcat':
                     require_once '.admin/inventory/inventory-category.php';
                   break;
+                  case 'invenaddsupp':
+                    require_once '.admin/inventory/inventory-supplier.php';
+                  break;
                   case 'invenaddbar':
                     require_once '.admin/inventory/inventory-add-barcode.php';
                   break;
@@ -237,8 +241,33 @@ $type = $_SESSION['usertype'];
                 break;
             }
             break;
-
             case 2:
+            switch($module){
+                case '':
+                  require_once '.delivery/dashboard.php';
+                break;
+                case 'salespos':
+                  require_once '.delivery/sales/pos.php';
+                break;
+                case 'invenviewprod':
+                  require_once '.delivery/inventory/inventory-view.php';
+                break;
+                case 'search':
+                  require_once '.delivery/products.php';
+                break;
+                case 'orders':
+                  require_once '.delivery/sales/orders.php';
+                break;
+                case 'userprofile':
+                  require_once 'userprofile.php';
+                break;
+                case 'delivery':
+                  require_once '.delivery/delivery/delivery_view.php';
+                break;
+                default:
+                  require_once '.main/page-not-found.php';
+                break;
+            }
             break;
           }
         ?>

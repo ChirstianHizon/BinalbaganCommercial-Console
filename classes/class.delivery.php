@@ -21,7 +21,7 @@ class Delivery{
 
             FROM tbl_delivery
             WHERE del_status = '200'
-            ORDER BY del_id ASC
+            ORDER BY del_end_datestamp DESC
             ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);
@@ -47,7 +47,7 @@ class Delivery{
             LEFT OUTER JOIN tbl_address ON tbl_address.cust_id = tbl_customer.cust_id
             LEFT OUTER JOIN tbl_order_list ON tbl_order.order_id = tbl_order_list.order_id
             WHERE tbl_order.order_id = '$id'
-				ORDER BY del_id DESC
+				    ORDER BY del_id DESC
             ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

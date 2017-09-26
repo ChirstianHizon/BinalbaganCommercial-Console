@@ -129,7 +129,7 @@ if($access == $access_mobile){
         '<td>'.$value['QTY'].' items/s</td>'.
         '<td> P '.$value['TOTAL'].'</td>'.
         '<td> '.$time.'</td>'.
-        '<td id ="'.$value['ID'].'" > VIEW</td>'.
+        '<td> <button id ="'.$value['ID'].'">View</button></td>'.
         "</tr>";
 
       }
@@ -140,7 +140,7 @@ if($access == $access_mobile){
       array_push($chart,array('Name', 'Quantity'));
       $list = $sales->getproductsSoldByEmp($empid);
       if(!$list){
-        array_push($chart,array('No Data Available', 1));
+        array_push($chart,array('No Data Available', 0));
         echo json_encode($chart);
         break;
       }else{
@@ -208,7 +208,7 @@ if($access == $access_mobile){
         break;
         case 8:
         $chart = array();
-        array_push($chart,array('Time', 'No. of Customer per Hour'));
+        array_push($chart,array('Time', 'No. of Customer on Store Hours'));
         $list = $sales->getTotalcustomerTraffic();
         if(!$list){
           array_push($chart,array('No Data Available', 0));

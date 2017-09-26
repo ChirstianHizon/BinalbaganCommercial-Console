@@ -1,15 +1,8 @@
-var pendingtable,walkintable,list_table,orderlisttable;
+  var pendingtable,walkintable,list_table,orderlisttable;
 $(function() {
   $(".datepicker").datepicker({
     minDate: currDate,
     dateFormat: 'yy-mm-dd'
-  });
-  pendingtable = $('#pending_id').DataTable({
-    "responsive": true,
-    "bLengthChange": false,
-    "bInfo" : false,
-    "bFilter": false,
-    "pageLength": 10
   });
 
   walkintable = $('#walkin_id').DataTable({
@@ -21,7 +14,6 @@ $(function() {
   });
   orderlisttable = $('#orderlist_id').DataTable({});
   createPickUpTable();
-  createPedingTable();
 });
 
 function createPickUpTable(){
@@ -32,6 +24,7 @@ function createPickUpTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":2
     },success: function(result){
       //console.log(result);
@@ -229,7 +222,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
     }
-}
+};
 
 //---------------------------------------- UTILITIES --------------------------------//
 function addCommas(nStr) {

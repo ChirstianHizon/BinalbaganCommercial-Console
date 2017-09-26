@@ -124,7 +124,7 @@ function catselect(clickedElement){
       "type":5
     },success: function(result){
       //console.log(result.name);
-      document.getElementById("upid").value = result.id;;
+      document.getElementById("upid").value = result.id;
       document.getElementById("upname").value = result.name;
       document.getElementById("updesc").value = result.desc;
     },error: function(response) {
@@ -140,6 +140,10 @@ $('#clear').click(function(){
   document.getElementById("newCategory").reset();
   document.getElementById("updateCategory").reset();
 });
+
+
+
+
 // ---------------------------------- UTILITIES --------------------------//
 function hide (elements) {
   elements = document.querySelectorAll(elements);

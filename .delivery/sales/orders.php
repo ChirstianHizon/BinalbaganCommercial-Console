@@ -5,27 +5,6 @@
     </div>
 </div>
 
-<h3><i>Pending Orders</i></h3>
-<div id="line"></div>
-<table id="pending_id" class="display" width="100%" cellspacing="0">
-  <thead>
-    <tr>
-      <th>Order No.</th>
-      <th>Date</th>
-      <th>Name</th>
-      <th>Transaction</th>
-      <th>Items Purchased</th>
-      <th>Total Amount</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="pending-body">
-  </tbody>
-</table>
-
-<br/>
 <h3><i>Pick-Up Orders</i></h3>
 <div id="line"></div>
 <table id="walkin_id" class="display" width="100%" cellspacing="0">

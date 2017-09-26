@@ -25,6 +25,7 @@ function initTransactionTable(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":3
     },success: function(result){
       console.log(result);
@@ -58,6 +59,7 @@ function getsalesChartData(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":4
     },success: function(result){
      console.log(result);
@@ -76,6 +78,7 @@ function gettrafficChartData(){
     async: true,
     dataType: "json",
     data: {
+      "access":access,
       "type":5
     },success: function(result){
      console.log(result);
@@ -91,17 +94,28 @@ function gettrafficChartData(){
 function salesChart() {
   var data = google.visualization.arrayToDataTable(sales_arrayData);
   var options = {
-    hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
- };
- var chart = new google.visualization.PieChart(document.getElementById('sales_chart'));
+    'legend': {'position': 'bottom'},
+    'chartArea': {'width': '80%', 'height': '75%'},
+    backgroundColor: '#EEEEEE',
+    height: 350,
+    animation:{duration: 1000,easing: 'out',startup: true}
+  };
+  var formatter = new google.visualization.NumberFormat(
+  {suffix: ' pc/s', negativeColor: 'red', negativeParens: true});
+  formatter.format(data, 1);
+ var chart = new google.visualization.ColumnChart(document.getElementById('sales_chart'));
   chart.draw(data, options);
 }
 
 function trafficChart() {
   var data = google.visualization.arrayToDataTable(traffic_arrayData);
   var options = {
-    hAxis: {title: 'Traffic', titleTextStyle: {color: 'blue'}}
- };
+    'legend': {'position': 'bottom'},
+    'chartArea': {'width': '80%', 'height': '75%'},
+    backgroundColor: '#EEEEEE',
+    height: 350,
+    animation:{duration: 1000,easing: 'out',startup: true}
+  };
  var chart = new google.visualization.LineChart(document.getElementById('traffic_chart'));
   chart.draw(data, options);
 }

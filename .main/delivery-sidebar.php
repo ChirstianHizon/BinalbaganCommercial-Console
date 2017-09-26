@@ -21,9 +21,6 @@
       <li>
         <a href="index.php?mod=delivery">Delivery</a>
       </li>
-      <li>
-        <a href="index.php?mod=orders">Orders</a>
-      </li>
     </ul>
   </li>
   <!--  -->

@@ -11,34 +11,36 @@
     <div class="dash-header">
       <div id="head-1" class="dash-header-cont">0</div>
       <br/>
-      <b>Items Sold</b>
+      <b>Items Delivered</b>
     </div>
 	</div>
 	<div class="col span_1_of_3">
     <div class="dash-header">
       <div id="head-2" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Transactions</b>
+      <b>Total Delivery</b>
     </div>
 	</div>
 	<div class="col span_1_of_3">
     <div class="dash-header">
       <div id="head-3"class="dash-header-cont">P 0</div>
       <br/>
-      <b>Total Sales</b>
+      <b>Approved Deliveries</b>
     </div>
 	</div>
 </div>
 <br/>
 <br/>
 <div class="section group">
-	<div class="col span_1_of_2">
-    Top Products
+	<div id="charttitle" class="col span_1_of_2">
+
 	<div id="sales_chart" class="chart"></div>
+  Top Products
 	</div>
-	<div class="col span_1_of_2">
-    Customer Traffic
+	<div id="charttitle" class="col span_1_of_2">
+
   <div id="traffic_chart" class="chart"></div>
+    Customer Traffic
 	</div>
 </div>
 <br/>

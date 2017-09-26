@@ -67,7 +67,7 @@ function prodselect(clickedElement){
       document.getElementById("updateProduct").reset();
       document.getElementById("id").value = result.id;
       document.getElementById("levelin").value = result.level;
-      document.getElementById("name").innerHTML = result.name;
+      document.getElementById("pname").innerHTML = result.name;
       document.getElementById("level").innerHTML = result.level + " pc/s";
       document.getElementById("status").innerHTML = result.status;
       newid = null;

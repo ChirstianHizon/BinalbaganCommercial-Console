@@ -19,6 +19,9 @@
         <a href="index.php?mod=invenaddcat">View Category</a>
       </li>
       <li>
+        <a href="index.php?mod=invenaddsupp">View Supplier</a>
+      </li>
+      <li>
         <a href="index.php?mod=invenupdtprod">Update Product List</a>
       </li>
       <li>

@@ -19,7 +19,7 @@ class Order
             order_datestamp AS DATE,
             order_type AS TYPE ,
             cust_id AS CUSTOMER,
-            COUNT(prd_qty) AS QUANTITY
+            tbl_order_list.prd_qty AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
             WHERE order_status = '0'
@@ -56,7 +56,7 @@ class Order
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
             INNER JOIN tbl_customer ON tbl_customer.cust_id = tbl_order.cust_id
             WHERE order_status = '1' AND order_type = '1'
-            GROUP BY tbl_order_list.order_id
+            GROUP BY tbl_order_list.order_id ASC
             ";
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         $result = mysqli_query($this->db, $sql);

@@ -86,25 +86,6 @@
   </table>
 </div>
 
-<div class="table-header"><b>Pending Orders</b><i id="3" onclick="hide(this)" class="btnhide">-</i></div>
-<div id="table-3" class="table-container" >
-  <div id="line"></div>
-  <table id="delivery_id" class="display" width="100%" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Order No.</th>
-            <th>Driver</th>
-            <th>Customer</th>
-            <th>Total Items</th>
-            <th>Total Amount</th>
-            <th style="width:70px;">Action</th>
-        </tr>
-    </thead>
-    <tbody id="delivery-body">
-    </tbody>
-  </table>
-</div>
-
 <div class="table-header"><b>Current Sales Statistics</b><i id="4" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-4" class="table-container" >
   <div id="sales_chart" class="chart2"></div>

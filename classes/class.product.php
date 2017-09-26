@@ -14,10 +14,20 @@
     }
 
     public function addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image){
-      $sql = "INSERT INTO tbl_product(prd_name,prd_desc,prd_datestamp,prd_timestamp,prd_level,prd_optimal,prd_warning,prd_price,prd_image,cat_id)
-         VALUES('$name','$desc',NOW(),NOW(),'$level','$optimal','$warning','$price','$image','$category')";
-      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
-      return $result;
+      $sql = "SELECT COALESCE(COUNT(prd_id),0) AS COUNT FROM tbl_product WHERE prd_name = '$name'";
+      $result = mysqli_query($this->db,$sql);
+      $row = mysqli_fetch_assoc($result);
+      $count = $row['COUNT'];
+      if($count <= 0){
+        $sql = "INSERT INTO tbl_product(prd_name,prd_desc,prd_datestamp,prd_timestamp,prd_level,prd_optimal,prd_warning,prd_price,prd_image,cat_id)
+           VALUES('$name','$desc',NOW(),NOW(),'$level','$optimal','$warning','$price','$image','$category')";
+        $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+        return $result;
+      }else{
+        return false;
+      }
+
+
     }
 
     public function getProduct(){

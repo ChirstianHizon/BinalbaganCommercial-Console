@@ -99,7 +99,7 @@ function getDeliveryRoute(del_id){
       console.log(result);
       if(result){
         if(result.COUNTER == 1){
-          alert("NO ROUTE FOUND");
+          alert("No End Route Found");
         }else{
           var route = result.COORDINATES;
           calculateRoute(directionsService, directionsDisplay,route);

@@ -26,11 +26,16 @@ $(function() {
   initPendingTable();
   initWarningTable();
   getheaderContent();
+
+
+});
+
+window.onload = function () {
   google.charts.load('current', {'packages':['corechart']});
   getTopProdChartData();
   getTotalCustTrafficChartData();
   getSalesStatChartData();
-});
+};
 
 function initPendingTable(){
   $.ajax({

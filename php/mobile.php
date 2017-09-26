@@ -42,18 +42,7 @@ if ($access != $access_mobile) {
     $type = (int)$type;
     switch ($type) {
     case 0:
-      // echo json_encode(array("main" => "TEST: ".$access));
-      // echo json_encode(array("main" => $coord));
-      // echo json_encode(array("main" => $list));
-      // echo json_encode($list);
-
-      $list = json_decode($coord,true);
-      foreach ($list as $value) {
-        echo $value['id'].", ".$value['lat']."<br />";
-      }
-
-      // $list = $order->getDeliveryOrders();
-      // echo json_encode($list);
+      echo json_encode(array("main" => true));
       break;
       case 1:
         $login_status = $employee->checkLogin($uname, $pass);

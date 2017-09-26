@@ -140,12 +140,12 @@ $("#newbarform").submit(function(){
       "code":newbar,
       "type":2
     },success: function(result){
-      //  console.log(result);
+       console.log(result);
        if(result.main){
          document.getElementById("newbarform").reset();
          getBarcodeList(prodid);
        }else{
-         alert("DB ERROR");
+         alert("Barcode Already Exists");
        }
     },error: function(response) {
       console.log(response);

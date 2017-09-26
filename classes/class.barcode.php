@@ -44,10 +44,19 @@ class Barcode{
   }
 
   public function addNewBarcode($prdid,$code){
-    $sql = "INSERT INTO tbl_barcode(bar_code,prd_id)
-       VALUES('$code','$prdid')";
-    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
-    return $result;
+    $sql = "SELECT COALESCE(COUNT(bar_id),0) AS COUNT FROM tbl_barcode WHERE bar_code = '$code'";
+    $result = mysqli_query($this->db,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $count = $row['COUNT'];
+    if($count <= 0 ){
+      $sql = "INSERT INTO tbl_barcode(bar_code,prd_id)
+         VALUES('$code','$prdid')";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+      return $result;
+    }else{
+      return false;
+    }
+
   }
 
   public function deleteBarcode($id){

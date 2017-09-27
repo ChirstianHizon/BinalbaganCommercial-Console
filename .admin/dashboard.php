@@ -9,30 +9,34 @@
 <div class="section group">
 	<div id="col1"class="col span_1_of_4">
     <div class="dash-header">
+	<b>Total Products</b>
       <div id="head-1" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Products</b>
+      
     </div>
 	</div>
 	<div id="col2" class="col span_1_of_4">
     <div class="dash-header">
+	<b>Total Sales</b>
       <div id="head-2" class="dash-header-cont">0</div>
       <br/>
-      <b>Total Sales</b>
+      
     </div>
 	</div>
 	<div id="col3" class="col span_1_of_4">
     <div class="dash-header">
+	<b>Total Delivery</b>
       <div id="head-3"class="dash-header-cont">0</div>
       <br/>
-      <b>Total Delivery</b>
+      
     </div>
 	</div>
 	<div id="col4" class="col span_1_of_4">
     <div class="dash-header">
+	<b>Pending Orders</b>
       <div id="head-4" class="dash-header-cont">0</div>
       <br/>
-      <b>Pending Orders</b>
+      
     </div>
 	</div>
 </div>

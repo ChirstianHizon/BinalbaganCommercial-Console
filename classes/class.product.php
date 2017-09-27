@@ -88,18 +88,16 @@
       return $result;
     }
 
-    public function updateProductStock($id,$level,$curr,$empid,$type,$salesid){
+    public function updateProductStock($id,$level,$curr,$empid,$type,$salesid,$supid){
       $sql = "UPDATE tbl_product SET
       prd_level = '$level'
       WHERE prd_id = '$id'";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
 
-      $sql = "INSERT INTO tbl_product_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,log_type,sales_id)
-        VALUES('$id','$curr',NOW(),NOW(),'$empid','$type','$salesid')";
+      $sql = "INSERT INTO tbl_product_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,log_type,sales_id,sup_id)
+        VALUES('$id','$curr',NOW(),NOW(),'$empid','$type','$salesid','$supid')";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
-      return $result;
-
-      return $result;
+      return $supid;
     }
 
     public function getProductwCategory(){

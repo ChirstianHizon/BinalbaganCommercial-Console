@@ -66,7 +66,7 @@ class Delivery{
     $sql="SELECT *
     FROM tbl_route
     WHERE del_id = '$id'
-    ORDER BY route_datestamp DESC
+    ORDER BY route_datestamp ASC
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

@@ -8,6 +8,7 @@ $(function() {
     "ordering": false,
     "bInfo" : false
   });
+  generateSuppliers();
 });
 
 $('#search').on( 'keyup', function () {
@@ -47,12 +48,12 @@ function createProductTable(){
     }
   });
 }
-var newid;
+var newid,id;
 function prodselect(clickedElement){
   if(newid != null){
       id = newid;
   }else{
-    var id = clickedElement.id;
+      id = clickedElement.id;
   }
   $.ajax({
     url: "php/product.php",
@@ -82,7 +83,7 @@ function updatestocks(){
   var id = document.getElementById("id").value;
   var levelin = document.getElementById("levelin").value;
   var currlevel = document.getElementById("currlevel").value;
-
+  var supplier = document.getElementById("supplier").value;
   if( id == null || id == "" || currlevel == null || currlevel == ""){
     alert("Choose a Product first");
     return false;
@@ -105,6 +106,7 @@ function updatestocks(){
       "id":id,
       "level":Number(currlevel),
       "add":Number(levelin),
+      "supplier": supplier,
       "type":8
     },success: function(result){
       if(result){
@@ -120,6 +122,45 @@ function updatestocks(){
     }
   });
 }
+
+function generateSuppliers(){
+  var supplier = document.getElementById("supplier");
+  supplier.innerHTML = '';
+  $.ajax({
+    url: "php/supplier.php",
+    type: "POST",
+    dataType: "json",
+    async: true,
+    data: {
+      "access":access,
+      "type":6
+    },success: function(result){
+      // console.log(result);
+      supplier.innerHTML = result.main;
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ---------------------------------- UTILITIES --------------------------//
 function hide (elements) {

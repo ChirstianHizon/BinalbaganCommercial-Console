@@ -23,9 +23,11 @@
     <input readonly='true' class="nodisplay" id="levelin" type="text" placeholder="id do not edit" required>
     <h4>Product Details</h4>
     <input id="currlevel" type="number" step="1" min="1" placeholder="Enter Stocks to Add"required><b>pc/s</b><br><br>
+
+    <h4>Supplier Details</h4>
     <select id="supplier" placeholder="Supplier" required>
     <option value="" disabled selected>Add a New Supplier</option>
-    </select><br>
+  </select><br /><br />
     <button id="btnupdate">Update Level</button>
   </form>
   </div>

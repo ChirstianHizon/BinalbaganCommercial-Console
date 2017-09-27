@@ -138,7 +138,7 @@ class Order
     cust_id AS CUSTOMER,
     order_type AS TYPE,
     tbl_order_list.order_id AS ID,
-    SUM(prd_qty * prd_price) AS TOTAL,
+    SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
     order_datestamp AS DATE,
     COUNT(prd_qty) AS QUANTITY
     FROM tbl_order_list

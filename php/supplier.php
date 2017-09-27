@@ -15,7 +15,7 @@ $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";
 
 $access = md5($access);
 if($access != $access_web){
-  $type = (int)$type;
+  header("location: ../index.php");
 }else{
   switch ($type) {
     case 0:
@@ -51,6 +51,16 @@ if($access != $access_web){
     case 5:
       $result = $supplier->deleteSupplier($id);
       echo json_encode(array("main"=>$result));
+    break;
+    case 6:
+    $list =  $supplier->getAllSupplier();
+    if(!$list){
+      echo json_encode(array("main"=> '<option value="" disabled selected>No Category Available</option>'));
+      break;
+    }
+    foreach($list as $value){
+      echo json_encode(array("main"=> '<option value="'.$value['sup_id'].'">'.$value['sup_name'].'</option>'));
+    }
     break;
   }
 }

@@ -23,6 +23,7 @@ $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $add = (isset($_POST['add']) && $_POST['add'] != '') ? $_POST['add'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 
+$supplier = (isset($_POST['supplier']) && $_POST['supplier'] != '') ? $_POST['supplier'] : '';
 
 
 $name =$utility->str_insert($name, "'", "'");
@@ -128,7 +129,7 @@ if($access == $access_mobile){
     case 8:
     $curr = $level;
     $level = $add + $level;
-    echo $product->updateProductStock($id,$level,$curr,$empid,null,0,null);
+    echo $product->updateProductStock($id,$level,$curr,$empid,0,0,$supplier);
     break;
 
     case 9:

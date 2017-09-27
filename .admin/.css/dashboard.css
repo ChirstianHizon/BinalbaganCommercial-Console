@@ -22,7 +22,9 @@
 }
 
 /*  GRID COLUMN SETUP   ==================================================================== */
-.col { border-radius: 5px;background: #EEEEEE; padding:1em 0; text-align:center;}
+.col {
+	/*border-radius: 5px;*/
+	background: #EEEEEE; padding:1em 0; text-align:center;}
 .col {
 	display: block;
 	float:left;
@@ -114,6 +116,16 @@
 #col4{
   background-color: #3366cc;
 }
+
+.bar{
+	width: 100%;
+	background-color: black;
+	padding: 5px;
+	margin-left: -10px;
+	background-color: #222222;
+	color:white;
+}
+
 
 
 /* INSERT STYLES HERE*/

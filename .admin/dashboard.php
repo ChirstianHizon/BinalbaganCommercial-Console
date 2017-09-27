@@ -9,34 +9,38 @@
 <div class="section group">
 	<div id="col1"class="col span_1_of_4">
     <div class="dash-header">
-	<b>Total Products</b>
       <div id="head-1" class="dash-header-cont">0</div>
       <br/>
-      
+      <div class="bar">
+          Total Products
+      </div>
     </div>
 	</div>
 	<div id="col2" class="col span_1_of_4">
     <div class="dash-header">
-	<b>Total Sales</b>
       <div id="head-2" class="dash-header-cont">0</div>
       <br/>
-      
+      <div class="bar">
+          Total Sales
+      </div>
     </div>
 	</div>
 	<div id="col3" class="col span_1_of_4">
     <div class="dash-header">
-	<b>Total Delivery</b>
       <div id="head-3"class="dash-header-cont">0</div>
       <br/>
-      
+      <div class="bar">
+          Total Delivery
+      </div>
     </div>
 	</div>
 	<div id="col4" class="col span_1_of_4">
     <div class="dash-header">
-	<b>Pending Orders</b>
       <div id="head-4" class="dash-header-cont">0</div>
       <br/>
-      
+      <div class="bar">
+          Pending Orders
+      </div>
     </div>
 	</div>
 </div>
@@ -54,8 +58,8 @@
 
 <div class="table-header"><b>Pending Orders</b><i id="1" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-1" class="table-container" >
-  <div id="line"></div>
-  <table id="pending_id" class="display" width="100%" cellspacing="0">
+  <!-- <div id="line"></div> -->
+  <table id="pending_id" class="table striped hovered cell-hovered border bordered" data-role="datatable" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>Customer</th>
@@ -75,8 +79,8 @@
 
 <div class="table-header"><b>Warning Level </b><i id="2" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-2" class="table-container" >
-  <div id="line"></div>
-  <table id="warning_id" class="display" width="100%" cellspacing="0">
+  <!-- <div id="line"></div> -->
+  <table id="warning_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>Name</th>

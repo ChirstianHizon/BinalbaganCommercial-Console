@@ -58,6 +58,10 @@ $type = $_SESSION['usertype'];
 
   <script src="js/jquery.min.js"></script>
 
+  <!-- <link rel="stylesheet" type="text/css" href="api/DataTables/datatables.min.css"/> -->
+
+  <link href="api\MetroUI\css\metro.css" rel="stylesheet">
+
   <!-- Bootstrap Core CSS -->
   <link href="bootstrap/startmin/css/bootstrap.min.css" rel="stylesheet">
   <link href="bootstrap/startmin/css/metisMenu.min.css" rel="stylesheet">
@@ -74,12 +78,14 @@ $type = $_SESSION['usertype'];
 
   <link rel='stylesheet' type='text/css' href='api\jqueryui\jquery-ui.css'/>
 
-  <link rel="stylesheet" type="text/css" href="api/DataTables/datatables.min.css"/>
+
 
   <link href="api/awsomecomplete/awesomplete.css" rel="index">
   <script src="api/awsomecomplete/awesomplete.js"></script>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  <!-- <link rel="stylesheet" href="css\jsquery-ui.css"> -->
+
 
   <link rel='stylesheet' type='text/css' href='.main\index.css'/>
 </head>
@@ -274,16 +280,21 @@ $type = $_SESSION['usertype'];
       </div>
     </div>
   </div>
+
   <script src="bootstrap/startmin/js/jquery.min.js"></script>
+
+
   <!-- SCRIPTS -->
   <script src=".main\index.js"></script>
   <!-- DATATABLES -->
   <script type="text/javascript" src="api/DataTables/datatables.min.js"></script>
+
   <!-- GOOGLE CHARTS-->
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi?ext.js"></script> -->
   <!-- BOOTSTRAP -->
   <script src="bootstrap/startmin/js/bootstrap.min.js"></script>
+    <!-- <script src="api\MetroUI\js\metro.js"></script> -->
   <script src="bootstrap/startmin/js/metisMenu.min.js"></script>
   <script src="bootstrap/startmin/js/startmin.js"></script>
   <!-- END BOOTSTRAP -->

@@ -239,7 +239,7 @@ if($access == $access_mobile){
                   '<td>'.$value['prd_name'].'</td>'.
                   '<td>'.$value['cat_name'].'</td>'.
                   '<td>'.$value['prd_level'].'</td>'.
-                  '<td>'.'<button onclick="btnupdate()">Update</button>'.'</td>'.
+                  '<td>'.'<button class="button primary" onclick="btnupdate()">Update</button>'.'</td>'.
                   "</tr>";
     }
     echo json_encode(array("main" => $html));

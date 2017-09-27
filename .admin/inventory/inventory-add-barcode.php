@@ -20,7 +20,7 @@
       <h3>Registered Barcode/s</h3>
       <div id="line"></div>
       <div class="bartable">
-        <table id="barcode_id" class="display" width="100%" cellspacing="0">
+        <table id="barcode_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
           <thead>
               <tr>
                   <th>Name</th>
@@ -35,7 +35,7 @@
   </div>
 
   <div id="div2" class="col span_1_of_2">
-    <table id="table_id" class="display" width="100%" cellspacing="0">
+    <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
       <thead>
           <tr>
               <th>Name</th>

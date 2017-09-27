@@ -59,7 +59,7 @@
 <div class="table-header"><b>Pending Orders</b><i id="1" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-1" class="table-container" >
   <!-- <div id="line"></div> -->
-  <table id="pending_id" class="table striped hovered cell-hovered border bordered" data-role="datatable" width="100%" cellspacing="0">
+  <table id="pending_id" class="table hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>Customer</th>
@@ -74,7 +74,8 @@
     <tbody id="pending-body">
     </tbody>
   </table>
-
+  <br  />
+  <br  />
 </div>
 
 <div class="table-header"><b>Warning Level </b><i id="2" onclick="hide(this)" class="btnhide">-</i></div>
@@ -92,6 +93,8 @@
     <tbody id="warning-body">
     </tbody>
   </table>
+  <br  />
+  <br  />
 </div>
 
 <div class="table-header"><b>Current Sales Statistics</b><i id="4" onclick="hide(this)" class="btnhide">-</i></div>

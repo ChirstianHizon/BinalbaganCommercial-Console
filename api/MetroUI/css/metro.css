@@ -189,7 +189,7 @@ html {
   font-size: 100%;
 }
 body {
-  font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+  /*font-family: "Segoe UI", "Open Sans", sans-serif, serif;*/
   font-size: 0.875rem;
   line-height: 1.1;
   font-weight: 400;

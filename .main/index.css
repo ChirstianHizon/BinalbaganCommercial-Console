@@ -8,3 +8,10 @@ table.dataTable thead .sorting_desc {
   width: 100%;
   border-top:1px solid black;
 }
+
+thead,table{
+  background-color: white;
+}
+.w-bkd{
+  background-color: #3366cc;
+}

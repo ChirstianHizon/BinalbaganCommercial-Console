@@ -68,9 +68,12 @@ if($access == $access_mobile){
     $list = $product->getProduct();
     if(!$list){break;}
     foreach($list as $value){
-    echo  '<tr id="'.$value['prd_id'].'" ondblclick="prodselect(this)">'.
+    echo  '<tr>'.
               "<td>".$value['prd_name']."</td>".
-              '<td><b id="'.$value['prd_id'].'" ondblclick="alert(this)" class="btndelete"> X  </b></td>'.
+              '<td>
+              <button id="'.$value['prd_id'].'"  onclick="prodselect(this)" class="button primary">Edit</button>&nbsp&nbsp&nbsp&nbsp
+              <button id="'.$value['prd_id'].'"  onclick="alert(this)" class="button danger">Delete</button>
+              </td>'.
           "</tr>";
     }
     break;

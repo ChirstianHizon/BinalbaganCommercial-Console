@@ -27,7 +27,6 @@ $(function() {
   initWarningTable();
   getheaderContent();
 
-
 });
 
 window.onload = function () {

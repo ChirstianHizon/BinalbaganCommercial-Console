@@ -101,18 +101,18 @@
 
 /*------ DASHBOARD HEAD ------*/
 #col1{
-  background-color: #EDA221;
+  background-color: #3366cc;
 }
 #col2{
   /*background-color: #19246D;
   color:white;*/
-  background-color: #EDA221;
+  background-color: #3366cc;
 }
 #col3{
-  background-color: #EDA221;
+  background-color: #3366cc;
 }
 #col4{
-  background-color: #EDA221;
+  background-color: #3366cc;
 }
 
 
@@ -120,6 +120,7 @@
 .dash-header-cont{
   font-size: 25px;
   text-align: right;
+  color: white;
 }
 
 .dash-header{
@@ -129,6 +130,9 @@
   margin-bottom: -10px;
   padding-left: 10px;
   padding-right: 10px;
+}
+.dash-header b{
+  color: white;
 }
 .table-container{
   margin-top:-5px;

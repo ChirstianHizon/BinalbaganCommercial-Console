@@ -71,8 +71,8 @@ if($access == $access_mobile){
     echo  '<tr>'.
               "<td>".$value['prd_name']."</td>".
               '<td>
-              <button id="'.$value['prd_id'].'"  onclick="prodselect(this)" class="button primary">Edit</button>&nbsp&nbsp&nbsp&nbsp
-              <button id="'.$value['prd_id'].'"  onclick="alert(this)" class="button danger">Delete</button>
+              <button id="'.$value['prd_id'].'" style="width:75px;" onclick="prodselect(this)" class="button primary">Edit</button>
+              <button id="'.$value['prd_id'].'" style="width:75px;" onclick="alert(this)" class="button danger">Delete</button>
               </td>'.
           "</tr>";
     }
@@ -227,8 +227,9 @@ if($access == $access_mobile){
     $list = $product->getProduct();
     if(!$list){break;}
     foreach($list as $value){
-    $html= $html.'<tr id="'.$value['prd_id'].'" ondblclick="prodselect(this)">'.
+    $html= $html.'<tr>'.
                   '<td>'.$value['prd_name'].'</td>'.
+                  '<td><button id="'.$value['prd_id'].'" onclick="prodselect(this)" class="button primary"> Select </button></td>'.
                   "</tr>";
     }
     echo json_encode(array("main" => $html));
@@ -242,7 +243,7 @@ if($access == $access_mobile){
                   '<td>'.$value['prd_name'].'</td>'.
                   '<td>'.$value['cat_name'].'</td>'.
                   '<td>'.$value['prd_level'].'</td>'.
-                  '<td>'.'<button class="button primary" onclick="btnupdate()">Update</button>'.'</td>'.
+                  '<td>'.'<button class="button primary" onclick="btnupdate('.$value['prd_id'].')">Update</button>'.'</td>'.
                   "</tr>";
     }
     echo json_encode(array("main" => $html));

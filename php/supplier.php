@@ -58,9 +58,11 @@ if($access != $access_web){
       echo json_encode(array("main"=> '<option value="" disabled selected>No Category Available</option>'));
       break;
     }
+    $html = "";
     foreach($list as $value){
-      echo json_encode(array("main"=> '<option value="'.$value['sup_id'].'">'.$value['sup_name'].'</option>'));
+    $html .='<option value="'.$value['sup_id'].'">'.$value['sup_name'].'</option>';
     }
+    echo json_encode(array("main"=> $html));
     break;
   }
 }

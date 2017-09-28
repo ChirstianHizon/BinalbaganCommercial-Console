@@ -84,9 +84,9 @@
   <table id="warning_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Product Name</th>
             <th>Category</th>
-            <th>Level</th>
+            <th>Remaining Stock</th>
             <th style="width:70px;">Action</th>
         </tr>
     </thead>

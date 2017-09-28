@@ -33,7 +33,7 @@ if($access == $access_web){
     $html = $html.'<tr id="'.$id.'">'.
               '<td>'.$value['bar_code'].'</td>'.
               '<td>
-              <button id="'.$value['bar_id'].'" onclick="deletebarcode(this)">X</button>
+              <button id="'.$value['bar_id'].'" class="button danger" onclick="deletebarcode(this)">Remove</button>
               </td>'.
           "</tr>";
     }

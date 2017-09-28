@@ -5,7 +5,6 @@
     </div>
 </div>
 
-
 <div class="section group">
   <!-- FORMS -->
   <div id="div1" class="col span_1_of_2">
@@ -48,3 +47,12 @@
 </div>
 <!-- SCRIPTS HERE!!! -->
 <script src=".admin/.js\inventory\update-prod.js"></script>
+
+<?php
+
+$prod = (isset($_GET['prod']) && $_GET['prod'] != '') ? $_GET['prod'] : '';
+if($prod != ''){
+  echo "<script>prodautoselect(".$prod.");</script>";
+}
+
+ ?>

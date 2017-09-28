@@ -7,28 +7,30 @@
 
 <div class="section group">
 	<div class="col span_1_of_2">
+    <div class="table-header"><b>Barcode List</b></div>
+    <div class="table-container">
     <div class="dttable">
-      Pending Deliveries
-
-      <table id="app_id" class="display" width="100%" cellspacing="0">
+      <table id="app_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th>Customer</th>
+                <th>Order No.</th>
                 <th>Date Ordered</th>
-                <th>Total Items</th>
+                <!-- <th>Total Items</th> -->
                 <th>Customer</th>
-                <th></th>
+                <th style="width:10px;"></th>
             </tr>
         </thead>
         <tbody id="app-body">
         </tbody>
       </table>
+      <br />
 
     </div>
+    </div>
+    <div class="table-header"><b>Completed Delivery</b></div>
+    <div class="table-container">
     <div class="dttable">
-      Completed Deliveries
-
-        <table id="complete_id" class="display" width="100%" cellspacing="0">
+        <table id="complete_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Order ID</th>
@@ -40,11 +42,37 @@
         <tbody id="complete-body">
         </tbody>
       </table>
-
     </div>
+  </div>
 	</div>
 	<div class="col span_1_of_2">
-	<div id="map"></div>
+    <div class="table-header"><b>Map</b></div>
+    <div class="table-container">
+      <div class="dttable">
+	     <div id="map"></div>
+     </div>
+   </div>
+   <div class="table-header"><b>Route Selector</b></div>
+   <div class="table-container">
+     <b>Total Route: </b>
+     <div class="dttable">
+       <table id="route_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+         <thead>
+             <tr>
+                 <th>Time</th>
+                 <th>No.</th>
+                 <th>Latitude</th>
+                 <th>Longitude</th>
+                 <th></th>
+             </tr>
+         </thead>
+         <tbody id="route-body">
+         </tbody>
+       </table>
+       <br />
+       <br />
+     </div>
+   </div>
 	</div>
 </div>
 

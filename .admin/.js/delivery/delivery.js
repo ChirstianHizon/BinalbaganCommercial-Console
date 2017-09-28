@@ -15,7 +15,7 @@ $(function() {
 
 
 // ------------------------------------- DATA TABLES -------------------------//
-var comptb,apptb;
+var comptb,apptb,routetb;
 function inititalizeTables() {
   apptb = $('#app_id').DataTable({
     "responsive": true,
@@ -31,8 +31,20 @@ function inititalizeTables() {
     "bInfo" : false,
     "pageLength": 10
   });
-
+  routetb = $('#route_id').DataTable({
+    "responsive": true,
+    "bLengthChange": false,
+    "bFilter": false ,
+    "bInfo" : false,
+    "pageLength": 10
+  });
 }
+
+
+
+
+//
+var delivery_id;
 function getPendingDelivery(){
   $.ajax({
     url: "php/delivery.php",
@@ -46,7 +58,7 @@ function getPendingDelivery(){
       // console.log(result);
       apptb.destroy();
       document.getElementById("app-body").innerHTML = result.main;
-      warning_table = $('#app_id').DataTable({
+      apptb = $('#app_id').DataTable({
         "responsive": true,
         "bLengthChange": false,
         "bFilter": false ,
@@ -58,6 +70,35 @@ function getPendingDelivery(){
     }
   });
 }
+
+function getDeliverytbRoute(id){
+  delivery_id = id;
+  $.ajax({
+    url: "php/delivery.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "id":id,
+      "type":4
+    },success: function(result){
+      // console.log(result);
+      routetb.destroy();
+      document.getElementById("route-body").innerHTML = result.main;
+      routetb = $('#route_id').DataTable({
+        "responsive": true,
+        "bLengthChange": false,
+        "bFilter": false ,
+        "bInfo" : false,
+        "pageLength": 5
+      });
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
 
 function getCompletedDelivery(){
   $.ajax({
@@ -77,7 +118,7 @@ function getCompletedDelivery(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 5
+        "pageLength": 10
       });
     },error: function(response) {
       console.log(response);
@@ -114,17 +155,51 @@ function getDeliveryRoute(del_id){
   });
 }
 
+function showSpecRoute(id,routeid) {
+  $.ajax({
+    url: "php/delivery.php",
+    type: "POST",
+    async: true,
+    dataType: "json",
+    data: {
+      "access":access,
+      "id":id,
+      "routeid":routeid,
+      "type":5
+    },success: function(result){
+      console.log(result);
+      if(result){
+        if(result.COUNTER == 1){
+          alert("No End Route Found");
+        }else{
+          var route = result.COORDINATES;
+          calculateRoute(directionsService, directionsDisplay,route);
+        }
+      }else{
+        alert("NO ROUTE FOUND");
+      }
+
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
 
 
 function vieworder(clickedElement){
   var id = clickedElement.id;
-
-
 }
 
 function createRoute(clickedElement) {
   var id = clickedElement.id;
   getDeliveryRoute(id);
+  getDeliverytbRoute(id);
+}
+
+function viewSelectedRoute(clickedElement) {
+  var routeid = clickedElement.id;
+  showSpecRoute(delivery_id,routeid);
 }
 
 

@@ -78,6 +78,30 @@ function prodselect(clickedElement){
   });
 }
 
+function prodautoselect(id){
+  console.log(id);
+  $.ajax({
+    url: "php/product.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      "access":access,
+      "id":id,
+      "type":7
+    },success: function(result){
+      //console.log(result);
+      document.getElementById("updateProduct").reset();
+      document.getElementById("id").value = result.id;
+      document.getElementById("levelin").value = result.level;
+      document.getElementById("pname").innerHTML = result.name;
+      document.getElementById("level").innerHTML = result.level + " pc/s";
+      document.getElementById("status").innerHTML = result.status;
+      newid = null;
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
 
 function updatestocks(){
   var id = document.getElementById("id").value;
@@ -135,7 +159,7 @@ function generateSuppliers(){
       "access":access,
       "type":6
     },success: function(result){
-      // console.log(result);
+      console.log(result.main);
       supplier.innerHTML = result.main;
     },error: function(response) {
       console.log(response);

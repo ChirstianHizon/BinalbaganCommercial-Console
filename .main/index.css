@@ -15,3 +15,16 @@ thead,table{
 .w-bkd{
   background-color: #3366cc;
 }
+.table-container{
+  margin-top:-5px;
+  margin-bottom: 20px;
+  /*border-radius: 5px;*/
+  background-color: #EEEEEE;
+  padding:10px;
+}
+.table-header{
+  background-color: #231F20;
+  padding:10px;
+  color:white;
+  border-bottom: 1px solid black;
+}

@@ -75,6 +75,9 @@ tbody tr:hover{
   color: red;
 }
 /*------------------------------------- DATA TABLE ---------------------------------------------*/
+#prodname{
+  font-weight: bold;
+}
 #div1{
   padding:20px;
   padding-top: 0px;
@@ -98,4 +101,13 @@ button#action{
 .formcat textarea{
   width: 100%;
   font-size: 18px;
+}
+.input-control.text{
+  width: 97%;
+
+}
+input{
+  box-sizing: content-box;
+  padding: 30px;
+  font-size: 50px;
 }

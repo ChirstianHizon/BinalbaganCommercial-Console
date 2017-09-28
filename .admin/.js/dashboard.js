@@ -89,8 +89,8 @@ function initWarningTable(){
 }
 
 
-function btnupdate(){
-  window.location = 'index.php?mod=invenupdtprod';
+function btnupdate(id){
+  window.location = 'index.php?mod=invenupdtprod&prod='+id;
 }
 
 function getheaderContent(){

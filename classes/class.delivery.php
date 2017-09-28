@@ -63,10 +63,31 @@ class Delivery{
   }
 
   public function getDeliveryRoute($id) {
-    $sql="SELECT *
+    $sql="SELECT *,TIMEDIFF(route_datestamp,del_start_datestamp) AS TIME_ELAPSED
     FROM tbl_route
-    WHERE del_id = '$id'
-    ORDER BY route_datestamp ASC
+    INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
+    WHERE tbl_route.del_id = '$id'
+    ORDER BY route_id ASC
+    ";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $result = mysqli_query($this->db,$sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
+  public function getDeliverySelectedRoute($id,$routeid) {
+    $sql="SELECT *,TIMEDIFF(route_datestamp,del_start_datestamp) AS TIME_ELAPSED
+    FROM tbl_route
+    INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
+    WHERE tbl_route.del_id = '$id' AND route_id  <= '$routeid'
+    ORDER BY route_id ASC
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

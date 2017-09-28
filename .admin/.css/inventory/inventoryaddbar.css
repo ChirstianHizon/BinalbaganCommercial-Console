@@ -94,7 +94,9 @@ textarea {
 }
 
 /*---------------------------- ABOVE IS FOR THE RESPONSIVE LAYOUT THINGY ------------------------*/
-
+#prodname{
+  font-weight: bold;
+}
 .input-control.textarea, .input-control.text {
   width: 100%;
 }

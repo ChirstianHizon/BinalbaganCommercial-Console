@@ -29,11 +29,6 @@
     </div>
     <div class="table-header"><b>Completed Delivery</b></div>
     <div class="table-container">
-
-
-<button onclick="metroDialog.open('#dialog')">Show dialog</button>
-
-
     <div class="dttable">
         <table id="complete_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>

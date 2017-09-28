@@ -26,8 +26,10 @@ if($access != $access_web){
       $list = $supplier->getAllSupplier();
       if(!$list){break;}
       foreach($list as $value){
+        $in = $value['sup_name'];
+        $out = $out = strlen($in) > 30 ? substr($in,0,30)."..." : $in;
         $html.= '<tr>'.
-                  '<td><b>'.$value['sup_name'].'</b></td>'.
+                  '<td><b>'.$out.'</b></td>'.
                   '<td>
                   <button id="'.$value['sup_id'].'" onclick="selectSupplier(this)" class="button primary">Edit</button>
                     <button id="'.$value['sup_id'].'" onclick="deleteSupplier(this)" class="button danger">Delete</button>
@@ -40,7 +42,9 @@ if($access != $access_web){
       $list = $supplier->getAllSupplier();
       if(!$list){break;}
       foreach($list as $value){
-        echo json_encode(array("main" => true,"id"=>$id,"name"=> $value['sup_name'],"desc" =>$value['sup_desc']));
+        $in = $value['sup_name'];
+        echo json_encode(array("main" => true,"id"=>$id,"name"=> $in,"desc" =>$value['sup_desc']));
+        break;
       }
     break;
     case 3:

@@ -13,49 +13,53 @@
     </datalist>
   </div>
 </div>
-<div id="cart">
-   <div id="view">
-     <h4>Product List</h4>
-     <div id="line"></div>
-     <div id="table">
-       <table id="table_id" class="display" width="100%" cellspacing="0">
-         <thead>
-           <tr>
-             <th>Name</th>
-             <th>category</th>
-             <th>Price</th>
-             <th></th>
-           </tr>
-         </thead>
-         <tbody id="table-body">
-         </tbody>
-       </table>
-     </div>
-     <div id="totalamount">
-      <h4>Total Amount</h4>
-      <b id="sales-total">P 0.00</b>
-     </div>
-   </div>
-   <div id="preview">
-     <h4>Cart List</h4>
-     <div id="line"></div>
-     <div id="cartx">
-       <table id="cart_id" class="display" width="100%" cellspacing="0">
-         <thead>
-           <tr>
-             <th>Name</th>
-             <th>Quantity</th>
-             <th></th>
-           </tr>
-         </thead>
-         <tbody id="cart-table-body">
-         </tbody>
-       </table>
-     </div>
-     <div id="checkout">
-     <button id="btncheckout" autofocus>CHECK OUT</button>
-    </div>
-   </div>
+
+
+<div class="section group">
+  <div class="col span_1_of_2">
+    <div class="table-header"><b>Product List</b></div>
+    <div class="table-container">
+    <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>category</th>
+          <th>Price</th>
+          <th id="head"></th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+    <br />
+    <br />
+  </div>
+  <div id="totalamount">
+   <h4>Total Amount</h4>
+   <b id="sales-total">P 0.00</b>
+  </div>
+  </div>
+
+
+  <div class="col span_1_of_2">
+    <div class="table-header"><b>Cart List</b></div>
+    <div class="table-container">
+    <table id="cart_id" class="table striped hovered cell-hovered border " width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th style="width:50px;"></th>
+        </tr>
+      </thead>
+      <tbody id="cart-table-body">
+      </tbody>
+    </table>
+  </div>
+  <div id="checkout">
+    <button id="btncheckout" class="button success"autofocus>CHECK OUT</button>
+  </div>
+</div>
 </div>
 
 <div id="addtocart-modal" class="modal">

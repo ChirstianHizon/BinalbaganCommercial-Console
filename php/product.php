@@ -221,7 +221,7 @@ if($access == $access_mobile){
                   "<td>".$value['prd_name']."</td>".
                   "<td>".$value['cat_name']."</td>".
                   "<td>₱ ".$value['prd_price']."</td>".
-                  '<td id="'.$value['prd_id'].'" onclick="prodselect(this)"><b class="btnplus"> +  </b></td>'.
+                  '<td><button id="btnadd" style="width:100%;margin 0 auto;" id="'.$value['prd_id'].'" onclick="prodselect(this)" class="button primary"><span class="mif-plus fg-white"></span></button></td>'.
               "</tr>";
       }
 

@@ -6,7 +6,7 @@
       <!--  -->
       <li>
         <!-- class="active"  -->
-    <a><i class="fa fa-sitemap fa-fw"></i>Inventory<span class="fa arrow"></span></a>
+    <a><span class="mif-cabinet fg-darkblue"></span>&nbsp Inventory<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
         <a href="index.php?mod=invenaddprod">Add New Product</a>
@@ -32,7 +32,7 @@
   </li>
   <!--  -->
   <li>
-    <a><i class="fa fa-sitemap fa-fw"></i>Sales<span class="fa arrow"></span></a>
+    <a><span class="mif-cart fg-darkblue"></span>&nbsp Sales<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
         <a href="index.php?mod=salespos">Point of Sales</a>
@@ -43,15 +43,18 @@
       <li>
         <a href="index.php?mod=orders">Orders</a>
       </li>
-      <li>
-        <a href="index.php?mod=delivery">Delivery</a>
-      </li>
     </ul>
 
   </li>
   <!--  -->
+
   <li>
-    <a><i class="fa fa-sitemap fa-fw"></i>Reports<span class="fa arrow"></span></a>
+    <a class="active" href="index.php?mod=delivery" ><span class="mif-truck fg-darkblue"></span>&nbsp Delivery</a>
+  </li>
+
+  <!--  -->
+  <li>
+    <a><span class="mif-chart-bars fg-darkblue"></span>&nbsp Reports<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
         <a href="index.php?mod=reportinven">Inventory</a>
@@ -64,7 +67,7 @@
 
   <!--  -->
   <li>
-    <a><i class="fa fa-sitemap fa-fw"></i>Accounts<span class="fa arrow"></span></a>
+    <a><span class="mif-users fg-darkblue"></span>&nbsp Accounts<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
         <a href="index.php?mod=accnew">Create New Account</a>

@@ -29,7 +29,7 @@ switch ($type) {
     $html = $html.'<tr id="'.$value['cart_id'].'">'.
               '<td id="'.$value['cart_id'].'" onclick="cartselect(this)">'.$value['prd_name'].'</td>'.
               '<td id="'.$value['cart_id'].'" onclick="cartselect(this)">'.$value['cart_prd_qty'].'</td>'.
-              '<td id="'.$value['cart_id'].'" onclick="cartdelete(this)"><b class="btndelete"> X  </b></td>'.
+              '<td><button style="width:100%;margin 0 auto;" id="'.$value['cart_id'].'" onclick="cartdelete(this)" class="button danger"> <span class="mif-cross fg-white"></span></button></td>'.
           "</tr>";
     }
     echo json_encode(array("main" => $html,"total"=> $count));

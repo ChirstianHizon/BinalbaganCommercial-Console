@@ -56,7 +56,7 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th style="width:180px;"></th>
+            <th style="width:210px;"></th>
         </tr>
     </thead>
     <tbody id="table-body">

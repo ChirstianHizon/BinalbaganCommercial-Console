@@ -34,7 +34,7 @@ function getProductList() {
       table.destroy();
       table =  $('#table_id').DataTable({
         "responsive": true,
-        "bFilter": false,
+        // "bFilter": false,
         "bLengthChange": false,
         "ordering": false,
         "bInfo" : false
@@ -44,6 +44,10 @@ function getProductList() {
     }
   });
 }
+
+$('#tbsearch').on( 'keyup', function () {
+    table.search( this.value ).draw();
+} );
 
 function getBarcodeList(id) {
   $.ajax({

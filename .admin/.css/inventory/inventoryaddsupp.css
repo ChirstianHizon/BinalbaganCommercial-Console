@@ -60,37 +60,15 @@ textarea {
 }
 /*---------------------------- ABOVE IS FOR THE RESPONSIVE LAYOUT THINGY ------------------------*/
 
-/*------------------------------------- DATA TABLE ---------------------------------------------*/
-table tr{
-  cursor: pointer;
-}
-tbody tr:hover{
-  background-color: #EEEEEE;
-}
-.delete{
-  width: 40px;
-  text-align: center;
-}
-.delete:hover{
-  color: red;
-}
-/*------------------------------------- DATA TABLE ---------------------------------------------*/
-#div1{
-  padding:20px;
-  padding-top: 0px;
-}
-#newSupplier{
-  margin-top: -15px;
-}
-#updateSupplier{
-  margin-top: -15px;
-  display: none;
-}
-.formcat{
-  /**/
-}
-.formcat input,
-.formcat textarea{
+.input-control.textarea,
+.input-control.text{
   width: 100%;
-  font-size: 18px;
+}
+
+#supbtn,
+#clear{
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
 }

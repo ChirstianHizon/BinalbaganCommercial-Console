@@ -28,3 +28,9 @@ thead,table{
   color:white;
   border-bottom: 1px solid black;
 }
+.dataTables_paginate{
+  width: 100%;
+}
+table button{
+  min-width: 80px;
+}

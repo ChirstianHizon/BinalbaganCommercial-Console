@@ -38,8 +38,11 @@ switch ($type) {
     if(!$list){break;}
     foreach($list as $value){
     echo  '<tr >'.
-              '<td id="'.$value['cat_id'].'" ondblclick="catselect(this)"><b>'.$value['cat_name'].'</b></td>'.
-              '<td id="'.$value['cat_id'].'" ondblclick="catselect(this)" class="delete"><b> X </b></td>'.
+              '<td><b>'.$value['cat_name'].'</b></td>'.
+              '<td>
+                <button  id="'.$value['cat_id'].'"  onclick="catselect(this)" class="button primary">Edit</button>
+                <button  id="'.$value['cat_id'].'"  onclick="catdelete(this)" class="button danger">Delete</button>
+              </td>'.
           "</tr>";
     }
   break;

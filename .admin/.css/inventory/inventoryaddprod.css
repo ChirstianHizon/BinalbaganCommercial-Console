@@ -89,6 +89,14 @@ textarea{
   padding: 5px;
   box-sizing:content-box;
 }
+#btnload{
+  margin-top: 20px;
+  width: 97%;
+  font-size: 20px;
+  padding: 5px;
+  box-sizing:content-box;
+  display: none;
+}
 #btnupdate{
   margin-top: 20px;
   margin-right: 10px;

@@ -26,9 +26,12 @@ if($access != $access_web){
       $list = $supplier->getAllSupplier();
       if(!$list){break;}
       foreach($list as $value){
-        $html.= '<tr id="'.$value['sup_id'].'" onclick="selectSupplier(this)" >'.
+        $html.= '<tr>'.
                   '<td><b>'.$value['sup_name'].'</b></td>'.
-                  '<td><button id="'.$value['sup_id'].'" onclick="deleteSupplier(this)">Delete</button></td>'.
+                  '<td>
+                  <button id="'.$value['sup_id'].'" onclick="selectSupplier(this)" class="button primary">Edit</button>
+                    <button id="'.$value['sup_id'].'" onclick="deleteSupplier(this)" class="button danger">Delete</button>
+                  </td>'.
                 "</tr>";
       }
       echo json_encode(array("main" => $html));

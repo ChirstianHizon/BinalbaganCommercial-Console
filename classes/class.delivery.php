@@ -68,6 +68,7 @@ class Delivery{
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
     WHERE tbl_route.del_id = '$id'
     ORDER BY route_id ASC
+    limit 25
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);
@@ -88,6 +89,7 @@ class Delivery{
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
     WHERE tbl_route.del_id = '$id' AND route_id  <= '$routeid'
     ORDER BY route_id ASC
+    limit 25
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

@@ -7,44 +7,73 @@
 <div class="section group">
   <!-- FORMS -->
   <div id="div1" class="col span_1_of_2">
-  <form id="newCategory" class="formcat">
-    <h3>Add a New Category</h3>
-    <div id="line"></div>
-    <br/>
-    <b>Category Name:</b></br>
-    <input id="catname" type="text" required><br/><br/>
-    <b>Category Description:</b><br/>
-    <textarea id="desc" rows="8" required></textarea><br/><br/>
-    <button >Add New Category</button>
-  </form>
+    <div class="table-header"><b>Category Details</b></div>
+    <div class="table-container">
+      <form id="newCategory" class="formcat">
+        <br/>
 
-  <form id="updateCategory" class="formcat">
-    <h3>Update Category</h3>
-    <div id="line"></div>
-    <br/>
-    <input readonly='true' class="nodisplay" id="upid" type="numeric" required>
-    Category Name:<br/>
-    <input id="upname" type="text" required><br/><br/>
-    Category Description:<br/>
-    <textarea id="updesc" rows="8" required></textarea><br/><br/>
-    <button >Update Category</button>
-  </form>
+        <b>Name:</b></br>
+        <div class="input-control text" data-role="input">
+          <input id="catname" type="text" required>
+          <button class="button helper-button clear"><span class="mif-cross"></span></button>
+        </div>
+        <br/>
+        <br/>
+
+        <b>Description:</b><br/>
+        <div class="input-control textarea"
+            data-role="input" data-text-auto-resize="true" data-text-max-height="150">
+        <textarea id="desc" rows="8" required></textarea>
+        </div>
+
+        <br/>
+        <br/>
+        <button id="catbtn" class="button loading-pulse lighten primary" >Add New Category</button>
+        <br/>
+        <br/>
+      </form>
+
+      <form id="updateCategory" class="formcat">
+        <!-- <h3>Update Category</h3>
+        <div id="line"></div> -->
+        <br/>
+        <input readonly='true' class="nodisplay" id="upid" type="numeric" required>
+
+        Category Name:<br/>
+        <div class="input-control text" data-role="input">
+          <input id="upname" type="text" required>
+        </div><br/><br/>
+        Category Description:<br/>
+        <div class="input-control textarea"
+            data-role="input" data-text-auto-resize="true" data-text-max-height="150">
+            <textarea id="updesc" rows="8" required></textarea>
+        </div><br/><br/>
+        <button id="catbtn" class="button loading-pulse lighten primary">Update Category</button>
+        <button  id="clear" onclick="return"class="button loading-pulse success">Add a New Category</button>
+      </form>
+    </div>
   <br/>
-  <button  id="clear" >Clear</button>
+
 </div>
 <div id="div2" class="col span_1_of_2">
+  <div class="table-header"><b>Add New Product</b><br/></div>
+  <div class="table-container">
     <div id="tableidreborn">
-    <table id="table_id" class="display" width="100%" cellspacing="0">
+    <table id="table_id" class="datatable striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
       <thead>
           <tr>
               <th>Name</th>
-              <th style="width:70px;"></th>
+              <th style="width:200px;"></th>
           </tr>
       </thead>
       <tbody id="table-body">
       </tbody>
     </table>
+    <br />
+    <br />
+    <br />
     </div>
+  </div>
   </div>
 </div>
 <!-- SCRIPTS HERE!! -->

@@ -47,10 +47,9 @@
     <div id="line"></div><br/>
 
 
-    Available Stock:<br>
-    <div class="input-control text">
-      <input id="level" type="number" step="1"  min="0" required>
-    </div><br>
+
+      <input id="level" value="0" type="number" step="1"  min="0" hidden="true">
+
 
 
     Optimal Level:<br>
@@ -73,6 +72,7 @@
 
 
     <button id="btnadd" class="button loading-pulse lighten primary">Add New Product</button>
+    <button id="btnload" onclick="return false" class="button loading-cube">Uploading Product</button>
 
   </form>
   <!--  -->
@@ -144,7 +144,7 @@
       <thead>
           <tr>
               <th>Name</th>
-              <th style="width:185px;"></th>
+              <th style="width:200px;"></th>
           </tr>
       </thead>
       <tbody id="table-body">

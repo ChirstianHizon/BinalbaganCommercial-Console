@@ -12,8 +12,6 @@ $(function() {
 
 
 });
-
-
 // ------------------------------------- DATA TABLES -------------------------//
 var comptb,apptb,routetb;
 function inititalizeTables() {

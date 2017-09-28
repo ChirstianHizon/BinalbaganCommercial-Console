@@ -23,7 +23,7 @@
       <h3>Registered Barcode/s</h3>
       <div id="line"></div>
       <div class="bartable">
-        <table id="barcode_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+        <table id="barcode_id" class="datatable striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
           <thead>
               <tr>
                   <th>Name</th>
@@ -41,6 +41,9 @@
   <div id="div2" class="col span_1_of_2">
     <div class="table-header"><b>Barcode List</b></div>
     <div class="table-container">
+      <div class="input-control text">
+        <input id="tbsearch" class="tbsearch" type="search">
+      </div>
     <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
       <thead>
           <tr>

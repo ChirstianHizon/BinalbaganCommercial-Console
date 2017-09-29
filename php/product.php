@@ -164,11 +164,11 @@ if($access == $access_mobile){
       }
 
     echo  '<tr>'.
-              "<td>".$value['prd_name']."</td>".
+              "<td><b>".$value['prd_name']."</b></td>".
               // "<td>".$value['cat_name']."</td>".
               // "<td>".$value['prd_price']."</td>".
               // "<td>".$value['prd_level']."</td>".
-              '<td><button  id="'.$value['prd_id'].'" onclick="prodselect(this)" >View</button></td>'.
+              '<td><button  id="'.$value['prd_id'].'" onclick="prodselect(this)" class="button primary">View</button></td>'.
           "</tr>";
     }
     break;

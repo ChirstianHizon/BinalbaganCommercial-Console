@@ -68,6 +68,7 @@ function prodselect(clickedElement){
       document.getElementById("updateProduct").reset();
       document.getElementById("id").value = result.id;
       document.getElementById("levelin").value = result.level;
+      prodname = result.name;
       document.getElementById("pname").innerHTML = result.name;
       document.getElementById("level").innerHTML = result.level + " pc/s";
       document.getElementById("status").innerHTML = result.status;
@@ -77,7 +78,7 @@ function prodselect(clickedElement){
     }
   });
 }
-
+var prodname;
 function prodautoselect(id){
   console.log(id);
   $.ajax({
@@ -140,6 +141,7 @@ function updatestocks(){
         document.getElementById("updateProduct").reset();
         document.getElementById("btnupdate").disabled = false;
         createProductTable();
+        StockAdded(prodname,levelin);
       }
     },error: function(response) {
       console.log(response);
@@ -173,7 +175,14 @@ function generateSuppliers(){
 
 
 
-
+// ------------------------------------ NOTIFICATIONS
+function StockAdded(name,qty) {
+  $.Notify({
+      caption: 'Stock Added Successfully',
+      content: qty+ ' has been added to '+name,
+      type: 'success'
+  });
+}
 
 
 

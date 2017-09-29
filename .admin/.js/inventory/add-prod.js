@@ -93,6 +93,7 @@ $("#newProduct").submit(function() {
   product.level = Number(document.getElementById("level").value);
   product.optimal = Number(document.getElementById("newoptimal").value);
   product.warning = Number(document.getElementById("warning").value);
+  
   if (product.optimal <= product.warning) {
     // alert("Warning Level Must NOT be Lower than Optimal Level");
     LevelError();
@@ -145,6 +146,7 @@ $("#newProduct").submit(function() {
     return false;
   }
   // alert("Image is Currently Being Uploaded");
+  UploadReminder();
   var uploadTask = storageRef.child('products/' + file.name + product.name).put(file);
   uploadTask.on('state_changed', function(snapshot) {
     var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -173,10 +175,12 @@ $("#newProduct").submit(function() {
         if (result.main) {
           // console.log(result);
           // alert("Product has been Addded");
+          ProductAdded(product.name);
           document.getElementById("newProduct").reset();
           createProductTable();
         } else {
-          alert("Product Name is Already Used");
+          ProductError(product.name);
+          // alert("Product Name is Already Used");
           document.getElementById('btnadd').disabled = false;
         }
         show('#btnadd');
@@ -248,6 +252,7 @@ $("#updateProduct").submit(function() {
     console.log("no image");
     return false;
   }
+  UploadReminder();
   var uploadTask = storageRef.child('products/' + file.name + product.name).put(file);
   uploadTask.on('state_changed', function(snapshot) {
     var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -274,7 +279,8 @@ $("#updateProduct").submit(function() {
       },
       success: function(result) {
         if (result) {
-          alert("Update Complete");
+          // alert("Update Complete");
+          ProductUpdated(product.name);
           console.log(result);
           document.getElementById("updateProduct").reset();
           createProductTable();
@@ -384,6 +390,7 @@ function deletefunction() {
   });
 }
 
+// -------------------------------------------- Notifications ----------------------------//
 
 function ProductAdded(name) {
   $.Notify({
@@ -392,7 +399,13 @@ function ProductAdded(name) {
       type: 'success'
   });
 }
-
+function ProductUpdated(name) {
+  $.Notify({
+      caption: 'Product Updated',
+      content: name+' has been Sucessfully updated',
+      type: 'success'
+  });
+}
 function ProductError(name) {
   $.Notify({
       caption: 'Name already used',
@@ -400,11 +413,20 @@ function ProductError(name) {
       type: 'alert'
   });
 }
+
 function LevelError() {
   $.Notify({
       caption: 'Level Error',
       content: 'Warning Level must not be equal or greater than Warning Level',
       type: 'alert'
+  });
+}
+
+function UploadReminder() {
+  $.Notify({
+      caption: 'Reminder',
+      content: 'Wait for the Product to finish Uploading',
+      type: 'warning'
   });
 }
 

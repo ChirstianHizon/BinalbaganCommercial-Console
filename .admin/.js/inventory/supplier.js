@@ -39,17 +39,19 @@ $("#newSupplier").submit(function(){
       if(result.main){
         document.getElementById("newSupplier").reset();
         getSupplier();
+        SupplierAdded(name);
       }
     },error: function(response) {
       console.log(response);
     }
   });
 });
-
+var supname;
 $("#updateSupplier").submit(function(){
   var id = document.getElementById("upid").value;
   var name = document.getElementById("upname").value;
   var desc = document.getElementById("updesc").value;
+  supname = name;
   // 1 - ADD
   // 2 - UPDATE
   // 3 - DELETE
@@ -70,6 +72,9 @@ $("#updateSupplier").submit(function(){
     },success: function(result){
       if(result.main){
         getSupplier();
+        SupplierAdded(name);
+      }else{
+        SupplierError(name);
       }
     },error: function(response) {
       console.log(response);
@@ -122,6 +127,7 @@ function selectSupplier(clickedElement){
       //console.log(result.name);
       document.getElementById("upid").value = result.id;
       document.getElementById("upname").value = result.name;
+      supname = result.name;
       document.getElementById("updesc").value = result.desc;
     },error: function(response) {
       console.log(response);
@@ -142,7 +148,7 @@ function deleteSupplier(clickedElement){
       "type":5
     },success: function(result){
       //console.log(result.name);
-      alert("Delete Sucessful");
+      SupplierDeleted(supname);
       getSupplier();
     },error: function(response) {
       console.log(response);
@@ -154,6 +160,31 @@ function deleteSupplier(clickedElement){
 
 
 
+// -------------------------------------------- Notifications ----------------------------//
+
+function SupplierAdded(name) {
+  $.Notify({
+      caption: 'Supplier Added',
+      content: name+' has been added to Records',
+      type: 'success'
+  });
+}
+
+function SupplierDeleted(name) {
+  $.Notify({
+      caption: '<b>Supplier Deleted</b>',
+      content: 'Supplier has been removed from the Records',
+      type: 'success'
+  });
+}
+
+function SupplierError(name) {
+  $.Notify({
+      caption: 'Name already used',
+      content: name+' is unable to add to the Records',
+      type: 'alert'
+  });
+}
 
 
 

@@ -6,7 +6,7 @@
       <!--  -->
       <li>
         <!-- class="active"  -->
-    <a><i class="fa fa-sitemap fa-fw"></i>Inventory<span class="fa arrow"></span></a>
+    <a><span class="mif-cabinet fg-darkblue"></span>&nbsp Inventory<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
         <a href="index.php?mod=invenviewprod">View Products</a>
@@ -16,14 +16,7 @@
   </li>
   <!--  -->
   <li>
-    <a><i class="fa fa-sitemap fa-fw"></i>Sales<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-      <li>
-        <a href="index.php?mod=delivery">Delivery</a>
-      </li>
-    </ul>
+    <a class="active" href="index.php?mod=delivery" ><span class="mif-truck fg-darkblue"></span>&nbsp Delivery</a>
   </li>
-  <!--  -->
-
 
 </ul>

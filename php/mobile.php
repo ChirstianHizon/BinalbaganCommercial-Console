@@ -9,7 +9,9 @@ include '..\classes\class.product_log.php';
 include '..\classes\class.employee.php';
 include '..\classes\class.barcode.php';
 include '..\classes\class.delivery.php';
+include '../classes/class.utility.php';
 
+$utility = new Utility();
 $delivery = new Delivery();
 $employee = new Employee();
 $sales = new Sales();
@@ -32,6 +34,12 @@ $lat = (isset($_POST['lat']) && $_POST[''] != 'lat') ? $_POST['lat'] : '';
 $lng = (isset($_POST['lng']) && $_POST['lng'] != '') ? $_POST['lng'] : '';
 
 $coord = (isset($_POST['coord']) && $_POST['coord'] != '') ? $_POST['coord'] : '';
+
+$uname =$utility->str_insert($uname, "'", "'");
+$pass =$utility->str_insert($pass, "'", "'");
+
+$uname =$utility->str_insert($uname, "/", "/");
+$pass =$utility->str_insert($pass, "/", "/");
 
 $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);

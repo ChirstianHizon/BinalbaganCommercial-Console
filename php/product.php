@@ -2,6 +2,7 @@
 include '../library/config.php';
 include '../classes/class.product.php';
 include '../classes/class.utility.php';
+
 $product = new Product();
 $utility = new Utility();
 
@@ -25,12 +26,17 @@ $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access']
 
 $supplier = (isset($_POST['supplier']) && $_POST['supplier'] != '') ? $_POST['supplier'] : '';
 
-
 $name =$utility->str_insert($name, "'", "'");
 $desc =$utility->str_insert($desc, "'", "'");
 $category =$utility->str_insert($category, "'", "'");
 $barcode =$utility->str_insert($barcode, "'", "'");
 $image =$utility->str_insert($image, "'", "'");
+
+$name =$utility->str_insert($name, "/", "/");
+$desc =$utility->str_insert($desc, "/", "/");
+$category =$utility->str_insert($category, "/", "/");
+$barcode =$utility->str_insert($barcode, "/", "/");
+$image =$utility->str_insert($image, "/", "/");
 
 
 // 1 - ADD

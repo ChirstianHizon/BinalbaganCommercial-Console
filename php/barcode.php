@@ -13,6 +13,7 @@ $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 
 $code =$utility->str_insert($code, "'", "'");
+$code =$utility->str_insert($code, "/", "/");
 
 $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";
 

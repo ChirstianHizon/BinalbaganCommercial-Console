@@ -22,6 +22,12 @@ $fname =$utility->str_insert($fname, "'", "'");
 $lname =$utility->str_insert($lname, "'", "'");
 $image =$utility->str_insert($image, "'", "'");
 
+$uname =$utility->str_insert($uname, "/", "/");
+$pass =$utility->str_insert($pass, "/", "/");
+$fname =$utility->str_insert($fname, "/", "/");
+$lname =$utility->str_insert($lname, "/", "/");
+$image =$utility->str_insert($image, "/", "/");
+
 
 switch ($type) {
   case 0:

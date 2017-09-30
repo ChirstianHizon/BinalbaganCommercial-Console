@@ -38,7 +38,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th style="width:100px;">Price</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody id="supp-body">

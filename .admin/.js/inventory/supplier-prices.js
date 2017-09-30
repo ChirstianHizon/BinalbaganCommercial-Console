@@ -166,12 +166,17 @@ function subSuppPrice(){
 }
 
 function displayDetails() {
+  // alert();
+
+  getSupplier();
   suppid = document.getElementById("supplier").value;
   if(!prdid){
     return false;
   }else if(!suppid){
     return false;
   }
+
+
 
   $.ajax({
     url: "php/supplier.php",

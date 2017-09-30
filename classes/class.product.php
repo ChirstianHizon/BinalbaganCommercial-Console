@@ -89,13 +89,18 @@
     }
 
     public function updateProductStock($id,$level,$curr,$empid,$type,$salesid,$supid){
+      $sql = "SELECT sprice_price AS price FROM  tbl_supplier_prices WHERE sup_id = '$supid' AND prd_id = '$id' limit 1";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+      $row = mysqli_fetch_assoc($result);
+      $price = $row['price'];
+
       $sql = "UPDATE tbl_product SET
       prd_level = '$level'
       WHERE prd_id = '$id'";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
 
-      $sql = "INSERT INTO tbl_product_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,log_type,sales_id,sup_id)
-        VALUES('$id','$curr',NOW(),NOW(),'$empid','$type','$salesid','$supid')";
+      $sql = "INSERT INTO tbl_product_log(prd_id,log_qty,log_datestamp,log_timestamp,emp_id,log_type,sales_id,sup_id,supp_price)
+        VALUES('$id','$curr',NOW(),NOW(),'$empid','$type','$salesid','$supid','$price')";
       $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
       return $supid;
     }

@@ -5,21 +5,42 @@
     </div>
 </div>
 
-<div id="datepicker">
-  <h5><b>Choose Date:</b></h5><br/>
-  <b>From</b>
-  <form onsubmit="searchagain()">
-  <input readonly='true' class="datepicker" onchange="fromdatechange()" type="text" id="fromdatepicker" placeholder="From">
-  <b>to</b>
-  <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
+<form onsubmit="searchagain()">
+  <div class="section group">
+  	<div class="col span_1_of_3">
+
+    	Start Date: <br />
+      <div class="input-control text" >
+        <input readonly='true' class="datepicker" onchange="fromdatechange()" type="text" id="fromdatepicker" placeholder="From">
+      </div>
+
+  	</div>
+  	<div class="col span_1_of_3">
+
+      End Date: <br />
+      <div class="input-control text" >
+        <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
+      </div>
+
+    </div>
+  	<div class="col span_1_of_3">
+
+      Supplier<br>
+      <div class="input-control select" >
+        <select id="supplier" placeholder="optional"required>
+        <option value="" disabled selected>No Supplier Available</option>
+        </select>
+      </div><br>
+
+
+  	</div>
+  </div>
   <button>Search</button>
 </form>
-</div>
-
 <br/>
 <div class="table-header"><b>Ready for Pickup</b></div>
 <div class="table-container">
-<table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+<table id="datatb_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
       <th>Product Name</th>
@@ -27,9 +48,12 @@
       <th>Type</th>
       <th>Employee</th>
       <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Supplier</th>
+
     </tr>
   </thead>
-  <tbody id="table-body">
+  <tbody id="datatb-body">
   </tbody>
 </table>
 </div>

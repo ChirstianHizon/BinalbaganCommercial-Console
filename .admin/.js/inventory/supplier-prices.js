@@ -155,6 +155,7 @@ function subSuppPrice(){
       }else{
         PriceUpdated(pname,sname);
       }
+      getSupplier();
       displayDetails();
     },error: function(response) {
       console.log(response);

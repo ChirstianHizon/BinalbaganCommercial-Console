@@ -34,10 +34,10 @@
     <br />
     <br />
   </div>
-  <div id="totalamount">
-   <h4>Total Amount</h4>
-   <b id="sales-total">P 0.00</b>
-  </div>
+  <div class="table-header" style="background-color:black;"><b><h4 style="padding:0;margin:0;margin-bottom:3px;">Total:</h4></b></div>
+    <div id="totalamount">
+      <b id="sales-total">P 0.00</b>
+    </div>
   </div>
 
 

@@ -50,7 +50,7 @@ class Order
             tbl_customer.cust_id AS CUSTOMER_ID,
             tbl_customer.cust_firstname AS CUST_FNAME,
             tbl_customer.cust_lastname AS CUST_LNAME,
-            COUNT(prd_qty) AS QUANTITY
+            SUM(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
@@ -82,7 +82,7 @@ class Order
             order_type AS TYPE ,
             cust_id AS CUSTOMER,
             receive_datestamp AS RECEIEVE,
-            COUNT(prd_qty) AS QUANTITY
+            SUM(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
             WHERE order_status = '1' AND order_type = '0' AND receive_datestamp != '0000-00-00'
@@ -140,7 +140,7 @@ class Order
     tbl_order_list.order_id AS ID,
     SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
     order_datestamp AS DATE,
-    COUNT(prd_qty) AS QUANTITY
+    prd_qty AS QUANTITY
     FROM tbl_order_list
     INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
     INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id

@@ -9,23 +9,25 @@
     <a><span class="mif-cabinet fg-darkblue"></span>&nbsp Inventory<span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
-        <a href="index.php?mod=invenaddprod">Add New Product</a>
+        <a href="index.php?mod=invenaddprod">Add Products</a>
       </li>
       <li>
-        <a href="index.php?mod=invenviewprod">View Products</a>
-      </li>
-
-      <li>
-        <a href="index.php?mod=invenaddcat">View Category</a>
+        <a href="index.php?mod=invenviewprod">Product List</a>
       </li>
       <li>
-        <a href="index.php?mod=invenaddsupp">View Supplier</a>
+        <a href="index.php?mod=invenupdtprod">Add Stock</a>
       </li>
       <li>
-        <a href="index.php?mod=invenupdtprod">Update Product List</a>
+        <a href="index.php?mod=invenaddcat">Categories</a>
       </li>
       <li>
-        <a href="index.php?mod=invenaddbar">Add Barcode</a>
+        <a href="index.php?mod=invenaddsupp">Suppliers</a>
+      </li>
+      <li>
+        <a href="index.php?mod=invensuppprices">Supplier Prices</a>
+      </li>
+      <li>
+        <a href="index.php?mod=invenaddbar">Barcodes</a>
       </li>
     </ul>
 

@@ -56,9 +56,10 @@ include '..\classes\class.customer.php';
                 '<td id="'.$value['ID'].'" >'.$order_type.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_qty.' item/s</td>'.
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
-                '<td id="'.$value['ID'].'" onclick="vieworderList(this)" ><b id="view"> VIEW </b></td>'.
-                '<td id="'.$value['ID'].'" onclick="approvedOrder(this)" ><b id="approve"> APPROVE  </b></td>'.
-                '<td id="'.$value['ID'].'" onclick="alert(this)" ><b id="decline"> DECLINE  </b></td>'.
+                '<td>
+                <button  id="'.$value['ID'].'" class="button primary" onclick="vieworderList(this)">View</button>
+                <button  id="'.$value['ID'].'" class="button success" onclick="approvedOrder(this)">Approved</button>
+                <button  id="'.$value['ID'].'" class="button danger"  onclick="alert(this)">Decline</button>'.
             "</tr>";
       $html = $html.$body;
     }
@@ -73,6 +74,7 @@ include '..\classes\class.customer.php';
     if(!$list){
       echo json_encode(array("main" => $html));
       break;}
+      $order_qty = 0;
     foreach($list as $value){
       $order_id = $value['ID'];
       $customer_id = $customer->getCustomeName($value['CUSTOMER']);
@@ -89,7 +91,7 @@ include '..\classes\class.customer.php';
           $order_type = "TYPE ERROR";
           break;
       }
-      $order_qty =$value['QUANTITY'];
+      $order_qty = $value['QUANTITY'];
       $order_date = $value['DATE'];
       $order_total = $value['TOTAL'];
 
@@ -97,11 +99,13 @@ include '..\classes\class.customer.php';
                 '<td id="'.$value['ID'].'" >'.$order_id.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$customer_id.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_type.'</td>'.
-                '<td id="'.$value['ID'].'" >'.$order_qty.' item/s</td>'.
+                '<td id="'.$value['ID'].'" >'.number_format($order_qty).' item/s</td>'.
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_receive.'</td>'.
-                '<td id="'.$value['ID'].'" onclick="vieworderList(this)" ><b id="view"> View  </b></td>'.
-                '<td id="'.$value['ID'].'" onclick="receiveOrder(this)" ><b id="view"> RECEIEVED  </b></td>'.
+                '<td>
+                <button class="button primary" id="'.$value['ID'].'" onclick="vieworderList(this)">View</button>
+                <button class="button success" id="'.$value['ID'].'" onclick="receiveOrder(this)">Recieve</button>
+                </td>'.
             "</tr>";
       $html = $html.$body;
     }
@@ -127,6 +131,7 @@ include '..\classes\class.customer.php';
     }
     echo json_encode(array("main" => $html,"total" => $total,"count" => $count));
     break;
+
     case 4:
     $count = $total = 0;
     $html ="";
@@ -148,6 +153,7 @@ include '..\classes\class.customer.php';
     }
     break;
     case 5:
+    $html=false;
     $list = $order->getSpecOrderList($id);
     // echo json_encode(array("main" => $list));
     // break;
@@ -162,12 +168,16 @@ include '..\classes\class.customer.php';
       $userid = $order->getUserId($value['ORDERID']);
       $level = $value['LEVEL'] - $value['QTY'];
       if($value['LEVEL'] < $value['QTY']){
-        $avail = $status = false;
+          // echo json_encode(array("main" => false,"level"=> $value['LEVEL'],"qty" =>$value['QTY'],"id"=>$value['ID']));
+          $status = $avail = false;
+          $name = $value['NAME'];
+          // break;
       }
     }
 
     if($avail){
       $stat = 1;
+      $name = "";
       $recdate = $date;
       $salesstat = $sales->addSaleswType($id,$userid,1);
       foreach($list as $value){
@@ -175,11 +185,12 @@ include '..\classes\class.customer.php';
         $level = $value['LEVEL'] - $value['QTY'];
         $sales->addSalesList($salesstat,$prdid,$value['QTY']);
         $status = $product->updateProductStock($prdid,$level,$value['QTY'],$empid,1,$salesstat,"");
+        $status = true;
       }
     }
     $datestat =  $order->updateOrderDate($id,$recdate);
     $update = $order->updateOrderStatus($id,$stat);
-    echo json_encode(array("main" => $status,"update" => $update,"date" => $datestat,"userid" => $userid,"sales" => $salesstat));
+    echo json_encode(array("main" => $status,"update" => $update,"date" => $datestat,"userid" => $userid,"sales" => $salesstat,"name" => $name));
     break;
     case 6:
     $status = $order->completeOrder($id);

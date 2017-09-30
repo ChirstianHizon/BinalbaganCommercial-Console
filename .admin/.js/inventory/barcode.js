@@ -96,6 +96,7 @@ function deletebarcode(clickedElement) {
     },success: function(result){
        console.log(result);
        if(result.main){
+         BarcodeDelete();
          getBarcodeList(current_prod);
        }
     },error: function(response) {
@@ -148,11 +149,36 @@ $("#newbarform").submit(function(){
        if(result.main){
          document.getElementById("newbarform").reset();
          getBarcodeList(prodid);
+         BarcodeAdded();
        }else{
-         alert("Barcode Already Exists");
+          BarcodeExist();
        }
     },error: function(response) {
       console.log(response);
     }
   });
 });
+
+
+
+// ------------------------------------ NOTIFICATIONS
+function BarcodeAdded() {
+  $.Notify({
+    content: 'Barcode added Successfully',
+    type: 'success'
+  });
+}
+
+function BarcodeDelete() {
+  $.Notify({
+      content: 'Barcode Successfully Removed',
+      type: 'alert'
+  });
+}
+
+function BarcodeExist() {
+  $.Notify({
+      content: 'Barcode is already Used',
+      type: 'warning'
+  });
+}

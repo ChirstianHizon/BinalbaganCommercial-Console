@@ -11,7 +11,7 @@ class Sales{
 
   public function addSales($custid,$empid){
     $sql = "INSERT INTO tbl_sales(sales_datestamp,sales_timestamp,emp_id,sales_type,receive_datetimestamp)
-    VALUES(NOW(),NOW(),'$empid','0',NOW())";
+    VALUES(NOW(),NOW(),'$empid','2',NOW())";
 
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     if($result == 1){
@@ -60,7 +60,7 @@ class Sales{
     tbl_sales.cust_id AS CUSTOMER,
     emp_id AS EMPLOYEE ,
     sales_type AS TYPE,
-    COUNT(prd_qty) AS QUANTITY
+    SUM(prd_qty) AS QUANTITY
     FROM tbl_sales_list
     INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
     INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id

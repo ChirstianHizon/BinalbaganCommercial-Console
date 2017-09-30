@@ -1,4 +1,4 @@
-var pendingtable,walkintable,list_table,orderlisttable;
+var pendingtable,walkintable,list_table,orderlisttable,modal;
 $(function() {
   $(".datepicker").datepicker({
     minDate: currDate,
@@ -233,7 +233,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
     }
-}
+};
 
 //---------------------------------------- UTILITIES --------------------------------//
 function addCommas(nStr) {

@@ -77,7 +77,7 @@ function createCartTable(){
 var level;
 function prodselect(clickedElement){
   document.getElementById('add-cart-input').focus();
-  var x = clickedElement.id;;
+  var x = clickedElement.id;
   prdid = x;
   level = 0;
   $.ajax({
@@ -125,7 +125,7 @@ function updateTotal(){
 
 function cartselect(clickedElement){
   document.getElementById('add-cart-input').focus();
-  var x = clickedElement.id;;
+  var x = clickedElement.id;
   cartid = x;
   modal = document.getElementById('changecart-modal');
   modal.style.display = "block";
@@ -155,7 +155,7 @@ function cartselect(clickedElement){
 }
 
 function cartdelete(clickedElement){
-  var x = clickedElement.id;;
+  var x = clickedElement.id;
   cartid = x;
   $.ajax({
     url: "php/cart.php",
@@ -347,7 +347,7 @@ window.onclick = function(event) {
         document.getElementById("form-final-checkout").reset();
 
     }
-}
+};
 
 //---------------------------------------- UTILITIES --------------------------------//
 function addCommas(nStr) {

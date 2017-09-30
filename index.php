@@ -182,6 +182,9 @@ $type = $_SESSION['usertype'];
                   case 'invenaddsupp':
                     require_once '.admin/inventory/inventory-supplier.php';
                   break;
+                  case 'invensuppprices':
+                    require_once '.admin/inventory/inventory-supplier-prices.php';
+                  break;
                   case 'invenaddbar':
                     require_once '.admin/inventory/inventory-add-barcode.php';
                   break;

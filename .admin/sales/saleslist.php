@@ -7,14 +7,17 @@
 <div id="datepicker">
   <h5><b>Choose Date:</b></h5><br/>
   <b>From</b>
-  <input readonly='true' class="datepicker" type="text" id="fromdatepicker" placeholder="From">
-  <b>to</b>
-  <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
-  <input id="btncreatereport"type="button" value="Search " onclick="searchagain()" >
+  <form onsubmit="return false;">
+    <input readonly='true' class="datepicker" type="text" id="fromdatepicker" placeholder="From">
+    <b>to</b>
+    <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
+    <input id="btncreatereport"type="button" value="Search " onclick="searchagain()" >
+  </form>
 </div>
-<br/>
-<br/>
-<table id="table_id" class="display" width="100%" cellspacing="0">
+<br />
+<div class="table-header"><b>Barcode List</b></div>
+<div class="table-container">
+<table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
       <th>Sales No.</th>
@@ -29,13 +32,15 @@
   <tbody id="table-body">
   </tbody>
 </table>
-
+<br />
+<br />
 <b><h3>Total Transaction: </h3><span id="t-trans"></span></b>
 <b><h3>Total Items: </h3><span id="t-items"></span></b>
 <b><h3>Total Amount: </h3><span id="t-price"></span></b>
 <br />
 <br />
 <br />
+</div>
 
 
 

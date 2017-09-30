@@ -17,9 +17,9 @@
 </div>
 
 <br/>
-<b>Stock Level</b>
-<div id="line"></div>
-<table id="table_id" class="display" width="100%" cellspacing="0">
+<div class="table-header"><b>Ready for Pickup</b></div>
+<div class="table-container">
+<table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
       <th>Product Name</th>
@@ -32,9 +32,12 @@
   <tbody id="table-body">
   </tbody>
 </table>
+</div>
 
-
+<div class="table-header"><b>Ready for Pickup</b></div>
+<div class="table-container">
 <div id="stock_chart" class="chart"></div>
+</div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src=".admin/.js/reports/inventory.js"></script>

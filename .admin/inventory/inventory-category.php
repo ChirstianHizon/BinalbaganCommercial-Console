@@ -63,7 +63,7 @@
       <thead>
           <tr>
               <th>Name</th>
-              <th style="width:200px;"></th>
+              <th style="width:230px;"></th>
           </tr>
       </thead>
       <tbody id="table-body">

@@ -57,13 +57,13 @@ if($access == $access_mobile){
         $total_items += $sales_qty;
         $total_amount += $sales_total;
         switch ($sales_type) {
-          case 0:
+          case 2:
           $sales_type = "WALK - IN";
           break;
-          case 1:
+          case 0:
           $sales_type = "PICK - UP";
           break;
-          case 2:
+          case 1:
           $sales_type = "DELIVERY";
           break;
           default:

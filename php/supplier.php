@@ -12,6 +12,9 @@ $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $name = (isset($_POST['name']) && $_POST['name'] != '') ? $_POST['name'] : '';
 $desc = (isset($_POST['desc']) && $_POST['desc'] != '') ? $_POST['desc'] : '';
 
+$price = (isset($_POST['price']) && $_POST['price'] != '') ? $_POST['price'] : '';
+$prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
+
 $name =$utility->str_insert($name, "'", "'");
 $desc =$utility->str_insert($desc, "'", "'");
 
@@ -78,6 +81,67 @@ if($access != $access_web){
     $html .='<option value="'.$value['sup_id'].'">'.$value['sup_name'].'</option>';
     }
     echo json_encode(array("main"=> $html));
+    break;
+    case 7:
+      $html="";
+      $list = $supplier->getAllSupplier();
+      if(!$list){break;}
+      foreach($list as $value){
+        $in = $value['sup_name'];
+        $out = $out = strlen($in) > 30 ? substr($in,0,30)."..." : $in;
+        $html.= '<tr>'.
+                  '<td><b>'.$out.'</b></td>'.
+                  '<td>
+                  <button id="'.$value['sup_id'].'" onclick="selectSupplier(this)" class="button primary">Select</button>
+                  </td>'.
+                "</tr>";
+      }
+      echo json_encode(array("main" => $html));
+    break;
+
+    case 8:
+    $list = $supplier->getSpecSupplier($id);
+    if(!$list){break;}
+    foreach($list as $value){
+      $id = $value['sup_id'];
+      $name = $value['sup_name'];
+      echo json_encode(array("status"=> true,"id"=> $id ,"name" => $name ));
+    }
+    break;
+    case 9:
+    $result = $supplier->countSupplierPrice($id,$prdid);
+    if($result){
+      $result = $supplier->addSupplierPrice($id,$prdid,$price);
+      echo json_encode(array("status"=> $result ));
+    }else{
+      $result = $supplier->updateSupplierPrice($id,$prdid,$price);
+      echo json_encode(array("status"=> false));
+    }
+    break;
+    case 10:
+      $list = $supplier->getSpecSupplierPrice($id,$prdid);
+      if(!$list){
+        echo json_encode(array("status"=> false,"supid"=> $id ,"price" => "N/A","prdid" => $prdid));
+        break;}
+      foreach($list as $value){
+        $sid = $value['sprice_id'];
+        $price = $value['sprice_price'];
+        echo json_encode(array("status"=> true,"supid"=> $id ,"price" => number_format($price,2),"id"=>$sid));
+      }
+    break;
+    case 11:
+    $list = $supplier->getSpecSupplierPriceList($id);
+    $html="";
+    if(!$list){
+      echo json_encode(array("main" => $html));
+      break;}
+    foreach($list as $value){
+      $html.= '<tr>'.
+                '<td><b>'.$value['prd_name'].'</b></td>'.
+                '<td><b>P '.number_format($value['sprice_price'],2).'</b></td>'.
+              "</tr>";
+    }
+    echo json_encode(array("main" => $html));
     break;
   }
 }

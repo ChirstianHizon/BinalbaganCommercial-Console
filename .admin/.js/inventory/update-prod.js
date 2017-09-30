@@ -141,7 +141,7 @@ function updatestocks(){
         document.getElementById("updateProduct").reset();
         document.getElementById("btnupdate").disabled = false;
         createProductTable();
-        StockAdded(prodname,levelin);
+        StockAdded(prodname,currlevel);
       }
     },error: function(response) {
       console.log(response);
@@ -176,10 +176,10 @@ function generateSuppliers(){
 
 
 // ------------------------------------ NOTIFICATIONS
-function StockAdded(name,qty) {
+function StockAdded(name,xqty) {
   $.Notify({
       caption: 'Stock Added Successfully',
-      content: qty+ ' has been added to '+name,
+      content: xqty+ ' has been added to '+name,
       type: 'success'
   });
 }

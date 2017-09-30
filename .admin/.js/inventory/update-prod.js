@@ -113,40 +113,54 @@ function updatestocks(){
     alert("Choose a Product first");
     return false;
   }
-  document.getElementById("btnupdate").disabled = true;
-  // 1 - ADD
-  // 2 - UPDATE
-  // 3 - DELETE
-  // 4 - RETRIEVE ALL
-  // 5 - RETRIEVE SPECIFIC
-  // 6 - RETRIEVE NAME ONLY
-  // 7 - RETRIEVE NAME & STATUS
-  // 8 - UPDATE STOCK
   $.ajax({
-    url: "php/product.php",
+    url: "php/supplier.php",
     type: "POST",
     async: true,
+    dataType:"json",
     data: {
       "access":access,
-      "id":id,
-      "level":Number(currlevel),
-      "add":Number(levelin),
-      "supplier": supplier,
-      "type":8
+      "id":supplier,
+      "prdid":id,
+      "type":10
     },success: function(result){
-      if(result){
-        console.log(result);
-        newid = id;
-        prodselect();
-        document.getElementById("updateProduct").reset();
-        document.getElementById("btnupdate").disabled = false;
-        createProductTable();
-        StockAdded(prodname,currlevel);
+      console.log(result);
+      if(result.status){
+        document.getElementById("btnupdate").disabled = true;
+        $.ajax({
+          url: "php/product.php",
+          type: "POST",
+          async: true,
+          data: {
+            "access":access,
+            "id":id,
+            "level":Number(currlevel),
+            "add":Number(levelin),
+            "supplier": supplier,
+            "type":8
+          },success: function(result){
+            if(result){
+              console.log(result);
+              newid = id;
+              prodselect();
+              document.getElementById("updateProduct").reset();
+              document.getElementById("btnupdate").disabled = false;
+              createProductTable();
+              StockAdded(prodname,currlevel);
+            }
+          },error: function(response) {
+            console.log(response);
+          }
+        });
+      }else{
+        StockPriceError();
       }
+
     },error: function(response) {
       console.log(response);
     }
   });
+
 }
 
 function generateSuppliers(){
@@ -173,14 +187,20 @@ function generateSuppliers(){
 
 
 
-
-
 // ------------------------------------ NOTIFICATIONS
 function StockAdded(name,xqty) {
   $.Notify({
       caption: 'Stock Added Successfully',
       content: xqty+ ' has been added to '+name,
       type: 'success'
+  });
+}
+
+function StockPriceError() {
+  $.Notify({
+      caption: 'Supplier Price Not Found',
+      content: 'Price MUST be added before adding stocks',
+      type: 'alert'
   });
 }
 

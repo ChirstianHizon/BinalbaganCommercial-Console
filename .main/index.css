@@ -34,7 +34,3 @@ thead,table{
 }
 table button{
   min-width: 80px;
-}
-table th{
-	line-height: 50%;
-}

@@ -75,7 +75,7 @@ if($access == $access_mobile){
     if(!$list){break;}
     foreach($list as $value){
     echo  '<tr>'.
-              "<td>".$value['prd_name']."</td>".
+              "<td><b>".$value['prd_name']."</b></td>".
               '<td>
               <button id="'.$value['prd_id'].'" style="width:75px;" onclick="prodselect(this)" class="button primary">Edit</button>
               <button id="'.$value['prd_id'].'" style="width:75px;" onclick="alert(this)" class="button danger">Delete</button>

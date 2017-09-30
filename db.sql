@@ -43,12 +43,23 @@ CREATE TABLE IF NOT EXISTS `tbl_barcode` (
   `prd_id` int(255) NOT NULL,
   PRIMARY KEY (`bar_id`),
   KEY `prd_id` (`prd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_barcode: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_barcode: ~12 rows (approximately)
 /*!40000 ALTER TABLE `tbl_barcode` DISABLE KEYS */;
 INSERT INTO `tbl_barcode` (`bar_id`, `bar_code`, `bar_status`, `bar_datestamp`, `prd_id`) VALUES
-	(1, '8432569751246', 1, '2017-09-28 23:42:26', 2);
+	(1, '8432569751246', 1, '2017-09-28 23:42:26', 2),
+	(2, '754850315458', 0, '2017-09-29 16:50:12', 8),
+	(3, '5876321549', 0, '2017-09-29 16:50:32', 8),
+	(4, '654232421111', 0, '2017-09-29 16:53:20', 8),
+	(5, '1548521558', 0, '2017-09-29 17:03:14', 8),
+	(6, '85136476232587', 0, '2017-09-29 17:05:27', 8),
+	(7, 'sasassas', 0, '2017-09-29 17:05:44', 8),
+	(8, 'ssss', 0, '2017-09-29 17:05:52', 8),
+	(9, 'sss', 0, '2017-09-29 17:06:15', 8),
+	(10, 'sample', 0, '2017-09-29 17:06:44', 8),
+	(11, '463234', 0, '2017-09-29 17:07:35', 8),
+	(12, 'asasasas', 0, '2017-09-29 17:07:44', 8);
 /*!40000 ALTER TABLE `tbl_barcode` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_cart
@@ -64,10 +75,12 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `user_id` (`emp_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_binalbagancommercial.tbl_cart: ~1 rows (approximately)
 /*!40000 ALTER TABLE `tbl_cart` DISABLE KEYS */;
+INSERT INTO `tbl_cart` (`cart_id`, `emp_id`, `cust_id`, `cart_datestamp`, `cart_timestamp`, `prd_id`, `cart_prd_qty`, `cart_status`) VALUES
+	(8, 80000002, 0, '2017-09-29', '16:40:10', 7, 2, 1);
 /*!40000 ALTER TABLE `tbl_cart` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_category
@@ -81,10 +94,10 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
   PRIMARY KEY (`cat_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_category: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_category: ~1 rows (approximately)
 /*!40000 ALTER TABLE `tbl_category` DISABLE KEYS */;
 INSERT INTO `tbl_category` (`cat_id`, `cat_name`, `cat_desc`, `cat_status`, `cat_datestamp`, `cat_timestamp`) VALUES
-	(1, 'Paint ', 'Paint Products', 1, '2017-09-28', '23:08:32'),
+	(1, 'Paint ', 'Paint Products for Use anywhere', 1, '2017-09-28', '23:08:32'),
 	(2, 'Wood ', 'All Wood Products must be placed here', 1, '2017-09-29', '13:15:31');
 /*!40000 ALTER TABLE `tbl_category` ENABLE KEYS */;
 
@@ -101,21 +114,10 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   PRIMARY KEY (`cust_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=110000024 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_customer: ~13 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_customer: ~1 rows (approximately)
 /*!40000 ALTER TABLE `tbl_customer` DISABLE KEYS */;
 INSERT INTO `tbl_customer` (`cust_id`, `cust_datestamp`, `cust_username`, `cust_password`, `cust_firstname`, `cust_lastname`, `cust_contact`, `cust_image`) VALUES
-	(110000001, '2017-09-13 01:51:58', 'chris', 'customer', 'Christian ', 'Hizon', '09984843243', ''),
-	(110000010, '2017-09-13 20:48:48', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', '1234567890', ''),
-	(110000011, '2017-09-13 22:08:35', 'customer', '91ec1f9324753048c0096d036a694f86', 'Swashinegro', 'Arnold', '094866663323', ''),
-	(110000015, '2017-09-14 09:29:09', 'mike', 'f6918a82743b05860740314a6220afe3', '\'\'', '\'\'', '123', ''),
-	(110000016, '2017-09-14 15:57:12', 'rafael', '9135d8523ad3da99d8a4eb83afac13d1', 'Rafael', 'Dais', '9090', ''),
-	(110000017, '2017-09-14 15:58:30', 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', '123', ''),
-	(110000018, '2017-09-14 16:18:14', 'sample', '5e8ff9bf55ba3508199d22e984129be6', 'sample1', 'sample1', '00000', ''),
-	(110000019, '2017-09-14 16:44:46', 'rafael', '9135d8523ad3da99d8a4eb83afac13d1', 'rafael', 'davis', '09178082008', ''),
-	(110000020, '2017-09-15 12:39:11', 'phil', 'd14ffd41334ec4b4b3f2c0d55c38be6f', 'Philip', 'Estacion', '0922989999', ''),
-	(110000021, '2017-09-15 14:10:02', 'noobslayer123', '827ccb0eea8a706c4c34a16891f84e7b', 'kerwin', 'david', '09959728392', ''),
-	(110000022, '2017-09-16 23:55:05', 'mike\'s angel 123', '5329ec9d4e9307bcf82db0722882b247', 'Mike ', 'Santos', '09984843243', ''),
-	(110000023, '2017-09-17 00:16:26', 'Andrew,wales', '098f6bcd4621d373cade4e832627b4f6', 'andrew', 'wales', '0123456789', '');
+	(110000011, '2017-09-13 22:08:35', 'customer', '91ec1f9324753048c0096d036a694f86', 'Swashinegro', 'Arnold', '094866663323', '');
 /*!40000 ALTER TABLE `tbl_customer` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_delivery
@@ -131,10 +133,8 @@ CREATE TABLE IF NOT EXISTS `tbl_delivery` (
   KEY `add_id` (`add_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='1    -> READY FOR DELIVERY\r\n200 - > COMPLETED\r\n';
 
--- Dumping data for table db_binalbagancommercial.tbl_delivery: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_delivery: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_delivery` DISABLE KEYS */;
-INSERT INTO `tbl_delivery` (`del_id`, `del_start_datestamp`, `del_end_datestamp`, `del_status`, `order_id`, `add_id`) VALUES
-	(1, '2017-09-29 11:22:15', '2017-09-29 12:27:29', 200, 1, 0);
 /*!40000 ALTER TABLE `tbl_delivery` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_employee
@@ -171,14 +171,10 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `receive_datestamp` date NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='order_type\r\n-----------------------------------\r\n0 -> PICK - UP \r\n1 -> DELIVERY\r\n\r\norder_status\r\n-----------------------------------\r\n0 -> PENDING\r\n1 -> APPROVED\r\n2 -> DECLINED\r\n100 -> COMPLETED\r\n200 -> ON DELIVERY\r\n\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='order_type\r\n-----------------------------------\r\n0 -> PICK - UP \r\n1 -> DELIVERY\r\n\r\norder_status\r\n-----------------------------------\r\n0 -> PENDING\r\n1 -> APPROVED\r\n2 -> DECLINED\r\n100 -> COMPLETED\r\n200 -> ON DELIVERY\r\n\r\n';
 
--- Dumping data for table db_binalbagancommercial.tbl_order: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_order: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_order` DISABLE KEYS */;
-INSERT INTO `tbl_order` (`order_id`, `order_datestamp`, `order_timestamp`, `cust_id`, `order_status`, `order_type`, `receive_datestamp`) VALUES
-	(1, '2017-09-29', '11:19:07', 110000011, 100, 1, '2017-09-29'),
-	(2, '2017-09-29', '13:37:08', 110000011, 0, 0, '0000-00-00'),
-	(3, '2017-09-29', '13:50:08', 110000011, 1, 0, '2017-09-29');
 /*!40000 ALTER TABLE `tbl_order` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_order_list
@@ -191,14 +187,10 @@ CREATE TABLE IF NOT EXISTS `tbl_order_list` (
   PRIMARY KEY (`order_list_id`),
   KEY `prd_id` (`prd_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_order_list: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_order_list: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_order_list` DISABLE KEYS */;
-INSERT INTO `tbl_order_list` (`order_list_id`, `prd_id`, `prd_qty`, `order_id`, `prd_price`) VALUES
-	(1, 1, 20, 1, 300.00),
-	(2, 1, 1, 2, 300.00),
-	(3, 1, 2, 3, 300.00);
 /*!40000 ALTER TABLE `tbl_order_list` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_product
@@ -217,18 +209,19 @@ CREATE TABLE IF NOT EXISTS `tbl_product` (
   `cat_id` int(255) NOT NULL,
   PRIMARY KEY (`prd_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_product: ~2 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_product: ~8 rows (approximately)
 /*!40000 ALTER TABLE `tbl_product` DISABLE KEYS */;
 INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_desc`, `prd_price`, `prd_datestamp`, `prd_timestamp`, `prd_status`, `prd_level`, `prd_optimal`, `prd_warning`, `prd_image`, `cat_id`) VALUES
-	(1, 'Rain or Shine Elastomeric Paint', 'Rain or Shine Elastomeric Waterproofing paint is a self-priming water-based waterproofing paint for exteriorand interior concrete surfaces.', 300.00, '2017-09-28', '23:21:02', 1, -2, 20, 5, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2F1_elastomeric.pngRain%20or%20Shine%20Elastomeric%20Paint?alt=media&token=7af84218-d83c-49f4-bf81-52d7d93497da', 1),
-	(2, 'DAVIES Roofshield Acrylic Roof Paint', 'A pure acrylic emulsion gloss roof paint designed for beautifying and protecting roofs and masonry walls.', 250.00, '2017-09-28', '23:32:30', 1, 29, 50, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fdavies-roofshield-acrylic-roof-paint.jpgDAVIES%20Roofshield%20Acrylic%20Roof%20Paint?alt=media&token=ff8c4a8e-519d-4753-a2ea-7e3069bac7ec', 1),
+	(1, 'Rain or Shine Elastomeric Paint', 'Rain or Shine Elastomeric Waterproofing paint is a self-priming water-based waterproofing paint for exteriorand interior concrete surfaces.', 300.00, '2017-09-28', '23:21:02', 1, 0, 20, 5, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2F1_elastomeric.pngRain%20or%20Shine%20Elastomeric%20Paint?alt=media&token=7af84218-d83c-49f4-bf81-52d7d93497da', 1),
+	(2, 'DAVIES Roofshield Acrylic Roof Paint', 'A pure acrylic emulsion gloss roof paint designed for beautifying and protecting roofs and masonry walls.', 250.00, '2017-09-28', '23:32:30', 1, 0, 50, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fdavies-roofshield-acrylic-roof-paint.jpgDAVIES%20Roofshield%20Acrylic%20Roof%20Paint?alt=media&token=ff8c4a8e-519d-4753-a2ea-7e3069bac7ec', 1),
 	(3, 'Davies Oil Woodstain', 'It brings out the natural beauty of wood. When clear coated with Davies Varnishes, Davies Oil Wood Stain highlight wood grains, add freshness and color.\n', 450.00, '2017-09-29', '13:17:50', 1, 0, 20, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Oil-Woodstain.pngDavies%20Oil%20Woodstain?alt=media&token=2d0300df-adc7-40c3-b4db-f1682fe79c29', 1),
 	(4, 'Davies Polyfloor', 'A two-pack coating system especially formulated for wood and parquet floors, heavy duty school and office furnitures. It dries to a top and flexible film with exceptional gloss and mar resistance.', 265.00, '2017-09-29', '13:22:32', 1, 0, 30, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Polyfloor.pngDavies%20Polyfloor?alt=media&token=e2725d94-d858-461d-883a-79250a13fd77', 1),
 	(5, 'Davies Epoxy Enamel', 'A two-component epoxy coating especially formulated for industry, building and marine applications. \r\n', 310.00, '2017-09-29', '13:25:27', 1, 0, 50, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Epoxy-Enamel.pngDavies%20Epoxy%20Enamel?alt=media&token=ef114d09-5377-49c5-9dbf-04a2ebf6ba53', 1),
 	(6, 'Davies Gloss-It', 'An all purpose alkyd based paint ideal for all types of wood and metal surfaces. It finds wide application in both decorative and protective coatings due to its high gloss, good color retention and outstanding durability.', 180.00, '2017-09-29', '13:27:26', 1, 0, 20, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Quick-Drying-Enamel.pngDavies%20Gloss-It?alt=media&token=ca78f278-a970-46d7-94a9-ecd763c4a434', 1),
-	(7, 'Davies Keramikote', 'A two pack, air drying, chemically-cured urethane coating system developed to achieve decorative requirements and protective function even in the aggressive, polluted air of cities and industrial regions', 278.00, '2017-09-29', '13:30:07', 1, 0, 60, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Keramikote.pngDavies%20Keramikote?alt=media&token=3c88bbb3-2ccb-45e5-8c64-881cefb9de19', 1);
+	(7, 'Davies Keramikote', 'A two pack, air drying, chemically-cured urethane coating system developed to achieve decorative requirements and protective function even in the aggressive, polluted air of cities and industrial regions', 278.00, '2017-09-29', '13:30:07', 1, 9, 60, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Keramikote.pngDavies%20Keramikote?alt=media&token=3c88bbb3-2ccb-45e5-8c64-881cefb9de19', 1),
+	(8, 'Davies Aqua Gloss-It', 'Davies Aqua Gloss-It is a high gloss 100% acrylic water-based paint formulated as an alternative to conventional solvent-based alkyd enamels.', 309.98, '2017-09-29', '16:43:02', 1, 20000025, 30, 20, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Aqua-Gloss-It.pngDavies%20Aqua%20Gloss-It?alt=media&token=535a2eeb-92a3-435c-bf8b-0086e9b3f9a4', 1);
 /*!40000 ALTER TABLE `tbl_product` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_product_log
@@ -242,34 +235,16 @@ CREATE TABLE IF NOT EXISTS `tbl_product_log` (
   `log_type` int(1) DEFAULT '0',
   `sales_id` int(255) DEFAULT NULL,
   `sup_id` int(255) NOT NULL DEFAULT '0',
+  `supp_price` double(255,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`log_id`),
   KEY `prd_id` (`prd_id`),
   KEY `user_id` (`emp_id`),
   KEY `sales_id` (`sales_id`),
   KEY `sup_id` (`sup_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_product_log: ~4 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_product_log: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_product_log` DISABLE KEYS */;
-INSERT INTO `tbl_product_log` (`log_id`, `prd_id`, `log_qty`, `log_datestamp`, `log_timestamp`, `emp_id`, `log_type`, `sales_id`, `sup_id`) VALUES
-	(1, 2, 20, '2017-09-28', '23:57:43', 80000002, 0, 0, 150000115),
-	(2, 1, 50, '2017-09-29', '11:19:54', 80000002, 0, 0, 150000115),
-	(3, 1, 20, '2017-09-29', '11:20:12', 80000002, 1, 1, 0),
-	(4, 1, 20, '2017-09-29', '11:21:05', 80000002, 0, 0, 150000116),
-	(5, 1, 10, '2017-09-29', '12:52:32', 80000002, 0, 0, 150000115),
-	(6, 2, 5, '2017-09-29', '12:58:54', 80000002, 0, 0, 150000115),
-	(7, 2, 5, '2017-09-29', '12:59:28', 80000002, 0, 0, 150000115),
-	(8, 2, 5, '2017-09-29', '13:00:28', 80000002, 0, 0, 150000115),
-	(9, 2, 5, '2017-09-29', '13:35:28', 80000002, 1, 2, 0),
-	(10, 2, 1, '2017-09-29', '13:44:19', 80000002, 1, 3, 0),
-	(11, 1, 1, '2017-09-29', '13:46:05', 80000002, 1, 4, 0),
-	(12, 1, 2, '2017-09-29', '13:50:22', 80000002, 1, 5, 0),
-	(13, 1, 1, '2017-09-29', '13:55:10', 80000002, 1, 6, 0),
-	(14, 1, 1, '2017-09-29', '13:56:36', 80000002, 1, 7, 0),
-	(15, 1, 1, '2017-09-29', '13:58:00', 80000002, 1, 8, 0),
-	(16, 1, 1, '2017-09-29', '13:59:08', 80000002, 1, 9, 0),
-	(17, 1, 1, '2017-09-29', '13:59:41', 80000002, 1, 10, 0),
-	(18, 1, 1, '2017-09-29', '14:02:13', 80000002, 1, 11, 0);
 /*!40000 ALTER TABLE `tbl_product_log` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_route
@@ -305,22 +280,10 @@ CREATE TABLE IF NOT EXISTS `tbl_sales` (
   `order_id` int(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sales_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_sales: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_sales: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_sales` DISABLE KEYS */;
-INSERT INTO `tbl_sales` (`sales_id`, `sales_datestamp`, `sales_timestamp`, `emp_id`, `cust_id`, `receive_datetimestamp`, `sales_type`, `order_id`) VALUES
-	(1, '2017-09-29', '11:20:11', 0, 110000011, '2017-09-29 12:27:29', 1, 1),
-	(2, '2017-09-29', '13:35:28', 80000002, 0, '2017-09-29 13:35:28', 2, 0),
-	(3, '2017-09-29', '13:44:19', 80000002, 0, '2017-09-29 13:44:19', 2, 0),
-	(4, '2017-09-29', '13:46:05', 80000002, 0, '2017-09-29 13:46:05', 2, 0),
-	(5, '2017-09-29', '13:50:22', 0, 110000011, '0000-00-00 00:00:00', 1, 3),
-	(6, '2017-09-29', '13:55:09', 0, 110000011, '0000-00-00 00:00:00', 1, 2),
-	(7, '2017-09-29', '13:56:36', 0, 110000011, '0000-00-00 00:00:00', 1, 2),
-	(8, '2017-09-29', '13:58:00', 0, 110000011, '0000-00-00 00:00:00', 1, 2),
-	(9, '2017-09-29', '13:59:08', 0, 110000011, '0000-00-00 00:00:00', 1, 2),
-	(10, '2017-09-29', '13:59:41', 0, 110000011, '0000-00-00 00:00:00', 1, 2),
-	(11, '2017-09-29', '14:02:13', 0, 110000011, '0000-00-00 00:00:00', 1, 2);
 /*!40000 ALTER TABLE `tbl_sales` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_sales_list
@@ -333,22 +296,10 @@ CREATE TABLE IF NOT EXISTS `tbl_sales_list` (
   PRIMARY KEY (`sales_list_id`),
   KEY `prd_id` (`prd_id`),
   KEY `sales_id` (`sales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_sales_list: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_sales_list: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_sales_list` DISABLE KEYS */;
-INSERT INTO `tbl_sales_list` (`sales_list_id`, `prd_id`, `prd_qty`, `sales_id`, `prd_price`) VALUES
-	(1, 1, 20, 1, 300.00),
-	(2, 2, 5, 2, 250.00),
-	(3, 2, 1, 3, 250.00),
-	(4, 1, 1, 4, 300.00),
-	(5, 1, 2, 5, 300.00),
-	(6, 1, 1, 6, 300.00),
-	(7, 1, 1, 7, 300.00),
-	(8, 1, 1, 8, 300.00),
-	(9, 1, 1, 9, 300.00),
-	(10, 1, 1, 10, 300.00),
-	(11, 1, 1, 11, 300.00);
 /*!40000 ALTER TABLE `tbl_sales_list` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_supplier
@@ -361,22 +312,34 @@ CREATE TABLE IF NOT EXISTS `tbl_supplier` (
   PRIMARY KEY (`sup_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=150000123 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_supplier: ~5 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_supplier: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tbl_supplier` DISABLE KEYS */;
 INSERT INTO `tbl_supplier` (`sup_id`, `sup_name`, `sup_desc`, `sup_status`, `sup_datestamp`) VALUES
-	(150000111, 'Bacolod Paint Supply', 'Sample Hardware', 0, '2017-09-26 21:02:13'),
-	(150000112, 'Ace Hardware Supplies', 'Bacolod Branch Ace Hardware', 0, '2017-09-28 03:19:43'),
-	(150000113, 'Xin Chao Warehouse', 'Cheap China Hardware Products', 0, '2017-09-28 03:20:22'),
 	(150000114, 'Emars Electronic Shop', '1557 2nd Floor SM Bacolod.', 1, '2017-09-28 03:26:41'),
 	(150000115, 'United Commercial', 'Paint, Electronic Equipment, Tools, Motorcycle Parts', 1, '2017-09-28 23:54:51'),
-	(150000116, 'Bacolod Freedom', '- Insert Address Here', 1, '2017-09-28 23:56:03'),
-	(150000117, 'test supplier\'s of the product', 'sample\'s of different descriptions', 0, '2017-09-29 13:07:17'),
-	(150000118, '////////////', '//////////////', 0, '2017-09-29 13:09:16'),
-	(150000119, '/////////////////', '//////////////////', 0, '2017-09-29 13:09:24'),
-	(150000120, '///////////////////', '//////////', 0, '2017-09-29 13:10:04'),
-	(150000121, 'Emars Electronic Shop', 'sssssss', 0, '2017-09-29 13:10:36'),
-	(150000122, '/////', '//////', 0, '2017-09-29 13:14:50');
+	(150000116, 'Bacolod Freedom', '- Insert Address Here', 1, '2017-09-28 23:56:03');
 /*!40000 ALTER TABLE `tbl_supplier` ENABLE KEYS */;
+
+-- Dumping structure for table db_binalbagancommercial.tbl_supplier_prices
+CREATE TABLE IF NOT EXISTS `tbl_supplier_prices` (
+  `sprice_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sprice_price` int(11) NOT NULL,
+  `sprice_datestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `prd_id` int(11) NOT NULL,
+  `sup_id` int(11) NOT NULL,
+  `sup_status` int(1) DEFAULT '1',
+  PRIMARY KEY (`sprice_id`),
+  KEY `prd_id` (`prd_id`),
+  KEY `sup_id` (`sup_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_binalbagancommercial.tbl_supplier_prices: ~3 rows (approximately)
+/*!40000 ALTER TABLE `tbl_supplier_prices` DISABLE KEYS */;
+INSERT INTO `tbl_supplier_prices` (`sprice_id`, `sprice_price`, `sprice_datestamp`, `prd_id`, `sup_id`, `sup_status`) VALUES
+	(5, 2, '2017-09-30 16:17:32', 7, 150000114, 1),
+	(6, 1, '2017-09-30 16:29:54', 8, 150000114, 1),
+	(7, 2, '2017-09-30 16:47:39', 8, 150000115, 1);
+/*!40000 ALTER TABLE `tbl_supplier_prices` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -1,28 +1,48 @@
-<link rel="stylesheet" type="text/css" href=".cashier/.css/sales/orders.css" />
+<link rel="stylesheet" type="text/css" href=".admin/.css/sales/orders.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Orders</h2>
     </div>
 </div>
 
-<h3><i>Pick-Up Orders</i></h3>
-<div id="line"></div>
-<table id="walkin_id" class="display" width="100%" cellspacing="0">
+<div class="table-header"><b>Pending Orders List</b></div>
+<div class="table-container">
+<table id="pending_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
-      <th>Order No.</th>
+      <th>No.</th>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Transaction</th>
+      <th>Items Purchased</th>
+      <th>Total Amount</th>
+      <th style="width:300px;"></th>
+    </tr>
+  </thead>
+  <tbody id="pending-body">
+  </tbody>
+</table>
+</div>
+
+<br/>
+<div class="table-header"><b>Ready for Pickup</b></div>
+<div class="table-container">
+<table id="walkin_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>No.</th>
       <th>Name</th>
       <th>Transaction</th>
       <th>Items Purchased</th>
       <th>Total Amount</th>
       <th>Pickup Date</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody id="walkin-body">
   </tbody>
 </table>
+</div>
 
 
 <div id="viewpending-modal" class="modal">
@@ -118,4 +138,4 @@
 </div>
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".cashier/.js\sales\orders.js"></script>
+<script src=".admin/.js\sales\orders.js"></script>

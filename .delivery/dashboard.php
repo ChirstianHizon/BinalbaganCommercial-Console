@@ -23,7 +23,7 @@
 	</div>
 	<div class="col span_1_of_3">
     <div class="dash-header">
-      <div id="head-3"class="dash-header-cont">P 0</div>
+      <div id="head-3"class="dash-header-cont">0</div>
       <br/>
       <b>Approved Deliveries</b>
     </div>

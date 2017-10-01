@@ -23,7 +23,7 @@
 	</div>
 	<div class="col span_1_of_3">
     <div class="dash-header">
-      <div id="head-3"class="dash-header-cont">P 0</div>
+      <div id="head-3"class="dash-header-cont">0</div>
       <br/>
       <b>Total Sales</b>
     </div>
@@ -47,8 +47,7 @@
 
 <div class="table-header"><b>Current Transactions</b><i id="1" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-1" class="table-container" >
-  <div id="line"></div>
-  <table id="trans_id" class="display" width="100%" cellspacing="0">
+  <table id="trans_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>Sales No.</th>

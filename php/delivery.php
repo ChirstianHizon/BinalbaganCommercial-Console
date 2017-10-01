@@ -98,7 +98,7 @@ if($access == $access_web){
                 '<td>'.$value['route_lat'].'</td>'.
                 '<td>'.$value['route_lng'].'</td>'.
                 '<td>
-                <button id="'.$value['route_id'].'" class="button primary" onclick="viewSelectedRoute(this)">Select</button>
+                <button id="'.$value['route_datestamp'].'" class="button primary" onclick="viewSelectedRoute(this)">Select</button>
                 </td>'.
             "</tr>";
       $letter++;

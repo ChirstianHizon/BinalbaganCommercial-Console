@@ -67,7 +67,7 @@ class Delivery{
     FROM tbl_route
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
     WHERE tbl_route.del_id = '$id'
-    ORDER BY route_id ASC
+    ORDER BY route_datestamp ASC
     limit 25
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
@@ -87,8 +87,8 @@ class Delivery{
     $sql="SELECT *,TIMEDIFF(route_datestamp,del_start_datestamp) AS TIME_ELAPSED
     FROM tbl_route
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
-    WHERE tbl_route.del_id = '$id' AND route_id  <= '$routeid'
-    ORDER BY route_id ASC
+    WHERE tbl_route.del_id = '$id' AND route_datestamp  <= '$routeid'
+    ORDER BY route_datestamp ASC
     limit 25
     ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);

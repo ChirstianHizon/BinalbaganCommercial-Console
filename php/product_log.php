@@ -26,6 +26,9 @@
     foreach($list as $value){
       $type = "";
       switch ($value['TYPE']) {
+        case null:
+          $type = null;
+        break;
         case 0:
           $type = "IN";
           break;
@@ -33,6 +36,12 @@
           $type = "OUT";
           break;
       }
+      $supname = ($value['SUPNAME']== "")?$supname = "N/A":$value['SUPNAME'];
+
+      $price = ($value['SPRICE'] == null)?$price = $value['PRICE']:$value['SPRICE'];
+
+      $total = $price * $value['LOG_QTY'];
+
       $status = $value['PRD_NAME'];
       $employee = $value["EMP_LNAME"].", ".$value['EMP_FNAME'];
       $html =  $html.'<tr>'.
@@ -41,8 +50,8 @@
                     '<td>'.$type.'</td>'.
                     '<td>'.$employee.'</td>'.
                     '<td>'.$value['LOG_QTY'].'</td>'.
-                    '<td>'.$value['PRICE'].'</td>'.
-                    '<td>'.$value['SUPNAME'].'</td>'.
+                    '<td>P '.number_format($total,2).'</td>'.
+                    '<td>'.$supname.'</td>'.
                     "</tr>";
     }
 
@@ -52,6 +61,10 @@
     $chart = array();
     array_push($chart,array('Date', 'IN', 'OUT'));
     $list = $product_log->getTypeCountByDate($fromdate,$todate,$supplier);
+
+    // echo json_encode(array("main" => $list));
+    // break;
+
     if(!$list){
       array_push($chart,array('No Data Available', 0, 0));
       echo json_encode($chart);

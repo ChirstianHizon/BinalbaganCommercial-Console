@@ -19,6 +19,7 @@ $product = new Product();
 $order = new Order();
 $category = new Category();
 $barcode = new Barcode();
+$product_log = new Product_Log();
 
 $uname = (isset($_POST['uname']) && $_POST['uname'] != '') ? $_POST['uname'] : '';
 $pass = (isset($_POST['pass']) && $_POST['pass'] != '') ? $_POST['pass'] : '';
@@ -34,6 +35,10 @@ $lat = (isset($_POST['lat']) && $_POST[''] != 'lat') ? $_POST['lat'] : '';
 $lng = (isset($_POST['lng']) && $_POST['lng'] != '') ? $_POST['lng'] : '';
 
 $coord = (isset($_POST['coord']) && $_POST['coord'] != '') ? $_POST['coord'] : '';
+
+$todate = (isset($_POST['todate']) && $_POST['todate'] != '') ? $_POST['todate'] : '';
+$fromdate = (isset($_POST['fromdate']) && $_POST['fromdate'] != '') ? $_POST['fromdate'] : '';
+$supplier = (isset($_POST['supplier']) && $_POST['supplier'] != '') ? $_POST['supplier'] : '';
 
 $uname =$utility->str_insert($uname, "'", "'");
 $pass =$utility->str_insert($pass, "'", "'");
@@ -341,6 +346,60 @@ if ($access != $access_mobile) {
         }
         echo json_encode($prod_list);
     }
+
+  break;
+  case 13:
+  $list = $product_log->getAllProductLog($fromdate,$todate,"ALL");
+  if (!$list) {
+      $prod_list['COUNTER'] = 0;
+      echo json_encode($prod_list);
+      break;
+  }else{
+    $cnt = 0;
+    foreach ($list as $value) {
+        $cnt++;
+    }
+    $prod_list['COUNTER'] = $cnt;
+    $count = 1;
+    foreach ($list as $value) {
+
+      switch ($value['TYPE']) {
+        case 0:
+          $type = "IN";
+          break;
+        case 1:
+          $type = "OUT";
+          break;
+        }
+        $status = $value['PRD_NAME'];
+        $employee = $value["EMP_LNAME"].", ".$value['EMP_FNAME'];
+
+        $price = ($value['SPRICE'] == null)?$price = $value['PRICE']:$value['SPRICE'];
+        $total = $price * $value['LOG_QTY'];
+
+        $supname = ($value['SUPNAME']== "")?$supname = "N/A":$value['SUPNAME'];
+
+        $prod_list[$count] =
+          array(
+            "PRDNAME" =>$value['PRD_NAME'],
+            "DATESTAMP" =>$value['DATESTAMP'],
+            "TYPE" =>$type,
+            "EMPLOYEE" =>$employee,
+            "LOGQTY" =>$value['LOG_QTY'],
+            "TOTAL"=>number_format($total,2),
+            "SUPPLIER"=>$supname,
+            "ID" =>$value['LOG_ID'],
+          );
+        $count++;
+    }
+    if($status){
+      echo json_encode($prod_list);
+    }else {
+      $prodx_list['COUNTER'] = 0;
+      echo json_encode($prodx_list);
+    }
+  }
+  break;
   }
 }
 /*

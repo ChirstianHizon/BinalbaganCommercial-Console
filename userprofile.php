@@ -66,7 +66,6 @@
     <br />
     <div class="input-control file" data-role="input" style="width:250px">
       <input type="hidden" id="fileUpload" onchange="getimage(event)" disabled >
-      <button class="button"><span class="mif-folder"></span></button>
     </div><br>
 	</div>
 </div>

@@ -13,6 +13,27 @@ class Delivery{
     return "CLASS OK";
   }
 
+  public function getAllDelivery($start,$end){
+    $sql = "SELECT *
+            FROM tbl_delivery
+            INNER JOIN tbl_order ON tbl_delivery.order_id = tbl_order.order_id
+            INNER JOIN tbl_order_list ON tbl_delivery.order_id = tbl_order_list.order_id
+            WHERE order_datestamp BETWEEN '$start' AND '$end'
+            ORDER BY del_id DESC
+            ";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    $result = mysqli_query($this->db,$sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
   public function getCompletedDelivery(){
     $sql = "SELECT * ,
             TIMEDIFF(del_end_datestamp,del_start_datestamp) AS TIME_ELAPSED,
@@ -21,7 +42,7 @@ class Delivery{
 
             FROM tbl_delivery
             WHERE del_status = '200'
-            ORDER BY del_end_datestamp DESC
+            ORDER BY del_id DESC
             ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $result = mysqli_query($this->db,$sql);

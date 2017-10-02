@@ -154,7 +154,7 @@
     <div class="modal-body">
       <h3><b>Cart Summary</b></h3>
       <div id="line"></div>
-      <table id="checkout_id" class="display" width="100%" cellspacing="0">
+      <table id="checkout_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Name</th>
@@ -173,7 +173,7 @@
       <form id="form-final-checkout" class="modalform" onsubmit="finalsubmit()">
         <br/>
       <input id="cbReciept" type="checkbox" name="genReciept" value="true">
-      <label for="genReciept">Generate Receipt</label>
+      <!-- <label for="genReciept">Generate Receipt</label> -->
     </div>
     <div class="modal-footer">
       <button id="add">Submit</button>

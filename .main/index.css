@@ -21,7 +21,7 @@ thead,table{
   /*border-radius: 5px;*/
   background-color: #EEEEEE;
   padding:10px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 .table-header{
   background-color: #231F20;
@@ -33,4 +33,4 @@ thead,table{
   width: 100%;
 }
 table button{
-  min-width: 80px;
+  min-width: 40px;

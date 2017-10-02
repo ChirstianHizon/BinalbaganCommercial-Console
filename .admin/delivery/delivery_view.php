@@ -13,7 +13,7 @@
       <table id="app_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th>Order No.</th>
+                <th>No. </th>
                 <th>Date Ordered</th>
                 <!-- <th>Total Items</th> -->
                 <th>Customer</th>
@@ -23,8 +23,6 @@
         <tbody id="app-body">
         </tbody>
       </table>
-      <br />
-
     </div>
     </div>
     <div class="table-header"><b>Completed Delivery</b></div>
@@ -33,7 +31,7 @@
         <table id="complete_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th>Order ID</th>
+                <th>No. </th>
                 <th>Date Completed</th>
                 <th>Hours Elapsed</th>
                 <th></th>
@@ -69,8 +67,6 @@
          <tbody id="route-body">
          </tbody>
        </table>
-       <br />
-       <br />
      </div>
    </div>
 	</div>

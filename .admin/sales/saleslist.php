@@ -15,7 +15,7 @@
   </form>
 </div>
 <br />
-<div class="table-header"><b>Barcode List</b></div>
+<div class="table-header"><b>Sales List</b></div>
 <div class="table-container">
 <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>

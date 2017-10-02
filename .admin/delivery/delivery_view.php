@@ -7,7 +7,7 @@
 
 <div class="section group">
 	<div class="col span_1_of_2">
-    <div class="table-header"><b>Barcode List</b></div>
+    <div class="table-header"><b>Delivery List</b></div>
     <div class="table-container">
     <div class="dttable">
       <table id="app_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">

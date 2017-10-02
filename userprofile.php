@@ -34,6 +34,7 @@
       Usertype:<br />
       <div class="input-control text">
         <input id="newbarcode" type="text" disabled required  value="<?php
+
         switch($_SESSION['usertype']){
           case 0:
           echo "Administrator";
@@ -61,7 +62,7 @@
 	</div>
 	<div class="col span_1_of_2">
 
-    <img id="image" src="images\noimage.png" style="width:250px;height:250px;background-color:white;" />
+    <img id="image" src="images\marlou.jpeg" style="background-color:white;" />
     <br />
     <div class="input-control file" data-role="input" style="width:250px">
       <input type="hidden" id="fileUpload" onchange="getimage(event)" disabled >

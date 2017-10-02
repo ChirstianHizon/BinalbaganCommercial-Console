@@ -49,3 +49,9 @@
 #buttons .button{
   width: 70%;
 }
+#image{
+  border-radius: 200px;
+  width: 250px;
+  height: 250px;
+  border: 1px solid gray;
+}

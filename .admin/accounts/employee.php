@@ -5,7 +5,7 @@
     </div>
 </div>
 
-  <table id="table_id" class="display" width="100%" cellspacing="0">
+  <table id="table_id" class="table hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>Username</th>
@@ -13,8 +13,7 @@
             <th>Last Name</th>
             <th>Type</th>
             <th class="center">Date Added</th>
-            <th></th>
-            <th></th>
+            <th width="120px;"></th>
         </tr>
     </thead>
     <tbody id="table-body">

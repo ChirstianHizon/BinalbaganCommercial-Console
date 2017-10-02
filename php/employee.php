@@ -70,8 +70,9 @@ switch ($type) {
               '<td>'. $value['emp_last_name'].'</td>'.
               '<td>'. $type.'</td>'.
               '<td class="center">'. $value['emp_datestamp'].'</td>'.
-              '<td><div id='.$value['emp_id'].' onclick="viewaccount(this)" class="clickable"> View </div></td>'.
-              '<td><div id='.$value['emp_id'].' onclick="editaccount(this)" class="clickable"> Edit </div></td>'.
+              '<td>
+                <button class="button primary" id='.$value['emp_id'].' onclick="viewaccount(this)">View</button>
+              </td>'.
           "</tr>";
   }
   echo json_encode(array("main" => $html,"count" => $count));

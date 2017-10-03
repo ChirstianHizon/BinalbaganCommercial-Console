@@ -1,7 +1,7 @@
 <?php
-  include '..\library\config.php';
-  include '..\classes\class.product.php';
-  include '..\classes\class.product_log.php';
+  include '../library/config.php';
+  include '../classes/class.product.php';
+  include '../classes/class.product_log.php';
 
   $product_log = new Product_Log();
   $product = new Product();

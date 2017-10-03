@@ -166,12 +166,34 @@ class Sales{
     }
   }
 
+  public function getproductsSoldByAll(){
+    $sql="SELECT
+    tbl_product.prd_id AS ID,tbl_product.prd_name AS NAME,sum(prd_qty) AS QTY
+    FROM tbl_sales
+    INNER JOIN tbl_sales_list ON tbl_sales_list.sales_id = tbl_sales.sales_id
+    INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id
+    WHERE emp_id = '$empid' AND DATE(sales_datestamp)=CURDATE()
+    GROUP BY tbl_product.prd_id
+    ORDER BY prd_qty DESC
+    limit 10";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+  }
+
   public function getcustomerTraffic(){
     $sql ="SELECT
     COUNT(tbl_sales.sales_id) AS AMOUNT,
     EXTRACT(HOUR FROM sales_timestamp) AS TIME
     FROM tbl_sales
-    WHERE DATE(sales_datestamp)=CURDATE() AND sales_type = '0'
+    WHERE DATE(sales_datestamp)=CURDATE() AND sales_type = '2'
     GROUP BY EXTRACT(HOUR FROM sales_timestamp)
     ORDER BY sales_timestamp ASC
     ";
@@ -225,7 +247,7 @@ class Sales{
     COUNT(tbl_sales.sales_id) AS AMOUNT,
     EXTRACT(HOUR FROM sales_timestamp) AS TIME
     FROM tbl_sales
-    WHERE EXTRACT(HOUR FROM sales_timestamp) BETWEEN '8' AND '20' AND sales_type = '0'
+    WHERE EXTRACT(HOUR FROM sales_timestamp) BETWEEN '8' AND '20' AND sales_type = '2'
     GROUP BY EXTRACT(HOUR FROM sales_timestamp)
     ORDER BY sales_timestamp ASC
     ";

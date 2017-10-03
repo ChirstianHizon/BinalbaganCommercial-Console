@@ -1,6 +1,6 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.employee.php';
+include '../library/config.php';
+include '../classes/class.employee.php';
 include '../classes/class.utility.php';
 
 $utility = new Utility();

@@ -29,8 +29,8 @@ if($employee->get_session()){
     <title>Login</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href=".main/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href=".main/login.css">
+    <link rel="stylesheet" type="text/css" href="main/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="main/login.css">
   </head>
 
   <body>
@@ -50,8 +50,8 @@ if($employee->get_session()){
         </form>
       </div>
     </div>
-    <script src="js\login.js"></script>
-    <script src="js\jquery.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/jquery.min.js"></script>
   </body>
 
 </html>

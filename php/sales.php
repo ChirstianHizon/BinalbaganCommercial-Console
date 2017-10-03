@@ -1,10 +1,10 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.sales.php';
-include '..\classes\class.product.php';
-include '..\classes\class.orders.php';
-include '..\classes\class.customer.php';
-include '..\classes\class.employee.php';
+include '../library/config.php';
+include '../classes/class.sales.php';
+include '../classes/class.product.php';
+include '../classes/class.orders.php';
+include '../classes/class.customer.php';
+include '../classes/class.employee.php';
 
 
 $sales = new Sales();
@@ -138,7 +138,7 @@ if($access == $access_mobile){
       case 4:
       $chart = array();
       array_push($chart,array('Name', 'Quantity'));
-      $list = $sales->getproductsSoldByEmp($empid);
+      $list = $sales->getproductsSoldByEmp("80000002");
       if(!$list){
         array_push($chart,array('No Data Available', 0));
         echo json_encode($chart);

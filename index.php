@@ -1,4 +1,4 @@
-<?php
+  <?php
 include 'library/config.php';
 include 'classes/class.employee.php';
 //session_destroy();
@@ -78,7 +78,7 @@ $type = $_SESSION['usertype'];
 
 
 
-  <!-- <link rel='stylesheet' type='text/css' href='api\jqueryui\jquery-ui.css'/> -->
+  <!-- <link rel='stylesheet' type='text/css' href='api/jqueryui/jquery-ui.css'/> -->
 
 
 
@@ -86,17 +86,17 @@ $type = $_SESSION['usertype'];
   <script src="api/awsomecomplete/awesomplete.js"></script>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <!-- <link rel="stylesheet" href="css\jsquery-ui.css"> -->
-  <link href="api\MetroUI\css\metro.css" rel="stylesheet">
-    <link href="api\MetroUI\css\metro-icons.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="css/jsquery-ui.css"> -->
+  <link href="api/MetroUI/css/metro.css" rel="stylesheet">
+  <link href="api/MetroUI/css/metro-icons.css" rel="stylesheet">
 
-  <link rel='stylesheet' type='text/css' href='.main\index.css'/>
+  <link rel='stylesheet' type='text/css' href='main/index.css'/>
 
 
 
   <script src="bootstrap/startmin/js/jquery.min.js"></script>
   <script type="text/javascript" src="api/DataTables/datatables.min.js"></script>
-  <script src="api\MetroUI\js\metro.js"></script>
+  <script src="api/MetroUI/js/metro.js"></script>
 </head>
 <body>
   <div id="wrapper">
@@ -143,13 +143,13 @@ $type = $_SESSION['usertype'];
           <?php
             switch ($type) {
               case 0:
-                require_once '.main/admin-sidebar.php';
+                require_once 'main/admin-sidebar.php';
               break;
               case 1:
-                require_once '.main/cashier-sidebar.php';
+                require_once 'main/cashier-sidebar.php';
               break;
               case 2:
-                require_once '.main/delivery-sidebar.php';
+                require_once 'main/delivery-sidebar.php';
               break;
             }
           ?>
@@ -165,125 +165,125 @@ $type = $_SESSION['usertype'];
             case 0:
               switch($module){
                   case '':
-                    require_once '.admin/dashboard.php';
+                    require_once 'admin/dashboard.php';
                   break;
                   case 'salespos':
-                    require_once '.admin/sales/pos.php';
+                    require_once 'admin/sales/pos.php';
                   break;
                   case 'invenviewprod':
-                    require_once '.admin/inventory/inventory-view.php';
+                    require_once 'admin/inventory/inventory-view.php';
                   break;
                   case 'invenaddprod':
-                    require_once '.admin/inventory/inventory-add-prod.php';
+                    require_once 'admin/inventory/inventory-add-prod.php';
                   break;
                   case 'invenaddcat':
-                    require_once '.admin/inventory/inventory-category.php';
+                    require_once 'admin/inventory/inventory-category.php';
                   break;
                   case 'invenaddsupp':
-                    require_once '.admin/inventory/inventory-supplier.php';
+                    require_once 'admin/inventory/inventory-supplier.php';
                   break;
                   case 'invensuppprices':
-                    require_once '.admin/inventory/inventory-supplier-prices.php';
+                    require_once 'admin/inventory/inventory-supplier-prices.php';
                   break;
                   case 'invenaddbar':
-                    require_once '.admin/inventory/inventory-add-barcode.php';
+                    require_once 'admin/inventory/inventory-add-barcode.php';
                   break;
                   case 'invenupdtprod':
-                    require_once '.admin/inventory/inventory-update-prod.php';
+                    require_once 'admin/inventory/inventory-update-prod.php';
                   break;
                   case 'delivery':
-                    require_once '.admin/delivery/delivery_view.php';
+                    require_once 'admin/delivery/delivery_view.php';
                   break;
 
                   case 'search':
-                    require_once '.admin/products.php';
+                    require_once 'admin/products.php';
                   break;
                   case 'salesreport':
-                    require_once '.admin/salesreport.php';
+                    require_once 'admin/salesreport.php';
                   break;
                   case 'saleslist':
-                    require_once '.admin/sales/saleslist.php';
+                    require_once 'admin/sales/saleslist.php';
                   break;
                   case 'orders':
-                    require_once '.admin/sales/orders.php';
+                    require_once 'admin/sales/orders.php';
                   break;
                   case 'accnew':
-                    require_once '.admin/accounts/new.php';
+                    require_once 'admin/accounts/new.php';
                   break;
                   case 'acccust':
-                    require_once '.admin/accounts/customer.php';
+                    require_once 'admin/accounts/customer.php';
                   break;
                   case 'accemp':
-                    require_once '.admin/accounts/employee.php';
+                    require_once 'admin/accounts/employee.php';
                   break;
                   case 'accuser':
-                    require_once '.admin/accounts/user.php';
+                    require_once 'admin/accounts/user.php';
                   break;
                   case 'userprofile':
                     require_once 'userprofile.php';
                   break;
                   case 'reportinven':
-                    require_once '.admin/reports/inventory.php';
+                    require_once 'admin/reports/inventory.php';
                   break;
                   // TODO: EDIT BELOW
                   case 'reportsales':
-                    require_once '.admin/sales/saleslist.php';
+                    require_once 'admin/sales/saleslist.php';
                   break;
                   default:
-                    require_once '.main/page-not-found.php';
+                    require_once 'main/page-not-found.php';
                   break;
               }
             break;
             case 1:
             switch($module){
                 case '':
-                  require_once '.cashier/dashboard.php';
+                  require_once 'cashier/dashboard.php';
                 break;
                 case 'salespos':
-                  require_once '.cashier/sales/pos.php';
+                  require_once 'cashier/sales/pos.php';
                 break;
                 case 'invenviewprod':
-                  require_once '.cashier/inventory/inventory-view.php';
+                  require_once 'cashier/inventory/inventory-view.php';
                 break;
                 case 'search':
-                  require_once '.cashier/products.php';
+                  require_once 'cashier/products.php';
                 break;
                 case 'orders':
-                  require_once '.cashier/sales/orders.php';
+                  require_once 'cashier/sales/orders.php';
                 break;
                 case 'userprofile':
                   require_once 'userprofile.php';
                 break;
                 default:
-                  require_once '.main/page-not-found.php';
+                  require_once 'main/page-not-found.php';
                 break;
             }
             break;
             case 2:
             switch($module){
                 case '':
-                  require_once '.delivery/dashboard.php';
+                  require_once 'delivery/dashboard.php';
                 break;
                 case 'salespos':
-                  require_once '.delivery/sales/pos.php';
+                  require_once 'delivery/sales/pos.php';
                 break;
                 case 'invenviewprod':
-                  require_once '.delivery/inventory/inventory-view.php';
+                  require_once 'delivery/inventory/inventory-view.php';
                 break;
                 case 'search':
-                  require_once '.delivery/products.php';
+                  require_once 'delivery/products.php';
                 break;
                 case 'orders':
-                  require_once '.delivery/sales/orders.php';
+                  require_once 'delivery/sales/orders.php';
                 break;
                 case 'userprofile':
                   require_once 'userprofile.php';
                 break;
                 case 'delivery':
-                  require_once '.delivery/delivery/delivery_view.php';
+                  require_once 'delivery/delivery/delivery_view.php';
                 break;
                 default:
-                  require_once '.main/page-not-found.php';
+                  require_once 'main/page-not-found.php';
                 break;
             }
             break;
@@ -295,7 +295,7 @@ $type = $_SESSION['usertype'];
 
 
   <!-- SCRIPTS -->
-  <script src=".main\index.js"></script>
+  <script src="main/index.js"></script>
   <!-- DATATABLES -->
 
 
@@ -308,6 +308,6 @@ $type = $_SESSION['usertype'];
   <script src="bootstrap/startmin/js/startmin.js"></script>
   <!-- END BOOTSTRAP -->
   <!-- DATE PICKER JQUERY UI -->
-  <script src="api\jqueryui\jquery-ui.js"></script>
+  <script src="api/jqueryui/jquery-ui.js"></script>
 </body>
 </html>

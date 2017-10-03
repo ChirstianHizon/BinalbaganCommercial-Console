@@ -1,16 +1,16 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.sales.php';
-include '..\classes\class.product.php';
-include '..\classes\class.orders.php';
-include '..\classes\class.category.php';
-include '..\classes\class.cart.php';
-include '..\classes\class.product_log.php';
-include '..\classes\class.employee.php';
-include '..\classes\class.barcode.php';
-include '..\classes\class.delivery.php';
-include '..\classes\class.utility.php';
-include '..\classes\class.customer.php';
+include '../library/config.php';
+include '../classes/class.sales.php';
+include '../classes/class.product.php';
+include '../classes/class.orders.php';
+include '../classes/class.category.php';
+include '../classes/class.cart.php';
+include '../classes/class.product_log.php';
+include '../classes/class.employee.php';
+include '../classes/class.barcode.php';
+include '../classes/class.delivery.php';
+include '../classes/class.utility.php';
+include '../classes/class.customer.php';
 
 $customer = new Customer();
 $utility = new Utility();

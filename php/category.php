@@ -1,6 +1,6 @@
 <?php
-include '..\library/config.php';
-include '..\classes/class.category.php';
+include '../library/config.php';
+include '../classes/class.category.php';
 include '../classes/class.utility.php';
 
 $utility = new Utility();

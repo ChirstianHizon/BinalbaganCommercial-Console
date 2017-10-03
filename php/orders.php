@@ -1,9 +1,9 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.sales.php';
-include '..\classes\class.orders.php';
-include '..\classes\class.product.php';
-include '..\classes\class.customer.php';
+include '../library/config.php';
+include '../classes/class.sales.php';
+include '../classes/class.orders.php';
+include '../classes/class.product.php';
+include '../classes/class.customer.php';
 
 
   $sales = new Sales();
@@ -179,7 +179,7 @@ include '..\classes\class.customer.php';
       $stat = 1;
       $name = "";
       $recdate = $date;
-      $salesstat = $sales->addSaleswType($id,$userid,1);
+      $salesstat = $sales->addSaleswType($id,$userid,2);
       foreach($list as $value){
         $prdid = $value['ID'];
         $level = $value['LEVEL'] - $value['QTY'];

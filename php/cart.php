@@ -1,8 +1,8 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.cart.php';
-include '..\classes\class.sales.php';
-include '..\classes\class.product.php';
+include '../library/config.php';
+include '../classes/class.cart.php';
+include '../classes/class.sales.php';
+include '../classes/class.product.php';
 $sales = new Sales();
 $cart = new Cart();
 $product = new Product();

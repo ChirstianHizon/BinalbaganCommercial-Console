@@ -1,6 +1,6 @@
 <?php
-include '..\library\config.php';
-include '..\classes\class.supplier.php';
+include '../library/config.php';
+include '../classes/class.supplier.php';
 include '../classes/class.utility.php';
 
 $supplier = new Supplier();

@@ -1,9 +1,10 @@
 var pendingtable,walkintable,list_table,orderlisttable,modal;
 $(function() {
-  $(".datepicker").datepicker({
+  $("#datepicker").datepicker({
     minDate: currDate,
     dateFormat: 'yy-mm-dd'
   });
+
   pendingtable = $('#pending_id').DataTable({
     "responsive": true,
     "bLengthChange": false,
@@ -143,11 +144,14 @@ function approvedOrder(clickedElement){
 
 function updateOrder(){
   var date = document.getElementById("pickupdate").value;
+  changeformat(date);
   console.log(date);
+
   if(date == ""){
     alert("Choose Pickup Date");
     return false;
   }
+  
   $.ajax({
     url: "php/orders.php",
     type: "POST",
@@ -251,6 +255,10 @@ function get2decimal(int){
   return parseFloat(Math.round(int * 100) / 100).toFixed(2);
 }
 function changeformat(inputDate) {
+
+inputDate = inputDate.replace(".", "-");
+inputDate = inputDate.replace(".", "-");
+
   var date = new Date(inputDate);
   if (!isNaN(date.getTime())) {
     var day = date.getDate().toString();

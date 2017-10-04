@@ -10,16 +10,18 @@
   	<div class="col span_1_of_3">
 
     	Start Date: <br />
-      <div class="input-control text" >
-        <input readonly='true' class="datepicker" onchange="fromdatechange()" type="text" id="fromdatepicker" placeholder="From">
+      <div class="input-control text" id="datepickerfrom">
+        <input readonly='true' class="datepicker" onchange="fromdatechange()" type="text" id="fromdatepicker" placeholder="From" required>
+          <button class="button"><span class="mif-calendar"></span></button>
       </div>
 
   	</div>
   	<div class="col span_1_of_3">
 
       End Date: <br />
-      <div class="input-control text" >
-        <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
+      <div class="input-control text" id="datepickerto">
+        <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To" required>
+          <button class="button"><span class="mif-calendar"></span></button>
       </div>
 
     </div>

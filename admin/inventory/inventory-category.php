@@ -77,5 +77,5 @@
   </div>
 </div>
 <!-- SCRIPTS HERE!! -->
-<script src=".admin/.js/inventory/category.js"></script>
+<script src="admin/js/inventory/category.js"></script>
 <!-- END!! -->

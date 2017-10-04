@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".admin/.css/sales/saleslist.css" />
+<link rel="stylesheet" type="text/css" href="admin/css/sales/saleslist.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Sales List</h2>
@@ -6,12 +6,35 @@
 </div>
 <div id="datepicker">
   <h5><b>Choose Date:</b></h5><br/>
-  <b>From</b>
   <form onsubmit="return false;">
-    <input readonly='true' class="datepicker" type="text" id="fromdatepicker" placeholder="From">
-    <b>to</b>
-    <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
-    <input id="btncreatereport"type="button" value="Search " onclick="searchagain()" >
+
+    <div class="section group">
+
+    	<div class="col span_1_of_2">
+
+        <div class="input-control text" id="datepickerfrom">
+          <input readonly='true' class="datepicker" type="text" id="fromdatepicker" placeholder="From">
+            <button class="button"><span class="mif-calendar"></span></button>
+        </div>
+
+    	</div>
+    	<div class="col span_1_of_2">
+
+
+        <div class="input-control text" id="datepickerto">
+          <input readonly='true' class="datepicker" type="text" id="todatepicker" placeholder="To">
+            <button class="button"><span class="mif-calendar"></span></button>
+        </div>
+
+    	</div>
+    </div>
+
+
+
+
+
+
+    <button id="btncreatereport" onclick="searchagain()" class="button primary"> Search </button>
   </form>
 </div>
 <br />
@@ -83,4 +106,4 @@
 
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".admin/.js\sales\saleslist.js"></script>
+<script src="admin/js/sales/saleslist.js"></script>

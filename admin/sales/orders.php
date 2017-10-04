@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href=".admin/.css/sales/orders.css" />
+<link rel="stylesheet" type="text/css" href="admin/css/sales/orders.css" />
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Orders</h2>
@@ -16,7 +16,7 @@
       <th>Transaction</th>
       <th>Items Purchased</th>
       <th>Total Amount</th>
-      <th style="width:300px;"></th>
+      <th style="width:100px;"></th>
     </tr>
   </thead>
   <tbody id="pending-body">
@@ -50,7 +50,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span onclick="closeModal()" class="close">&times;</span>
-      <h2>Purchased Items</h2>
+      <h2>Ordered Items</h2>
     </div>
     <div class="modal-body">
       <h5>Customer Name:</h5>
@@ -59,18 +59,62 @@
       <br/>
       <h4>Purchased Items:</h4>
 
-      <table id="orderlist_id" class="display" width="100%" cellspacing="0">
+      <table id="orderlist_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Product Name</th>
             <th>Price </th>
             <th>Quantity</th>
+            <th>Stock Qty</th>
             <th>Subtotal</th>
           </tr>
         </thead>
         <tbody id="orderlist-body">
         </tbody>
       </table>
+      <h4 class="inline"><b>Total:</b></h4><i id="total" class="total">0.00</i>
+      <br/>
+      <br/>
+      <h4 class="inline"><b>Total Items:</b></h4><i id="count" class="total">0.00</i>
+      <br/>
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal()" id="red">Close</button><br/>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div id="approve-edit-modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span onclick="closeModal()" class="close">&times;</span>
+      <h2>Ordered Items</h2>
+    </div>
+    <div class="modal-body">
+      <h5>Customer Name:</h5>
+      <h5>Transaction Type:</h5>
+      <h5>Date Ordered:</h5>
+      <br/>
+      <h4>Purchased Items:</h4>
+
+      <table id="orderlist_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price </th>
+            <th>Quantity</th>
+            <th>Stock Qty</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="orderlist-body">
+        </tbody>
+      </table>
+      <br />
+      <br />
       <h4 class="inline"><b>Total:</b></h4><i id="total" class="total">0.00</i>
       <br/>
       <br/>
@@ -101,7 +145,10 @@
       <br/>
       <form id="app-form" onsubmit="updateOrder()">
       <h5>Set Pick Up Date:</h5>
-      <input readonly='true' class="datepicker" type="text" id="pickupdate" placeholder="Set Pick Up Date" required>
+      <div class="input-control text" id="datepicker">
+          <input readonly='true' class="datepicker" type="text" id="pickupdate" placeholder="Set Pick Up Date" required>
+          <button class="button"><span class="mif-calendar"></span></button>
+      </div>
       <h3>*Once Approved the Status Cannot be Changed</h3>
     </div>
     <div class="modal-footer">
@@ -138,4 +185,4 @@
 </div>
 
 <!-- SCRIPTS HERE!!! -->
-<script src=".admin/.js\sales\orders.js"></script>
+<script src="admin/js/sales/orders.js"></script>

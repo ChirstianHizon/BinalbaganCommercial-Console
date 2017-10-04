@@ -118,3 +118,16 @@
   color: blue;
   text-decoration: underline;
 }
+
+.input-control.text{
+  width: 100%;
+}
+table .button{
+  width: 100%;
+}
+table td{
+  /*background-color: red;*/
+  vertical-align:middle !important;
+  text-align: center;
+  font-weight: bold;
+}

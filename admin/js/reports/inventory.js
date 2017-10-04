@@ -4,7 +4,11 @@ var arrayData = [
   ['000-00-00', 0, 0],
 ];
 $(function() {
-  $(".datepicker").datepicker({
+  $("#datepickerfrom").datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+
+  $("#datepickerto").datepicker({
     dateFormat: 'yy-mm-dd'
   });
 

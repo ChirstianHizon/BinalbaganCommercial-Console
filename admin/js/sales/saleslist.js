@@ -1,12 +1,14 @@
-var table,list_table;
+var table,list_table,start,end;
 var modal="";
 $(function() {
-  $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-  var start = document.getElementById("fromdatepicker").value= currDate;
-  var end = document.getElementById("todatepicker").value= currDate;
-  console.log(start + ' | '+end);
+  $("#datepickerfrom").datepicker({ dateFormat: 'yy-mm-dd' });
+  $("#datepickerto").datepicker({ dateFormat: 'yy-mm-dd' });
 
-  createSalesTable(start,end);
+  // var start = document.getElementById("fromdatepicker").value= currDate;
+  // var end = document.getElementById("todatepicker").value= currDate;
+  // console.log(start + ' | '+end);
+
+
   list_table = $('#list_id').DataTable({
     "responsive": true,
     "bLengthChange": false,
@@ -21,6 +23,8 @@ $(function() {
     "bFilter": false,
     "pageLength": 10
   });
+
+  createSalesTable(start,end);
 });
 
 function searchagain(){

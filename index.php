@@ -1,4 +1,4 @@
-  <?php
+<?php
 include 'library/config.php';
 include 'classes/class.employee.php';
 //session_destroy();
@@ -9,13 +9,15 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 if($module == 'logout'){
   // session_destroy();
   $_SESSION['login'] ="";
+  // header("location: login.php");
   header("location: login.php");
 }
 
 $fname = (!empty($_SESSION['userfname'])) ? $_SESSION['userfname'] : true;
 $lname = (!empty($_SESSION['userlname'])) ? $_SESSION['userlname'] : true;
 if(empty($_SESSION['userfname']) ||  empty($_SESSION['userlname'])){
-  session_destroy();
+  // session_destroy();
+  $_SESSION['login'] ="";
   header("location: login.php");
 }
 $lname = substr($lname,0,10);
@@ -85,7 +87,7 @@ $type = $_SESSION['usertype'];
   <link href="api/awsomecomplete/awesomplete.css" rel="index">
   <script src="api/awsomecomplete/awesomplete.js"></script>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
   <!-- <link rel="stylesheet" href="css/jsquery-ui.css"> -->
   <link href="api/MetroUI/css/metro.css" rel="stylesheet">
   <link href="api/MetroUI/css/metro-icons.css" rel="stylesheet">
@@ -308,6 +310,6 @@ $type = $_SESSION['usertype'];
   <script src="bootstrap/startmin/js/startmin.js"></script>
   <!-- END BOOTSTRAP -->
   <!-- DATE PICKER JQUERY UI -->
-  <script src="api/jqueryui/jquery-ui.js"></script>
+  <!-- <script src="api/jqueryui/jquery-ui.js"></script> -->
 </body>
 </html>

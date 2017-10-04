@@ -52,7 +52,7 @@ $access_mobile = "185f3f68183cea48c5c9fcb6cc8bcd56";
 $access = md5($access);
 
 if ($access != $access_mobile) {
-  // header("location: ../index.php");
+  header("location: ../index.php");
 } else {
   $type = (int)$type;
   switch ($type) {

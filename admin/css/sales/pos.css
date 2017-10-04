@@ -140,7 +140,7 @@ button{
 .table-container{
   margin-bottom: 0;
   padding-bottom: 30px;
-  min-height: 400px;
+  min-height: 420px;
 }
 
 /* END */
@@ -287,9 +287,15 @@ table.dataTable thead .sorting{
 /* FOR THE CHECKOUT BUTTON */
 #checkouttotal{
   float:right;
-    font-size: 40px;
+  font-size: 40px;
   margin-right: 10px;
 }
-table{
+/*table{
   min-height: 700px;
+}*/
+.dataTable{
+vertical-align:middle;
 }
+/* padding: 8px; */
+/* line-height: 1.42857143; */
+/* vertical-align: top; */

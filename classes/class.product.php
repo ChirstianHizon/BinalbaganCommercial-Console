@@ -32,14 +32,14 @@
 
     public function deleteProduct($id){
       $sql = "UPDATE tbl_product SET
-      prd_status =0
+      prd_status = '0'
       WHERE prd_id = '$id'";
-      
-        return $result;
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+      return $result;
     }
-	
+
 	public function getProduct(){
-      $sql = "SELECT * FROM tbl_product ORDER BY prd_id DESC";
+      $sql = "SELECT * FROM tbl_product WHERE prd_status = 1 ORDER BY prd_id DESC";
       $result = mysqli_query($this->db,$sql);
       if($result){
         while($row = mysqli_fetch_assoc($result)){
@@ -53,7 +53,7 @@
     }
 
     public function getProductCount(){
-      $sql = "SELECT COALESCE(COUNT(prd_id),0) AS COUNT FROM tbl_product ORDER BY prd_id DESC";
+      $sql = "SELECT COALESCE(COUNT(prd_id),0) AS COUNT FROM tbl_product  WHERE prd_status = 1 ORDER BY prd_id DESC";
       $result = mysqli_query($this->db,$sql);
       $row = mysqli_fetch_assoc($result);
       $result = $row['COUNT'];
@@ -69,7 +69,7 @@
     }
 
     public function getSpecificProduct($id){
-      $sql = "SELECT * FROM tbl_product WHERE prd_id = '$id'";
+      $sql = "SELECT * FROM tbl_product WHERE prd_id = '$id' ";
       $result = mysqli_query($this->db,$sql);
       if($result){
         while($row = mysqli_fetch_assoc($result)){
@@ -181,7 +181,8 @@
       $sql = "SELECT prd_name,cat_name,prd_level,prd_id
       FROM tbl_product
       INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
-      WHERE prd_level <= prd_warning";
+      WHERE prd_level <= prd_warning AND prd_status = 1 
+      ";
       $result = mysqli_query($this->db,$sql);
       if($result){
         while($row = mysqli_fetch_assoc($result)){

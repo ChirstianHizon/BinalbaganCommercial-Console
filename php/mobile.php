@@ -161,13 +161,13 @@ if ($access != $access_mobile) {
           "NAME"=> $value['prd_name'],
           "DESC"=> $value['prd_desc'],
           "CATEGORY"=>$category->getName($value['cat_id']),
-          "PRICE"=> $value['prd_price'],
+          "PRICE"=> number_format($value['prd_price'],2),
           "DATESTAMP"=> $value['prd_datestamp'],
           "TIMESTAMP"=> $value['prd_timestamp'],
           "STATUS"=> $value['prd_status'],
-          "LEVEL"=> $value['prd_level'],
-          "OPTIMAL"=> $value['prd_optimal'],
-          "WARNING"=> $value['prd_warning'],
+          "LEVEL"=> number_format($value['prd_level'],0),
+          "OPTIMAL"=> number_format($value['prd_optimal'],0),
+          "WARNING"=> number_format($value['prd_warning'],0),
           "IMAGE"=> $value['prd_image']
         ));
       }
@@ -236,8 +236,8 @@ if ($access != $access_mobile) {
             "FNAME" => $value['cust_firstname'],
             "LNAME" => $value['cust_lastname'],
             "DATE" => $value['order_datestamp'],
-            "TITEMS" => $value['TOTAL'],
-            "TAMOUNT" => $value['TAMOUNT'],
+            "TITEMS" => number_format($value['TOTAL'],0),
+            "TAMOUNT" => number_format($value['TAMOUNT'],0),
             "STATUS" => $value['order_status']
           ));
         }
@@ -314,8 +314,8 @@ if ($access != $access_mobile) {
             "CUST_ADDRESS"=>$value['add_name'],
             "CUST_NOTES"=>$value['add_notes'],
             "ORDER_DATE" =>$value['order_datestamp'],
-            "AMOUNT" =>$value['AMOUNT'],
-            "TOTAL" =>$value['TOTAL'],
+            "AMOUNT" =>number_format($value['AMOUNT'],0),
+            "TOTAL" =>number_format($value['TOTAL'],2),
             "DATE_RECIEVE" =>$value['del_end_datestamp'],
             "STATUS" =>$value['order_status'],
             "TYPE" =>$value['order_type']
@@ -342,9 +342,9 @@ if ($access != $access_mobile) {
           array(
             "PRDID" =>$value['ID'],
             "NAME" =>$value['NAME'],
-            "PRICE" =>$value['PRICE'],
-            "QTY" =>$value['QTY'],
-            "SUBTOTAL" =>$value['SUBTOTAL']
+            "PRICE" =>number_format($value['PRICE'],2),
+            "QTY" =>number_format($value['QTY'],0),
+            "SUBTOTAL" =>number_format($value['SUBTOTAL'],2)
           );
           $count++;
         }
@@ -389,7 +389,7 @@ if ($access != $access_mobile) {
             "DATESTAMP" =>$value['DATESTAMP'],
             "TYPE" =>$type,
             "EMPLOYEE" =>$employee,
-            "LOGQTY" =>$value['LOG_QTY'],
+            "LOGQTY" =>number_format($value['LOG_QTY'],0),
             "TOTAL"=>number_format($total,2),
             "SUPPLIER"=>$supname,
             "ID" =>$value['LOG_ID'],
@@ -455,7 +455,7 @@ if ($access != $access_mobile) {
             "DATESTAMP" =>$sales_date,
             "USER" =>$customer_id,
             "TYPE" =>$sales_type,
-            "QTY" =>$sales_qty,
+            "QTY" =>number_format($sales_qty,0),
             "TOTAL"=>number_format($sales_total,2)
           );
           $count++;
@@ -487,8 +487,8 @@ if ($access != $access_mobile) {
             "DATESTAMP" =>$value['receive_datestamp'],
             "CUSTOMER" =>$customer_name,
             "STATUS" =>$value['del_status'],
-            "QTY"=>$value['prd_qty'],
-            "PRICE"=>$value['prd_price']
+            "QTY"=>number_format($value['prd_qty'],0),
+            "PRICE"=>number_format($value['prd_price'],2)
           );
           $count++;
         }
@@ -517,7 +517,7 @@ if ($access != $access_mobile) {
             "DATESTAMP" =>$value['DATE'],
             "STATUS"  =>$value['TYPE'],
             "CUSTOMER"    =>$customer_name,
-            "QTY"       =>$value['QUANTITY']
+            "QTY"       => number_format($value['QUANTITY'],0)
           );
           $count++;
         }

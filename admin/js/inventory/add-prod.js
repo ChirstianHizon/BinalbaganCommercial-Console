@@ -404,7 +404,7 @@ function deleteProduct(clickedElement){
     },success: function(result){
       //console.log(result.name);
       ProductDeleted(name);
-      getProduct();
+      createProductTable();
     },error: function(response) {
       console.log(response);
     }

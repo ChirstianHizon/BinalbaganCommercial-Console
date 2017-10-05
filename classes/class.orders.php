@@ -193,8 +193,8 @@ class Order
     public function completeOrder($id)
     {
         $sql = "UPDATE tbl_order SET
-    order_status = '100'
-    WHERE order_id = '$id'";
+        order_status = '100'
+        WHERE order_id = '$id'";
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         return $result;
     }

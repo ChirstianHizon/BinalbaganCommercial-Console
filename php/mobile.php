@@ -265,9 +265,9 @@ if ($access != $access_mobile) {
       }if($result >0){$result =true;}else{$result = false;}
       $result = $delivery->finishDelivery($id);
       $orderid = $delivery->getOrderId($id);
-      $sales->updateSalesReceiveDatetime($orderid);
+      $status = $sales->updateSalesReceiveDatetime($orderid);
       $order->completeOrder($orderid);
-      echo json_encode(array("RESULT" => $result));
+      echo json_encode(array("RESULT" => $result,"ORDER" => $status,"id"=>$orderid));
       break;
       case 10:
       $list = $order->getDeliveryOrders();

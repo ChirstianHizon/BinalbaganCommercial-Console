@@ -390,7 +390,37 @@ function deletefunction() {
   });
 }
 
+function deleteProduct(clickedElement){
+  var id = clickedElement.id;
+  $.ajax({
+    url: "php/product.php",
+    type: "POST",
+    dataType: 'json',
+    async: true,
+    data: {
+      "access":access,
+      "id":id,
+      "type":3
+    },success: function(result){
+      //console.log(result.name);
+      ProductDeleted(name);
+      getProduct();
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+}
+
 // -------------------------------------------- Notifications ----------------------------//
+
+function ProductDeleted(name) {
+  $.Notify({
+      caption: '<b>Product Deleted</b>',
+      content: 'Product has been removed from the Records',
+      type: 'success'
+  });
+}
+
 
 function ProductAdded(name) {
   $.Notify({
@@ -406,6 +436,8 @@ function ProductUpdated(name) {
       type: 'success'
   });
 }
+
+
 function ProductError(name) {
   $.Notify({
       caption: 'Name already used',

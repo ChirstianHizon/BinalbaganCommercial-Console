@@ -30,7 +30,15 @@
 
     }
 
-    public function getProduct(){
+    public function deleteProduct($id){
+      $sql = "UPDATE tbl_product SET
+      prd_status =0
+      WHERE prd_id = '$id'";
+      
+        return $result;
+    }
+	
+	public function getProduct(){
       $sql = "SELECT * FROM tbl_product ORDER BY prd_id DESC";
       $result = mysqli_query($this->db,$sql);
       if($result){

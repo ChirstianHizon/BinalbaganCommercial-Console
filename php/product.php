@@ -70,6 +70,10 @@ if($access == $access_mobile){
     case 2:
       echo $product->updateProduct($id,$name,$desc,$price,$category,$optimal,$warning,$image);
     break;
+	case 3:
+	$result = $product->deleteProduct($id);
+      echo json_encode(array("main"=>$result));
+	 break;
     case 4:
     $list = $product->getProduct();
     if(!$list){break;}
@@ -78,7 +82,7 @@ if($access == $access_mobile){
               "<td><b>".$value['prd_name']."</b></td>".
               '<td>
               <button id="'.$value['prd_id'].'" style="width:75px;" onclick="prodselect(this)" class="button primary">Edit</button>
-              <button id="'.$value['prd_id'].'" style="width:75px;" onclick="alert(this)" class="button danger">Delete</button>
+              <button id="'.$value['prd_id'].'" style="width:75px;" onclick="deleteProduct(this)" class="button danger">Delete</button>
               </td>'.
           "</tr>";
     }

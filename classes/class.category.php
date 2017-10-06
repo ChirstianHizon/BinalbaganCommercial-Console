@@ -34,6 +34,12 @@ class Category{
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
     return $result;
   }
+  public function deleteCategory($id){
+    
+    $sql = "DELETE FROM tbl_category WHERE cat_id = '$id'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+    return $result;
+  }
 
   public function getCategory(){
     $sql = "SELECT * FROM tbl_category WHERE cat_status = '1' ";

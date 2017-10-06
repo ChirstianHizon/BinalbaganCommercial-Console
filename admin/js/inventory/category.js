@@ -109,6 +109,34 @@ function getAllCategory(){
   });
 }
 
+function catdelete(clickedElement){
+  var id = clickedElement.id;
+  var r = confirm("Confirm delete?");
+    if (r == true) {
+		//delete stuff
+		$.ajax({
+    url: "php/category.php",
+    type: "POST",
+    dataType: 'json',
+    async: true,
+    data: {
+      "access":access,
+      "id":id,
+      "type":3
+    },success: function(result){
+      //console.log(result.name);
+      document.getElementById("upid").value = result.id;
+	  getAllCategory();
+    },error: function(response) {
+      console.log(response);
+    }
+  });
+    } else {
+        //do nothing
+    }
+  
+}
+
 function catselect(clickedElement){
   show ('#updateCategory');
   hide ('#newCategory');

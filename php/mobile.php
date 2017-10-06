@@ -279,6 +279,7 @@ if ($access != $access_mobile) {
       break;
       case 9:
       $list = json_decode($coord,true);
+      $status="";
       $result = 0;
       foreach ($list as $value) {
         $id = $value['delivid'];
@@ -293,7 +294,7 @@ if ($access != $access_mobile) {
         // ));
       }if($result >0){$result =true;}else{$result = false;}
       $result = $delivery->finishDelivery($id);
-      $orderid = $delivery->getOrderId($id);
+      // $orderid = $delivery->getOrderId($id);
       $date = $sales->updateSalesReceiveDatetime($orderid);
 
 
@@ -307,11 +308,11 @@ if ($access != $access_mobile) {
         $prdid = $value['ID'];
         $level = $value['LEVEL'] - $value['QTY'];
         $salesid = $sales->addSalesList($salesstat,$prdid,$value['QTY']);
-        $status = $product->updateProductStock($prdid,$level,$value['QTY'],"101010101",1,$salesstat,"");
+        $status = $product->updateProductStock($prdid,$level,$value['QTY'],"",1,$salesstat,"");
         $status = true;
       }
 
-      echo json_encode(array("RESULT" => $result,"ORDER" => $status,"id"=>$orderid,"product" => $status,"salesid" => $salesid,"date"=>$date));
+      echo json_encode(array("list"=> $list,"orderid"=>$orderid,"RESULT" => $result,"ORDER" => $status,"id"=>$orderid,"product" => $status,"salesid" => $salesid,"date"=>$date));
       break;
       case 10:
       $list = $order->getDeliveryOrders();
@@ -603,6 +604,13 @@ if ($access != $access_mobile) {
         }
         $result = $product->addProduct($name,$desc,$price,$categorys,$level,$optimal,$warning,$image);
         echo json_encode(array("main" => $result,"image"=>$image));
+      break;
+      case 19:
+        if ($image == '') {
+          $image = "https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fno-image.png3232?alt=media&token=8b00ba10-cf65-4126-bc74-9662cd5db9ca";
+        }
+        $result = $product->updateProduct($id,$name,$desc,$price,$categorys,$optimal,$warning,$image);
+        echo json_encode(array("main" => $result,"ID"=> $id));
       break;
     }
   }

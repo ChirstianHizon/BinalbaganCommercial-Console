@@ -392,7 +392,10 @@ function deletefunction() {
 
 function deleteProduct(clickedElement){
   var id = clickedElement.id;
-  $.ajax({
+    var r = confirm("Confirm delete?");
+    if (r == true) {
+		//confirm delete
+		$.ajax({
     url: "php/product.php",
     type: "POST",
     dataType: 'json',
@@ -409,6 +412,10 @@ function deleteProduct(clickedElement){
       console.log(response);
     }
   });
+    } else {
+        //do nothing
+    }
+  
 }
 
 // -------------------------------------------- Notifications ----------------------------//

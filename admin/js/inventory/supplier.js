@@ -137,7 +137,10 @@ function selectSupplier(clickedElement){
 
 function deleteSupplier(clickedElement){
   var id = clickedElement.id;
-  $.ajax({
+  var r = confirm("Confirm delete?");
+    if (r == true) {
+		//delete stuff
+		$.ajax({
     url: "php/supplier.php",
     type: "POST",
     dataType: 'json',
@@ -154,6 +157,11 @@ function deleteSupplier(clickedElement){
       console.log(response);
     }
   });
+    } else {
+        //do nothing
+    }
+	
+  
 }
 
 

@@ -44,6 +44,8 @@ class Barcode{
   }
 
   public function addNewBarcode($prdid,$code){
+    $code = mysqli_real_escape_string($this->db,$code);
+
     $sql = "SELECT COALESCE(COUNT(bar_id),0) AS COUNT FROM tbl_barcode WHERE bar_code = '$code'";
     $result = mysqli_query($this->db,$sql);
     $row = mysqli_fetch_assoc($result);

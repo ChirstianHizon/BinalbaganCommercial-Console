@@ -12,11 +12,11 @@ $desc = (isset($_POST['desc']) && $_POST['desc'] != '') ? $_POST['desc'] : '';
 $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
 $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
 
-$name =$utility->str_insert($name, "'", "'");
-$desc =$utility->str_insert($desc, "'", "'");
-
-$name =$utility->str_insert($name, "/", "/");
-$desc =$utility->str_insert($desc, "/", "/");
+// $name =$utility->str_insert($name, "'", "'");
+// $desc =$utility->str_insert($desc, "'", "'");
+//
+// $name =$utility->str_insert($name, "/", "/");
+// $desc =$utility->str_insert($desc, "/", "/");
 // 1 - ADD
 // 2 - UPDATE
 // 3 - DELETE

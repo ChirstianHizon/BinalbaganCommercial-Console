@@ -41,7 +41,9 @@ if($employee->get_session()){
     <div id="content-container">
       <div class="form">
         <div id="thumbnail"class="thumbnail">
-          <img src="images/logo.png"/>
+          <a href="http://www.binalbagancommercial.tk">
+            <img  src="images/logo.png"/>
+          </a>
         </div>
         <form class="login-form" id="loginform" action="" method="POST" name="login">
           <input name="userid" id="uname"   type="text" placeholder="username"/>

@@ -290,6 +290,7 @@ class Order
       INNER JOIN tbl_customer cst ON cst.cust_id = ordr.cust_id
       INNER JOIN tbl_order_list olst ON ordr.order_id = olst.order_id
       INNER JOIN tbl_product pd ON pd.prd_id = olst.prd_id
+      LEFT JOIN tbl_address ad ON ad.cust_id = cst.cust_id
       WHERE ordr.order_id = '$id'
       ORDER BY ordr.order_datestamp DESC
       LIMIT 1

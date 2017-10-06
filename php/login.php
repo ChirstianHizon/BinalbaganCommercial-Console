@@ -13,11 +13,11 @@ $uname = (isset($_POST['uname']) && $_POST['uname'] != '') ? $_POST['uname'] : '
 $pass = (isset($_POST['pass']) && $_POST['pass'] != '') ? $_POST['pass'] : '';
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 
-$uname =$utility->str_insert($uname, "'", "'");
-$pass =$utility->str_insert($pass, "'", "'");
-
-$uname =$utility->str_insert($uname, "/", "/");
-$pass =$utility->str_insert($pass, "/", "/");
+// $uname =$utility->str_insert($uname, "'", "'");
+// $pass =$utility->str_insert($pass, "'", "'");
+//
+// $uname =$utility->str_insert($uname, "/", "/");
+// $pass =$utility->str_insert($pass, "/", "/");
 
 //Binalbagan_Commercial_WEB_Access
 

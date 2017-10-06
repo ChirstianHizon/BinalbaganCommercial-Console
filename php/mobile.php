@@ -42,6 +42,32 @@ $todate = (isset($_POST['todate']) && $_POST['todate'] != '') ? $_POST['todate']
 $fromdate = (isset($_POST['fromdate']) && $_POST['fromdate'] != '') ? $_POST['fromdate'] : '';
 $supplier = (isset($_POST['supplier']) && $_POST['supplier'] != '') ? $_POST['supplier'] : '';
 
+
+$name = (isset($_POST['name']) && $_POST['name'] != '') ? $_POST['name'] : '';
+$desc = (isset($_POST['desc']) && $_POST['desc'] != '') ? $_POST['desc'] : '';
+$categorys = (isset($_POST['category']) && $_POST['category'] != '') ? $_POST['category'] : '';
+$price = (isset($_POST['price']) && $_POST['price'] != '') ? $_POST['price'] : '';
+$image = (isset($_POST['image']) && $_POST['image'] != '') ? $_POST['image'] : '';
+$level = (isset($_POST['level']) && $_POST['level'] != '') ? $_POST['level'] : '';
+$optimal = (isset($_POST['optimal']) && $_POST['optimal'] != '') ? $_POST['optimal'] : '';
+$warning = (isset($_POST['warning']) && $_POST['warning'] != '') ? $_POST['warning'] : '';
+
+
+// $name =$utility->str_insert($name, "'", "'");
+// $desc =$utility->str_insert($desc, "'", "'");
+// $categorys =$utility->str_insert($categorys, "'", "'");
+// $image =$utility->str_insert($image, "'", "'");
+//
+// $name =$utility->str_insert($name, "/", "/");
+// $desc =$utility->str_insert($desc, "/", "/");
+// $categorys =$utility->str_insert($categorys, "/", "/");
+
+
+// $image =urlencode($image);
+// $image = mysql_real_escape_string($image);
+
+
+
 $uname =$utility->str_insert($uname, "'", "'");
 $pass =$utility->str_insert($pass, "'", "'");
 
@@ -232,13 +258,16 @@ if ($access != $access_mobile) {
         foreach ($list as $value) {
           echo json_encode(array(
             "main" => true,
+            "PHPID"=>$id,
             "ID" => $value['order_id'],
             "FNAME" => $value['cust_firstname'],
             "LNAME" => $value['cust_lastname'],
             "DATE" => $value['order_datestamp'],
             "TITEMS" => number_format($value['TOTAL'],0),
-            "TAMOUNT" => number_format($value['TAMOUNT'],0),
-            "STATUS" => $value['order_status']
+            "TAMOUNT" => number_format($value['TAMOUNT'],2),
+            "STATUS" => $value['order_status'],
+            "ADDRESS"=> $value['add_name'],
+            "CONTACT" => $value['cust_contact']
           ));
         }
       }
@@ -265,9 +294,24 @@ if ($access != $access_mobile) {
       }if($result >0){$result =true;}else{$result = false;}
       $result = $delivery->finishDelivery($id);
       $orderid = $delivery->getOrderId($id);
-      $status = $sales->updateSalesReceiveDatetime($orderid);
+      $date = $sales->updateSalesReceiveDatetime($orderid);
+
+
       $order->completeOrder($orderid);
-      echo json_encode(array("RESULT" => $result,"ORDER" => $status,"id"=>$orderid));
+      $userid = $order->getUserId($orderid);
+      // CREATES A NEW SALES
+      $stat = 1;
+      $list = $order->getSpecOrderList($orderid);
+      $salesstat = $sales->addSaleswType($orderid,$userid,2);
+      foreach($list as $value){
+        $prdid = $value['ID'];
+        $level = $value['LEVEL'] - $value['QTY'];
+        $salesid = $sales->addSalesList($salesstat,$prdid,$value['QTY']);
+        $status = $product->updateProductStock($prdid,$level,$value['QTY'],"101010101",1,$salesstat,"");
+        $status = true;
+      }
+
+      echo json_encode(array("RESULT" => $result,"ORDER" => $status,"id"=>$orderid,"product" => $status,"salesid" => $salesid,"date"=>$date));
       break;
       case 10:
       $list = $order->getDeliveryOrders();
@@ -507,7 +551,7 @@ if ($access != $access_mobile) {
           $cnt++;
         }
         $prod_list['COUNTER'] = $cnt;
-        $count = 1;
+        $count = 0;
         foreach ($list as $value) {
             $customer_name = $customer->getCustomeName($value['CUSTOMER']);
           $prod_list[$count] =
@@ -523,7 +567,42 @@ if ($access != $access_mobile) {
         }
         echo json_encode($prod_list);
       }
+      break;
 
+      // -------------------------- CRUD FUNCTIONS -------------------------------------//
+
+      case 17:
+
+      $list =  $category->getCategory();
+      if (!$list) {
+        $prod_list['COUNTER'] = 0;
+        echo json_encode($prod_list);
+        break;
+      }else{
+        $cnt = 0;
+        foreach ($list as $value) {
+          $cnt++;
+        }
+        $prod_list['COUNTER'] = $cnt;
+        $count = 1;
+        foreach ($list as $value) {
+          $prod_list[$count] =
+          array(
+            "ID" => $value['cat_id'],
+            "NAME" => $value['cat_name'],
+            "STATUS" => $value['cat_status']
+          );
+          $count++;
+        }
+        echo json_encode($prod_list);
+      }
+      break;
+      case 18:
+        if ($image == '') {
+          $image = "https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fno-image.png3232?alt=media&token=8b00ba10-cf65-4126-bc74-9662cd5db9ca";
+        }
+        $result = $product->addProduct($name,$desc,$price,$categorys,$level,$optimal,$warning,$image);
+        echo json_encode(array("main" => $result,"image"=>$image));
       break;
     }
   }

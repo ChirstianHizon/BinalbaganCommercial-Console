@@ -14,6 +14,9 @@ class Category{
   }
 
   public function addCategory($name,$desc){
+    $name = mysqli_real_escape_string($this->db,$name);
+    $desc = mysqli_real_escape_string($this->db,$desc);
+
     $sql = "INSERT INTO tbl_category(cat_name,cat_desc,cat_datestamp,cat_timestamp)
        VALUES('$name','$desc',NOW(),NOW())";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
@@ -21,6 +24,9 @@ class Category{
   }
 
   public function updateCategory($id,$name,$desc){
+    $name = mysqli_real_escape_string($this->db,$name);
+    $desc = mysqli_real_escape_string($this->db,$desc);
+    
     $sql = "UPDATE tbl_category SET
     cat_name = '$name',
     cat_desc = '$desc'
@@ -30,7 +36,7 @@ class Category{
   }
 
   public function getCategory(){
-    $sql = "SELECT * FROM tbl_category";
+    $sql = "SELECT * FROM tbl_category WHERE cat_status = '1' ";
     $result = mysqli_query($this->db,$sql);
     if($result){
       while($row = mysqli_fetch_assoc($result)){

@@ -16,17 +16,17 @@ $lname = (isset($_POST['lname']) && $_POST['lname'] != '') ? $_POST['lname'] : '
 $emptype = (isset($_POST['emptype']) && $_POST['emptype'] != '') ? $_POST['emptype'] : '';
 $image = (isset($_POST['image']) && $_POST['image'] != '') ? $_POST['image'] : '';
 
-$uname =$utility->str_insert($uname, "'", "'");
-$pass =$utility->str_insert($pass, "'", "'");
-$fname =$utility->str_insert($fname, "'", "'");
-$lname =$utility->str_insert($lname, "'", "'");
-$image =$utility->str_insert($image, "'", "'");
-
-$uname =$utility->str_insert($uname, "/", "/");
-$pass =$utility->str_insert($pass, "/", "/");
-$fname =$utility->str_insert($fname, "/", "/");
-$lname =$utility->str_insert($lname, "/", "/");
-$image =$utility->str_insert($image, "/", "/");
+// $uname =$utility->str_insert($uname, "'", "'");
+// $pass =$utility->str_insert($pass, "'", "'");
+// $fname =$utility->str_insert($fname, "'", "'");
+// $lname =$utility->str_insert($lname, "'", "'");
+// $image =$utility->str_insert($image, "'", "'");
+//
+// $uname =$utility->str_insert($uname, "/", "/");
+// $pass =$utility->str_insert($pass, "/", "/");
+// $fname =$utility->str_insert($fname, "/", "/");
+// $lname =$utility->str_insert($lname, "/", "/");
+// $image =$utility->str_insert($image, "/", "/");
 
 
 switch ($type) {

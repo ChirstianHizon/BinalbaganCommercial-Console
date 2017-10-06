@@ -15,11 +15,11 @@ $desc = (isset($_POST['desc']) && $_POST['desc'] != '') ? $_POST['desc'] : '';
 $price = (isset($_POST['price']) && $_POST['price'] != '') ? $_POST['price'] : '';
 $prdid = (isset($_POST['prdid']) && $_POST['prdid'] != '') ? $_POST['prdid'] : '';
 
-$name =$utility->str_insert($name, "'", "'");
-$desc =$utility->str_insert($desc, "'", "'");
-
-$name =$utility->str_insert($name, "/", "/");
-$desc =$utility->str_insert($desc, "/", "/");
+// $name =$utility->str_insert($name, "'", "'");
+// $desc =$utility->str_insert($desc, "'", "'");
+//
+// $name =$utility->str_insert($name, "/", "/");
+// $desc =$utility->str_insert($desc, "/", "/");
 
 $access = (isset($_POST['access']) && $_POST['access'] != '') ? $_POST['access'] : '';
 $access_web = "bd31b73daa1b64f0f2f6044a4fe0bc98";

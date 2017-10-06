@@ -33,6 +33,9 @@ class Employee{
     }
 
   public function checkLogin($uname,$pass){
+    $uname = mysqli_real_escape_string($this->db,$uname);
+    $pass = mysqli_real_escape_string($this->db,$pass);
+
     $pass = md5($pass);
     $sql = "SELECT emp_id AS ID,emp_image AS IMAGE,emp_last_name AS LNAME,emp_first_name AS FNAME,emp_username AS USERNAME,emp_type AS TYPE,count(emp_username) AS COUNT FROM tbl_employee
     WHERE emp_username = '$uname' AND emp_password = '$pass' ";
@@ -49,6 +52,15 @@ class Employee{
   }
 
   public function addEmployee($uname,$pass,$fname,$lname,$type,$image){
+    $uname = mysqli_real_escape_string($this->db,$uname);
+    $pass = mysqli_real_escape_string($this->db,$pass);
+    $fname = mysqli_real_escape_string($this->db,$fname);
+
+    $lname = mysqli_real_escape_string($this->db,$lname);
+    $type  = mysqli_real_escape_string($this->db,$type);
+    $image = mysqli_real_escape_string($this->db,$image);
+
+
     $pass = md5($pass);
     $sql = "INSERT INTO tbl_employee(emp_username,emp_password,emp_first_name,emp_last_name,emp_type,emp_image,emp_datestamp,emp_timestamp)
        VALUES('$uname','$pass','$fname','$lname','$type','$image',NOW(),NOW())";
@@ -56,6 +68,9 @@ class Employee{
     return $result;
   }
   public function checkUname($uname){
+
+    $uname = mysqli_real_escape_string($this->db,$uname);
+
     $sql = "SELECT count(emp_username) AS COUNT FROM tbl_employee WHERE emp_username = '$uname' ";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $row = mysqli_fetch_assoc($result);

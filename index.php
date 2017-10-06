@@ -118,7 +118,7 @@ $type = $_SESSION['usertype'];
 
       <!-- Top Navigation: Left Menu -->
       <ul class="nav navbar-nav navbar-left navbar-top-links">
-        <li><a id="home" href="/../BinalbaganCommercial-Thesis-Customer"><i class="fa fa-home fa-fw"></i></a></li>
+        <li><a id="home" href="../index.php"><i class="fa fa-home fa-fw"></i></a></li>
       </ul>
 
       <!-- Top Navigation: Right Menu -->

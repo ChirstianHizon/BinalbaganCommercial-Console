@@ -10,6 +10,9 @@ class Supplier{
   }
 
   public function addSupplier($name,$desc){
+    $name = mysqli_real_escape_string($this->db,$name);
+    $desc = mysqli_real_escape_string($this->db,$desc);
+
     $sql="INSERT INTO tbl_supplier(sup_name,sup_desc)
     VALUES('$name','$desc')";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
@@ -51,6 +54,9 @@ class Supplier{
   }
 
   public function updateSupplier($id,$name,$desc){
+    $name = mysqli_real_escape_string($this->db,$name);
+    $desc = mysqli_real_escape_string($this->db,$desc);
+
     $sql = "UPDATE tbl_supplier SET
     sup_name = '$name',
     sup_desc = '$desc'
@@ -125,6 +131,9 @@ class Supplier{
   }
 
   public function updateSupplierPrice($id,$prdid,$price){
+
+    $price = mysqli_real_escape_string($this->db,$price);
+
     $sql = "UPDATE tbl_supplier_prices SET
     sprice_price = '$price'
     WHERE sup_id = '$id' AND prd_id = '$prdid'";

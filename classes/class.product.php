@@ -14,6 +14,16 @@
     }
 
     public function addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image){
+
+      $name = mysqli_real_escape_string($this->db,$name);
+      $desc = mysqli_real_escape_string($this->db,$desc);
+      $price =   mysqli_real_escape_string($this->db,$price);
+      $level =   mysqli_real_escape_string($this->db,$level);
+      $optimal =   mysqli_real_escape_string($this->db,$optimal);
+      $warning =   mysqli_real_escape_string($this->db,$warning);
+      $image =   mysqli_real_escape_string($this->db,$image);
+
+
       $sql = "SELECT COALESCE(COUNT(prd_id),0) AS COUNT FROM tbl_product WHERE prd_name = '$name'";
       $result = mysqli_query($this->db,$sql);
       $row = mysqli_fetch_assoc($result);
@@ -83,6 +93,16 @@
     }
 
     public function updateProduct($id,$name,$desc,$price,$category,$optimal,$warning,$image){
+
+      $name = mysqli_real_escape_string($this->db,$name);
+      $desc = mysqli_real_escape_string($this->db,$desc);
+      $category = mysqli_real_escape_string($this->db,$category);
+      $price =   mysqli_real_escape_string($this->db,$price);
+      $level =   mysqli_real_escape_string($this->db,$level);
+      $optimal =   mysqli_real_escape_string($this->db,$optimal);
+      $warning =   mysqli_real_escape_string($this->db,$warning);
+      $image =   mysqli_real_escape_string($this->db,$image);
+
       $sql = "UPDATE tbl_product SET
       prd_name = '$name',
       prd_desc = '$desc',
@@ -181,7 +201,7 @@
       $sql = "SELECT prd_name,cat_name,prd_level,prd_id
       FROM tbl_product
       INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
-      WHERE prd_level <= prd_warning AND prd_status = 1 
+      WHERE prd_level <= prd_warning AND prd_status = 1
       ";
       $result = mysqli_query($this->db,$sql);
       if($result){

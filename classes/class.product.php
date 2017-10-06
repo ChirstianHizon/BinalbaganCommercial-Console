@@ -98,7 +98,6 @@
       $desc = mysqli_real_escape_string($this->db,$desc);
       $category = mysqli_real_escape_string($this->db,$category);
       $price =   mysqli_real_escape_string($this->db,$price);
-      $level =   mysqli_real_escape_string($this->db,$level);
       $optimal =   mysqli_real_escape_string($this->db,$optimal);
       $warning =   mysqli_real_escape_string($this->db,$warning);
       $image =   mysqli_real_escape_string($this->db,$image);

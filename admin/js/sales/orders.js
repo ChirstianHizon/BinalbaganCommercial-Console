@@ -51,6 +51,35 @@ function createPickUpTable(){
   });
 }
 
+function declineorder(clickedElement) {
+  var id=clickedElement.id;
+  var r = confirm("Confirm Decline?");
+    if (r == true) {
+
+      $.ajax({
+        url: "php/orders.php",
+        type: "POST",
+        async: true,
+        dataType: "json",
+        data: {
+          "type":12,
+          "id":id
+        },success: function(result){
+          console.log(result);
+          createPickUpTable();
+          createPedingTable();
+        },error: function(response) {
+          console.log(response);
+        }
+      });
+
+    }else{
+
+    }
+
+
+}
+
 function createPedingTable(){
   document.getElementById("pending-body").innerHTML = "";
   $.ajax({
@@ -151,7 +180,7 @@ function updateOrder(){
     alert("Choose Pickup Date");
     return false;
   }
-  
+
   $.ajax({
     url: "php/orders.php",
     type: "POST",

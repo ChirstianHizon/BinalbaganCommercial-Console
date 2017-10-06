@@ -11,6 +11,8 @@ $(function() {
   createProductTable();
   createCartTable();
 
+  var width = $("#mainx").height();
+  $("#subx").height(width);
 });
 
 $('#search').on( 'keyup', function () {
@@ -43,7 +45,7 @@ function createProductTable(){
   });
 }
 
-var modal,span = span = document.getElementsByClassName("close")[0] ,
+var modal,span = document.getElementsByClassName("close")[0] ,
     prdid,cartid;
 
 function createCartTable(){
@@ -68,8 +70,11 @@ function createCartTable(){
         "bInfo" : false,
         "pageLength": 5
       });
-    },error: function(response) {
-      console.log(response);
+
+      var left = document.getElementById('mainx').style.height;
+      document.getElementById('subx').style.minheight=left;
+      console.log(left);
+      // console.log(response);
     }
   });
 }

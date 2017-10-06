@@ -100,6 +100,12 @@ $type = $_SESSION['usertype'];
   <script type="text/javascript" src="api/DataTables/datatables.min.js"></script>
   <script src="api/MetroUI/js/metro.js"></script>
 </head>
+
+<?php
+
+$date = date("Y-m-d");
+echo "<script type='text/javascript'>console.log('$date')</script>";
+?>
 <body>
   <div id="wrapper">
 

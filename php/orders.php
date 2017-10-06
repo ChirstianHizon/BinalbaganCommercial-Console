@@ -59,7 +59,7 @@ include '../classes/class.customer.php';
                 '<td>
                 <button  id="'.$value['ID'].'" class="button primary" onclick="vieworderList(this)">View</button>
                 <button  id="'.$value['ID'].'" class="button success" onclick="approvedOrder(this)">Approved</button>
-                <button  id="'.$value['ID'].'" class="button danger"  onclick="alert(this)">Decline</button>'.
+                <button  id="'.$value['ID'].'" class="button danger"  onclick="declineorder(this)">Decline</button>'.
             "</tr>";
       $html = $html.$body;
     }
@@ -267,7 +267,8 @@ include '../classes/class.customer.php';
     echo json_encode(array("main" => $html));
     break;
     case 12:
-
+      $status = $order->updateOrderStatus($id, 2);
+      echo json_encode(array("main" => $status));
     break;
     default:
     echo json_encode(array("main" => "TYPE ERROR"));

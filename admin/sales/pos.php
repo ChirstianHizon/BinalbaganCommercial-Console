@@ -16,9 +16,9 @@
 
 
 <div class="section group">
-  <div class="col span_1_of_2">
+  <div  class="col span_1_of_2">
     <div class="table-header"><b>Product List</b></div>
-    <div class="table-container">
+    <div id="mainx" class="table-container">
     <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
       <thead>
         <tr>
@@ -43,7 +43,7 @@
 
   <div class="col span_1_of_2">
     <div class="table-header"><b>Cart List</b></div>
-    <div class="table-container">
+    <div id="subx" class="table-container">
     <table id="cart_id" class="table striped hovered cell-hovered border " width="100%" cellspacing="0">
       <thead>
         <tr>
@@ -172,7 +172,7 @@
       <!-- TODO: CREATE A CLICKBOX IF THE USER WOULD WANT TO GENERATE A RECIEPT -->
       <form id="form-final-checkout" class="modalform" onsubmit="finalsubmit()">
         <br/>
-      <input id="cbReciept" type="checkbox" name="genReciept" value="true">
+      <!-- <input id="cbReciept" type="checkbox" name="genReciept" value="true"> -->
       <!-- <label for="genReciept">Generate Receipt</label> -->
     </div>
     <div class="modal-footer">

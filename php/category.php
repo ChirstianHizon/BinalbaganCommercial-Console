@@ -33,7 +33,7 @@ switch ($type) {
 
   break;
   case 3:
-  # code...
+  echo $category->deleteCategory($id);
   break;
   case 4:
     $list =  $category->getCategory();

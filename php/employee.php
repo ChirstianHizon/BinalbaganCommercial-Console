@@ -105,6 +105,23 @@ switch ($type) {
 
      }
     break;
+    case 5:
+    $status = $employee->updateEmp($id,$fname,$lname,$image);
+
+    if($status){
+      $_SESSION['userfname'] = $fname;
+      $_SESSION['userlname'] = $lname;
+      if($image != ""){
+        $_SESSION['userimage'] = $image;
+      }
+    }
+    echo json_encode(array("status" => $status,"id"=>$id,"fname"=>$fname,"lname"=>$lname,"image"=>$image));
+    break;
+
+    case 6:
+      $status = $employee->updatepass($id,$pass);
+      echo json_encode(array("status" => $status,"pass"=>$pass));
+    break;
   default:
     echo json_encode(array("main" => "TYPE ERROR"));
     break;

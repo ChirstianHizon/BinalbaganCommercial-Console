@@ -51,6 +51,41 @@ class Employee{
     }
   }
 
+  public function updatepass($id,$pass){
+    $pass = mysqli_real_escape_string($this->db,$pass);
+    $pass = md5($pass);
+
+    $sql = "UPDATE tbl_employee SET
+    emp_password = '$pass'
+    WHERE emp_id = '$id'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    return $result;
+
+  }
+
+  public function updateEmp($id,$fname,$lname,$image){
+    $fname = mysqli_real_escape_string($this->db,$fname);
+    $lname = mysqli_real_escape_string($this->db,$lname);
+    $image = mysqli_real_escape_string($this->db,$image);
+
+    if($image == ""){
+      $sql = "UPDATE tbl_employee SET
+      emp_first_name = '$fname',
+      emp_last_name = '$lname'
+      WHERE emp_id = '$id'";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+      return $result;
+    }else{
+      $sql = "UPDATE tbl_employee SET
+      emp_first_name = '$fname',
+      emp_last_name = '$lname',
+      emp_image = '$image'
+      WHERE emp_id = '$id'";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+      return $result;
+    }
+  }
+
   public function addEmployee($uname,$pass,$fname,$lname,$type,$image){
     $uname = mysqli_real_escape_string($this->db,$uname);
     $pass = mysqli_real_escape_string($this->db,$pass);

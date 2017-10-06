@@ -84,7 +84,10 @@ function addbarcode(clickedElement) {
 
 function deletebarcode(clickedElement) {
   var id = clickedElement.id;
-  $.ajax({
+  var r = confirm("Confirm delete?");
+    if (r == true) {
+		//delete stuff
+		$.ajax({
     url: "php/barcode.php",
     type: "POST",
     async: true,
@@ -103,6 +106,11 @@ function deletebarcode(clickedElement) {
       console.log(response);
     }
   });
+    } else {
+        //do nothing
+    }
+	
+  
 }
 function savebarcode() {
   alert("save");

@@ -56,7 +56,7 @@
 
 </div>
 <div id="div2" class="col span_1_of_2">
-  <div class="table-header"><b>Add New Product</b><br/></div>
+  <div class="table-header"><b>Category List</b><br/></div>
   <div class="table-container">
     <div id="tableidreborn">
     <table id="table_id" class="datatable striped hovered cell-hovered border bordered" width="100%" cellspacing="0">

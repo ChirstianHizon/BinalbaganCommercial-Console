@@ -8,7 +8,7 @@
 <div class="section group">
   <!-- FORMS -->
   <div id="div1" class="col span_1_of_2">
-    <div class="table-header"><b>Barcode List</b></div>
+    <div class="table-header"><b>Add Product Stock</b></div>
     <div class="table-container">
   <form id="updateProduct" onsubmit="updatestocks()">
 
@@ -43,7 +43,7 @@
   </div>
   <!-- TABLE BELOW -->
   <div id="div2" class="col span_1_of_2">
-    <div class="table-header"><b>Barcode List</b></div>
+    <div class="table-header"><b>Product List</b></div>
     <div class="table-container">
       <div class="input-control text">
         <input id="search" class="tbsearch" type="search" placeholder="Search a Product">

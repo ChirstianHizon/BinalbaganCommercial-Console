@@ -50,7 +50,7 @@
 
 
 <div id="div2" class="col span_1_of_2">
-  <div class="table-header"><b>Supplier Details</b></div>
+  <div class="table-header"><b>Supplier List</b></div>
   <div class="table-container">
   <table id="table_id" class="datatable striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
     <thead>

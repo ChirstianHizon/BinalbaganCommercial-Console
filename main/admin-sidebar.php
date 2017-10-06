@@ -74,9 +74,9 @@
       <li>
         <a href="index.php?mod=accnew">Create New Account</a>
       </li>
-      <!-- <li>
+      <li>
         <a href="index.php?mod=acccust">Customer Accounts</a>
-      </li> -->
+      </li>
       <li>
         <a href="index.php?mod=accemp">Employee Accounts</a>
       </li>

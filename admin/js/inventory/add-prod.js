@@ -178,6 +178,7 @@ $("#newProduct").submit(function() {
           ProductAdded(product.name);
           document.getElementById("newProduct").reset();
           createProductTable();
+          document.getElementById('btnadd').disabled = false;
         } else {
           ProductError(product.name);
           // alert("Product Name is Already Used");
@@ -415,7 +416,7 @@ function deleteProduct(clickedElement){
     } else {
         //do nothing
     }
-  
+
 }
 
 // -------------------------------------------- Notifications ----------------------------//

@@ -20,8 +20,34 @@ class Customer{
     $result = $row['cust_lastname'].", ".$row['cust_firstname'];
     return $result;
   }
+	public function getCustomer(){
+    $sql = "SELECT * FROM tbl_customer";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
+	
+  }
+	public function getSpecCustomer($id){
+    $sql = "SELECT * FROM tbl_customer WHERE cust_id = '$id'";
+    $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+    if($result){
+      while($row = mysqli_fetch_assoc($result)){
+        $list[] = $row;
+      }
+      if(empty($list)){return false;}
+      return $list;
+    }else {
+      return $result;
+    }
 
-
+  }
 
 
 

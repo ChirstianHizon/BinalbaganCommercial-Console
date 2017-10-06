@@ -23,12 +23,12 @@
     <input readonly='true' class="nodisplay" id="id" type="text" placeholder="id do not edit" required>
     <input readonly='true' class="nodisplay" id="levelin" type="text" placeholder="id do not edit" required>
     <br />
-    <b>Supplier Details</b>
+    <b>Enter Stock Amount</b>
     <div class="input-control text">
       <input id="currlevel" type="number" step="1" min="1" placeholder="Enter Stocks to Add"required>
     </div><br><br><br />
 
-    <b>Supplier Details</b><br />
+    <b>Supplier</b><br />
     <div class="input-control select" >
       <select id="supplier" placeholder="Supplier" required>
         <option value="" disabled selected>Add a New Supplier</option>

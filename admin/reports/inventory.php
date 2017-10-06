@@ -40,7 +40,7 @@
   <button>Search</button>
 </form>
 <br/>
-<div class="table-header"><b>Ready for Pickup</b></div>
+<div class="table-header"><b>Product Traffic</b></div>
 <div class="table-container">
 <table id="datatb_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
@@ -60,7 +60,7 @@
 </table>
 </div>
 
-<div class="table-header"><b>Ready for Pickup</b></div>
+<div class="table-header"><b>Product Restock / Sales</b></div>
 <div class="table-container">
 <div id="stock_chart" class="chart"></div>
 </div>

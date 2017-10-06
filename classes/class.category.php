@@ -26,7 +26,7 @@ class Category{
   public function updateCategory($id,$name,$desc){
     $name = mysqli_real_escape_string($this->db,$name);
     $desc = mysqli_real_escape_string($this->db,$desc);
-    
+
     $sql = "UPDATE tbl_category SET
     cat_name = '$name',
     cat_desc = '$desc'
@@ -35,8 +35,9 @@ class Category{
     return $result;
   }
   public function deleteCategory($id){
-    
-    $sql = "DELETE FROM tbl_category WHERE cat_id = '$id'";
+    $sql = "UPDATE tbl_category SET
+    cat_status = '0'
+    WHERE cat_id = '$id'";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
     return $result;
   }

@@ -33,7 +33,8 @@ switch ($type) {
 
   break;
   case 3:
-  echo $category->deleteCategory($id);
+  $result = $category->deleteCategory($id);
+  echo json_encode(array("status"=> $result,"id"=>$id));
   break;
   case 4:
     $list =  $category->getCategory();

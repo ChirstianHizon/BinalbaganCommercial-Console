@@ -17,7 +17,7 @@
                 <th>Date Ordered</th>
                 <!-- <th>Total Items</th> -->
                 <th>Customer</th>
-                <th style="width:10px;"></th>
+                <!-- <th style="width:10px;"></th> -->
             </tr>
         </thead>
         <tbody id="app-body">

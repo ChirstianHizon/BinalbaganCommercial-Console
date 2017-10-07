@@ -34,9 +34,9 @@ if($access == $access_web){
               '<td>'.$value['DATE'].'</td>'.
               // '<td>'.$value['TOTAL'].'</td>'.
               '<td>'.$value['CUST_LNAME'].", ".$value['CUST_FNAME'].'</td>'.
-              '<td>
-              <button id="'.$value['ID'].'" class="button primary" onclick="vieworder(this)">View</button>
-              </td>'.
+              // '<td>
+              // <button id="'.$value['ID'].'" class="button primary" onclick="vieworder(this)">View</button>
+              // </td>'.
           "</tr>";
     }
     echo json_encode(array("main" => $html,"total" => $count));

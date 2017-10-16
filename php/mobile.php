@@ -283,7 +283,10 @@ if ($access != $access_mobile) {
       $result = 0;
       foreach ($list as $value) {
         $id = $value['delivid'];
-        $temp = $delivery->addRoute($value['delivid'],$value['lat'],$value['lng'],$value['datetime']);
+
+        $orderidxx = $delivery->getOrderId($id);
+
+        $temp = $delivery->addRoute($orderidxx,$value['lat'],$value['lng'],$value['datetime']);
         $result = $result.$temp;
         // echo json_encode(array(
         //   "id" => $value['id'],
@@ -312,7 +315,7 @@ if ($access != $access_mobile) {
         $status = true;
       }
 
-      echo json_encode(array("list"=> $list,"orderid"=>$orderid,"RESULT" => $result,"ORDER" => $status,"id"=>$orderid,"product" => $status,"salesid" => $salesid,"date"=>$date));
+      echo json_encode(array("list"=> $list,"orderid"=>$orderid,"RESULT" => $result,"ORDER" => $status,"id"=>$orderid,"product" => $status,"salesid" => $salesid,"date"=>$date,"stat"=>$order));
       break;
       case 10:
       $list = $order->getDeliveryOrders();
@@ -611,6 +614,9 @@ if ($access != $access_mobile) {
         }
         $result = $product->updateProduct($id,$name,$desc,$price,$categorys,$optimal,$warning,$image);
         echo json_encode(array("main" => $result,"ID"=> $id));
+      break;
+      case 20:
+        $result = $product->deleteProduct($id);
       break;
     }
   }

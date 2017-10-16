@@ -78,7 +78,7 @@
   <br  />
 </div>
 
-<div class="table-header"><b>Warning Level </b><i id="2" onclick="hide(this)" class="btnhide">-</i></div>
+<div class="table-header"><b>For Restock</b><i id="2" onclick="hide(this)" class="btnhide">-</i></div>
 <div id="table-2" class="table-container" >
   <!-- <div id="line"></div> -->
   <table id="warning_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">

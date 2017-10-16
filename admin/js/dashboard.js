@@ -205,6 +205,9 @@ function TopProdChart() {
       animation:{duration: 1000,easing: 'out',startup: true}
     };
     var chart = new google.visualization.LineChart(document.getElementById('cust_traffic_chart'));
+    var formatter = new google.visualization.NumberFormat(
+    {prefix: 'P ', negativeColor: 'red', negativeParens: true});
+    formatter.format(data, 1);
     chart.draw(data, options);
   }
 

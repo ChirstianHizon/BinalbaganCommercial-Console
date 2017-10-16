@@ -148,7 +148,7 @@ class Delivery{
       $sql = "UPDATE tbl_delivery SET
       del_status = '200',
       del_end_datestamp = NOW()
-      WHERE del_id = '$id'";
+      WHERE order_id = '$id'";
       $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
       return $result;
   }

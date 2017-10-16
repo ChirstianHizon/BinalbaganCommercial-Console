@@ -87,7 +87,7 @@ class Sales{
     tbl_sales_list.sales_id AS ID,
     prd_name AS NAME,
     prd_qty AS QUANTITY,
-    (prd_qty * prd_price) AS SUBTOTAL
+    (prd_qty * tbl_sales_list.prd_price) AS SUBTOTAL
     FROM tbl_sales_list
     INNER JOIN tbl_sales ON tbl_sales.sales_id = tbl_sales_list.sales_id
     INNER JOIN tbl_product ON tbl_product.prd_id = tbl_sales_list.prd_id

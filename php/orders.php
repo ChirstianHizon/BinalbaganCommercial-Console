@@ -50,16 +50,16 @@ include '../classes/class.customer.php';
       $order_total = $value['TOTAL'];
 
       $body ='<tr id="'.$value['ID'].'">'.
-                '<td id="'.$value['ID'].'" >'.$order_id.'</td>'.
+                // '<td id="'.$value['ID'].'" >'.$order_id.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_date.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$customer_id.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_type.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_qty.' item/s</td>'.
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
                 '<td>
-                <button  id="'.$value['ID'].'" class="button primary" onclick="vieworderList(this)">View</button>
-                <button  id="'.$value['ID'].'" class="button success" onclick="approvedOrder(this)">Approved</button>
-                <button  id="'.$value['ID'].'" class="button danger"  onclick="declineorder(this)">Decline</button>'.
+                <button  id="'.$value['ID'].'" class="button small-button primary" onclick="vieworderList(this)">View</button>
+                <button  id="'.$value['ID'].'" class="button small-button success" onclick="approvedOrder(this)">Approved</button>
+                <button  id="'.$value['ID'].'" class="button small-button danger"  onclick="declineorder(this)">Decline</button>'.
             "</tr>";
       $html = $html.$body;
     }
@@ -103,8 +103,8 @@ include '../classes/class.customer.php';
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_receive.'</td>'.
                 '<td>
-                <button class="button primary" id="'.$value['ID'].'" onclick="vieworderList(this)">View</button>
-                <button class="button success" id="'.$value['ID'].'" onclick="receiveOrder(this)">Recieve</button>
+                <button class="button small-button primary" id="'.$value['ID'].'" onclick="vieworderList(this)">View</button>
+                <button class="button small-button success" id="'.$value['ID'].'" onclick="receiveOrder(this)">Recieve</button>
                 </td>'.
             "</tr>";
       $html = $html.$body;
@@ -119,7 +119,7 @@ include '../classes/class.customer.php';
     // break;
    if(!$list){echo json_encode(array("main" => $html));break;}
     foreach($list as $value){
-      if($value['LEVEL'] ==  0){
+      if($value['LEVEL'] <=  0){
         $level =   '<td style="color:red">'. $value['LEVEL'].'</td>';
       }else{
         $level =  '<td style="color:green">'. $value['LEVEL'].'</td>';
@@ -128,8 +128,8 @@ include '../classes/class.customer.php';
       $total += $value['SUBTOTAL'];
       $body ='<tr>'.
                 '<td>'. $value['NAME'].'</td>'.
-                '<td>'. $value['PRICE'].'</td>'.
-                '<td>'. $value['QTY'].'</td>'.
+                '<td>P '. number_format($value['PRICE'],2).'</td>'.
+                '<td>'. number_format($value['QTY'],0).'</td>'.
                 $level.
                 '<td>P '. number_format($value['SUBTOTAL'],2).'</td>'.
             "</tr>";

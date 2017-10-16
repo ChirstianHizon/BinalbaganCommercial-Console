@@ -72,17 +72,17 @@ if($access == $access_mobile){
         }
 
         $body ='<tr id="'.$value['ID'].'">'.
-        '<td id="'.$value['ID'].'" >'.$sales_id.'</td>'.
-        '<td id="'.$value['ID'].'" >'.$sales_date.'</td>'.
-        '<td id="'.$value['ID'].'" >'.$customer_id.'</td>'.
-        '<td id="'.$value['ID'].'" >'.$sales_type.'</td>'.
-        '<td id="'.$value['ID'].'" >'.$sales_qty.' item/s</td>'.
-        '<td id="'.$value['ID'].'" >P'.number_format($sales_total,2).'</td>'.
-        '<td id="'.$value['ID'].'" onclick="viewsalesList(this)" ><b class="btnview"> View  </b></td>'.
+        '<td>'.$sales_id.'</td>'.
+        '<td>'.$sales_date.'</td>'.
+        '<td>'.$customer_id.'</td>'.
+        '<td>'.$sales_type.'</td>'.
+        '<td>'.$sales_qty.' item/s</td>'.
+        '<td>P '.number_format($sales_total,2).'</td>'.
+        '<td><button  id="'.$value['ID'].'" onclick="viewsalesList(this)" class="button primary">View</button></td>'.
         "</tr>";
         $html = $html.$body;
       }
-      echo json_encode(array("main" => $html,"trans"=>$total_trans,"amount"=>$total_amount,"items"=>$total_items));
+      echo json_encode(array("main" => $html,"trans"=>number_format($total_trans,0),"amount"=>number_format($total_amount,2),"items"=>number_format($total_items,0)));
       break;
 
       case 2:
@@ -100,7 +100,7 @@ if($access == $access_mobile){
         "</tr>";
 
       }
-      echo json_encode(array("main" => $html,"total" => $total,"count" => $count));
+      echo json_encode(array("main" => $html,"total" => number_format($total,2),"count" => number_format($count,0)));
       break;
       case 3:
       $html =$time="";
@@ -193,7 +193,7 @@ if($access == $access_mobile){
         break;
         case 7:
         $chart = array();
-        array_push($chart,array('Name', 'Products Available'));
+        array_push($chart,array('Name', 'Product Sales'));
         $list = $sales->gettopProducts();
         if(!$list){
           array_push($chart,array('No Data Available', 0));
@@ -234,7 +234,7 @@ if($access == $access_mobile){
         break;
         case 9:
         $chart = array();
-        array_push($chart,array('Month', 'Sales for the Year '.DATE("Y")));
+        array_push($chart,array('Month', 'Montly sales for the Year '.DATE("Y") ));
         $list = $sales->getlatestSalesStat();
         if(!$list){
           array_push($chart,array('No Data Available', 0));

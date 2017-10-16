@@ -32,8 +32,6 @@
 
 
 
-
-
     <button id="btncreatereport" onclick="searchagain()" class="button primary"> Search </button>
   </form>
 </div>
@@ -43,10 +41,10 @@
 <table id="table_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
-      <th>Sales No.</th>
+      <th>No.</th>
       <th>Date</th>
-      <th>Name</th>
-      <th>Transaction Type</th>
+      <th style="width:200px;" >Name</th>
+      <th style="width:60px;">Type</th>
       <th>Items Purchased</th>
       <th>Total Amount</th>
       <th></th>
@@ -59,7 +57,7 @@
 <br />
 <b><h3>Total Transaction: </h3><span id="t-trans"></span></b>
 <b><h3>Total Items: </h3><span id="t-items"></span></b>
-<b><h3>Total Amount: </h3><span id="t-price"></span></b>
+<b><h3>Total Amount: </h3>P <span id="t-price"></span></b>
 <br />
 <br />
 <br />
@@ -74,12 +72,12 @@
   <div class="modal-content">
     <div class="modal-header">
       <span onclick="closeModal()" class="close">&times;</span>
-      <h2>Sales List Items</h2>
+      <h2>Purchsed Items</h2>
     </div>
     <div class="modal-body">
-      <h3><b>Purchase Summary</b></h3>
-      <div id="line"></div>
-      <table id="list_id" class="display" width="100%" cellspacing="0">
+      <!-- <h3><b>Purchase Summary</b></h3>
+      <div id="line"></div> -->
+      <table id="list_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Name</th>

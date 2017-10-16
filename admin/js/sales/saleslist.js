@@ -57,7 +57,7 @@ function createSalesTable(start,end){
       });
       document.getElementById("t-trans").innerHTML=result.trans;
       document.getElementById("t-items").innerHTML=result.items;
-      document.getElementById("t-price").innerHTML=result.amount;
+      document.getElementById("t-price").innerHTML='P '+result.amount;
     },error: function(response) {
       console.log(response);
     }

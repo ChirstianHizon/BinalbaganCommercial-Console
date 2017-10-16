@@ -10,7 +10,7 @@
 <table id="pending_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
   <thead>
     <tr>
-      <th>No.</th>
+      <!-- <th>No.</th> -->
       <th>Date</th>
       <th>Name</th>
       <th>Transaction</th>
@@ -53,19 +53,19 @@
       <h2>Ordered Items</h2>
     </div>
     <div class="modal-body">
-      <h5>Customer Name:</h5>
+      <!-- <h5>Customer Name:</h5>
       <h5>Transaction Type:</h5>
       <h5>Date Ordered:</h5>
       <br/>
-      <h4>Purchased Items:</h4>
+      <h4>Purchased Items:</h4> -->
 
       <table id="orderlist_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Product Name</th>
-            <th>Price </th>
-            <th>Quantity</th>
-            <th>Stock Qty</th>
+            <th>Price Ordered</th>
+            <th>Ordered Qty</th>
+            <th>Avail Qty</th>
             <th>Subtotal</th>
           </tr>
         </thead>

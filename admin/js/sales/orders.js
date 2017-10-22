@@ -53,31 +53,29 @@ function createPickUpTable(){
 
 function declineorder(clickedElement) {
   var id=clickedElement.id;
-  var r = confirm("Confirm Decline?");
-    if (r == true) {
 
-      $.ajax({
-        url: "php/orders.php",
-        type: "POST",
-        async: true,
-        dataType: "json",
-        data: {
-          "type":12,
-          "id":id
-        },success: function(result){
-          console.log(result);
-          createPickUpTable();
-          createPedingTable();
-        },error: function(response) {
-          console.log(response);
-        }
-      });
-
-    }else{
-
-    }
-
-
+  var message = prompt("Decline Order","Reson...");
+  if (message == null || message == "") {
+      txt = "User cancelled the prompt.";
+  } else {
+    $.ajax({
+      url: "php/orders.php",
+      type: "POST",
+      async: true,
+      dataType: "json",
+      data: {
+        "type":12,
+        "msg":message,
+        "id":id
+      },success: function(result){
+        console.log(result);
+        createPickUpTable();
+        createPedingTable();
+      },error: function(response) {
+        console.log(response);
+      }
+    });
+  }
 }
 
 function createPedingTable(){

@@ -55,9 +55,9 @@
 </table>
 <br />
 <br />
-<b><h3>Total Transaction: </h3><span id="t-trans"></span></b>
-<b><h3>Total Items: </h3><span id="t-items"></span></b>
-<b><h3>Total Amount: </h3>P <span id="t-price"></span></b>
+<b><h4>Total Transaction: </h4></b><h3><span id="t-trans"></span></h3>
+<b><h4>Total Items: </h4></b><h3><span id="t-items"></span></h5>
+<b><h4>Total Amount: </h4></b><h3>P <span id="t-price"></span></h3>
 <br />
 <br />
 <br />
@@ -91,7 +91,6 @@
       <br/>
       <br/>
       <h4 class="inline"><b>Total:</b></h4><i id="total" class="total">0.00</i>
-      <br/>
       <br/>
       <h4 class="inline"><b>Total Items:</b></h4><i id="count" class="total">0.00</i>
       <br/>

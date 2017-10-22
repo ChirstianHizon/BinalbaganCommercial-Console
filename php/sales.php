@@ -38,7 +38,7 @@ if($access == $access_mobile){
     $html ="";
     $list = $sales->getAllSales($start,$end);
     if(!$list){
-      echo json_encode(array("main" => $html,"trans"=>$total_trans,"amount"=>$total_amount,"items"=>$total_items));
+      echo json_encode(array("main" => $html,"trans"=>number_format($total_trans,0),"amount"=>number_format($total_amount,2),"items"=>number_format($total_items,0)));
       break;}
 
       foreach($list as $value){
@@ -95,8 +95,8 @@ if($access == $access_mobile){
         $total += $value['SUBTOTAL'];
         $html = $html.'<tr id="'.$value['ID'].'">'.
         '<td>'.$value['NAME'].'</td>'.
-        '<td>'.$value['QUANTITY'].'</td>'.
-        '<td>'.$value['SUBTOTAL'].'</td>'.
+        '<td>'.number_format($value['QUANTITY'],0).'</td>'.
+        '<td>'.number_format($value['SUBTOTAL'],2).'</td>'.
         "</tr>";
 
       }

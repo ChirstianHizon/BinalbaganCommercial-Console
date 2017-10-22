@@ -172,11 +172,23 @@ class Order
         return $result;
     }
 
+    public function declineOrder($id, $msg)
+    {
+        $msg = mysqli_real_escape_string($this->db,$msg);
+        $sql = "UPDATE tbl_order SET
+        order_status = '2',
+        order_note = '$msg'
+        WHERE order_id = '$id'";
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        return $result;
+    }
+
+
     public function updateOrderDate($id, $date)
     {
         $sql = "UPDATE tbl_order SET
-    receive_datestamp = '$date'
-    WHERE order_id = '$id'";
+        receive_datestamp = '$date'
+        WHERE order_id = '$id'";
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         return $result;
     }

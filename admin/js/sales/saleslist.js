@@ -57,7 +57,7 @@ function createSalesTable(start,end){
       });
       document.getElementById("t-trans").innerHTML=result.trans;
       document.getElementById("t-items").innerHTML=result.items;
-      document.getElementById("t-price").innerHTML='P '+result.amount;
+      document.getElementById("t-price").innerHTML=result.amount;
     },error: function(response) {
       console.log(response);
     }
@@ -80,7 +80,7 @@ function viewsalesList(clickedElement){
         console.log(result);
         list_table.destroy();
         document.getElementById("list-table-body").innerHTML = result.main;
-        document.getElementById("total").innerHTML = "P "+addCommas(result.total);
+        document.getElementById("total").innerHTML = "P "+result.total;
         document.getElementById("count").innerHTML = result.count + " Item/s";
         modal = document.getElementById('saleslist-modal');
         openModal();

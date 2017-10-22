@@ -14,6 +14,7 @@ include '../classes/class.customer.php';
 
   $id = (isset($_POST['id']) && $_POST['id'] != '') ? $_POST['id'] : '';
   $date = (isset($_POST['date']) && $_POST['date'] != '') ? $_POST['date'] : '';
+  $msg = (isset($_POST['msg']) && $_POST['msg'] != '') ? $_POST['msg'] : '';
   $type = (isset($_POST['type']) && $_POST['type'] != '') ? $_POST['type'] : '';
   $cust = (isset($_POST['cust']) && $_POST['cust'] != '') ? $_POST['cust'] : '';
 
@@ -267,7 +268,7 @@ include '../classes/class.customer.php';
     echo json_encode(array("main" => $html));
     break;
     case 12:
-      $status = $order->updateOrderStatus($id, 2);
+      $status = $order->declineOrder($id,$msg);
       echo json_encode(array("main" => $status));
     break;
     default:

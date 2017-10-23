@@ -119,11 +119,14 @@ include '../classes/class.customer.php';
     // echo json_encode(array("main" => $list));
     // break;
    if(!$list){echo json_encode(array("main" => $html));break;}
+    $address = "";
     foreach($list as $value){
-      if($value['LEVEL'] <=  0){
-        $level =   '<td style="color:red">'. $value['LEVEL'].'</td>';
+      $approve = $order->getApprovedOrders($value['ID']);
+      $newlevel = $value['LEVEL'] - $approve;
+      if($newlevel <=  0){
+        $level =   '<td style="color:red">'. $newlevel.'</td>';
       }else{
-        $level =  '<td style="color:green">'. $value['LEVEL'].'</td>';
+        $level =  '<td style="color:green">'. $newlevel.'</td>';
       }
       $count++;
       $total += $value['SUBTOTAL'];
@@ -135,8 +138,9 @@ include '../classes/class.customer.php';
                 '<td>P '. number_format($value['SUBTOTAL'],2).'</td>'.
             "</tr>";
       $html = $html.$body;
+      $address = $value['ADDRESS'];
     }
-    echo json_encode(array("main" => $html,"total" => $total,"count" => $count));
+    echo json_encode(array("main" => $html,"total" => number_format($total,2),"count" => $count,"address" =>$address));
     break;
 
     case 4:
@@ -157,7 +161,7 @@ include '../classes/class.customer.php';
           break;
       }
       $customer = $customer->getCustomeName($value['CUSTOMER']);
-      echo json_encode(array("main" => $html,"total" => $value['TOTAL'],"type" => $type,"customer" => $customer,"date" => $value['DATE'],"count" =>  $value['QUANTITY']));
+      echo json_encode(array("main" => $html,"total" => number_format($value['TOTAL'],2),"type" => $type,"customer" => $customer,"date" => $value['DATE'],"count" =>  $value['QUANTITY']));
     }
     break;
     case 5:
@@ -255,7 +259,7 @@ include '../classes/class.customer.php';
                 '<td id="'.$value['ID'].'" >'.$customer_id.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_type.'</td>'.
                 '<td id="'.$value['ID'].'" >'.$order_date.'</td>'.
-                '<td id="'.$value['ID'].'" >'.$order_qty.' item/s</td>'.
+                '<td id="'.$value['ID'].'" >'.number_format($order_qty,0).' item/s</td>'.
                 '<td id="'.$value['ID'].'" >P '.number_format($order_total,2).'</td>'.
                 // '<td id="'.$value['ID'].'" onclick="vieworderList(this)" ><b id="view"> VIEW </b></td>'.
                 // '<td id="'.$value['ID'].'" >

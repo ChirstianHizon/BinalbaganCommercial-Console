@@ -43,7 +43,8 @@ function createPickUpTable(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 10,
+        "order": [[ 5, "desc" ]],
       });
     },error: function(response) {
       console.log(response);
@@ -96,7 +97,8 @@ function createPedingTable(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 10,
+        "order": [[ 0, "desc" ]],
       });
     },error: function(response) {
       console.log(response);
@@ -125,6 +127,9 @@ function vieworderList(clickedElement){
         //console.log(result);
         orderlisttable.destroy();
         document.getElementById("orderlist-body").innerHTML = result.main;
+        // if(result.address != "N/A"){
+          document.getElementById("address").innerHTML = result.address;
+        // }
         document.getElementById("total").innerHTML = "P "+ result.total;
         document.getElementById("count").innerHTML = result.count+" items/s";
         orderlisttable = $('#orderlist_id').DataTable({

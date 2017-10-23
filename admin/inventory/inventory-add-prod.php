@@ -24,7 +24,7 @@
     Category<br>
     <div class="input-control select" >
       <select id="category" placeholder="optional"required>
-      <option value="" disabled selected>No Catgory Available</option>
+        <option value="" disabled selected>No Catgory Available</option>
       </select>
     </div><br>
 

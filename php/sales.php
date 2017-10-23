@@ -242,7 +242,7 @@ if($access == $access_mobile){
           break;
         }else{
           foreach($list as $value){
-            array_push($chart,array($value['MONTH'],(int) $value['SALES']));
+            array_push($chart,array($value['MONTH'],(double)$value['SALES']));
           }
           echo json_encode($chart);
         }

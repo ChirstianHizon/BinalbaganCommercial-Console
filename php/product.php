@@ -65,6 +65,7 @@ if($access == $access_mobile){
         $image = "https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fno-image.png3232?alt=media&token=8b00ba10-cf65-4126-bc74-9662cd5db9ca";
       }
       $result = $product->addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image,$category);
+      $product->addNewBarcodeonID($result);
       echo json_encode(array("main" => $result));
     break;
     case 2:

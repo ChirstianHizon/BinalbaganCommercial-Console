@@ -189,7 +189,7 @@ function TopProdChart() {
   };
     var chart = new google.visualization.ColumnChart(document.getElementById('top_prod_chart'));
     var formatter = new google.visualization.NumberFormat(
-    {suffix: ' pc/s', negativeColor: 'red', negativeParens: true});
+    {suffix: ' sold', negativeColor: 'red', negativeParens: true});
     formatter.format(data, 1);
 
     chart.draw(data, options);

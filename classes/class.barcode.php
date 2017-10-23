@@ -58,9 +58,9 @@ class Barcode{
     }else{
       return false;
     }
-
   }
 
+  
   public function deleteBarcode($id){
     $sql = "UPDATE tbl_barcode SET
     bar_status = '0'

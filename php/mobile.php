@@ -284,9 +284,9 @@ if ($access != $access_mobile) {
       foreach ($list as $value) {
         $id = $value['delivid'];
 
-        $orderidxx = $delivery->getOrderId($id);
+        $delid = $delivery->getOrderId($id);
 
-        $temp = $delivery->addRoute($orderidxx,$value['lat'],$value['lng'],$value['datetime']);
+        $temp = $delivery->addRoute($delid,$value['lat'],$value['lng'],$value['datetime']);
         $result = $result.$temp;
         // echo json_encode(array(
         //   "id" => $value['id'],

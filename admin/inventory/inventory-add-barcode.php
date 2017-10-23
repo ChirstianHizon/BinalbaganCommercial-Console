@@ -27,7 +27,7 @@
           <thead>
               <tr>
                   <th>Name</th>
-                  <th style="width:70px;"></th>
+                  <th></th>
               </tr>
           </thead>
           <tbody id="barcode-body">

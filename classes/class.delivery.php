@@ -154,10 +154,10 @@ class Delivery{
   }
 
   public function getOrderId($id){
-    $sql = "SELECT order_id FROM tbl_delivery WHERE del_id = '$id'";
+    $sql = "SELECT del_id AS ID FROM tbl_delivery WHERE order_id = '$id'";
     $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
     $row = mysqli_fetch_assoc($result);
-    $result = $row['order_id'];
+    $result = $row['ID'];
     return $result;
   }
 

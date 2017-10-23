@@ -48,7 +48,7 @@
 <div class="section group">
 	<div id="charttitle" class="col span_1_of_2">
     <div id="top_prod_chart" class="chart"></div>
-	Top 10 Products
+	Top Products Sold
 	</div>
 	<div id="charttitle" class="col span_1_of_2">
     <div id="cust_traffic_chart" class="chart"></div>

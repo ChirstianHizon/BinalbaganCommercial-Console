@@ -31,10 +31,14 @@ if($access == $access_web){
       echo json_encode(array("main" => $html));break;}
     foreach($list as $value){
     $count++;
+    $code = $value['bar_code'];
     $html = $html.'<tr id="'.$id.'">'.
               '<td>'.$value['bar_code'].'</td>'.
               '<td>
-              <button id="'.$value['bar_id'].'" class="button danger" onclick="deletebarcode(this)">Remove</button>
+              <button id="'.$value['bar_id'].'" class="button danger small-button" onclick="deletebarcode(this)">Remove</button>
+              <form action='. "http://www.barcodes4.me/barcode/c39/$code.png?width=250&height=100&istextdrawn=1" .'>
+                  <button id="'.$value['bar_id'].'" class="button primary small-button"> Print </button>
+              </form>
               </td>'.
           "</tr>";
     }

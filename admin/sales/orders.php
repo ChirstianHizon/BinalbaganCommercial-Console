@@ -72,6 +72,10 @@
         <tbody id="orderlist-body">
         </tbody>
       </table>
+      <br />
+      <br />
+      <h4 class="inline"><b>Address:</b></h4><i id="address" class="total"></i>
+      <br />
       <h4 class="inline"><b>Total:</b></h4><i id="total" class="total">0.00</i>
       <br/>
       <br/>

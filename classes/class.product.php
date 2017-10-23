@@ -13,6 +13,20 @@
       return "CLASS OK";
     }
 
+    public function addNewBarcodeonID($prdid){
+
+      $sql = "SELECT cat_id AS CATID FROM tbl_product WHERE prd_id = '$prdid'";
+      $result = mysqli_query($this->db,$sql);
+      $row = mysqli_fetch_assoc($result);
+      $cat = $row['CATID'];
+
+      $code = "ITEM-".$cat."-".$prdid;
+      $sql = "INSERT INTO tbl_barcode(bar_code,prd_id)
+         VALUES('$code','$prdid')";
+      $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
+      return $result;
+    }
+
     public function addProduct($name,$desc,$price,$category,$level,$optimal,$warning,$image){
 
       $name = mysqli_real_escape_string($this->db,$name);
@@ -31,8 +45,12 @@
       if($count <= 0){
         $sql = "INSERT INTO tbl_product(prd_name,prd_desc,prd_datestamp,prd_timestamp,prd_level,prd_optimal,prd_warning,prd_price,prd_image,cat_id)
            VALUES('$name','$desc',NOW(),NOW(),'$level','$optimal','$warning','$price','$image','$category')";
-        $result = mysqli_query($this->db,$sql) or die(mysqli_error() . "CLASS ERROR");
-        return $result;
+           $result = mysqli_query($this->db,$sql) or die(mysqli_error() . $sql);
+           if($result == 1){
+             //GETS THE LAST ID USED IN QUERY
+             $result = mysqli_insert_id($this->db);
+           }
+           return $result;
       }else{
         return false;
       }

@@ -11,6 +11,19 @@ class Order
         }
     }
 
+    public function getApprovedOrders($prdid){
+      $sql="SELECT
+            COALESCE(SUM(prd_qty),0) AS COUNT
+            FROM tbl_order
+            JOIN tbl_order_list ON tbl_order.order_id = tbl_order_list.order_id
+            WHERE order_status = '1' AND prd_id = '$prdid'
+            GROUP BY prd_id";
+      $result = mysqli_query($this->db,$sql);
+      $row = mysqli_fetch_assoc($result);
+      $result = $row['COUNT'];
+      return $result;
+    }
+
     public function getAllPendingOrders()
     {
         $sql = "SELECT
@@ -104,18 +117,20 @@ class Order
     }
 
     public function getSpecOrderList($id){
-        $sql = "SELECT
-    tbl_order_list.prd_id AS ID,
-    order_id AS ORDERID,
-    prd_name AS NAME,
-    tbl_order_list.prd_price AS PRICE,
-    SUM(prd_qty) AS QTY,
-    SUM(prd_qty * tbl_order_list.prd_price) AS SUBTOTAL,
-    prd_level AS LEVEL
-    FROM tbl_order_list
-    INNER JOIN tbl_product ON tbl_order_list.prd_id = tbl_product.prd_id
-    WHERE tbl_order_list.order_id = '$id'
-    GROUP BY tbl_product.prd_name";
+      $sql = "SELECT
+      tbl_order_list.prd_id AS ID,
+      tbl_order_list.order_id AS ORDERID,
+      prd_name AS NAME,
+      tbl_order_list.prd_price AS PRICE,
+      SUM(prd_qty) AS QTY,
+      SUM(prd_qty * tbl_order_list.prd_price) AS SUBTOTAL,
+      prd_level AS LEVEL,
+      order_address AS ADDRESS
+      FROM tbl_order_list
+      INNER JOIN tbl_product ON tbl_order_list.prd_id = tbl_product.prd_id
+      JOIN tbl_order ON tbl_order_list.order_id = tbl_order.order_id
+      WHERE tbl_order_list.order_id = '$id'
+      GROUP BY tbl_product.prd_name";
 
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         $result = mysqli_query($this->db, $sql);

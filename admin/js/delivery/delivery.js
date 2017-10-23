@@ -61,7 +61,8 @@ function getPendingDelivery(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 5
+        "pageLength": 5,
+        "order": [[ 1, "asc" ]],
       });
     },error: function(response) {
       console.log(response);
@@ -116,7 +117,8 @@ function getCompletedDelivery(){
         "bLengthChange": false,
         "bFilter": false ,
         "bInfo" : false,
-        "pageLength": 10
+        "pageLength": 10,
+        "order": [[ 1, "desc" ]],
       });
     },error: function(response) {
       console.log(response);

@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Server version:               10.1.21-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win32
--- HeidiSQL Version:             9.4.0.5125
+-- HeidiSQL Version:             9.4.0.5174
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -13,8 +13,8 @@
 
 
 -- Dumping database structure for db_binalbagancommercial
--- CREATE DATABASE IF NOT EXISTS `db_binalbagancommercial` /*!40100 DEFAULT CHARACTER SET latin1 */;
--- USE `db_binalbagancommercial`;
+CREATE DATABASE IF NOT EXISTS `db_binalbagancommercial` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `db_binalbagancommercial`;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_address
 CREATE TABLE IF NOT EXISTS `tbl_address` (
@@ -28,10 +28,23 @@ CREATE TABLE IF NOT EXISTS `tbl_address` (
   `cust_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`add_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=110000035 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_address: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_address: ~11 rows (approximately)
 /*!40000 ALTER TABLE `tbl_address` DISABLE KEYS */;
+INSERT INTO `tbl_address` (`add_id`, `add_name`, `add_notes`, `add_datestamp`, `add_lat`, `add_lng`, `add_status`, `cust_id`) VALUES
+	(110000011, '146 Burgos Extension Talisay City', '', '2017-10-05 21:03:13', '', '', 0, 110000011),
+	(110000023, 'NO Address', '', '2017-10-10 19:38:52', '', '', 1, 110000013),
+	(110000025, '565656565665665', '', '2017-10-10 19:45:26', '', '', 1, 110000015),
+	(110000026, 'Manila ', '', '2017-10-10 19:47:06', '', '', 0, 110000016),
+	(110000027, 'Manila ', '', '2017-10-10 19:48:29', '', '', 1, 110000016),
+	(110000028, '146 Burgos Extension Zone 4 Talisay City', '', '2017-10-22 14:44:48', '', '', 0, 110000011),
+	(110000029, 'fsdf', '', '2017-10-22 14:47:26', '', '', 1, 110000017),
+	(110000030, '', '', '2017-10-23 10:29:44', '', '', 1, 110000018),
+	(110000031, '', '', '2017-10-23 10:30:44', '', '', 1, 110000019),
+	(110000032, '112312312323', '', '2017-10-23 10:33:38', '', '', 1, 110000020),
+	(110000033, '', '', '2017-10-23 11:04:57', '', '', 1, 110000011),
+	(110000034, '1234567', '', '2017-10-23 12:10:08', '', '', 1, 110000021);
 /*!40000 ALTER TABLE `tbl_address` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_barcode
@@ -43,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `tbl_barcode` (
   `prd_id` int(255) NOT NULL,
   PRIMARY KEY (`bar_id`),
   KEY `prd_id` (`prd_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12000005 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_barcode: ~12 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_barcode: ~17 rows (approximately)
 /*!40000 ALTER TABLE `tbl_barcode` DISABLE KEYS */;
 INSERT INTO `tbl_barcode` (`bar_id`, `bar_code`, `bar_status`, `bar_datestamp`, `prd_id`) VALUES
 	(1, '8432569751246', 1, '2017-09-28 23:42:26', 2),
@@ -60,7 +73,11 @@ INSERT INTO `tbl_barcode` (`bar_id`, `bar_code`, `bar_status`, `bar_datestamp`, 
 	(10, 'sample', 0, '2017-09-29 17:06:44', 8),
 	(11, '463234', 0, '2017-09-29 17:07:35', 8),
 	(12, 'asasasas', 0, '2017-09-29 17:07:44', 8),
-	(13, '946875231-8924', 1, '2017-10-03 00:04:51', 8);
+	(13, '946875231-8924', 1, '2017-10-03 00:04:51', 8),
+	(12000000, 'ITEM-13000000-16000000', 1, '2017-10-23 08:19:16', 16000000),
+	(12000001, 'ITEM-13000000-16000001', 1, '2017-10-23 08:23:45', 16000001),
+	(12000003, 'ITEM-13000000-16000002', 1, '2017-10-23 08:25:33', 16000002),
+	(12000004, 'ITEM-13000000-16000003', 1, '2017-10-23 08:26:42', 16000003);
 /*!40000 ALTER TABLE `tbl_barcode` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_cart
@@ -76,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
   PRIMARY KEY (`cart_id`),
   KEY `user_id` (`emp_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_binalbagancommercial.tbl_cart: ~0 rows (approximately)
 /*!40000 ALTER TABLE `tbl_cart` DISABLE KEYS */;
@@ -91,13 +108,14 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
   `cat_datestamp` date NOT NULL DEFAULT '0000-00-00',
   `cat_timestamp` time NOT NULL DEFAULT '00:00:00',
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13000001 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_category: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_category: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tbl_category` DISABLE KEYS */;
 INSERT INTO `tbl_category` (`cat_id`, `cat_name`, `cat_desc`, `cat_status`, `cat_datestamp`, `cat_timestamp`) VALUES
 	(1, 'Paint ', 'Paint Products for Use anywhere', 1, '2017-09-28', '23:08:32'),
-	(2, 'Wood ', 'All Wood Products must be placed here', 1, '2017-09-29', '13:15:31');
+	(2, 'Wood ', 'All Wood Products must be placed here', 0, '2017-09-29', '13:15:31'),
+	(13000000, 'Wood - Lumber Cuts', 'Woods', 1, '2017-10-23', '08:18:23');
 /*!40000 ALTER TABLE `tbl_category` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_customer
@@ -111,12 +129,22 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `cust_contact` text NOT NULL,
   `cust_image` text NOT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110000012 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=110000022 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_customer: ~1 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_customer: ~11 rows (approximately)
 /*!40000 ALTER TABLE `tbl_customer` DISABLE KEYS */;
 INSERT INTO `tbl_customer` (`cust_id`, `cust_datestamp`, `cust_username`, `cust_password`, `cust_firstname`, `cust_lastname`, `cust_contact`, `cust_image`) VALUES
-	(110000011, '2017-09-13 22:08:35', 'customer', '91ec1f9324753048c0096d036a694f86', 'Hill', 'Arnold', '', '');
+	(110000011, '2017-09-13 22:08:35', 'customer', '91ec1f9324753048c0096d036a694f86', 'Hill', 'Arnold', '09658751236', ''),
+	(110000012, '2017-10-04 22:32:59', 'christian', 'bdd36d7c7eb5f28ffa6270756b9774aa', 'Christian', 'Hizon', '09984843243', ''),
+	(110000013, '2017-10-10 19:38:01', 'mikey123', 'b18f58b85575fc3fb8b9189445d1071f', 'mikey', 'mikey', '09984843243', ''),
+	(110000014, '2017-10-10 19:40:05', 'Sample123', '66916216511cb09e5f31bbbf5775e9ce', 'Sample', 'Sample', '09984843243', ''),
+	(110000015, '2017-10-10 19:45:26', 'Name123', 'd6da8cef16de7b771d41df401d931ca6', 'Name', 'Name', '09984843243', ''),
+	(110000016, '2017-10-10 19:47:06', 'admin123', '0192023a7bbd73250516f069df18b500', 'Single', 'Lady', '09484666332', ''),
+	(110000017, '2017-10-22 14:47:26', 'sdfsdfs', '5d793fc5b00a2348c3fb9ab59e5ca98a', 'dfsdfsdf', 'sdfs', '09984846532', ''),
+	(110000018, '2017-10-23 10:29:44', 'dadadada', '8d4646eb2d7067126eb08adb0672f7bb', 'Raf', 'Dac', '09984843243', ''),
+	(110000019, '2017-10-23 10:30:44', 'dadadadada', '8d4646eb2d7067126eb08adb0672f7bb', 'rarar', 'rarara', '09984846532', ''),
+	(110000020, '2017-10-23 10:33:38', 'daaaaaa', 'fab862c0c10fe5103dd17c36e34fbc8e', 'Raffy', 'Davis', '09984843243', ''),
+	(110000021, '2017-10-23 12:10:08', 'rafae111', '496cfe52debb9a3c40847aaf72b7e179', 'Ad', 'ad', '09145678901', '');
 /*!40000 ALTER TABLE `tbl_customer` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_delivery
@@ -130,13 +158,26 @@ CREATE TABLE IF NOT EXISTS `tbl_delivery` (
   PRIMARY KEY (`del_id`),
   KEY `order_id` (`order_id`),
   KEY `add_id` (`add_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50000000 DEFAULT CHARSET=latin1 COMMENT='1    -> READY FOR DELIVERY\r\n200 - > COMPLETED\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=14000010 DEFAULT CHARSET=latin1 COMMENT='1    -> READY FOR DELIVERY\r\n200 - > COMPLETED\r\n';
 
--- Dumping data for table db_binalbagancommercial.tbl_delivery: ~0 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_delivery: ~15 rows (approximately)
 /*!40000 ALTER TABLE `tbl_delivery` DISABLE KEYS */;
 INSERT INTO `tbl_delivery` (`del_id`, `del_start_datestamp`, `del_end_datestamp`, `del_status`, `order_id`, `add_id`) VALUES
 	(1, '2017-10-01 16:52:38', '2017-10-01 18:44:52', 200, 2, 0),
-	(2, '2017-10-03 00:33:10', '2017-10-03 01:42:10', 0, 6, 0);
+	(2, '2017-10-03 00:33:10', '2017-10-16 11:26:14', 200, 6, 0),
+	(3, '2017-10-05 02:47:08', NULL, 1, 2, 0),
+	(4, '2017-10-16 11:57:52', NULL, 1, 6, 0),
+	(5, '2017-10-16 12:15:10', '2017-10-16 13:24:31', 200, 14, 0),
+	(6, '2017-10-16 13:41:24', '2017-10-16 13:51:15', 200, 15, 0),
+	(14000000, '2017-10-23 10:28:18', '2017-10-23 10:36:01', 200, 9000009, 0),
+	(14000002, '2017-10-23 10:46:51', '2017-10-23 10:47:16', 200, 9000010, 0),
+	(14000003, '2017-10-23 10:50:24', '2017-10-23 10:53:24', 200, 9000011, 0),
+	(14000004, '2017-10-23 11:11:58', '2017-10-23 11:16:10', 200, 9000013, 0),
+	(14000005, '2017-10-23 11:16:01', NULL, 1, 9000012, 0),
+	(14000006, '2017-10-23 11:18:21', '2017-10-23 11:18:32', 200, 9000014, 0),
+	(14000007, '2017-10-23 11:20:29', '2017-10-23 11:20:43', 200, 9000015, 0),
+	(14000008, '2017-10-23 11:28:01', '2017-10-23 11:28:28', 200, 9000016, 0),
+	(14000009, '2017-10-23 11:29:55', '2017-10-23 11:30:06', 200, 9000017, 0);
 /*!40000 ALTER TABLE `tbl_delivery` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_employee
@@ -156,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
 -- Dumping data for table db_binalbagancommercial.tbl_employee: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tbl_employee` DISABLE KEYS */;
 INSERT INTO `tbl_employee` (`emp_id`, `emp_username`, `emp_password`, `emp_first_name`, `emp_last_name`, `emp_type`, `emp_image`, `emp_datestamp`, `emp_timestamp`) VALUES
-	(80000002, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Juan ', 'Dela Cruz', 0, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/employee%2Faasas.jfifchristian?alt=media&token=a4bc57a5-6b2e-4d2a-a648-8b7a51b47ec5', '2017-08-21', '00:41:23'),
+	(80000002, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'Juan Mike', 'Dela Cruz', 0, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/accounts%2Fmoonmoon.gifJuan%20Mike?alt=media&token=1ce52f70-9d7f-4d98-b5af-c81b32bcd2ce', '2017-08-21', '00:41:23'),
 	(80000003, 'cashier', '6ac2470ed8ccf204fd5ff89b32a355cf', 'Mike', 'St. Johns', 1, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/employee%2Faasas.jfifchristian?alt=media&token=a4bc57a5-6b2e-4d2a-a648-8b7a51b47ec5', '2017-08-22', '00:50:42'),
 	(80000005, 'delivery', '7108537956afa2a526f96cc9da7b0c36', 'Arnold', 'Swasinegro', 2, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/employee%2FSketch_logo_frame.svg.pngdelivery?alt=media&token=a4c42110-37e2-497f-bf02-5965efea0cf3', '2017-08-25', '01:13:39'),
 	(80000006, 'christian', '21232f297a57a5a743894a0e4a801fc3', 'Christian', 'Hizon', 0, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/employee%2Faasas.jfifchristian?alt=media&token=a4bc57a5-6b2e-4d2a-a648-8b7a51b47ec5', '2017-08-24', '01:15:20');
@@ -171,25 +212,48 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `order_status` int(1) NOT NULL DEFAULT '0',
   `order_type` int(1) NOT NULL DEFAULT '0',
   `receive_datestamp` date NOT NULL,
+  `order_note` text NOT NULL,
+  `order_address` text NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70000000 DEFAULT CHARSET=latin1 COMMENT='order_type\r\n-----------------------------------\r\n0 -> PICK - UP \r\n1 -> DELIVERY\r\n\r\norder_status\r\n-----------------------------------\r\n0 -> PENDING\r\n1 -> APPROVED\r\n2 -> DECLINED\r\n100 -> COMPLETED\r\n200 -> ON DELIVERY\r\n\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=9000021 DEFAULT CHARSET=latin1 COMMENT='order_type\r\n-----------------------------------\r\n0 -> PICK - UP \r\n1 -> DELIVERY\r\n\r\norder_status\r\n-----------------------------------\r\n0 -> PENDING\r\n1 -> APPROVED\r\n2 -> DECLINED\r\n100 -> COMPLETED\r\n200 -> ON DELIVERY\r\n300 -> REVISED\r\n\r\n';
 
--- Dumping data for table db_binalbagancommercial.tbl_order: ~12 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_order: ~32 rows (approximately)
 /*!40000 ALTER TABLE `tbl_order` DISABLE KEYS */;
-INSERT INTO `tbl_order` (`order_id`, `order_datestamp`, `order_timestamp`, `cust_id`, `order_status`, `order_type`, `receive_datestamp`) VALUES
-	(1, '2017-10-01', '15:38:16', 110000011, 0, 0, '0000-00-00'),
-	(2, '2017-10-01', '15:38:37', 110000011, 1, 1, '2017-10-01'),
-	(3, '2017-10-02', '00:35:18', 110000011, 0, 0, '0000-00-00'),
-	(4, '2017-10-02', '16:44:26', 110000011, 0, 0, '0000-00-00'),
-	(5, '2017-10-02', '16:52:23', 110000011, 0, 0, '0000-00-00'),
-	(6, '2017-10-03', '00:30:04', 110000011, 1, 1, '2017-10-03'),
-	(7, '2017-10-03', '14:23:15', 110000011, 1, 0, '2017-10-04'),
-	(8, '2017-10-03', '14:33:41', 110000011, 0, 0, '0000-00-00'),
-	(9, '2017-10-03', '14:38:35', 110000011, 0, 0, '0000-00-00'),
-	(10, '2017-10-03', '14:39:49', 110000011, 1, 0, '2017-10-04'),
-	(11, '2017-10-03', '14:42:04', 110000011, 0, 0, '0000-00-00'),
-	(12, '2017-10-03', '14:42:50', 110000011, 0, 0, '0000-00-00');
+INSERT INTO `tbl_order` (`order_id`, `order_datestamp`, `order_timestamp`, `cust_id`, `order_status`, `order_type`, `receive_datestamp`, `order_note`, `order_address`) VALUES
+	(1, '2017-10-01', '15:38:16', 110000011, 2, 0, '2017-10-04', '', 'N/A'),
+	(2, '2017-10-01', '15:38:37', 110000011, 100, 1, '2017-10-01', '', ''),
+	(3, '2017-10-02', '00:35:18', 110000011, 100, 0, '2017-10-04', '', 'N/A'),
+	(4, '2017-10-02', '16:44:26', 110000011, 100, 0, '2017-10-04', '', 'N/A'),
+	(5, '2017-10-02', '16:52:23', 110000011, 100, 0, '2017-10-04', '', 'N/A'),
+	(6, '2017-10-03', '00:30:04', 110000011, 100, 1, '2017-10-03', '', ''),
+	(7, '2017-10-03', '14:23:15', 110000011, 2, 0, '2017-10-04', '', 'N/A'),
+	(8, '2017-10-03', '14:33:41', 110000011, 2, 0, '2017-10-04', '', 'N/A'),
+	(9, '2017-10-03', '14:38:35', 110000011, 2, 0, '2017-10-28', '', 'N/A'),
+	(10, '2017-10-03', '14:39:49', 110000011, 2, 0, '2017-10-04', '', 'N/A'),
+	(11, '2017-10-03', '14:42:04', 110000011, 2, 0, '2017-10-16', 'Too Much Item', 'N/A'),
+	(12, '2017-10-03', '14:42:50', 110000011, 2, 0, '0000-00-00', 'No Item Avail', 'N/A'),
+	(13, '2017-10-16', '11:03:12', 110000011, 2, 0, '0000-00-00', 'No Address Specified', 'N/A'),
+	(14, '2017-10-16', '12:14:11', 110000011, 100, 1, '2017-10-16', '', ''),
+	(15, '2017-10-16', '13:40:51', 110000011, 100, 1, '2017-10-16', '', ''),
+	(16, '2017-10-23', '14:42:50', 110000011, 100, 0, '2017-10-23', '', 'N/A'),
+	(9000004, '2017-10-23', '06:39:53', 110000011, 100, 0, '2017-10-23', '', 'N/A'),
+	(9000005, '2017-10-23', '06:55:47', 110000011, 2, 0, '0000-00-00', 'Item Already Reserved', 'N/A'),
+	(9000006, '2017-10-23', '07:01:08', 110000011, 1, 0, '2017-10-23', '', 'N/A'),
+	(9000007, '2017-10-23', '07:14:13', 110000011, 0, 0, '0000-00-00', '', 'N/A'),
+	(9000008, '2017-10-23', '07:17:50', 110000011, 0, 0, '0000-00-00', '', 'N/A'),
+	(9000009, '2017-10-23', '07:36:53', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000010, '2017-10-23', '10:35:23', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000011, '2017-10-23', '10:49:51', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000012, '2017-10-23', '10:55:39', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000013, '2017-10-23', '11:11:16', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000014, '2017-10-23', '11:17:51', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000015, '2017-10-23', '11:20:01', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000016, '2017-10-23', '11:27:22', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000017, '2017-10-23', '11:29:26', 110000011, 100, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000018, '2017-10-23', '11:30:48', 110000011, 1, 1, '2017-10-23', '', '146 Burgos Extension Talisay City'),
+	(9000019, '2017-10-23', '12:00:34', 110000011, 0, 0, '0000-00-00', '', 'N/A'),
+	(9000020, '2017-10-23', '14:31:23', 110000011, 0, 1, '0000-00-00', '', '146 Burgos Extension Talisay City');
 /*!40000 ALTER TABLE `tbl_order` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_order_list
@@ -202,9 +266,9 @@ CREATE TABLE IF NOT EXISTS `tbl_order_list` (
   PRIMARY KEY (`order_list_id`),
   KEY `prd_id` (`prd_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15000036 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_order_list: ~21 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_order_list: ~64 rows (approximately)
 /*!40000 ALTER TABLE `tbl_order_list` DISABLE KEYS */;
 INSERT INTO `tbl_order_list` (`order_list_id`, `prd_id`, `prd_qty`, `order_id`, `prd_price`) VALUES
 	(1, 5, 1, 1, 310.00),
@@ -227,9 +291,51 @@ INSERT INTO `tbl_order_list` (`order_list_id`, `prd_id`, `prd_qty`, `order_id`, 
 	(18, 2, 3, 9, 250.00),
 	(19, 1, 5, 10, 300.00),
 	(20, 2, 3, 10, 250.00),
-	(21, 6, 22000000, 11, 180.00),
+	(21, 6, 5, 11, 180.00),
 	(22, 5, 10, 12, 310.00),
-	(23, 6, 22000000, 12, 180.00);
+	(23, 6, 22000000, 12, 180.00),
+	(24, 1, 12, 13, 300.00),
+	(25, 2, 1, 13, 250.00),
+	(26, 2, 20, 14, 250.00),
+	(27, 7, 20, 15, 278.00),
+	(28, 7, 2, 16, 278.00),
+	(29, 1, 1, 16, 300.00),
+	(15000000, 7, 10, 9000000, 278.00),
+	(15000001, 8, 10, 9000000, 309.98),
+	(15000002, 1, 5, 9000001, 300.00),
+	(15000003, 7, 10, 9000001, 278.00),
+	(15000004, 8, 4, 9000001, 309.98),
+	(15000005, 1, 1, 9000002, 300.00),
+	(15000006, 1, 1, 9000003, 300.00),
+	(15000007, 1, 1, 9000004, 300.00),
+	(15000008, 1, 1, 9000005, 300.00),
+	(15000009, 1, 2, 9000006, 300.00),
+	(15000010, 1, 1, 9000007, 300.00),
+	(15000011, 1, 1, 9000008, 300.00),
+	(15000012, 8, 10, 9000009, 309.98),
+	(15000013, 7, 7, 9000009, 278.00),
+	(15000014, 16000002, 20, 9000010, 300.45),
+	(15000015, 16000001, 10, 9000011, 160.53),
+	(15000016, 16000000, 11, 9000011, 278.55),
+	(15000017, 16000002, 5, 9000011, 300.45),
+	(15000018, 16000000, 10, 9000012, 278.55),
+	(15000019, 16000001, 10, 9000012, 160.53),
+	(15000020, 16000002, 10, 9000012, 300.45),
+	(15000021, 16000002, 10, 9000013, 300.45),
+	(15000022, 16000001, 1, 9000013, 160.53),
+	(15000023, 16000000, 10, 9000013, 278.55),
+	(15000024, 16000003, 20, 9000014, 84.99),
+	(15000025, 16000001, 20, 9000014, 160.53),
+	(15000026, 16000002, 5, 9000014, 300.45),
+	(15000027, 16000000, 20, 9000015, 278.55),
+	(15000028, 16000002, 10, 9000015, 300.45),
+	(15000029, 16000000, 10, 9000016, 278.55),
+	(15000030, 16000001, 14, 9000016, 160.53),
+	(15000031, 16000000, 20, 9000017, 278.55),
+	(15000032, 16000000, 20, 9000018, 278.55),
+	(15000033, 16000001, 10, 9000019, 160.53),
+	(15000034, 16000001, 20, 9000020, 160.53),
+	(15000035, 16000002, 20, 9000020, 300.45);
 /*!40000 ALTER TABLE `tbl_order_list` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_product
@@ -248,20 +354,23 @@ CREATE TABLE IF NOT EXISTS `tbl_product` (
   `cat_id` int(255) NOT NULL,
   PRIMARY KEY (`prd_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16000004 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_product: ~9 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_product: ~12 rows (approximately)
 /*!40000 ALTER TABLE `tbl_product` DISABLE KEYS */;
 INSERT INTO `tbl_product` (`prd_id`, `prd_name`, `prd_desc`, `prd_price`, `prd_datestamp`, `prd_timestamp`, `prd_status`, `prd_level`, `prd_optimal`, `prd_warning`, `prd_image`, `cat_id`) VALUES
-	(1, 'Rain or Shine Elastomeric Paint', 'Rain or Shine Elastomeric Waterproofing paint is a self-priming water-based waterproofing paint for exteriorand interior concrete surfaces.', 300.00, '2017-09-28', '23:21:02', 1, 75, 20, 5, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2F1_elastomeric.pngRain%20or%20Shine%20Elastomeric%20Paint?alt=media&token=7af84218-d83c-49f4-bf81-52d7d93497da', 1),
-	(2, 'DAVIES Roofshield Acrylic Roof Paint', 'A pure acrylic emulsion gloss roof paint designed for beautifying and protecting roofs and masonry walls.', 250.00, '2017-09-28', '23:32:30', 1, 147, 50, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fdavies-roofshield-acrylic-roof-paint.jpgDAVIES%20Roofshield%20Acrylic%20Roof%20Paint?alt=media&token=ff8c4a8e-519d-4753-a2ea-7e3069bac7ec', 1),
+	(1, 'Rain or Shine Elastomeric Paint (Grass Green)', 'Rain or Shine Elastomeric Waterproofing paint is a self-priming water-based waterproofing paint.', 300.00, '2017-09-28', '23:21:02', 1, 11, 20, 5, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2F1_elastomeric.pngRain%20or%20Shine%20Elastomeric%20Paint?alt=media&token=7af84218-d83c-49f4-bf81-52d7d93497da', 1),
+	(2, 'DAVIES Roofshield Acrylic Roof Paint (Blood Red)', 'A pure acrylic emulsion gloss roof paint designed for beautifying and protecting roofs and masonry walls.', 250.00, '2017-09-28', '23:32:30', 1, 0, 50, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fdavies-roofshield-acrylic-roof-paint.jpgDAVIES%20Roofshield%20Acrylic%20Roof%20Paint?alt=media&token=ff8c4a8e-519d-4753-a2ea-7e3069bac7ec', 1),
 	(3, 'Davies Oil Woodstain', 'It brings out the natural beauty of wood. When clear coated with Davies Varnishes, Davies Oil Wood Stain highlight wood grains, add freshness and color.\n', 450.00, '2017-09-29', '13:17:50', 1, 0, 20, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Oil-Woodstain.pngDavies%20Oil%20Woodstain?alt=media&token=2d0300df-adc7-40c3-b4db-f1682fe79c29', 1),
-	(4, 'Davies Polyfloor', 'A two-pack coating system especially formulated for wood and parquet floors, heavy duty school and office furnitures. It dries to a top and flexible film with exceptional gloss and mar resistance.', 265.00, '2017-09-29', '13:22:32', 1, 0, 30, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Polyfloor.pngDavies%20Polyfloor?alt=media&token=e2725d94-d858-461d-883a-79250a13fd77', 1),
-	(5, 'Davies Epoxy Enamel', 'A two-component epoxy coating especially formulated for industry, building and marine applications. \r\n', 310.00, '2017-09-29', '13:25:27', 1, 0, 50, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Epoxy-Enamel.pngDavies%20Epoxy%20Enamel?alt=media&token=ef114d09-5377-49c5-9dbf-04a2ebf6ba53', 1),
-	(6, 'Davies Gloss-It', 'An all purpose alkyd based paint ideal for all types of wood and metal surfaces. It finds wide application in both decorative and protective coatings due to its high gloss, good color retention and outstanding durability.', 180.00, '2017-09-29', '13:27:26', 1, 0, 20, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Quick-Drying-Enamel.pngDavies%20Gloss-It?alt=media&token=ca78f278-a970-46d7-94a9-ecd763c4a434', 1),
-	(7, 'Davies Keramikote', 'A two pack, air drying, chemically-cured urethane coating system developed to achieve decorative requirements and protective function even in the aggressive, polluted air of cities and industrial regions', 278.00, '2017-09-29', '13:30:07', 1, 46, 60, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Keramikote.pngDavies%20Keramikote?alt=media&token=3c88bbb3-2ccb-45e5-8c64-881cefb9de19', 1),
-	(8, 'Davies Aqua Gloss-It', 'Davies Aqua Gloss-It is a high gloss 100% acrylic water-based paint formulated as an alternative to conventional solvent-based alkyd enamels.', 309.98, '2017-09-29', '16:43:02', 1, 26, 30, 20, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Aqua-Gloss-It.pngDavies%20Aqua%20Gloss-It?alt=media&token=535a2eeb-92a3-435c-bf8b-0086e9b3f9a4', 1),
-	(9, '1', '1', 1.00, '2017-10-03', '14:57:14', 1, 0, 1, 0, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2Fno-image.png3232?alt=media&token=8b00ba10-cf65-4126-bc74-9662cd5db9ca', 1);
+	(4, 'Davies Polyfloor (Oak Brown)', 'A two-pack coating system especially formulated for wood and parquet floors, heavy duty school and office furnitures. It dries to a top and flexible film with exceptional gloss and mar resistance.', 265.00, '2017-09-29', '13:22:32', 1, 0, 30, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Polyfloor.pngDavies%20Polyfloor?alt=media&token=e2725d94-d858-461d-883a-79250a13fd77', 1),
+	(5, 'Davies Epoxy Enamel (Aqua Blue)', 'A two-component epoxy coating especially formulated for industry, building and marine applications. \n', 310.00, '2017-09-29', '13:25:27', 1, 0, 50, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Epoxy-Enamel.pngDavies%20Epoxy%20Enamel?alt=media&token=ef114d09-5377-49c5-9dbf-04a2ebf6ba53', 1),
+	(6, 'Davies Aqua Gloss-It (Magic Green)', 'An all purpose alkyd based paint ideal for all types of wood and metal surfaces. It finds wide application in both decorative and protective coatings due to its high gloss, good color retention and outstanding durability.', 180.00, '2017-09-29', '13:27:26', 1, 30, 20, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Quick-Drying-Enamel.pngDavies%20Gloss-It?alt=media&token=ca78f278-a970-46d7-94a9-ecd763c4a434', 1),
+	(7, 'Davies Keramikote (Red)', 'A two pack, air drying, chemically-cured urethane coating system developed to achieve decorative requirements and protective function even in the aggressive, polluted air of cities and industrial regions', 278.00, '2017-09-29', '13:30:07', 1, -25, 60, 10, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Keramikote.pngDavies%20Keramikote?alt=media&token=3c88bbb3-2ccb-45e5-8c64-881cefb9de19', 1),
+	(8, 'Davies Aqua Gloss-It (Pale Gold)', 'Davies Aqua Gloss-It is a high gloss 100% acrylic water-based paint formulated as an alternative to conventional solvent-based alkyd enamels.', 309.98, '2017-09-29', '16:43:02', 1, 3, 30, 20, 'https:///firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FDavies-Aqua-Gloss-It.pngDavies%20Aqua%20Gloss-It?alt=media&token=535a2eeb-92a3-435c-bf8b-0086e9b3f9a4', 1),
+	(16000000, 'Thunderbird Forest 3/4in x 2 ft x 4', 'Product Thickness: 0.75 in.\nProduct Width: 2 ft.\nProduct Length: 4 ft.\nPlywood Type: Plywood', 278.55, '2017-10-23', '08:19:16', 1, 68, 50, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FpACE3-1046484enh-z7.jpgThunderbird%20Forest%203%2F4in%20x%202%20ft%20x%204?alt=media&token=5c204d85-a576-44d5-8511-6ffe95e46daa', 13000000),
+	(16000001, 'Thunderbird Forest 2in x 6in x 8 ft', 'Wood Type: Wood\nProduct Type: Lumber\nLumber Thickness: 2 in.\nLumber Width: 6 in.\nLumber Length: 8 ft.', 160.53, '2017-10-23', '08:23:45', 1, 295, 30, 10, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FpACE3-17521058enh-z7.jpgThunderbird%20Forest%202in%20x%206in%20x%208%20ft?alt=media&token=c873c99c-3fcb-4222-a4a0-70232a027d3d', 13000000),
+	(16000002, 'Thunderbird Pine Forest 3/4in x 2 ft x 4', 'Product Thickness: 0.75 in.\nProduct Width: 2 ft.\nProduct Length: 4 ft.', 300.45, '2017-10-23', '08:25:32', 1, 265, 30, 5, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FThunderbird%20Forest.jpgThunderbird%20Pine%20Forest%203%2F4in%20x%202%20ft%20x%204?alt=media&token=b0cf1210-2779-4d31-9aed-5e776ba51c35', 13000000),
+	(16000003, 'Thunderbird Forest - Treated Fence Stud 4in x 4in x 8 ft', 'Wood Type: Pine\nProduct Type: Post\nLumber Thickness: 4 in.\nLumber Width: 4 in.\nLumber Length: 8 ft.', 84.99, '2017-10-23', '08:26:41', 1, 380, 30, 20, 'https://firebasestorage.googleapis.com/v0/b/binalbagancommercial-229c0.appspot.com/o/products%2FpACE3-17521061enh-z7.jpgThunderbird%20Forest%20-%20Treated%20Fence%20Stud%204in%20x%204in%20x%208%20ft?alt=media&token=aae2f490-0816-41f4-8b71-45d24a5e7d0f', 13000000);
 /*!40000 ALTER TABLE `tbl_product` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_product_log
@@ -281,9 +390,9 @@ CREATE TABLE IF NOT EXISTS `tbl_product_log` (
   KEY `user_id` (`emp_id`),
   KEY `sales_id` (`sales_id`),
   KEY `sup_id` (`sup_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17000056 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_product_log: ~13 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_product_log: ~97 rows (approximately)
 /*!40000 ALTER TABLE `tbl_product_log` DISABLE KEYS */;
 INSERT INTO `tbl_product_log` (`log_id`, `prd_id`, `log_qty`, `log_datestamp`, `log_timestamp`, `emp_id`, `log_type`, `sales_id`, `sup_id`, `supp_price`) VALUES
 	(39, 8, 60, '2017-10-01', '12:15:31', 80000002, 0, 0, 150000114, 270.98),
@@ -300,7 +409,89 @@ INSERT INTO `tbl_product_log` (`log_id`, `prd_id`, `log_qty`, `log_datestamp`, `
 	(50, 8, 5, '2017-10-03', '13:52:08', 80000002, 1, 9, 0, 0.00),
 	(51, 7, 1, '2017-10-03', '14:23:43', 80000002, 1, 10, 0, 0.00),
 	(52, 2, 3, '2017-10-03', '14:41:39', 80000002, 1, 11, 0, 0.00),
-	(53, 1, 5, '2017-10-03', '14:41:39', 80000002, 1, 11, 0, 0.00);
+	(53, 1, 5, '2017-10-03', '14:41:39', 80000002, 1, 11, 0, 0.00),
+	(54, 1, 1, '2017-10-04', '13:39:29', 80000002, 1, 12, 0, 0.00),
+	(55, 2, 3, '2017-10-04', '13:43:08', 80000002, 1, 13, 0, 0.00),
+	(56, 1, 5, '2017-10-04', '13:43:09', 80000002, 1, 13, 0, 0.00),
+	(57, 1, 1, '2017-10-04', '13:52:23', 80000002, 1, 14, 0, 0.00),
+	(58, 2, 3, '2017-10-04', '14:39:25', 80000002, 1, 15, 0, 0.00),
+	(59, 1, 25, '2017-10-04', '14:39:25', 80000002, 1, 15, 0, 0.00),
+	(60, 2, 3, '2017-10-04', '17:30:06', 80000002, 1, 19, 0, 0.00),
+	(61, 1, 5, '2017-10-04', '17:30:06', 80000002, 1, 19, 0, 0.00),
+	(62, 1, 5, '2017-10-04', '17:31:31', 80000002, 1, 20, 0, 0.00),
+	(63, 8, 1, '2017-10-07', '06:09:02', 80000002, 1, 21, 0, 0.00),
+	(64, 2, 50, '2017-10-16', '11:26:15', 0, 1, 23, 0, 0.00),
+	(65, 2, 50, '2017-10-16', '11:26:15', 0, 1, 22, 0, 0.00),
+	(66, 1, 20, '2017-10-16', '12:06:37', 0, 1, 24, 0, 0.00),
+	(67, 1, 20, '2017-10-16', '12:06:37', 0, 1, 25, 0, 0.00),
+	(68, 2, 20, '2017-10-16', '13:24:26', 0, 1, 26, 0, 0.00),
+	(69, 2, 20, '2017-10-16', '13:24:26', 0, 1, 27, 0, 0.00),
+	(70, 2, 20, '2017-10-16', '13:24:28', 0, 1, 28, 0, 0.00),
+	(71, 2, 20, '2017-10-16', '13:24:30', 0, 1, 29, 0, 0.00),
+	(72, 2, 20, '2017-10-16', '13:24:31', 0, 1, 30, 0, 0.00),
+	(73, 7, 20, '2017-10-16', '13:51:11', 0, 1, 31, 0, 0.00),
+	(74, 2, 20, '2017-10-16', '13:51:12', 0, 1, 32, 0, 0.00),
+	(75, 2, 20, '2017-10-16', '13:51:14', 0, 1, 33, 0, 0.00),
+	(76, 2, 20, '2017-10-16', '13:51:15', 0, 1, 34, 0, 0.00),
+	(77, 2, 20, '2017-10-16', '13:51:16', 0, 1, 35, 0, 0.00),
+	(78, 8, 1, '2017-10-22', '13:37:27', 80000002, 1, 36, 0, 0.00),
+	(79, 8, 1, '2017-10-22', '13:39:05', 80000002, 1, 37, 0, 0.00),
+	(17000000, 1, 1, '2017-10-23', '06:54:04', 80000002, 1, 19000000, 0, 0.00),
+	(17000001, 7, 2, '2017-10-23', '06:55:31', 80000002, 1, 19000001, 0, 0.00),
+	(17000002, 1, 1, '2017-10-23', '06:55:31', 80000002, 1, 19000001, 0, 0.00),
+	(17000003, 16000003, 200, '2017-10-23', '08:43:15', 80000002, 0, 0, 150000114, 180.00),
+	(17000004, 16000002, 150, '2017-10-23', '08:43:21', 80000002, 0, 0, 150000114, 150.00),
+	(17000005, 16000001, 160, '2017-10-23', '08:43:26', 80000002, 0, 0, 150000114, 210.00),
+	(17000006, 16000000, 100, '2017-10-23', '08:43:31', 80000002, 0, 0, 150000114, 160.00),
+	(17000007, 8, 50, '2017-10-23', '08:43:41', 80000002, 0, 0, 150000114, 270.98),
+	(17000008, 6, 30, '2017-10-23', '08:43:49', 80000002, 0, 0, 150000114, 120.65),
+	(17000009, 8, 10, '2017-10-23', '10:36:01', 0, 1, 19000002, 0, 0.00),
+	(17000010, 7, 7, '2017-10-23', '10:36:01', 0, 1, 19000002, 0, 0.00),
+	(17000011, 16000002, 20, '2017-10-23', '10:42:14', 0, 1, 19000003, 0, 0.00),
+	(17000012, 8, 10, '2017-10-23', '10:42:15', 0, 1, 19000004, 0, 0.00),
+	(17000013, 7, 7, '2017-10-23', '10:42:15', 0, 1, 19000004, 0, 0.00),
+	(17000014, 16000002, 20, '2017-10-23', '10:47:16', 0, 1, 19000005, 0, 0.00),
+	(17000015, 16000002, 20, '2017-10-23', '10:47:16', 0, 1, 19000006, 0, 0.00),
+	(17000016, 8, 10, '2017-10-23', '10:47:16', 0, 1, 19000007, 0, 0.00),
+	(17000017, 7, 7, '2017-10-23', '10:47:16', 0, 1, 19000007, 0, 0.00),
+	(17000018, 16000001, 10, '2017-10-23', '10:53:22', 0, 1, 19000009, 0, 0.00),
+	(17000019, 16000002, 20, '2017-10-23', '10:53:22', 0, 1, 19000008, 0, 0.00),
+	(17000020, 16000002, 20, '2017-10-23', '10:53:22', 0, 1, 19000010, 0, 0.00),
+	(17000021, 16000000, 11, '2017-10-23', '10:53:22', 0, 1, 19000009, 0, 0.00),
+	(17000022, 16000002, 5, '2017-10-23', '10:53:22', 0, 1, 19000009, 0, 0.00),
+	(17000023, 8, 10, '2017-10-23', '10:53:23', 0, 1, 19000011, 0, 0.00),
+	(17000024, 7, 7, '2017-10-23', '10:53:23', 0, 1, 19000011, 0, 0.00),
+	(17000025, 8, 10, '2017-10-23', '10:53:24', 0, 1, 19000012, 0, 0.00),
+	(17000026, 7, 7, '2017-10-23', '10:53:24', 0, 1, 19000012, 0, 0.00),
+	(17000027, 16000001, 1, '2017-10-23', '11:14:37', 0, 1, 19000013, 0, 0.00),
+	(17000028, 16000001, 10, '2017-10-23', '11:14:38', 0, 1, 19000014, 0, 0.00),
+	(17000029, 16000002, 20, '2017-10-23', '11:14:38', 0, 1, 19000015, 0, 0.00),
+	(17000030, 16000000, 10, '2017-10-23', '11:14:38', 0, 1, 19000013, 0, 0.00),
+	(17000031, 16000000, 11, '2017-10-23', '11:14:38', 0, 1, 19000014, 0, 0.00),
+	(17000032, 16000002, 20, '2017-10-23', '11:14:38', 0, 1, 19000016, 0, 0.00),
+	(17000033, 16000002, 10, '2017-10-23', '11:14:38', 0, 1, 19000013, 0, 0.00),
+	(17000034, 16000002, 5, '2017-10-23', '11:14:38', 0, 1, 19000014, 0, 0.00),
+	(17000035, 8, 10, '2017-10-23', '11:14:39', 0, 1, 19000017, 0, 0.00),
+	(17000036, 7, 7, '2017-10-23', '11:14:39', 0, 1, 19000017, 0, 0.00),
+	(17000037, 8, 10, '2017-10-23', '11:14:40', 0, 1, 19000018, 0, 0.00),
+	(17000038, 7, 7, '2017-10-23', '11:14:40', 0, 1, 19000018, 0, 0.00),
+	(17000039, 16000001, 10, '2017-10-23', '11:16:10', 0, 1, 19000019, 0, 0.00),
+	(17000040, 16000000, 10, '2017-10-23', '11:16:11', 0, 1, 19000019, 0, 0.00),
+	(17000041, 16000002, 10, '2017-10-23', '11:16:11', 0, 1, 19000019, 0, 0.00),
+	(17000042, 16000003, 20, '2017-10-23', '11:18:33', 0, 1, 19000020, 0, 0.00),
+	(17000043, 16000001, 20, '2017-10-23', '11:18:33', 0, 1, 19000020, 0, 0.00),
+	(17000044, 16000002, 5, '2017-10-23', '11:18:33', 0, 1, 19000020, 0, 0.00),
+	(17000045, 16000000, 20, '2017-10-23', '11:20:43', 0, 1, 19000021, 0, 0.00),
+	(17000046, 16000002, 10, '2017-10-23', '11:20:43', 0, 1, 19000021, 0, 0.00),
+	(17000047, 16000001, 14, '2017-10-23', '11:28:29', 0, 1, 19000022, 0, 0.00),
+	(17000048, 16000000, 20, '2017-10-23', '11:28:29', 0, 1, 19000023, 0, 0.00),
+	(17000049, 16000002, 10, '2017-10-23', '11:28:29', 0, 1, 19000023, 0, 0.00),
+	(17000050, 16000000, 10, '2017-10-23', '11:28:29', 0, 1, 19000022, 0, 0.00),
+	(17000051, 16000000, 20, '2017-10-23', '11:30:06', 0, 1, 19000024, 0, 0.00),
+	(17000052, 16000003, 200, '2017-10-23', '11:35:52', 80000002, 0, 0, 150000114, 180.00),
+	(17000053, 16000002, 200, '2017-10-23', '11:35:58', 80000002, 0, 0, 150000114, 150.00),
+	(17000054, 16000001, 200, '2017-10-23', '11:36:02', 80000002, 0, 0, 150000114, 210.00),
+	(17000055, 16000000, 50, '2017-10-23', '11:38:23', 80000002, 0, 0, 150000114, 160.00);
 /*!40000 ALTER TABLE `tbl_product_log` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_route
@@ -312,9 +503,9 @@ CREATE TABLE IF NOT EXISTS `tbl_route` (
   `del_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`route_id`),
   KEY `del_id` (`del_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=120000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18000152 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_route: ~11 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_route: ~313 rows (approximately)
 /*!40000 ALTER TABLE `tbl_route` DISABLE KEYS */;
 INSERT INTO `tbl_route` (`route_id`, `route_lat`, `route_lng`, `route_datestamp`, `del_id`) VALUES
 	(1, '10.74033', '122.9651', '2017-09-29 11:22:15', 1),
@@ -327,7 +518,316 @@ INSERT INTO `tbl_route` (`route_id`, `route_lat`, `route_lng`, `route_datestamp`
 	(8, '10.96473', '123.2893', '2017-10-01 17:04:49', 1),
 	(9, '10.96473', '123.2893', '2017-10-01 17:04:49', 1),
 	(10, '10.96473', '123.2893', '2017-10-01 17:04:49', 1),
-	(11, '10.96473', '123.2893', '2017-10-01 17:04:49', 1);
+	(11, '10.96473', '123.2893', '2017-10-01 17:04:49', 1),
+	(12, '10.74033', '122.9651', '2017-10-16 11:26:07', 2),
+	(13, '10.74033', '122.9651', '2017-10-16 11:26:07', 2),
+	(14, '10.74033', '122.9651', '2017-10-16 11:59:52', 6),
+	(15, '10.74033', '122.9651', '2017-10-16 11:59:52', 6),
+	(16, '10.74033', '122.9651', '2017-10-16 12:05:58', 6),
+	(17, '10.74033', '122.9651', '2017-10-16 12:05:58', 6),
+	(18, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(19, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(20, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(21, '10.74033', '122.9651', '2017-10-16 13:00:00', 14),
+	(22, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(28, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(29, '10.74033', '122.9651', '2017-10-16 13:00:00', 14),
+	(40, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(53, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(54, '10.74033', '122.9651', '2017-10-16 13:00:00', 14),
+	(58, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(75, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(94, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(95, '10.74033', '122.9651', '2017-10-16 13:00:00', 14),
+	(96, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(119, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(121, '10.74033', '122.9651', '2017-10-16 13:00:00', 14),
+	(124, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(148, '10.74033', '122.9651', '2017-10-16 12:53:29', 14),
+	(162, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(163, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(164, '10.74033', '122.9651', '2017-10-16 13:41:25', 0),
+	(165, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(166, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(167, '10.74033', '122.9651', '2017-10-16 13:42:24', 0),
+	(168, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(169, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(170, '10.74033', '122.9651', '2017-10-16 13:43:26', 0),
+	(171, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(172, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(173, '10.74033', '122.9651', '2017-10-16 13:44:26', 0),
+	(174, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(175, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(176, '10.74033', '122.9651', '2017-10-16 13:45:27', 0),
+	(177, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(178, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(179, '10.74033', '122.9651', '2017-10-16 13:46:27', 0),
+	(180, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(181, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(182, '10.74033', '122.9651', '2017-10-16 13:47:27', 0),
+	(183, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(184, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(185, '10.74033', '122.9651', '2017-10-16 13:48:28', 0),
+	(186, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(187, '10.74033', '122.9651', '2017-10-16 13:49:28', 0),
+	(188, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(189, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(190, '10.74033', '122.9651', '2017-10-16 13:50:29', 0),
+	(191, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(192, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(193, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(194, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(195, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(196, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(197, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(198, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(199, '10.74033', '122.9651', '2017-10-16 13:24:21', 0),
+	(200, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(201, '10.74033', '122.9651', '2017-10-16 13:41:25', 0),
+	(202, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(203, '10.74033', '122.9651', '2017-10-16 13:42:24', 0),
+	(204, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(205, '10.74033', '122.9651', '2017-10-16 13:43:26', 0),
+	(206, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(207, '10.74033', '122.9651', '2017-10-16 13:44:26', 0),
+	(208, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(209, '10.74033', '122.9651', '2017-10-16 13:45:27', 0),
+	(210, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(211, '10.74033', '122.9651', '2017-10-16 13:46:27', 0),
+	(212, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(213, '10.74033', '122.9651', '2017-10-16 13:47:27', 0),
+	(214, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(215, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(216, '10.74033', '122.9651', '2017-10-16 13:48:28', 0),
+	(217, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(218, '10.74033', '122.9651', '2017-10-16 13:49:28', 0),
+	(219, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(220, '10.74033', '122.9651', '2017-10-16 13:50:29', 0),
+	(221, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(222, '10.74033', '122.9651', '2017-10-16 13:24:21', 0),
+	(223, '10.74033', '122.9651', '2017-10-16 13:41:25', 0),
+	(224, '10.74033', '122.9651', '2017-10-16 13:42:24', 0),
+	(225, '10.74033', '122.9651', '2017-10-16 13:43:26', 0),
+	(226, '10.74033', '122.9651', '2017-10-16 13:44:26', 0),
+	(227, '10.74033', '122.9651', '2017-10-16 13:45:27', 0),
+	(228, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(229, '10.74033', '122.9651', '2017-10-16 13:46:27', 0),
+	(230, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(231, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(232, '10.74033', '122.9651', '2017-10-16 13:47:27', 0),
+	(233, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(234, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(235, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(236, '10.74033', '122.9651', '2017-10-16 13:48:28', 0),
+	(237, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(238, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(239, '10.74033', '122.9651', '2017-10-16 13:49:28', 0),
+	(240, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(241, '10.74033', '122.9651', '2017-10-16 13:50:29', 0),
+	(242, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(243, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(244, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(245, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(246, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(247, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(248, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(249, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(250, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(251, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(252, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(253, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(254, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(255, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(256, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(257, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(258, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(259, '10.74033', '122.9651', '2017-10-16 12:53:29', 0),
+	(260, '10.74033', '122.9651', '2017-10-16 13:24:21', 0),
+	(261, '10.74033', '122.9651', '2017-10-16 13:00:00', 0),
+	(262, '10.74033', '122.9651', '2017-10-16 13:41:25', 0),
+	(263, '10.74033', '122.9651', '2017-10-16 13:01:56', 0),
+	(264, '10.74033', '122.9651', '2017-10-16 13:42:24', 0),
+	(265, '10.74033', '122.9651', '2017-10-16 13:02:56', 0),
+	(266, '10.74033', '122.9651', '2017-10-16 13:43:26', 0),
+	(267, '10.74033', '122.9651', '2017-10-16 13:03:57', 0),
+	(268, '10.74033', '122.9651', '2017-10-16 13:44:26', 0),
+	(269, '10.74033', '122.9651', '2017-10-16 13:04:57', 0),
+	(270, '10.74033', '122.9651', '2017-10-16 13:45:27', 0),
+	(271, '10.74033', '122.9651', '2017-10-16 13:10:42', 0),
+	(272, '10.74033', '122.9651', '2017-10-16 13:46:27', 0),
+	(273, '10.74033', '122.9651', '2017-10-16 13:11:43', 0),
+	(274, '10.74033', '122.9651', '2017-10-16 13:47:27', 0),
+	(275, '10.74033', '122.9651', '2017-10-16 13:12:44', 0),
+	(276, '10.74033', '122.9651', '2017-10-16 13:48:28', 0),
+	(277, '10.74033', '122.9651', '2017-10-16 13:13:44', 0),
+	(278, '10.74033', '122.9651', '2017-10-16 13:49:28', 0),
+	(279, '10.74033', '122.9651', '2017-10-16 13:15:22', 0),
+	(280, '10.74033', '122.9651', '2017-10-16 13:50:29', 0),
+	(281, '10.74033', '122.9651', '2017-10-16 13:16:22', 0),
+	(282, '10.74033', '122.9651', '2017-10-16 13:20:11', 0),
+	(283, '10.74033', '122.9651', '2017-10-16 13:24:21', 0),
+	(284, '10.74033', '122.9651', '2017-10-16 13:41:25', 0),
+	(285, '10.74033', '122.9651', '2017-10-16 13:42:24', 0),
+	(286, '10.74033', '122.9651', '2017-10-16 13:43:26', 0),
+	(287, '10.74033', '122.9651', '2017-10-16 13:44:26', 0),
+	(288, '10.74033', '122.9651', '2017-10-16 13:45:27', 0),
+	(289, '10.74033', '122.9651', '2017-10-16 13:46:27', 0),
+	(290, '10.74033', '122.9651', '2017-10-16 13:47:27', 0),
+	(291, '10.74033', '122.9651', '2017-10-16 13:48:28', 0),
+	(292, '10.74033', '122.9651', '2017-10-16 13:49:28', 0),
+	(293, '10.74033', '122.9651', '2017-10-16 13:50:29', 0),
+	(18000000, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000001, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000002, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000003, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000004, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000005, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000006, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000007, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000008, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000009, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000010, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000011, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000012, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000013, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000014, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000015, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000016, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000017, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000018, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000019, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000020, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000021, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000022, '10.67770', '122.9615', '2017-10-23 10:41:38', 9000010),
+	(18000023, '10.67728', '122.9611', '2017-10-23 10:28:18', 9000009),
+	(18000024, '10.67769', '122.9621', '2017-10-23 10:42:10', 9000010),
+	(18000025, '10.67761', '122.9601', '2017-10-23 10:46:52', 9000010),
+	(18000026, '10.67727', '122.9612', '2017-10-23 10:29:19', 9000009),
+	(18000027, '10.67761', '122.9601', '2017-10-23 10:46:52', 9000010),
+	(18000028, '10.67800', '122.9613', '2017-10-23 10:30:20', 9000009),
+	(18000029, '10.67934', '122.9597', '2017-10-23 10:31:21', 9000009),
+	(18000030, '10.67728', '122.9611', '2017-10-23 10:32:22', 9000009),
+	(18000031, '10.67777', '122.9618', '2017-10-23 10:33:23', 9000009),
+	(18000032, '10.67732', '122.9611', '2017-10-23 10:34:24', 9000009),
+	(18000033, '10.67757', '122.9617', '2017-10-23 10:35:25', 9000009),
+	(18000034, '10.67753', '122.9618', '2017-10-23 10:35:57', 9000009),
+	(18000035, '10.67770', '122.9615', '2017-10-23 10:41:38', 9000009),
+	(18000036, '10.67769', '122.9621', '2017-10-23 10:42:10', 9000009),
+	(18000037, '10.67761', '122.9601', '2017-10-23 10:46:52', 9000009),
+	(18000038, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000039, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000040, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000041, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000042, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000043, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000044, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000045, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000046, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000047, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000048, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000049, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000050, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000051, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000052, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000053, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000054, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000055, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000056, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000057, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000058, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000059, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000060, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000061, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000062, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000063, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000064, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000065, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000066, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000067, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000068, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000069, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000070, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000071, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000072, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000073, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000074, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000075, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000076, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000077, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000078, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000079, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000080, '10.67727', '122.9612', '2017-10-23 10:52:24', 999999999),
+	(18000081, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000082, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000083, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000084, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000085, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000086, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000087, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000088, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000089, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000090, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000091, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000092, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000093, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000094, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000095, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000096, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000097, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000098, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000099, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000100, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000101, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000102, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000103, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000104, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000105, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000106, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000107, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000108, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000109, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000110, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000111, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000112, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000113, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000114, '10.67728', '122.9611', '2017-10-23 10:28:18', 0),
+	(18000115, '10.67727', '122.9612', '2017-10-23 10:29:19', 0),
+	(18000116, '10.67800', '122.9613', '2017-10-23 10:30:20', 0),
+	(18000117, '10.67934', '122.9597', '2017-10-23 10:31:21', 0),
+	(18000118, '10.67728', '122.9611', '2017-10-23 10:32:22', 0),
+	(18000119, '10.67777', '122.9618', '2017-10-23 10:33:23', 0),
+	(18000120, '10.67732', '122.9611', '2017-10-23 10:34:24', 0),
+	(18000121, '10.67757', '122.9617', '2017-10-23 10:35:25', 0),
+	(18000122, '10.67753', '122.9618', '2017-10-23 10:35:57', 0),
+	(18000123, '10.67770', '122.9615', '2017-10-23 10:41:38', 0),
+	(18000124, '10.67769', '122.9621', '2017-10-23 10:42:10', 0),
+	(18000125, '10.67761', '122.9601', '2017-10-23 10:46:52', 0),
+	(18000126, '10.67727', '122.9612', '2017-10-23 10:50:24', 0),
+	(18000127, '10.67934', '122.9597', '2017-10-23 10:51:24', 0),
+	(18000128, '10.67727', '122.9612', '2017-10-23 10:52:24', 0),
+	(18000129, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000130, '10.67780', '122.9616', '2017-10-23 11:14:17', 9000013),
+	(18000131, '10.67780', '122.9616', '2017-10-23 11:14:17', 9000013),
+	(18000132, '10.67800', '122.9613', '2017-10-23 11:18:21', 9000014),
+	(18000133, '10.67780', '122.9616', '2017-10-23 11:14:17', 1111111),
+	(18000134, '10.67800', '122.9613', '2017-10-23 11:18:21', 1111111),
+	(18000135, '10.67690', '122.9609', '2017-10-23 11:20:30', 1111111),
+	(18000136, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000137, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000138, '10.67800', '122.9613', '2017-10-23 11:18:21', 0),
+	(18000139, '10.67800', '122.9613', '2017-10-23 11:18:21', 0),
+	(18000140, '10.67690', '122.9609', '2017-10-23 11:20:30', 0),
+	(18000141, '10.67690', '122.9609', '2017-10-23 11:20:30', 0),
+	(18000142, '10.67780', '122.9616', '2017-10-23 11:14:17', 0),
+	(18000143, '10.67765', '122.9597', '2017-10-23 11:28:02', 0),
+	(18000144, '10.67800', '122.9613', '2017-10-23 11:18:21', 0),
+	(18000145, '10.67690', '122.9609', '2017-10-23 11:20:30', 0),
+	(18000146, '10.67765', '122.9597', '2017-10-23 11:28:02', 0),
+	(18000147, '10.67780', '122.9616', '2017-10-23 11:14:17', 14000004),
+	(18000148, '10.67800', '122.9613', '2017-10-23 11:18:21', 14000006),
+	(18000149, '10.67690', '122.9609', '2017-10-23 11:20:30', 14000007),
+	(18000150, '10.67765', '122.9597', '2017-10-23 11:28:02', 14000008),
+	(18000151, '10.83467', '123.0124', '2017-10-23 11:29:55', 14000009);
 /*!40000 ALTER TABLE `tbl_route` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_sales
@@ -342,21 +842,69 @@ CREATE TABLE IF NOT EXISTS `tbl_sales` (
   `order_id` int(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sales_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19000025 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_sales: ~8 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_sales: ~58 rows (approximately)
 /*!40000 ALTER TABLE `tbl_sales` DISABLE KEYS */;
 INSERT INTO `tbl_sales` (`sales_id`, `sales_datestamp`, `sales_timestamp`, `emp_id`, `cust_id`, `receive_datetimestamp`, `sales_type`, `order_id`) VALUES
-	(2, '2017-10-01', '02:16:54', 80000002, 0, '2017-10-01 12:16:54', 2, 0),
-	(3, '2017-10-01', '15:42:17', 0, 110000011, '2017-10-01 18:44:52', 1, 2),
+	(2, '2017-09-01', '02:16:54', 80000002, 0, '2017-10-01 12:16:54', 2, 0),
+	(3, '2017-10-01', '15:42:17', 0, 110000011, '2017-10-16 11:26:15', 1, 2),
 	(4, '2017-10-01', '21:05:38', 80000003, 0, '2017-10-01 21:05:38', 2, 0),
-	(5, '2017-10-03', '00:31:44', 0, 110000011, '0000-00-00 00:00:00', 1, 6),
-	(6, '2017-10-03', '07:28:07', 80000003, 0, '2017-10-03 01:58:07', 2, 0),
-	(7, '2017-10-03', '08:28:07', 80000003, 0, '2017-10-03 01:58:23', 2, 0),
+	(5, '2017-10-03', '00:31:44', 0, 110000011, '2017-10-16 12:06:37', 1, 6),
+	(6, '2017-08-03', '07:28:07', 80000003, 0, '2017-10-03 01:58:07', 2, 0),
+	(7, '2017-07-03', '08:28:07', 80000003, 0, '2017-10-03 01:58:23', 2, 0),
 	(8, '2017-10-03', '13:44:48', 80000002, 0, '2017-10-03 13:44:48', 2, 0),
 	(9, '2017-10-03', '13:52:08', 80000002, 0, '2017-10-03 13:52:08', 2, 0),
 	(10, '2017-10-03', '14:23:43', 0, 110000011, '0000-00-00 00:00:00', 2, 7),
-	(11, '2017-10-03', '14:41:39', 0, 110000011, '0000-00-00 00:00:00', 2, 10);
+	(11, '2017-10-03', '14:41:39', 0, 110000011, '0000-00-00 00:00:00', 2, 10),
+	(12, '2017-10-04', '13:39:29', 0, 110000011, '2017-10-04 13:52:41', 2, 3),
+	(13, '2017-10-04', '13:43:08', 0, 110000011, '2017-10-04 17:30:06', 2, 4),
+	(14, '2017-10-04', '13:52:23', 0, 110000011, '0000-00-00 00:00:00', 2, 8),
+	(15, '2017-10-04', '14:39:25', 0, 110000011, '0000-00-00 00:00:00', 2, 9),
+	(19, '2017-10-04', '17:30:06', 0, 110000011, '0000-00-00 00:00:00', 2, 4),
+	(20, '2017-10-04', '17:31:31', 0, 110000011, '0000-00-00 00:00:00', 2, 5),
+	(21, '2017-10-07', '06:09:02', 80000002, 0, '2017-10-07 06:09:02', 2, 0),
+	(22, '2017-10-16', '11:26:15', 0, 110000011, '0000-00-00 00:00:00', 2, 2),
+	(23, '2017-10-16', '11:26:15', 0, 110000011, '0000-00-00 00:00:00', 2, 2),
+	(24, '2017-10-16', '12:06:37', 0, 110000011, '0000-00-00 00:00:00', 2, 6),
+	(25, '2017-10-16', '12:06:37', 0, 110000011, '0000-00-00 00:00:00', 2, 6),
+	(26, '2017-10-16', '13:24:25', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(27, '2017-10-16', '13:24:26', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(28, '2017-10-16', '13:24:28', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(29, '2017-10-16', '13:24:30', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(30, '2017-10-16', '13:24:31', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(31, '2017-10-16', '13:51:11', 0, 110000011, '0000-00-00 00:00:00', 2, 15),
+	(32, '2017-10-16', '13:51:12', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(33, '2017-10-16', '13:51:13', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(34, '2017-10-16', '13:51:14', 0, 110000011, '2017-10-16 13:51:15', 2, 14),
+	(35, '2017-10-16', '13:51:16', 0, 110000011, '0000-00-00 00:00:00', 2, 14),
+	(36, '2017-10-22', '13:37:27', 80000002, 0, '2017-10-22 13:37:27', 2, 0),
+	(37, '2017-10-22', '13:39:05', 80000002, 0, '2017-10-22 13:39:05', 2, 0),
+	(19000000, '2017-10-23', '06:54:04', 0, 110000011, '0000-00-00 00:00:00', 2, 9000004),
+	(19000001, '2017-10-23', '06:55:31', 0, 110000011, '0000-00-00 00:00:00', 2, 16),
+	(19000002, '2017-10-23', '10:36:01', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000003, '2017-10-23', '10:42:14', 0, 110000011, '2017-10-23 11:14:37', 2, 9000010),
+	(19000004, '2017-10-23', '10:42:15', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000005, '2017-10-23', '10:47:16', 0, 110000011, '2017-10-23 11:14:37', 2, 9000010),
+	(19000006, '2017-10-23', '10:47:16', 0, 110000011, '2017-10-23 11:14:37', 2, 9000010),
+	(19000007, '2017-10-23', '10:47:16', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000008, '2017-10-23', '10:53:21', 0, 110000011, '2017-10-23 11:14:37', 2, 9000010),
+	(19000009, '2017-10-23', '10:53:21', 0, 110000011, '2017-10-23 11:14:37', 2, 9000011),
+	(19000010, '2017-10-23', '10:53:22', 0, 110000011, '2017-10-23 11:14:37', 2, 9000010),
+	(19000011, '2017-10-23', '10:53:23', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000012, '2017-10-23', '10:53:24', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000013, '2017-10-23', '11:14:37', 0, 110000011, '0000-00-00 00:00:00', 2, 9000013),
+	(19000014, '2017-10-23', '11:14:37', 0, 110000011, '0000-00-00 00:00:00', 2, 9000011),
+	(19000015, '2017-10-23', '11:14:38', 0, 110000011, '0000-00-00 00:00:00', 2, 9000010),
+	(19000016, '2017-10-23', '11:14:38', 0, 110000011, '0000-00-00 00:00:00', 2, 9000010),
+	(19000017, '2017-10-23', '11:14:39', 0, 110000011, '2017-10-23 11:14:40', 2, 9000009),
+	(19000018, '2017-10-23', '11:14:40', 0, 110000011, '0000-00-00 00:00:00', 2, 9000009),
+	(19000019, '2017-10-23', '11:16:10', 0, 110000011, '0000-00-00 00:00:00', 2, 9000012),
+	(19000020, '2017-10-23', '11:18:33', 0, 110000011, '0000-00-00 00:00:00', 2, 9000014),
+	(19000021, '2017-10-23', '11:20:43', 0, 110000011, '2017-10-23 11:28:28', 2, 9000015),
+	(19000022, '2017-10-23', '11:28:28', 0, 110000011, '0000-00-00 00:00:00', 2, 9000016),
+	(19000023, '2017-10-23', '11:28:28', 0, 110000011, '0000-00-00 00:00:00', 2, 9000015),
+	(19000024, '2017-10-23', '11:30:06', 0, 110000011, '0000-00-00 00:00:00', 2, 9000017);
 /*!40000 ALTER TABLE `tbl_sales` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_sales_list
@@ -369,9 +917,9 @@ CREATE TABLE IF NOT EXISTS `tbl_sales_list` (
   PRIMARY KEY (`sales_list_id`),
   KEY `prd_id` (`prd_id`),
   KEY `sales_id` (`sales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20000046 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_sales_list: ~11 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_sales_list: ~79 rows (approximately)
 /*!40000 ALTER TABLE `tbl_sales_list` DISABLE KEYS */;
 INSERT INTO `tbl_sales_list` (`sales_list_id`, `prd_id`, `prd_qty`, `sales_id`, `prd_price`) VALUES
 	(2, 8, 20, 2, 309.98),
@@ -384,7 +932,79 @@ INSERT INTO `tbl_sales_list` (`sales_list_id`, `prd_id`, `prd_qty`, `sales_id`, 
 	(9, 8, 5, 9, 309.98),
 	(10, 7, 1, 10, 278.00),
 	(11, 2, 3, 11, 250.00),
-	(12, 1, 5, 11, 300.00);
+	(12, 1, 5, 11, 300.00),
+	(13, 1, 1, 12, 300.00),
+	(14, 2, 3, 13, 250.00),
+	(15, 1, 5, 13, 300.00),
+	(16, 1, 1, 14, 300.00),
+	(17, 2, 3, 15, 250.00),
+	(18, 1, 25, 15, 300.00),
+	(19, 2, 3, 19, 250.00),
+	(20, 1, 5, 19, 300.00),
+	(21, 1, 5, 20, 300.00),
+	(22, 8, 1, 21, 309.98),
+	(23, 2, 50, 22, 250.00),
+	(24, 2, 50, 23, 250.00),
+	(25, 1, 20, 24, 300.00),
+	(26, 1, 20, 25, 300.00),
+	(27, 2, 20, 26, 250.00),
+	(28, 2, 20, 27, 250.00),
+	(29, 2, 20, 28, 250.00),
+	(30, 2, 20, 29, 250.00),
+	(31, 2, 20, 30, 250.00),
+	(32, 7, 20, 31, 278.00),
+	(33, 2, 20, 32, 250.00),
+	(34, 2, 20, 33, 250.00),
+	(35, 2, 20, 34, 250.00),
+	(36, 2, 20, 35, 250.00),
+	(37, 8, 1, 36, 309.98),
+	(38, 8, 1, 37, 309.98),
+	(20000000, 1, 1, 19000000, 300.00),
+	(20000001, 7, 2, 19000001, 278.00),
+	(20000002, 1, 1, 19000001, 300.00),
+	(20000003, 8, 10, 19000002, 309.98),
+	(20000004, 7, 7, 19000002, 278.00),
+	(20000005, 16000002, 20, 19000003, 300.45),
+	(20000006, 8, 10, 19000004, 309.98),
+	(20000007, 7, 7, 19000004, 278.00),
+	(20000008, 16000002, 20, 19000005, 300.45),
+	(20000009, 16000002, 20, 19000006, 300.45),
+	(20000010, 8, 10, 19000007, 309.98),
+	(20000011, 7, 7, 19000007, 278.00),
+	(20000012, 16000001, 10, 19000009, 160.53),
+	(20000013, 16000002, 20, 19000008, 300.45),
+	(20000014, 16000002, 20, 19000010, 300.45),
+	(20000015, 16000000, 11, 19000009, 278.55),
+	(20000016, 16000002, 5, 19000009, 300.45),
+	(20000017, 8, 10, 19000011, 309.98),
+	(20000018, 7, 7, 19000011, 278.00),
+	(20000019, 8, 10, 19000012, 309.98),
+	(20000020, 7, 7, 19000012, 278.00),
+	(20000021, 16000001, 1, 19000013, 160.53),
+	(20000022, 16000001, 10, 19000014, 160.53),
+	(20000023, 16000002, 20, 19000015, 300.45),
+	(20000024, 16000000, 10, 19000013, 278.55),
+	(20000025, 16000000, 11, 19000014, 278.55),
+	(20000026, 16000002, 20, 19000016, 300.45),
+	(20000027, 16000002, 10, 19000013, 300.45),
+	(20000028, 16000002, 5, 19000014, 300.45),
+	(20000029, 8, 10, 19000017, 309.98),
+	(20000030, 7, 7, 19000017, 278.00),
+	(20000031, 8, 10, 19000018, 309.98),
+	(20000032, 7, 7, 19000018, 278.00),
+	(20000033, 16000001, 10, 19000019, 160.53),
+	(20000034, 16000000, 10, 19000019, 278.55),
+	(20000035, 16000002, 10, 19000019, 300.45),
+	(20000036, 16000003, 20, 19000020, 84.99),
+	(20000037, 16000001, 20, 19000020, 160.53),
+	(20000038, 16000002, 5, 19000020, 300.45),
+	(20000039, 16000000, 20, 19000021, 278.55),
+	(20000040, 16000002, 10, 19000021, 300.45),
+	(20000041, 16000001, 14, 19000022, 160.53),
+	(20000042, 16000000, 20, 19000023, 278.55),
+	(20000043, 16000000, 10, 19000022, 278.55),
+	(20000044, 16000002, 10, 19000023, 300.45),
+	(20000045, 16000000, 20, 19000024, 278.55);
 /*!40000 ALTER TABLE `tbl_sales_list` ENABLE KEYS */;
 
 -- Dumping structure for table db_binalbagancommercial.tbl_supplier
@@ -416,9 +1036,9 @@ CREATE TABLE IF NOT EXISTS `tbl_supplier_prices` (
   PRIMARY KEY (`sprice_id`),
   KEY `prd_id` (`prd_id`),
   KEY `sup_id` (`sup_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16000000 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21000004 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_binalbagancommercial.tbl_supplier_prices: ~3 rows (approximately)
+-- Dumping data for table db_binalbagancommercial.tbl_supplier_prices: ~9 rows (approximately)
 /*!40000 ALTER TABLE `tbl_supplier_prices` DISABLE KEYS */;
 INSERT INTO `tbl_supplier_prices` (`sprice_id`, `sprice_price`, `sprice_datestamp`, `prd_id`, `sup_id`, `sup_status`) VALUES
 	(8, 270.98, '2017-10-01 12:12:28', 8, 150000114, 1),
@@ -427,7 +1047,11 @@ INSERT INTO `tbl_supplier_prices` (`sprice_id`, `sprice_price`, `sprice_datestam
 	(11, 120.85, '2017-10-01 12:13:07', 8, 150000115, 1),
 	(12, 180.00, '2017-10-01 15:41:40', 2, 150000114, 1),
 	(13, 60.00, '2017-10-03 00:31:10', 1, 150000114, 1),
-	(14, 200.00, '2017-10-03 14:49:48', 6, 150000115, 1);
+	(14, 200.00, '2017-10-03 14:49:48', 6, 150000115, 1),
+	(21000000, 180.00, '2017-10-23 08:42:34', 16000003, 150000114, 1),
+	(21000001, 150.00, '2017-10-23 08:42:44', 16000002, 150000114, 1),
+	(21000002, 210.00, '2017-10-23 08:42:50', 16000001, 150000114, 1),
+	(21000003, 160.00, '2017-10-23 08:42:56', 16000000, 150000114, 1);
 /*!40000 ALTER TABLE `tbl_supplier_prices` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

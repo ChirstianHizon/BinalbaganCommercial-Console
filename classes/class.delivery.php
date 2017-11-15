@@ -84,10 +84,11 @@ class Delivery{
   }
 
   public function getDeliveryRoute($id) {
-    $sql="SELECT *,TIMEDIFF(route_datestamp,del_start_datestamp) AS TIME_ELAPSED
+    $sql="SELECT *,TIMEDIFF(route_datestamp,del_start_datestamp) AS TIME_ELAPSED,TIME(tbl_route.route_datestamp) AS TIMEX
     FROM tbl_route
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
     WHERE tbl_route.del_id = '$id'
+    GROUP BY tbl_route.route_datestamp
     ORDER BY route_datestamp ASC
     limit 25
     ";
@@ -109,6 +110,7 @@ class Delivery{
     FROM tbl_route
     INNER JOIN tbl_delivery ON tbl_delivery.del_id = tbl_route.del_id
     WHERE tbl_route.del_id = '$id' AND route_datestamp  <= '$routeid'
+    GROUP BY tbl_route.route_datestamp
     ORDER BY route_datestamp ASC
     limit 25
     ";

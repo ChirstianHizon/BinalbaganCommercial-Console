@@ -19,12 +19,45 @@ $access = md5($access);
 if($access == $access_web){
   switch ($type) {
     case 0:
-    break;
-
-    case 1:
     $html="";
     $count=0;
     $list = $orders->getAllApprovedDeliveryOrders();
+    if(!$list){
+      echo json_encode(array("main" => $html));break;}
+    foreach($list as $value){
+    $count++;
+    switch ($value['STATUS']) {
+      case '1':
+        $stat = '<span style="color:red"><b><h5>Waiting</h5></b></span>';
+        break;
+      case '100':
+        $stat = '<span style="color:black"><b><h5>Finished</h5></b></span>';
+        break;
+      case '200':
+        $stat = '<span style="color:green"><b><h5>OnGoing</h5></b></span>';
+        break;
+      default:
+        $stat = "ERROR";
+        break;
+    }
+    $ordid = '<span><b><h5>'.$value['ID'].'</h5></b></span>';
+
+    $html = $html.'<tr id="'.$value['ID'].'">'.
+              '<td>'.$ordid.'</td>'.
+              '<td>'.$stat.'</td>'.
+              // '<td>'.$value['TOTAL'].'</td>'.
+              // '<td>'.$value['CUST_LNAME'].", ".$value['CUST_FNAME'].'</td>'.
+              '<td>
+              <button id="'.$value['ID'].'" style="width:100%" class="button primary" onclick="vieworder(this)">View</button>
+              </td>'.
+          "</tr>";
+    }
+    echo json_encode(array("main" => $html,"total" => $count));
+    break;
+    case 1:
+    $html="";
+    $count=0;
+    $list = $orders->getAllApprovedDeliveryOrders2();
     if(!$list){
       echo json_encode(array("main" => $html));break;}
     foreach($list as $value){
@@ -68,16 +101,15 @@ if($access == $access_web){
     }
     $cnt=0;
     foreach($list as $value){
-      $cnt++;
+        $cnt++;
     }
     $route_list['COUNTER'] = $cnt;
 
     $coord = array();
     $counter=1;
     foreach($list as $value){
-      // ['END',  10.194506, 122.856299, 4]
-      array_push($coord,array("",$value['route_lat'],$value['route_lng'],$counter));
-      $counter++;
+        array_push($coord,array($counter,$value['route_lat'],$value['route_lng']));
+        $counter++;
     }
     $route_list['COORDINATES']  = $coord;
     echo json_encode($route_list);
@@ -90,18 +122,22 @@ if($access == $access_web){
     if(!$list){
       echo json_encode(array("main" => $html));break;
     }
+    $time = "";
     foreach($list as $value){
-      $count++;
-      $html = $html.'<tr id="'.$value['del_id'].'">'.
-                '<td>'.$letter.'</td>'.
-                '<td>'.$value['route_id'].'</td>'.
-                '<td>'.$value['route_lat'].'</td>'.
-                '<td>'.$value['route_lng'].'</td>'.
-                '<td>
-                <button id="'.$value['route_datestamp'].'" class="button primary" onclick="viewSelectedRoute(this)">Select</button>
-                </td>'.
-            "</tr>";
-      $letter++;
+      if($time != $value['TIMEX']){
+        $time = $value['TIMEX'];
+        $count++;
+        $html = $html.'<tr id="'.$value['del_id'].'">'.
+                  '<td>'.$count.'</td>'.
+                  '<td>'.$value['TIMEX'].'</td>'.
+                  '<td>'.$value['route_lat'].'</td>'.
+                  '<td>'.$value['route_lng'].'</td>'.
+                  '<td>
+                  <button id="'.$value['route_datestamp'].'" class="button primary" onclick="viewSelectedRoute(this)">Select</button>
+                  </td>'.
+              "</tr>";
+        $letter++;
+      }
     }
     echo json_encode(array("main" => $html,"total" => $count));
     break;
@@ -127,6 +163,27 @@ if($access == $access_web){
     $route_list['COORDINATES']  = $coord;
     echo json_encode($route_list);
     break;
+    case 6:
+    $html ="";
+    $count = 0;
+    $letter = 'A';
+    $orderid = "";
+    $list = $orders->getOnGoingDelivery();
+    if(!$list){
+      echo json_encode(array("main" => $html));break;
+    }
+    $time = "";
+    foreach($list as $value){
+        // $time = $value['TIMEX'];
+        $orderid = $value['ID'];
+        $count++;
+        $html = $html.'<tr id="'.$value['ID'].'">'.
+                  '<td>'.$value['ID'].'</td>'.
+                  '<td>'.$value['CUST_LNAME'].'</td>'.
+                  '<td>'.$value['ADDRESS'].'</td>'.
+              "</tr>";
+    }
+    echo json_encode(array("main" => $html,"total" => $count,"orderid" => $orderid));
   }
 }else{
   header("location: ../index.php");

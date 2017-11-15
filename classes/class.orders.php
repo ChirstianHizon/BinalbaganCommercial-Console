@@ -63,13 +63,84 @@ class Order
             tbl_customer.cust_id AS CUSTOMER_ID,
             tbl_customer.cust_firstname AS CUST_FNAME,
             tbl_customer.cust_lastname AS CUST_LNAME,
+            order_status AS STATUS,
             SUM(prd_qty) AS QUANTITY
             FROM tbl_order_list
             INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
             INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
             INNER JOIN tbl_customer ON tbl_customer.cust_id = tbl_order.cust_id
-            WHERE order_status = '1' AND order_type = '1'
+            WHERE (order_status = '1' OR order_status = '200' OR order_status = '100')  AND order_type = '1' 
             GROUP BY tbl_order_list.order_id ASC
+            ";
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
+    }
+
+        public function getAllApprovedDeliveryOrders2()
+    {
+        $sql = "SELECT
+            tbl_order_list.order_id AS ID,
+            SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
+            order_datestamp AS DATE,
+            order_type AS TYPE ,
+            tbl_customer.cust_id AS CUSTOMER_ID,
+            tbl_customer.cust_firstname AS CUST_FNAME,
+            tbl_customer.cust_lastname AS CUST_LNAME,
+            order_status AS STATUS,
+            SUM(prd_qty) AS QUANTITY
+            FROM tbl_order_list
+            INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
+            INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
+            INNER JOIN tbl_customer ON tbl_customer.cust_id = tbl_order.cust_id
+            WHERE order_status = '1' AND order_type = '1' 
+            GROUP BY tbl_order_list.order_id ASC
+            ";
+        $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
+        $result = mysqli_query($this->db, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $list[] = $row;
+            }
+            if (empty($list)) {
+                return false;
+            }
+            return $list;
+        } else {
+            return $result;
+        }
+    }
+
+            public function getOnGoingDelivery()
+    {
+        $sql = "SELECT
+            tbl_order_list.order_id AS ID,
+            SUM(prd_qty * tbl_order_list.prd_price) AS TOTAL,
+            order_datestamp AS DATE,
+            order_type AS TYPE ,
+            tbl_customer.cust_id AS CUSTOMER_ID,
+            tbl_customer.cust_firstname AS CUST_FNAME,
+            tbl_customer.cust_lastname AS CUST_LNAME,
+            order_status AS STATUS,
+            SUM(prd_qty) AS QUANTITY,
+            order_address AS ADDRESS
+            FROM tbl_order_list
+            INNER JOIN tbl_order ON tbl_order.order_id = tbl_order_list.order_id
+            INNER JOIN tbl_product ON tbl_product.prd_id = tbl_order_list.prd_id
+            INNER JOIN tbl_customer ON tbl_customer.cust_id = tbl_order.cust_id
+            WHERE order_status = '200' AND order_type = '1'
+            GROUP BY tbl_order_list.order_id ASC 
+            limit 1
             ";
         $result = mysqli_query($this->db, $sql) or die(mysqli_error() . $sql);
         $result = mysqli_query($this->db, $sql);

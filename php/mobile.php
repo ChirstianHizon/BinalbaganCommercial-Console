@@ -242,7 +242,8 @@ if ($access != $access_mobile) {
             "DATE" =>$value['order_datestamp'],
             "TIME" =>$value['order_timestamp'],
             "STATUS" =>$value['order_status'],
-            "TYPE" =>$value['order_type']
+            "TYPE" =>$value['order_type'],
+            "ADDRESS" =>$value['order_address']
           );
           $count++;
         }

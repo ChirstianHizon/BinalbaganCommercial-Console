@@ -74,7 +74,8 @@ $type = $_SESSION['usertype'];
   <link href="bootstrap/startmin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-  <script src="api/firebase/firebase.js"></script>
+  <!-- <script src="api/firebase/firebase.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
   <script src="api/firebase/firebaseinit.js"></script>
 
 
@@ -237,6 +238,9 @@ echo "<script type='text/javascript'>console.log('$date')</script>";
                   case 'reportsales':
                     require_once 'admin/sales/saleslist.php';
                   break;
+                  case 'currentdeliv':
+                    require 'admin/delivery/delivery_current.php';
+                    break;
                   default:
                     require_once 'main/page-not-found.php';
                   break;

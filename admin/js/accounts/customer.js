@@ -7,6 +7,7 @@ connectedRef.on("value", function(snap) {
 });
 
 var file;
+
 function getimage(event){
   file = event.target.files[0];
   //console.log(file);

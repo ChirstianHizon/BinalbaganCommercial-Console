@@ -4,10 +4,32 @@
         <h1 class="page-header">Delivery</h1>
     </div>
 </div>
+    <div class="table-header"><b>OnGoing Delivery</b></div>
+<div class="table-container">
+<div class="dttable">
+  <table id="loc_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>No. </th>
+            <!-- <th>Time Started</th> -->
+            <!-- <th>Total Items</th> -->
+            <th>Customer</th>
+            <th>Address</th>
+            <!-- <th style="width:10px;"></th> -->
+        </tr>
+    </thead>
+    <tbody id="loc-body">
+    </tbody>
+  </table>
 
+  <div id="current"></div>
+</div>
+</div>
+<!-- GOOGLE MAP -->
+<!-- <h4><a href="index.php?mod=currentdeliv">View onGoing Delivery</a></h4> -->
 <div class="section group">
 	<div class="col span_1_of_2">
-    <div class="table-header"><b>Delivery List</b></div>
+    <div class="table-header"><b>Approved Delivery List</b></div>
     <div class="table-container">
     <div class="dttable">
       <table id="app_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
@@ -44,12 +66,8 @@
   </div>
 	</div>
 	<div class="col span_1_of_2">
-    <div class="table-header"><b>Map</b></div>
-    <div class="table-container">
-      <div class="dttable">
-	     <div id="map"></div>
-     </div>
-   </div>
+    <div id="map"></div>
+    <br />
    <div class="table-header"><b>Route Selector</b></div>
    <div class="table-container">
      <b>Total Route: </b>
@@ -57,8 +75,8 @@
        <table id="route_id" class="table striped hovered cell-hovered border bordered" width="100%" cellspacing="0">
          <thead>
              <tr>
-                 <th>Time</th>
                  <th>No.</th>
+                 <th>Time</th>
                  <th>Latitude</th>
                  <th>Longitude</th>
                  <th></th>
@@ -72,5 +90,6 @@
 	</div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
 <script src="admin/js/delivery/delivery.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5_KfF9P5eQzcC_fO4VWdgoumYFv7vAQg&callback=initialize"async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8vRDxu-Le2HhLFisYN7CA3u8MP8ewqHM &callback=initialize"async defer></script>
